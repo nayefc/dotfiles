@@ -3,10 +3,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-PATH=$PATH:~/local/bin
-PATH=$PATH:~cs3204/bin
-export PATH
-
 # rm alias
 alias rm='rm -i'
 
