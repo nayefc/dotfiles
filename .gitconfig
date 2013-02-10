@@ -13,3 +13,5 @@
 [alias]
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
+[push]
+	default = simple
