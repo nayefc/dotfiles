@@ -13,5 +13,7 @@
 [alias]
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
-[push]
-	default = simple
+
+## Enable only if using git v2.0 and above
+#[push]
+	#default = simple
