@@ -54,6 +54,14 @@
 	    (require 'ruby-electric)
 	    (ruby-electric-mode t)))
 
+;; Add Haml Support
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'haml-mode)
+(add-hook 'haml-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+
 ;; Go to line bindinbg
 (global-set-key "\M-1" `goto-line)
 
