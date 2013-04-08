@@ -7,7 +7,7 @@ export LC_ALL=en_US.UTF-8
 alias rm='rm -i'
 
 # ls color alias
-alias ls='ls -l --color'
+alias ls='ls -l --color -h'
 
 # Terminal Colours
 export CLICOLOR=1
