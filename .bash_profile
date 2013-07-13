@@ -44,6 +44,6 @@ source ~/.git-completion.sh
 export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
-export PS1="\[$CYAN\w$YELLOW_BOLD$GIT_BRANCH_PROMPT $RED$ \e[m"
+export PS1="$CYAN\w$YELLOW_BOLD$GIT_BRANCH_PROMPT $RED$ \[\e[0m\]"
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
