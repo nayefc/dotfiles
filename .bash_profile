@@ -3,11 +3,17 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+
 # rm alias
 alias rm='rm -i'
 
 # ls color alias
-alias ls='ls -l --color -h'
+alias ls='ls -l -G -h'
 
 # Terminal Colours
 export CLICOLOR=1
