@@ -10,6 +10,10 @@
 ;; Display line numbers
 (global-linum-mode t)
 
+;; Use iswitch
+(iswitchb-mode 1)
+(setq iswitchb-buffer-ignore '("^ " "*"))
+
 ;; Display line numbers at the bottom
 (setq line-number-mode t)
 
