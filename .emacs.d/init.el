@@ -1,5 +1,5 @@
 ;; Add Load Path Directory
-;;(setq load-path  (cons (expand-file-name "~/.emacs.d/plugins") load-path))
+(add-to-list 'load-path "~/.emacs.d/")
 
 ;;(global-menu-bar-mode t)
 
@@ -22,6 +22,18 @@
 
 ;; Scroll one line at a time
 (setq scroll-step 1)
+
+;; Add AceJump Mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 ;; Automatically indent on new line
 (defun newline-indents ()
@@ -59,7 +71,6 @@
 	    (ruby-electric-mode t)))
 
 ;; Add Haml Support
-(add-to-list 'load-path "~/.emacs.d/")
 (require 'haml-mode)
 (add-hook 'haml-mode-hook
 	  (lambda ()
