@@ -40,6 +40,14 @@
   "Bind Return to `newline-and-indent' in the local keymap."
   (local-set-key "\C-m" 'newline-and-indent))
 
+;; Multiple Cursors
+(add-to-list 'load-path "~/.emacs.d/multiple-cursors.el/")
+(require 'multiple-cursors)
+(global-set-key (kbd "C-c c") 'mc/edit-lines)
+(global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c /") 'mc/mark-all-like-this)    
+
 ;; Tell Emacs to use the function above in certain editing modes.
 (add-hook 'lisp-mode-hook             (function newline-indents))
 (add-hook 'emacs-lisp-mode-hook       (function newline-indents))
