@@ -23,6 +23,24 @@
 ;; Scroll one line at a time
 (setq scroll-step 1)
 
+;; Copy line without marking
+(defun copy-line-or-region ()
+  "Copy current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+(global-set-key (kbd "C-x c") 'copy-line-or-region)
+
+;; Cut line without marking
+(defun cut-line-or-region ()
+  "Cut the current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
+(global-set-key (kbd "C-x x") 'cut-line-or-region)
+
 ;; Add AceJump Mode
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
