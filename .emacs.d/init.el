@@ -23,6 +23,15 @@
 ;; Scroll one line at a time
 (setq scroll-step 1)
 
+;; Kill current line
+(global-set-key (kbd "C-c d") 'kill-whole-line)
+
+;; Highlight parenthesis matching pair
+(show-paren-mode 1)
+
+;; Put all emacs backup files in one directory
+(setq backup-directory-alist `(("." . "~/.saves")))
+
 ;; Copy line without marking
 (defun copy-line-or-region ()
   "Copy current line, or current text selection."
