@@ -1,14 +1,15 @@
 ;; Add Load Path Directory
 (add-to-list 'load-path "~/.emacs.d/")
 
-;;(global-menu-bar-mode t)
-
 ;; Scroll other window up
 (global-set-key (kbd "C-c p") 'scroll-other-window-down)
 (global-set-key (kbd "C-c n") 'scroll-other-window)
 
 ;; Display line numbers
 (global-linum-mode t)
+
+;; Go to line bindinbg
+(global-set-key "\M-1" `goto-line)
 
 ;; Use iswitch
 (iswitchb-mode 1)
@@ -22,6 +23,10 @@
 
 ;; Scroll one line at a time
 (setq scroll-step 1)
+
+;; Buffer name for for two files in different directories shows full path instead of <2>
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;; Kill current line
 (global-set-key (kbd "C-c d") 'kill-whole-line)
@@ -116,9 +121,6 @@
 	  (lambda ()
 	    (setq indent-tabs-mode nil)
 	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
-
-;; Go to line bindinbg
-(global-set-key "\M-1" `goto-line)
 
 ;; Set default indent to 4
 (setq-default c-basic-offset 2)
