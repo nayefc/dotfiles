@@ -1,6 +1,9 @@
 ;; Add Load Path Directory
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; Remove trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Scroll other window up
 (global-set-key (kbd "C-c p") 'scroll-other-window-down)
 (global-set-key (kbd "C-c n") 'scroll-other-window)
