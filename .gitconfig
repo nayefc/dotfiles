@@ -1,13 +1,31 @@
 [user]
 	name = Nayef Copty
 	email = nrcopty@gmail.com
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
+        ph = push origin HEAD
+        pl = pull origin HEAD
+        plr = pull --rebase origin HEAD
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = emacs
-[alias]
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
-
-## Enable only if using git v2.0 and above
-#[push]
-	#default = simple
+[color]
+        diff = auto
+        status = auto
+        interactive = auto
+        ui = auto
+        pager = true
+[color "branch"]
+       current = green reverse
+       local = blue
+       remote = yellow
+[color "diff"]
+       meta = yellow bold
+       frag = magenta bold
+       old = red bold
+       new = blue bold
+[color "status"]
+       added = yellow reverse
+       changed = blue
+       untracked = cyan
