@@ -31,32 +31,38 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Kill current line
-(global-set-key (kbd "C-c d") 'kill-whole-line)
-
 ;; Highlight parenthesis matching pair
 (show-paren-mode 1)
 
 ;; Put all emacs backup files in one directory
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-;; Copy line without marking
-(defun copy-line-or-region ()
-  "Copy current line, or current text selection."
-  (interactive)
-  (if (region-active-p)
-      (kill-ring-save (region-beginning) (region-end))
-    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
-(global-set-key (kbd "C-x c") 'copy-line-or-region)
+;; Kill current line
+(global-set-key (kbd "C-c d") 'kill-whole-line)
 
-;; Cut line without marking
-(defun cut-line-or-region ()
-  "Cut the current line, or current text selection."
-  (interactive)
-  (if (region-active-p)
-      (kill-region (region-beginning) (region-end))
-    (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
-(global-set-key (kbd "C-x x") 'cut-line-or-region)
+;; Copy line
+(global-set-key (kbd "C-x c") "\C-a\C- \C-n\M-w")
+
+;; Copy and paste line below
+(global-set-key (kbd "C-C C-c") "\C-a\C- \C-n\M-w\C-y")
+
+;; ;; Copy line without marking
+;; (defun copy-line-or-region ()
+;;   "Copy current line, or current text selection."
+;;   (interactive)
+;;   (if (region-active-p)
+;;       (kill-ring-save (region-beginning) (region-end))
+;;     (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+;; (global-set-key (kbd "C-x c") 'copy-line-or-region)
+
+;; ;; Cut line without marking
+;; (defun cut-line-or-region ()
+;;   "Cut the current line, or current text selection."
+;;   (interactive)
+;;   (if (region-active-p)
+;;       (kill-region (region-beginning) (region-end))
+;;     (kill-region (line-beginning-position) (line-beginning-position 2)) ) )
+;; (global-set-key (kbd "C-x x") 'cut-line-or-region)
 
 ;; Add AceJump Mode
 (require 'ace-jump-mode)
