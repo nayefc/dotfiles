@@ -44,6 +44,10 @@
 (global-set-key (kbd "C-x c") "\C-a\C- \C-n\M-w")
 
 ;; Copy and paste line below
+; This unbinds C-c C-c python-send-buffer first
+(add-hook 'python-mode-hook
+	  (lambda()
+	    (local-unset-key (kbd "C-c C-c"))))
 (global-set-key (kbd "C-C C-c") "\C-a\C- \C-n\M-w\C-y")
 
 ;; ;; Copy line without marking
