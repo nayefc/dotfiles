@@ -45,7 +45,10 @@
 
 ;; Copy and paste line below
 ; This unbinds C-c C-c python-send-buffer first
-(global-set-key (kbd "C-x c") "\C-a\C- \C-n\M-w\C-y")
+(add-hook 'python-mode-hook
+	  (lambda()
+	    (local-unset-key (kbd "C-c C-c"))))
+(global-set-key (kbd "C-c C-c") "\C-a\C- \C-n\M-w\C-y")
 
 ;; Add AceJump Mode
 (require 'ace-jump-mode)
