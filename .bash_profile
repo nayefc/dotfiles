@@ -3,7 +3,9 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# OS X Only
+source `brew --repository`/Library/Contributions/brew_bash_completion.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
@@ -37,12 +39,16 @@ BROWN="\[\033[0;33m\]"
 
 # Terminal colours
 export CLICOLOR=1
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-        export TERM='xterm-256color'
-else
-        export TERM='xterm-color'
-fi
-export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
+## Unix
+# if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+#     export TERM='xterm-256color'
+# else
+#     export TERM='xterm-color'
+# fi
+# export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
+##
+## OS X
+export TERM='xterm-256color'
 
 # Second prompt line
 source ~/.git-completion.sh
@@ -52,5 +58,3 @@ export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 #export PS1="$CYAN\w$YELLOW_BOLD$GIT_BRANCH_PROMPT $RED$ \[\e[0m\]"
 export PS1="\[\033[0;36m\]\w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
-
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
