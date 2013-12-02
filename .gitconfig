@@ -29,3 +29,5 @@
        added = yellow reverse
        changed = blue
        untracked = cyan
+[merge]
+	conflictstyle = diff3
