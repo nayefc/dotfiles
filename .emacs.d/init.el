@@ -57,13 +57,11 @@
 
 ;; Copy and paste line below
 ; This unbinds C-c C-c python-send-buffer first
-(add-hook 'python-mode-hook
-	  (lambda()
-	    (local-unset-key (kbd "C-c C-c"))))
-(add-hook 'c-mode-hook
-	  (lambda()
-	    (local-unset-key (kbd "C-c C-c"))))
-(global-set-key (kbd "C-c C-c") "\C-a\C- \C-n\M-w\C-y")
+; but I no longer use C-c C-c for duplicating a line
+;; (add-hook 'python-mode-hook
+;; 	  (lambda()
+;; 	    (local-unset-key (kbd "C-c C-c"))))
+(global-set-key (kbd "C-c f") "\C-a\C- \C-n\M-w\C-y")
 
 ;; Add AceJump Mode
 (require 'ace-jump-mode)
