@@ -8,10 +8,8 @@
 ;; Add Load Path Directory
 (add-to-list 'load-path "~/.emacs.d/")
 
-(cua-selection-mode t)
-(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
-(transient-mark-mode 1) ;; No region when it is not highlighted
-(setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
+;; Overwrite text when writing over a highlighted region
+(delete-selection-mode t)
 
  ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
