@@ -5,13 +5,20 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
+;; Remove top menu bar
+(menu-bar-mode -1)
+
 ;; Add Load Path Directory
 (add-to-list 'load-path "~/.emacs.d/")
+
+(setq whitespace-line-column 100)
+(setq whitespace-style '(face lines-tail trailing))
+(global-whitespace-mode t)
 
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
 
- ;; Fiplr -- requires emacs 24.3
+;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 (setq fiplr-ignored-globs '((directories (".git" ".svn"))
 			    (files ("*.jpg" "*.png" "*.zip" "*~"))))
