@@ -8,9 +8,13 @@
 ;; Remove top menu bar
 (menu-bar-mode -1)
 
+;; Prevent the cursor from blinking
+(blink-cursor-mode 0)
+
 ;; Add Load Path Directory
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; Highlight lines longer than 100 characters
 (setq whitespace-line-column 100)
 (setq whitespace-style '(face lines-tail trailing))
 (global-whitespace-mode t)
