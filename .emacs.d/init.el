@@ -25,10 +25,13 @@
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 (setq fiplr-ignored-globs '((directories (".git" ".svn"))
-			    (files ("*.jpg" "*.png" "*.zip" "*~"))))
+			    (files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc"))))
 
 ;; Remove trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Default search to regexp search
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
 
 ;; Scroll other window up
 (global-set-key (kbd "C-c p") 'scroll-other-window-down)
