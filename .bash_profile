@@ -6,6 +6,7 @@ export LC_ALL=en_US.UTF-8
 # OS X Only
 source `brew --repository`/Library/Contributions/brew_bash_completion.sh
 source /usr/local/bin/virtualenvwrapper.sh
+export PATH=/usr/local/bin:$PATH
 
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
