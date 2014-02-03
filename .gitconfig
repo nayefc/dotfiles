@@ -7,6 +7,8 @@
         ph = push origin HEAD
         pl = pull origin HEAD
         plr = pull --rebase origin HEAD
+	gr = remote show origin
+	sr =!git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = emacs
