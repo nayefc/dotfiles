@@ -15,6 +15,13 @@ if [[ $platform == 'osx' ]]; then
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     source /usr/local/bin/virtualenvwrapper.sh
     export PATH=/usr/local/bin:$PATH
+elif [[ $platform == 'linux' ]]; then
+    export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
+    PATH=$PATH:$HOME/tasker-cli/
+    export WORKON_HOME=$HOME/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+    export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 if [ -f ~/.bashrc ]; then
@@ -24,11 +31,24 @@ fi
 # rm alias
 alias rm='rm -i'
 
+# use git diff for regular diffs
+alias diff='git diff --no-index'
+
+# print out authors or emails of a git repo
+alias authors='git log --all --format='%aN' | sort -u'
+alias emails='git log --all --format='%ae' | sort -u'
+
 # ls colour alias
 if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
 elif [[ $platform == 'linux' ]]; then
     alias ls='ls -l --color -h'
+    get_hosts () {
+	host $1 | awk '{ print $4}' | xargs -I {} grep {} /etc/hosts
+    }
+    alias get_hosts=get_hosts
+    alias mgmaedb="mysql -h mysql-maestro.mgmt.adnxs.net -u ncopty -p --prompt 'maestroMGMT!!!> '"
+    alias devmaedb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net maestrodev --prompt 'maestroDEV read-only> '"
 fi
 
 # Terminal Colours
