@@ -1,12 +1,21 @@
-# Setting for the new UTF-8 terminal support in Lion
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+platform='unknown'
+unamestr=$(uname)
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
+fi
 
-# OS X Only
-source `brew --repository`/Library/Contributions/brew_bash_completion.sh
-source /usr/local/bin/virtualenvwrapper.sh
-export PATH=/usr/local/bin:$PATH
+if [[ $platform == 'osx' ]]; then
+    # Setting for the new UTF-8 terminal support
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    # Homebrew
+    source `brew --repository`/Library/Contributions/brew_bash_completion.sh
+    source /usr/local/bin/virtualenvwrapper.sh
+    export PATH=/usr/local/bin:$PATH
+fi
 
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
@@ -15,8 +24,12 @@ fi
 # rm alias
 alias rm='rm -i'
 
-# ls color alias
-alias ls='ls -l -G -h'
+# ls colour alias
+if [[ $platform == 'osx' ]]; then
+    alias ls='ls -l -G -h'
+elif [[ $platform == 'linux' ]]; then
+    alias ls='ls -l --color -h'
+fi
 
 # Terminal Colours
 export CLICOLOR=1
@@ -40,16 +53,16 @@ BROWN="\[\033[0;33m\]"
 
 # Terminal colours
 export CLICOLOR=1
-## Unix
-# if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-#     export TERM='xterm-256color'
-# else
-#     export TERM='xterm-color'
-# fi
-# export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
-##
-## OS X
-export TERM='xterm-256color'
+if [[ $platform == 'osx' ]]; then
+    export TERM='xterm-256color'
+elif [[ $platform == 'linux' ]]; then
+    if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+	export TERM='xterm-256color'
+    else
+	export TERM='xterm-color'
+    fi
+    export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
+fi
 
 # Second prompt line
 source ~/.git-completion.sh
@@ -57,5 +70,9 @@ source ~/.git-completion.sh
 export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
-#export PS1="$CYAN\w$YELLOW_BOLD$GIT_BRANCH_PROMPT $RED$ \[\e[0m\]"
-export PS1="\[\033[0;36m\]\w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
+
+if [[ $platform == 'osx' ]]; then
+    export PS1="\[\033[0;36m\]\w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
+elif [[ $platform == 'linux' ]]; then
+    export PS1="\[\033[0;36m\]\h \w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
+fi
