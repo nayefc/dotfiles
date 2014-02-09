@@ -1,6 +1,6 @@
-[submodule ".emacs.d/expand-region.el"]
-	path = .emacs.d/expand-region.el
-	url = git@github.com:magnars/expand-region.el.git
-[submodule ".emacs.d/multiple-cursors.el"]
-	path = .emacs.d/multiple-cursors.el
+[submodule "emacs/.emacs.d/multiple-cursors.el"]
+	path = emacs/.emacs.d/multiple-cursors.el
 	url = git@github.com:magnars/multiple-cursors.el.git
+[submodule "emacs/.emacs.d/expand-region.el"]
+	path = emacs/.emacs.d/expand-region.el
+	url = git@github.com:magnars/expand-region.el.git
