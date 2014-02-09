@@ -4,11 +4,13 @@
 [alias]
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
-        ph = push origin HEAD
-        pl = pull origin HEAD
-        plr = pull --rebase origin HEAD
+        ph = push
+        pl = pull
+        plr = pull --rebase
 	gr = remote show origin
 	sr =!git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
+[push]
+	default = simple
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = emacs
