@@ -4,3 +4,6 @@
 [submodule "emacs/.emacs.d/expand-region.el"]
 	path = emacs/.emacs.d/expand-region.el
 	url = git@github.com:magnars/expand-region.el.git
+[submodule "bins/hr"]
+	path = bins/hr
+	url = git@github.com:LuRsT/hr.git
