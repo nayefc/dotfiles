@@ -155,6 +155,12 @@
 ;; Set default indent to 4
 (setq-default c-basic-offset 2)
 
+;; Set python indent to 4
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (setq python-indent 4)))
+
 ;; Indent JavaScript to 2
 (setq js-indent-level 2)
 
