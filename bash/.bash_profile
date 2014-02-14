@@ -38,7 +38,7 @@ alias diff='git diff --no-index'
 alias authors='git log --all --format='%aN' | sort -u'
 alias emails='git log --all --format='%ae' | sort -u'
 
-# ls colour alias
+# alias and functions
 if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
 elif [[ $platform == 'linux' ]]; then
@@ -50,6 +50,11 @@ elif [[ $platform == 'linux' ]]; then
     alias mgmaedb="mysql -h mysql-maestro.mgmt.adnxs.net -u ncopty -p --prompt 'maestroMGMT!!!> '"
     alias devmaedb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net maestrodev --prompt 'maestroDEV read-only> '"
 fi
+
+edit_with() {
+    files=`grep -r $1 ./ | awk '{print $1}' | cut -d: -f 1 | xargs -I {} echo -n " " {}`
+    emacs $files
+}
 
 # Terminal Colours
 export CLICOLOR=1
