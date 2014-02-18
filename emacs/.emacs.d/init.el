@@ -26,6 +26,7 @@
 ;; Add Flycheck mode for syntax checking
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(mode-enabled new-line save idle-change))
+(setq flycheck-idle-change-delay 1)
 
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
