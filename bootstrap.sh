@@ -7,6 +7,8 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
+git submodule update --init --recursive
+
 # install stow
 if [[ $platform == 'osx' ]]; then
     brew install stow
