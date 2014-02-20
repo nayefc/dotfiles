@@ -13,7 +13,6 @@ if [[ $platform == 'osx' ]]; then
     export LC_ALL=en_US.UTF-8
     # Homebrew
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
-    source /usr/local/bin/virtualenvwrapper.sh
     export PATH=/usr/local/bin:$PATH
 elif [[ $platform == 'linux' ]]; then
     export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
@@ -21,8 +20,10 @@ elif [[ $platform == 'linux' ]]; then
     export WORKON_HOME=$HOME/.virtualenvs
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
-    source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+# INSTALL VIRTUALENVWRAPPER.SH
+source /usr/local/bin/virtualenvwrapper.sh
 
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
