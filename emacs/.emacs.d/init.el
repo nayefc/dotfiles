@@ -18,7 +18,7 @@
 ;; Highlight lines longer than 100 characters
 (setq whitespace-line-column 100)
 (setq whitespace-style '(face lines-tail trailing))
-(global-whitespace-mode t)
+(global-whitespace-mode 1)
 
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
