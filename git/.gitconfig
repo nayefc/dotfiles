@@ -10,7 +10,7 @@
 	gr = remote show origin
 	sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
 	bnuke = !git branch -D $1 && git push origin :$1
-	tnuke = !git branch -D $1 && git push origin :$1
+	tnuke = !git tag -d $1 && git push origin :$1
 	co = checkout
 [push]
 	default = simple
