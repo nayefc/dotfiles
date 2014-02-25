@@ -57,6 +57,13 @@ edit_with() {
     emacs $files
 }
 
+function swap() {
+    local TMPFILE=tmp.$$
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
+}
+
 # Terminal Colours
 export CLICOLOR=1
 BLACK="\[\033[0;30m\]"
