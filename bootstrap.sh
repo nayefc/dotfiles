@@ -22,12 +22,12 @@ stow tmux
 stow git
 stow emacs
 
-# install bins
-if [[ $platform == 'osx' ]]; then
-    brew install hr
-elif [[ $platform == 'linux' ]]; then
-    ./bins/bootstrap.sh
+if [[ $platform == 'linux' ]]; then
+    stow ssh
 fi
+
+# install bins
+./bins/bootstrap.sh
 
 # packages used by emacs
 sudo pip install pylint
