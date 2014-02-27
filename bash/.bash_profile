@@ -29,6 +29,9 @@ if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
 
+# emacs client alias
+alias e='emacsclient -nw'
+
 # rm alias
 alias rm='rm -i'
 
