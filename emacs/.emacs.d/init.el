@@ -27,6 +27,9 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change)) ; save is also an option
 (setq flycheck-idle-change-delay 1)
+(eval-after-load 'flycheck
+    '(progn
+      (set-face-attribute 'flycheck-error nil :foreground "pink")))
 
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
