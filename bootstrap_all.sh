@@ -16,21 +16,21 @@ elif [[ $platform == 'linux' ]]; then
     sudo yum install stow
 fi
 
-# stow packages
-stow bash
-stow tmux
-stow git
-stow emacs
+ruby bootstrap.rb
 
-if [[ $platform == 'linux' ]]; then
-    stow ssh
-fi
+# replaced with ruby script
+# # stow packages
+# stow bash
+# stow tmux
+# stow git
+# stow emacs
+
+# if [[ $platform == 'linux' ]]; then
+#     stow ssh
+# fi
 
 # install bins
 ./bins/bootstrap.sh
 
 # packages used by emacs
 sudo pip install pylint
-
-# TODO: separate bootstrap and pass in argument of what to boostrap.
-# For example, pass in 'all' to set up a machine from scratch, or 'bin' to boostrap bins.
