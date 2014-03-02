@@ -7,6 +7,8 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
+gem install rubocop
+
 if [[ $platform == 'osx' ]]; then
     brew install hr
 elif [[ $platform == 'linux' ]]; then

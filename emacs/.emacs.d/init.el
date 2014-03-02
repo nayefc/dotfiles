@@ -23,9 +23,11 @@
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
 
+
+
 ;; Add Flycheck mode for syntax checking
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change)) ; save is also an option
+(setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
 (setq flycheck-idle-change-delay 1)
 (eval-after-load 'flycheck
     '(progn
