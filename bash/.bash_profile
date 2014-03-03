@@ -55,11 +55,29 @@ elif [[ $platform == 'linux' ]]; then
     alias devmaedb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net maestrodev --prompt 'maestroDEV read-only> '"
 fi
 
-edit_with() {
-    files=`grep -r $1 ./ | awk '{print $1}' | cut -d: -f 1 | xargs -I {} echo -n " " {}`
-    emacs $files
+# opens all files with the given regexp
+function edit_with() {
+    files=`git g $1 | awk '{print $1}' | cut -d: -f 1 | xargs -I {} echo -n " " {}`
+    if ps ax | grep -v grep | grep 'emacs --daemon' > /dev/null
+    then
+	e $files
+    else
+	emacs $files
+    fi
 }
 
+# open all git conflicted files
+function edit_conflicts() {
+    files=`git diff --name-only --diff-filter=U`
+    if ps ax | grep -v grep | grep 'emacs --daemon' > /dev/null
+    then
+	e $files
+    else
+	emacs $files
+    fi
+}
+
+# swaps two files
 function swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE
