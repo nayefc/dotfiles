@@ -11,8 +11,25 @@ PATH=$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 if [[ $platform == 'osx' ]]; then
-    # pythonbrew
-    [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+    eval "$(pyenv init -)"
+    export PATH="/Users/ncopty/.pyenv/shims:${PATH}"
+    export PYENV_SHELL=bash
+    source '/usr/local/Cellar/pyenv/20140211/libexec/../completions/pyenv.bash'
+    pyenv rehash 2>/dev/null
+    pyenv() {
+	local command
+	command="$1"
+	if [ "$#" -gt 0 ]; then
+	    shift
+	fi
+
+	case "$command" in
+	    rehash|shell)
+		eval "`pyenv "sh-$command" "$@"`";;
+	    *)
+		command pyenv "$command" "$@";;
+	esac
+    }
 fi
 
 # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
