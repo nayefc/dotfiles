@@ -13,6 +13,7 @@
 	tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
 	co = checkout
 	subinit = submodule update --init --recursive -f
+	g = grep --break --heading --line-number
 [push]
 	default = simple
 [core]
@@ -39,3 +40,6 @@
        untracked = cyan
 [merge]
 	conflictstyle = diff3
+[grep]
+	extendRegexp = true
+	lineNumber = true
