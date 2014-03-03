@@ -25,7 +25,7 @@ def stow(package)
     return
   end
 
-  unless system('stow #{package.to_s}')
+  unless system("stow #{package.to_s}")
     puts "There was an error stowing #{package}."
   end
 end
