@@ -148,8 +148,8 @@ export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 
-if [[ $platform == 'osx' ]]; then
-    export PS1="\[\033[0;36m\]\w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
-elif [[ $platform == 'linux' ]]; then
-    export PS1="\[\033[0;36m\]\h \w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
+PS1="\[\033[0;36m\]"
+if [[ $platform == 'linux' ]]; then
+    PS1=$PS1"\h:"
 fi
+export PS1=$PS1"\j \w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
