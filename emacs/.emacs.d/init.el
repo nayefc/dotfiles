@@ -79,7 +79,15 @@
 (global-set-key (kbd "C-c d") 'kill-whole-line)
 
 ;; Copy line
-(global-set-key (kbd "C-x c") "\M-m\C- \C-e\M-w")
+(defun copy-line ()
+  (interactive)
+  (save-excursion
+    (back-to-indentation)
+    (kill-ring-save
+     (point)
+     (line-end-position)))
+  (message "1 line copied"))
+(global-set-key (kbd "C-x c") 'copy-line)
 
 ;; Copy and paste line below
 ; This unbinds C-c C-c python-send-buffer first
