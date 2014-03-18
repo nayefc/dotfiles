@@ -23,8 +23,6 @@
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
 
-
-
 ;; Add Flycheck mode for syntax checking
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
@@ -81,7 +79,7 @@
 (global-set-key (kbd "C-c d") 'kill-whole-line)
 
 ;; Copy line
-(global-set-key (kbd "C-x c") "\C-a\C- \C-n\M-w")
+(global-set-key (kbd "C-x c") "\M-m\C- \C-e\M-w")
 
 ;; Copy and paste line below
 ; This unbinds C-c C-c python-send-buffer first
