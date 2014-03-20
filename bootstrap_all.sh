@@ -12,11 +12,13 @@ git submodule update --init --recursive
 # install stow
 if [[ $platform == 'osx' ]]; then
     brew install stow
+    brew install emacs
 elif [[ $platform == 'linux' ]]; then
     sudo yum install stow
+    sudo yum install emacs
 fi
 
-ruby bootstrap.rb
+ruby bootstrap
 
 # replaced with ruby script
 # # stow packages
