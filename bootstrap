@@ -38,6 +38,7 @@ def stow_packages(packages=nil)
     end
   else
     packages.each do |pkg|
+      puts 'Stowing #{pkg}'
       stow pkg.to_sym
     end
   end
