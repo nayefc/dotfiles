@@ -2,6 +2,7 @@
 # Usage: boostrap [optional arg stow package]
 
 require 'erb'
+require 'ostruct'
 
 $supported_packages = [:bash, :tmux, :git, :emacs, :ssh]
 $platform = RUBY_PLATFORM
