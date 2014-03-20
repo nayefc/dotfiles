@@ -23,7 +23,7 @@ def stow(package)
     File.write('git/.gitconfig', result)
   end
 
-  if package == :ssh and platform.include? $osx
+  if package == :ssh and $platform.include? $osx
     return
   end
 
