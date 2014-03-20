@@ -32,8 +32,9 @@ def stow(package)
 end
 
 def stow_packages(packages=nil)
-  unless packages
+  if packages.nil?
     $supported_packages.each do |pkg|
+      puts 'Stowing #{pkg}'
       stow pkg.to_sym
     end
   else
