@@ -17,9 +17,9 @@ elif [[ $platform == 'linux' ]]; then
 fi
 
 if [[ $platform == 'osx' ]]; then
-    sudo cp chrome-cli /usr/local/bin/chrome-cli
+    sudo cp bins/chrome-cli /usr/local/bin/chrome-cli
     sudo chmod +x /usr/local/bin/chrome-cli
 elif [[ $platform == 'linux' ]]; then
-    sudo cp chrome-cli-remote /usr/local/bin/chrome-cli
+    sudo cp bins/chrome-cli-remote /usr/local/bin/chrome-cli
     sudo chmod +x /usr/local/bin/chrome-cli
 fi
