@@ -3,6 +3,7 @@
 
 require 'erb'
 require 'ostruct'
+require 'fileutils'
 
 $supported_packages = [:bash, :tmux, :git, :emacs, :ssh]
 $platform = RUBY_PLATFORM
@@ -25,6 +26,15 @@ def stow(package)
 
   if package == :ssh and $platform.include? $osx
     return
+  end
+
+  if package == :bash
+    if File.exist?('../.bash_profile')
+      FileUtils.mv('../.bash_profile', '../.bash_profile.bak')
+    end
+    if File.exist?('../.bashrc')
+      FileUtils.mv('../.bashrc', '../.bashrc.bak')
+    end
   end
 
   unless system("stow #{package.to_s}")
