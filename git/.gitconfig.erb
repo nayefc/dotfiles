@@ -1,23 +1,24 @@
 [user]
-	name = Nayef Copty
-	email = <%= git_email %>
+        name = Nayef Copty
+        email = <%= git_email %>
 [alias]
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
         ph = push
         pl = pull
         plr = pull --rebase
-	gr = remote show origin
-	sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
-	bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
-	tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
-	co = checkout
-	subinit = submodule update --init --recursive -f
+        gr = remote show origin
+        sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
+        bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
+        tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
+        co = checkout
+        subinit = submodule update --init --recursive -f
+        g = grep --break --heading --line-number
 [push]
-	default = simple
+        default = simple
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = emacs
+        excludesfile = ~/.gitignore_global
+        editor = emacs
 [color]
         diff = auto
         status = auto
@@ -38,4 +39,4 @@
        changed = blue
        untracked = cyan
 [merge]
-	conflictstyle = diff3
+        conflictstyle = diff3
