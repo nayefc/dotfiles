@@ -3,7 +3,7 @@
 ;; Copyright (C) 2012 Magnar Sveen
 
 ;; Author: Magnar Sveen <magnars@gmail.com>
-;; Version: 20140308.656
+;; Version: 20140327.116
 ;; X-Original-Version: 2.6.0
 ;; Keywords: lists
 
@@ -797,12 +797,27 @@ The anaphoric form `--zip-with' binds the elements from LIST1 as `it`,
 and the elements from LIST2 as `other`."
   (--zip-with (funcall fn it other) list1 list2))
 
-(defun -zip (list1 list2)
-  "Zip the two lists together.  Return the list where elements
-are cons pairs with car being element from LIST1 and cdr being
-element from LIST2.  The length of the returned list is the
-length of the shorter one."
-  (-zip-with 'cons list1 list2))
+(defun -zip (&rest lists)
+  "Zip LISTS together.  Group the head of each list, followed by the
+second elements of each list, and so on. The lengths of the returned
+groupings are equal to the length of the shortest input list.
+
+If two lists are provided as arguments, return the groupings as a list
+of cons cells. Otherwise, return the groupings as a list of lists. "
+  (let* ((n (-min (-map 'length lists)))
+         (level-lists (-map (-partial '-take n) lists))
+         results)
+    (while (> n 0)
+      (let ((split-lists (-map (-partial '-split-at 1) level-lists)))
+        (setq results (cons (-map 'caar split-lists) results))
+        (setq level-lists (-map 'cadr split-lists))
+        (setq n (1- n))))
+    (setq results (nreverse results))
+    (if (= (length lists) 2)
+        ; to support backward compatability, return
+        ; a cons cell if two lists were provided
+        (--map (cons (car it) (cadr it)) results)
+      results)))
 
 (defun -partial (fn &rest args)
   "Takes a function FN and fewer than the normal arguments to FN,
