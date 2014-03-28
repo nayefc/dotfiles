@@ -66,6 +66,15 @@ function edit_with() {
     fi
 }
 
+function clean_elpa() {
+    find $HOME/dotfiles/emacs/.emacs.d/elpa -regex ".*~.*" -exec rm {} \;
+    if [ $? -ne 0 ]; then
+        echo "ELPA clean error with $1."
+    else
+	echo 'ELPA cleaned.'
+    fi
+}
+
 # open all git conflicted files
 function edit_conflicts() {
     files=`git diff --name-only --diff-filter=U`
