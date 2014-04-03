@@ -35,8 +35,8 @@
 (eval-after-load 'flycheck
     '(progn
       (set-face-attribute 'flycheck-error nil
-			  :foreground "yellow"
-			  :background "red")))
+			  :foreground "red"
+			  :background "yellow")))
 
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
