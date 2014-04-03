@@ -29,7 +29,9 @@
 (setq flycheck-idle-change-delay 1)
 (eval-after-load 'flycheck
     '(progn
-      (set-face-attribute 'flycheck-error nil :foreground "pink")))
+      (set-face-attribute 'flycheck-warning nil
+			  :foreground "yellow"
+			  :background "red")))
 
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
