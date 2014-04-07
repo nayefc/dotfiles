@@ -48,11 +48,13 @@ if [[ $platform == 'osx' ]]; then
 elif [[ $platform == 'linux' ]]; then
     alias ls='ls -l --color -h'
     get_hosts () {
-	host $1 | awk '{ print $4}' | xargs -I {} grep {} /etc/hosts
+	host $1 | awk '{ print $4}' | xargs -I {} grep '{}\b' /etc/hosts
     }
     alias get_hosts=get_hosts
     alias mgmaedb="mysql -h mysql-maestro.mgmt.adnxs.net -u ncopty -p --prompt 'maestroMGMT!!!> '"
     alias devmaedb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net maestrodev --prompt 'maestroDEV read-only> '"
+    alias mgmtendb="psql -h jazzhands-db.appnexus.net -U app_tendril_api jazzhands"
+    alias devtendb="psql -h 02.kovert-sand.nym2.appnexus.net -U tendril_dev jazzhands"
 fi
 
 # opens all files with the given regexp
