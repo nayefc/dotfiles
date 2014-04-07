@@ -6,10 +6,6 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
-# rvm
-PATH=$PATH:$HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 if [[ $platform == 'osx' ]]; then
     eval "$(pyenv init -)"
     export PATH="/Users/ncopty/.pyenv/shims:${PATH}"
@@ -43,3 +39,7 @@ elif [[ $platform == 'linux' ]]; then
     source /usr/local/hop/hop.bash
     alias hop-lua-script="LUA_PATH=/usr/local/hop/json.lua /usr/local/hop/hop.lua"
 fi
+
+# rvm
+PATH=$PATH:$HOME/.rvm/bin
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
