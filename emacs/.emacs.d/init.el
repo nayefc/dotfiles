@@ -20,6 +20,10 @@
 (setq whitespace-style '(face lines-tail trailing))
 (global-whitespace-mode 1)
 
+;; Show which function you're in
+(which-function-mode)
+(setq which-func-unknown "n/a")
+
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
 
