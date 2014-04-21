@@ -7,24 +7,56 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 if [[ $platform == 'osx' ]]; then
+
     # Setting for the new UTF-8 terminal support
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
+
     # Homebrew
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     export PATH=/usr/local/bin:$PATH
+
     # Hop
     # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
     source /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.bash
     alias hop-lua-script="LUA_PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua"
+
+    # pyenv
+    eval "$(pyenv init -)"
+    export PATH="/Users/ncopty/.pyenv/shims:${PATH}"
+    export PYENV_SHELL=bash
+    source '/usr/local/Cellar/pyenv/20140211/libexec/../completions/pyenv.bash'
+    pyenv rehash 2>/dev/null
+    pyenv() {
+	local command
+	command="$1"
+	if [ "$#" -gt 0 ]; then
+	    shift
+	fi
+
+	case "$command" in
+	    rehash|shell)
+		eval "`pyenv "sh-$command" "$@"`";;
+	    *)
+		command pyenv "$command" "$@";;
+	esac
+    }
+
+    # rvm
+    PATH=$PATH:$HOME/.rvm/bin
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 elif [[ $platform == 'linux' ]]; then
+
     # SSH agent fowarding
     export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
+
     # Virtualenv
     export WORKON_HOME=$HOME/.virtualenvs
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
+
     # Hop
     # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
     source /usr/local/hop/hop.bash
