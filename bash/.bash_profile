@@ -38,6 +38,9 @@ alias rm='rm -i'
 # use git diff for regular diffs
 alias diff='git diff --no-index'
 
+# get current git repo name
+alias repo_name='basename `git rev-parse --show-toplevel`'
+
 # print out authors or emails of a git repo
 alias authors='git log --all --format='%aN' | sort -u'
 alias emails='git log --all --format='%ae' | sort -u'
