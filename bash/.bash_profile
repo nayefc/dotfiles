@@ -14,20 +14,25 @@ if [[ $platform == 'osx' ]]; then
     # Homebrew
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     export PATH=/usr/local/bin:$PATH
+    # Hop
+    # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
+    source /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.bash
+    alias hop-lua-script="LUA_PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua"
 elif [[ $platform == 'linux' ]]; then
+    # SSH agent fowarding
     export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
-    PATH=$PATH:$HOME/tasker-cli/
+    # Virtualenv
     export WORKON_HOME=$HOME/.virtualenvs
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
+    # Hop
+    # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
+    source /usr/local/hop/hop.bash
+    alias hop-lua-script="LUA_PATH=/usr/local/hop/json.lua /usr/local/hop/hop.lua"
 fi
 
 # INSTALL VIRTUALENVWRAPPER.SH
 source /usr/local/bin/virtualenvwrapper.sh
-
-if [ -f ~/.bashrc ]; then
-   source ~/.bashrc
-fi
 
 # emacs client alias
 alias e='emacsclient -nw'

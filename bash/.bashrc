@@ -28,18 +28,6 @@ if [[ $platform == 'osx' ]]; then
     }
 fi
 
-# installation instructions: https://github.com/Cue/hop -- INSTALL IT!
-
-# Initialize the 'hop' script and
-# define an entry point for the lua script version of hop
-if [[ $platform == 'osx' ]]; then
-    source /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.bash
-    alias hop-lua-script="LUA_PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua"
-elif [[ $platform == 'linux' ]]; then
-    source /usr/local/hop/hop.bash
-    alias hop-lua-script="LUA_PATH=/usr/local/hop/json.lua /usr/local/hop/hop.lua"
-fi
-
 # rvm
 PATH=$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
