@@ -76,7 +76,7 @@ alias rm='rm -i'
 alias diff='git diff --no-index'
 
 # get current git repo name
-alias cp_repo='basename `git rev-parse --show-toplevel` | xargs echo -n | pbcopy'
+alias repo_name='basename `git rev-parse --show-toplevel`'
 
 # print out authors or emails of a git repo
 alias authors='git log --all --format='%aN' | sort -u'
