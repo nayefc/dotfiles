@@ -11,15 +11,14 @@ gem install rubocop
 
 if [[ $platform == 'osx' ]]; then
     brew install hr
-elif [[ $platform == 'linux' ]]; then
-    sudo cp bins/hr/hr /usr/local/bin/
-    sudo chmod +x /usr/local/bin/hr
-fi
-
-if [[ $platform == 'osx' ]]; then
     sudo cp bins/chrome-cli /usr/local/bin/chrome-cli
     sudo chmod +x /usr/local/bin/chrome-cli
 elif [[ $platform == 'linux' ]]; then
+    sudo cp bins/hr/hr /usr/local/bin/
+    sudo chmod +x /usr/local/bin/hr
     sudo cp bins/chrome-cli-remote /usr/local/bin/chrome-cli
     sudo chmod +x /usr/local/bin/chrome-cli
 fi
+
+chmod a+x bins/youtube-dl/youtube-dl
+cp bins/youtube-dl/youtube-dl /usr/local/bin/youtube-dl
