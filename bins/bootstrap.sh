@@ -7,8 +7,6 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
-gem install rubocop
-
 if [[ $platform == 'osx' ]]; then
     brew install hr
     sudo cp bins/chrome-cli /usr/local/bin/chrome-cli

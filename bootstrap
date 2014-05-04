@@ -1,61 +1,114 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 # Usage: boostrap [optional arg stow package]
+
+# Setup:
+# 1. Place your dotfiles in a directory named after the package appropriately.
+# For example:
+#  ├── bash
+#  │   ├── .bash_profile
+#  │   └── .bashrc
+#  ├── git
+#  │   ├── .git-completion.sh
+#  │   ├── .gitconfig
+#  │   ├── .gitconfig.erb
+#  │   ├── .gitignore_global
+#
+# 2. Add .erb to any file that requires templating. Keep this to minimal.
+# 3. Add the package to the $supported_packages hash
+# 4. Set up your package in stow() if needed. To template a file,  use the
+#    template(template_file, variable_hash, result_file) function. See :git
+#    package as an example below.
+# 5. In stow, you may need to install any packages/dependecies using your package
+#    manager.
 
 require 'erb'
 require 'ostruct'
 require 'fileutils'
+require './utils'
 
-$supported_packages = [:bash, :tmux, :git, :emacs, :ssh]
-$platform = RUBY_PLATFORM
 $linux = 'linux'
 $osx = 'darwin'
+$all = [$linux, $osx]
+$platform = (RUBY_PLATFORM.include? $osx) ? $osx : $linux
 
-def stow(package)
-  unless $supported_packages.include? package
-    puts "No package called #{package}"
-    return
-  end
+$supported_packages = {
+  :bash => $all,
+  :tmux => $all,
+  :git => $all,
+  :emacs => $all,
+  :ssh => $linux
+}
 
-  if package == :git
-    erb = ERB.new(File.read('git/.gitconfig.erb'))
-    email = ($platform.include? $osx) ? 'nrcopty@gmail.com' : 'ncopty@appnexus.com'
-    namespace = OpenStruct.new(:git_email => email)
-    result = erb.result(namespace.instance_eval { binding })
-    File.write('git/.gitconfig', result)
-  end
-
-  if package == :ssh and $platform.include? $osx
-    return
-  end
-
-  if package == :bash
-    if File.exist?('../.bash_profile')
-      FileUtils.mv('../.bash_profile', '../.bash_profile.bak')
+module Stow
+  def self.stow(package)
+    unless $supported_packages.include? package
+      puts "No package called #{package}"
+      return
     end
-    if File.exist?('../.bashrc')
-      FileUtils.mv('../.bashrc', '../.bashrc.bak')
-    end
-  end
 
-  unless system("stow #{package.to_s}")
-    puts "There was an error stowing #{package}."
-  end
-end
-
-def stow_packages(packages)
-  if packages.empty?
-    $supported_packages.each do |pkg|
-      puts "Stowing #{pkg}"
-      stow pkg.to_sym
+    unless $supported_packages[package].include? $platform
+      puts "Package #{package} not supported on this platform"
+      return
     end
-  else
-    packages.each do |pkg|
-      puts "Stowing #{pkg}"
-      stow pkg.to_sym
+
+    if package == :git
+      email = ($platform.include? $osx) ? 'nrcopty@gmail.com' : 'ncopty@appnexus.com'
+      template('git/.gitconfig.erb', {:git_email => email}, 'git/.gitconfig')
+    end
+
+    if package == :bash
+      if File.exist?('../.bash_profile')
+        FileUtils.mv('../.bash_profile', '../.bash_profile.bak')
+      end
+      if File.exist?('../.bashrc')
+        FileUtils.mv('../.bashrc', '../.bashrc.bak')
+      end
+    end
+
+    if package == :emacs
+      if $platform.include? $osx
+        unless system("brew install emacs")
+          puts "There was an error installing emacs."
+        end
+      else
+        unless system("sudo yum install emacs")
+          puts "There was an error installing emacs."
+        end
+      end
+      unless system("sudo pip install pylint")
+        puts "There was an error installing pylint."
+      end
+      # unless system("sudo gem install rubocop")
+      #   puts "There was an error installing rubocop #{package}."
+      # end
+    end
+
+    unless system("stow #{package.to_s}")
+      puts "There was an error stowing #{package}."
     end
   end
 end
 
 if __FILE__ == $0
-  stow_packages ARGV
+
+  unless system("git submodule update init recursive")
+    puts "There was an error updating git submodule."
+  end
+
+  if $platform.include? $osx
+    unless system("brew install stow")
+      puts "There was an error installing stow."
+      return
+    end
+  else
+    unless system("sudo yum install stow")
+      puts "There was an error installing stow."
+      return
+    end
+  end
+
+  Stow::stow_packages ARGV
+
+  system("./bins/bootstrap.sh")
 end
