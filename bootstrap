@@ -33,11 +33,12 @@ $all = [$linux, $osx]
 $platform = (RUBY_PLATFORM.include? $osx) ? $osx : $linux
 
 $supported_packages = {
+  :bin => $all,
   :bash => $all,
   :tmux => $all,
   :git => $all,
   :emacs => $all,
-  :ssh => $linux
+  :ssh => $linux,
 }
 
 module Stow
@@ -49,6 +50,11 @@ module Stow
 
     unless $supported_packages[package].include? $platform
       puts "Package #{package} not supported on this platform"
+      return
+    end
+
+    if package == :bin
+      system("./bins/bootstrap.sh")
       return
     end
 
@@ -110,5 +116,4 @@ if __FILE__ == $0
 
   Stow::stow_packages ARGV
 
-  system("./bins/bootstrap.sh")
 end
