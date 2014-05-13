@@ -65,10 +65,10 @@ module Stow
 
     if package == :bash
       if File.exist?('../.bash_profile')
-        FileUtils.mv('../.bash_profile', '../.bash_profile.bak')
+        FileUtils.mv('../.bash_profile', '../.bash_profile.bak', :force => true)
       end
       if File.exist?('../.bashrc')
-        FileUtils.mv('../.bashrc', '../.bashrc.bak')
+        FileUtils.mv('../.bashrc', '../.bashrc.bak', :force => true)
       end
     end
 
@@ -98,7 +98,7 @@ end
 
 if __FILE__ == $0
 
-  unless system("git submodule update init recursive")
+  unless system("git submodule update --init --recursive")
     puts "There was an error updating git submodule."
   end
 
