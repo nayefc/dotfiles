@@ -7,3 +7,6 @@
 [submodule "bins/hr"]
 	path = bins/hr
 	url = git@github.com:LuRsT/hr.git
+[submodule "bins/youtube-dl"]
+	path = bins/youtube-dl
+	url = https://github.com/rg3/youtube-dl.git
