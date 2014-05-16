@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-# Usage: boostrap [optional arg stow package]
+# Usage: bootstrap [optional arg stow package]
 
 # Setup:
 # 1. Place your dotfiles in a directory named after the package appropriately.
