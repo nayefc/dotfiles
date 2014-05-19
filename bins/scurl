@@ -1,0 +1,44 @@
+function scurl() {
+    _curl https $@
+}
+
+function _curl() {
+
+    if [ $# -lt 3 ]; then
+        echo Usage: ${FUNCNAME[1]} METHOD URL "[QUERY_PARAMS...]" "[-dDATA...]"
+        return 1
+    fi
+
+    local protocol="$1"
+    shift
+    local method=$(echo "$1" | tr "[:lower:]" "[:upper:]")
+    shift
+    local url="$1"
+    local data=""
+    local query=""
+    shift
+    while (($#)); do
+        if [[ $1 == -d* ]]; then
+            IFS='=' read -ra ARG <<< "$1"
+            local key=$(echo "${ARG[0]}" | sed 's/^-d//')
+            local value=${ARG[1]}
+            data+='\"'$key'\":\"'$value'\",'
+        else
+            query+="$1&"
+        fi
+        shift
+    done
+
+    if [ -n "$query" ]; then
+        local query_str="?${query%?}"
+    fi
+
+    if [ -n "$data" ]; then
+        local data_str='-d"{'${data%?}'}"'
+    fi
+
+    local token=`cat /tmp/.czartoken`
+    local cmd='curl -sk -X'$method' -H"Content-type: application/json" -H"Authorization:'$token'" '$data_str' "'$protocol'://'$url$query_str'"'
+    echo $cmd
+    eval $cmd
+}

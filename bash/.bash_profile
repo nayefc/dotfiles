@@ -82,6 +82,8 @@ alias repo_name='basename `git rev-parse --show-toplevel`'
 alias authors='git log --all --format='%aN' | sort -u'
 alias emails='git log --all --format='%ae' | sort -u'
 
+alias clean_fly='find . -name \flycheck* -type f -delete'
+
 # alias and functions
 if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
@@ -95,6 +97,9 @@ elif [[ $platform == 'linux' ]]; then
     alias devmaedb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net maestrodev --prompt 'maestroDEV read-only> '"
     alias mgmtendb="psql -h jazzhands-db.appnexus.net -U app_tendril_api jazzhands"
     alias devtendb="psql -h 02.kovert-sand.nym2.appnexus.net -U tendril_dev jazzhands"
+
+    # scurl tool
+    source ~/dotfiles/bins/scurl
 fi
 
 # opens all files with the given regexp
