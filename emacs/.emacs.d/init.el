@@ -2,7 +2,6 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -16,9 +15,23 @@
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; Highlight lines longer than 100 characters
-(setq whitespace-line-column 100)
-(setq whitespace-style '(face lines-tail trailing))
-(global-whitespace-mode 1)
+; (setq whitespace-line-column 100)
+; (setq whitespace-style '(face lines-tail trailing))
+; (global-whitespace-mode 1)
+
+;; Set 100 column marker
+; http://www.emacswiki.org/emacs-en/FillColumnIndicator
+(setq-default fci-rule-column 100)
+(setq fci-handle-truncate-lines nil)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
+(defun auto-fci-mode (&optional unused)
+  (if (> (window-width) fci-rule-column)
+      (fci-mode 1)
+    (fci-mode 0))
+  )
+(add-hook 'after-change-major-mode-hook 'auto-fci-mode)
+(add-hook 'window-configuration-change-hook 'auto-fci-mode)
 
 ;; Show which function you're in
 (which-function-mode)
