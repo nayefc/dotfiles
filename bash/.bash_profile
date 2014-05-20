@@ -141,6 +141,21 @@ function swap() {
     mv $TMPFILE "$2"
 }
 
+# count for $1 mins
+function count() {
+    min=$(($1-1))
+    while [ $min -ge 0 ]; do
+	sec=59
+	while [ $sec -ge 0 ]; do
+	    printf '00:%02d:%02d\033[0K\r' $min $sec
+	    sleep 1
+	    sec=$((sec-1))
+	done
+	min=$((min-1))
+    done
+    sleep 1
+}
+
 # Extracting files
 function extract () {
     if [ -f $1 ] ; then
