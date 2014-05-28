@@ -95,6 +95,7 @@ elif [[ $platform == 'linux' ]]; then
     alias get_hosts=get_hosts
     alias mgmaedb="mysql -h mysql-maestro.mgmt.adnxs.net -u ncopty -p --prompt 'maestroMGMT!!!> '"
     alias devmaedb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net maestrodev --prompt 'maestroDEV read-only> '"
+    alias devtaskdb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net taskerdev --prompt 'taskerDEV read-only> '"
     alias mgmtendb="psql -h jazzhands-db.appnexus.net -U app_tendril_api jazzhands"
     alias devtendb="psql -h 02.kovert-sand.nym2.appnexus.net -U tendril_dev jazzhands"
 
