@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
 	ruby-electric-space
+	sgml-close-tag
 	sgml-slash
 	))
 

@@ -198,7 +198,10 @@
 	    (setq python-indent 4)))
 
 ;; Indent JavaScript to 2
-(setq js-indent-level 2)
+(add-hook 'js-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (setq js-indent-level 2)))
 
 ;; Indent automatically in JavaScript
 (add-hook 'js-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
