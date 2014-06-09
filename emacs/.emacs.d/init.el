@@ -55,6 +55,12 @@
 			  :foreground "red"
 			  :background "yellow")))
 
+(eval-after-load 'flycheck
+    '(progn
+      (set-face-attribute 'flycheck-info nil
+			  :foreground "red"
+			  :background "yellow")))
+
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 (setq fiplr-ignored-globs '((directories (".git" ".svn"))
