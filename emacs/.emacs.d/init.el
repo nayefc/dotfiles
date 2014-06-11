@@ -211,3 +211,5 @@
 
 ;; Indent automatically in JavaScript
 (add-hook 'js-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
