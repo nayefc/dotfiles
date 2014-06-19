@@ -10,3 +10,6 @@
 [submodule "bins/youtube-dl"]
 	path = bins/youtube-dl
 	url = https://github.com/rg3/youtube-dl.git
+[submodule "bins/hop"]
+	path = bins/hop
+	url = git@github.com:Cue/hop.git
