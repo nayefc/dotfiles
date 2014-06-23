@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	indent-for-tab-command
 	ruby-electric-space
 	sgml-close-tag
 	sgml-slash
