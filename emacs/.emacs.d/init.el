@@ -5,6 +5,9 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
+;; Disable source control hooks (i.e: vc-git)
+;(setq vc-handled-backends nil)
+
 ;; Remove top menu bar
 (menu-bar-mode -1)
 
