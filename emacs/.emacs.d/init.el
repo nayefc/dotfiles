@@ -6,7 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; Disable source control hooks (i.e: vc-git)
-;(setq vc-handled-backends nil)
+(setq vc-handled-backends nil)
 
 ;; Remove top menu bar
 (menu-bar-mode -1)
@@ -37,8 +37,8 @@
 (add-hook 'window-configuration-change-hook 'auto-fci-mode)
 
 ;; Show which function you're in
-(which-function-mode)
-(setq which-func-unknown "n/a")
+; (which-function-mode)
+; (setq which-func-unknown "n/a")
 
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)

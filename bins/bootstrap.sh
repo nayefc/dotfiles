@@ -9,6 +9,8 @@ fi
 
 if [[ $platform == 'osx' ]]; then
     brew install hr
+    brew install pyenv
+    brew install pyenv-virtualenv
     sudo cp bins/chrome-cli /usr/local/bin/chrome-cli
     sudo chmod +x /usr/local/bin/chrome-cli
 elif [[ $platform == 'linux' ]]; then
