@@ -26,6 +26,10 @@ if [[ $platform == 'osx' ]]; then
     PATH=$PATH:$HOME/.rvm/bin
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+    # pyenv and pyenv-virtualenv initialisation
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+
 elif [[ $platform == 'linux' ]]; then
 
     # SSH agent fowarding
