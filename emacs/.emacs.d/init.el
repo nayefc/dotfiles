@@ -11,10 +11,6 @@
 ;; Remove top menu bar
 (menu-bar-mode -1)
 
-;; Prevent the cursor from blinking
-(blink-cursor-mode 0)
-
-;; Add Load Path Directory
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; Highlight lines longer than 100 characters
@@ -49,15 +45,14 @@
 (setq flycheck-idle-change-delay 1)
 (eval-after-load 'flycheck
     '(progn
-      (set-face-attribute 'flycheck-warning nil
+      (set-face-attribute 'flycheck-error nil
 			  :foreground "yellow"
 			  :background "red")))
 (eval-after-load 'flycheck
     '(progn
-      (set-face-attribute 'flycheck-error nil
+      (set-face-attribute 'flycheck-warning nil
 			  :foreground "red"
 			  :background "yellow")))
-
 (eval-after-load 'flycheck
     '(progn
       (set-face-attribute 'flycheck-info nil
@@ -82,7 +77,7 @@
 ;; Display line numbers
 (global-linum-mode t)
 
-;; Go to line bindinbg
+;; Go to line
 (global-set-key "\M-1" `goto-line)
 
 ;; Use iswitch
@@ -131,7 +126,7 @@
 (global-set-key (kbd "C-c f") "\C-a\C- \C-n\M-w\C-y")
 
 ;; Add AceJump Mode
-(require 'ace-jump-mode)
+(autoload 'ace-jump-mode "ace-jump-mode.el" "Ace jump mode")
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (autoload
   'ace-jump-mode-pop-mark
@@ -149,15 +144,18 @@
 
 ;; Multiple Cursors
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors.el/")
-(require 'multiple-cursors)
 (global-set-key (kbd "C-c c") 'mc/edit-lines)
 (global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c /") 'mc/mark-all-like-this)
+(autoload 'mc/edit-lines "mc-edit-lines" "" t)
+(autoload 'mc/mark-next-like-this "mc-mark-more" "" t)
+(autoload 'mc/mark-previous-like-this "mc-mark-more" "" t)
+(autoload 'mc/mark-all-like-this "mc-mark-more" "" t)
 
 ;; Expand Region
 (add-to-list 'load-path "~/.emacs.d/expand-region.el/")
-(require 'expand-region)
+(require 'expand-region) ;; do not autoload, breaks fiplr for some reason.
 (global-set-key (kbd "C-c m") 'er/expand-region)
 
 ;; Tell Emacs to use the function above in certain editing modes.
@@ -191,7 +189,7 @@
 	    (ruby-electric-mode t)))
 
 ;; Add Haml Support
-(require 'haml-mode)
+(autoload 'haml-mode "haml-mode.el" "Mode for Haml file" t)
 (add-hook 'haml-mode-hook
 	  (lambda ()
 	    (setq indent-tabs-mode nil)
