@@ -205,3 +205,6 @@ if [[ $platform == 'linux' ]]; then
     PS1=$PS1"\h:"
 fi
 export PS1=$PS1"\j \w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/ncopty/.gvm/bin/gvm-init.sh" ]] && source "/Users/ncopty/.gvm/bin/gvm-init.sh"
