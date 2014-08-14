@@ -11,6 +11,7 @@
 ;; Remove top menu bar
 (menu-bar-mode -1)
 
+;; Add Load Path Directory for the scripts in .emacs.d. Should move to directories or something.
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; Highlight lines longer than 100 characters
@@ -40,7 +41,7 @@
 (delete-selection-mode t)
 
 ;; Add Flycheck mode for syntax checking
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
 (setq flycheck-idle-change-delay 1)
 (eval-after-load 'flycheck
