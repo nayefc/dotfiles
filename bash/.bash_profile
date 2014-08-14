@@ -13,6 +13,11 @@ if [[ $platform == 'osx' ]]; then
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 
+    if [ -f /etc/profile ]; then
+	PATH=""
+	source /etc/profile
+    fi
+
     # Homebrew
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     export PATH=/usr/local/bin:$PATH
