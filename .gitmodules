@@ -13,3 +13,6 @@
 [submodule "bins/hop"]
 	path = bins/hop
 	url = git@github.com:Cue/hop.git
+[submodule "tmux/tmux-resurrect"]
+	path = tmux/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
