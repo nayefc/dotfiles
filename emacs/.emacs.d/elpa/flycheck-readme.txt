@@ -1,4 +1,4 @@
-Modern on-the-fly syntax checking for GNU Emacs (aka "flymake done right")
+Modern on-the-fly syntax checking for GNU Emacs.
 
 Provide `flycheck-mode' which enables on-the-fly syntax checking for a large
 number of different modes and languages (see `flycheck-checkers' for a

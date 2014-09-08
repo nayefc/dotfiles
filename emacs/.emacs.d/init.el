@@ -5,6 +5,12 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
+; check if we're on OSX
+(when (featurep 'ns-win)
+    (custom-set-faces
+        '(default ((t (:height 140 :width normal :family "Inconsolata")))))
+      )
+
 ;; Disable source control hooks (i.e: vc-git)
 (setq vc-handled-backends nil)
 
@@ -42,6 +48,7 @@
 
 ;; Add Flycheck mode for syntax checking
 (add-hook 'after-init-hook 'global-flycheck-mode)
+(setq flycheck-highlighting-mode 'lines)
 (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
 (setq flycheck-idle-change-delay 1)
 (eval-after-load 'flycheck
