@@ -22,18 +22,28 @@ if [[ $platform == 'osx' ]]; then
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     export PATH=/usr/local/bin:$PATH
 
+    # Homebrew cask applications folder
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
     # Hop
     # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
     source /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.bash
     alias hop-lua-script="LUA_PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua"
 
     # rvm
-    PATH=$PATH:$HOME/.rvm/bin
+    export PATH=$PATH:$HOME/.rvm/bin
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
     # pyenv and pyenv-virtualenv initialisation
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+
+    # If Postgress.app is installed, put it in PATH.
+    psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
+    if [ -w "$psqlapp" ]
+    then
+	export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+    fi
 
 elif [[ $platform == 'linux' ]]; then
 
@@ -212,4 +222,4 @@ fi
 export PS1=$PS1"\j \w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/ncopty/.gvm/bin/gvm-init.sh" ]] && source "/Users/ncopty/.gvm/bin/gvm-init.sh"
+#[[ -s "/Users/ncopty/.gvm/bin/gvm-init.sh" ]] && source "/Users/ncopty/.gvm/bin/gvm-init.sh"
