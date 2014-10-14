@@ -2,8 +2,8 @@
         name = Nayef Copty
         email = <%= git_email %>
 [alias]
-        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-        histr = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --all
+        hist = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+        histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
         ph = push
         pl = pull
         plr = pull --rebase
