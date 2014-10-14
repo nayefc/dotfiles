@@ -171,6 +171,13 @@ function extract () {
     fi
 }
 
+function cp_finprod() {
+    # $1: source path
+    # $2: destination path
+    rsync --rsync-path="/usr/bin/sudo /usr/bin/rsync" 01.analytics.nym2.appnexus.com:$1 $2
+
+}
+
 # Terminal Colours
 export CLICOLOR=1
 BLACK="\[\033[0;30m\]"
