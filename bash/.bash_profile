@@ -171,11 +171,11 @@ function extract () {
     fi
 }
 
-function cp_finprod() {
+function remote_rsync() {
+    # $1: host
     # $1: source path
     # $2: destination path
-    rsync --rsync-path="/usr/bin/sudo /usr/bin/rsync" 01.analytics.nym2.appnexus.com:$1 $2
-
+    rsync --rsync-path="/usr/bin/rsync" $1:$2 $3
 }
 
 # Terminal Colours
