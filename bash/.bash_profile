@@ -7,7 +7,6 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 if [[ $platform == 'osx' ]]; then
-
     # Setting for the new UTF-8 terminal support
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
@@ -40,13 +39,10 @@ if [[ $platform == 'osx' ]]; then
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
-    if [ -w "$psqlapp" ]
-    then
+    if [ -w "$psqlapp" ]; then
 	export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
     fi
-
 elif [[ $platform == 'linux' ]]; then
-
     # SSH agent fowarding
     export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
 
