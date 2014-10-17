@@ -1,2 +1,0 @@
-#!/bin/bash
-ssh local /usr/local/bin/chrome-cli $@
