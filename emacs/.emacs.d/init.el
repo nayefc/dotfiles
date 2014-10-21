@@ -18,7 +18,7 @@
 (menu-bar-mode -1)
 
 ;; Add Load Path Directory for the scripts in .emacs.d. Should move to directories or something.
-(add-to-list 'load-path "~/.emacs.d/")
+;(add-to-list 'load-path "~/.emacs.d/")
 
 ;; Highlight lines longer than 100 characters
 ; (setq whitespace-line-column 100)
@@ -134,6 +134,7 @@
 (global-set-key (kbd "C-c f") "\C-a\C- \C-n\M-w\C-y")
 
 ;; Add AceJump Mode
+(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
 (autoload 'ace-jump-mode "ace-jump-mode.el" "Ace jump mode")
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (autoload
@@ -181,6 +182,7 @@
 (setq auto-mode-alist  (cons '(".rb$" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist  (cons '(".rhtml$" . html-mode) auto-mode-alist))
 
+(add-to-list 'load-path "~/.emacs.d/ruby-electric/")
 (add-hook 'ruby-mode-hook
 	  (lambda()
 	    (add-hook 'local-write-file-hooks
@@ -197,6 +199,7 @@
 	    (ruby-electric-mode t)))
 
 ;; Add Haml Support
+(add-to-list 'load-path "~/.emacs.d/haml-mode/")
 (autoload 'haml-mode "haml-mode.el" "Mode for Haml file" t)
 (add-hook 'haml-mode-hook
 	  (lambda ()
