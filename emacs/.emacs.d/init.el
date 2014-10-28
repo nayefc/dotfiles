@@ -44,7 +44,10 @@
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
-   '(custom-safe-themes (quote ("e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+   '(custom-safe-themes (quote ("e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e"
+				"d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879"
+				"8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4"
+				default))))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
@@ -64,6 +67,12 @@
 
 ;; Turn on icomplete-mode, replacing iswitch for v24.4
 (icomplete-mode 1)
+
+;; buffer-move
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 ;; Highlight lines longer than 100 characters
 ; (setq whitespace-line-column 100)
@@ -85,8 +94,8 @@
 (add-hook 'window-configuration-change-hook 'auto-fci-mode)
 
 ;; Show which function you're in
-; (which-function-mode)
-; (setq which-func-unknown "n/a")
+(which-function-mode)
+(setq which-func-unknown "n/a")
 
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
@@ -116,6 +125,12 @@
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 (setq fiplr-ignored-globs '((directories (".git" ".svn"))
 			    (files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc"))))
+
+;; Auto load git-commit-mode
+(add-to-list 'auto-mode-alist '("\\COMMIT_EDITMSG\\'" . git-commit-mode))
+
+;; Key binding for magit-status
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Remove trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
