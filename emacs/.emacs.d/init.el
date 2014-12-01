@@ -155,7 +155,16 @@
 (setq linum-format "%d ")
 
 ;; Scroll one line at a time
-(setq scroll-step 1)
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+;; Remove Emacs startup screen
+(setq inhibit-startup-screen +1)
 
 ;; Buffer name for for two files in different directories shows full path instead of <2>
 (require 'uniquify)
@@ -233,6 +242,11 @@
 (add-hook 'java-mode-hook             (function newline-indents))
 (add-hook 'python-mode-hook           (function newline-indents))
 
+;; Add dired-x mode to dired
+(add-hook 'dired-load-hook
+	  (lambda ()
+	    (load "dired-x")))
+
 ;; Load ruby mode when a .rb file is opened
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing ruby scripts." t)
 (setq auto-mode-alist  (cons '(".rb$" . ruby-mode) auto-mode-alist))
@@ -282,3 +296,4 @@
 
 (provide 'init)
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)
