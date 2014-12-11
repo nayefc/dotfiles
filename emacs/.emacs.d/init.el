@@ -281,8 +281,7 @@
   (interactive)
   (move-beginning-of-line nil)
   (insert "import ipdb; ipdb.set_trace()")
-  (newline-and-indent)
-  (highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))
+  (newline-and-indent))
 (define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
 
 ;; Set default indent to 4
