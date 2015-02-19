@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	autopair-insert-opening
 	indent-for-tab-command
 	ruby-electric-space
 	sgml-close-tag
@@ -11,4 +12,6 @@
 
 (setq mc/cmds-to-run-once
       '(
+	autopair-skip-close-maybe
+	jedi:dot-complete
 	))

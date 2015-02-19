@@ -1,0 +1,39 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/ncopty/" . ".emacs.d/")
+ ("/" . "Users/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/ncopty/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/ncopty/.emacs.d/" (21711 56438 0 0) "url/" "tramp" "ruby-electric/" "multiple-cursors.el/" "init.el~" "init.el" "haml-mode/" "expand-region.el/" "eshell/" "emacs-for-python/" "elpa/" "auto-save-list/" "ace-jump-mode/" "ac-comphist.dat" ".python-environments/" ".mc-lists.el" ".gitignore" "../" "./")
+
+ ("/home/" (21711 56158 4165 0) "../" "./")
+
+ ("/Users/" (21568 34300 0 0) "Shared/" "ncopty alias" "ncopty/" "appadmin/" ".localized" "../" "./")
+
+ ("/Users/ncopty/" (21705 6848 0 0) "VirtualBox VMs/" "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Dropbox/" "Downloads/" "dotfiles/" "Documents/" "Desktop/" "Billing/" "Applications/" ".viminfo" ".vagrant.d/" ".Trash/" ".tmux.conf" ".tmux/" ".thinkorswim/" ".testvenvs/" ".subversion/" ".ssh/" ".sqlite_history" ".saves/" ".rvm/" ".rnd" ".python-eggs/" ".pylintrc" ".pylint.d/" ".pyenv/" ".psql_history" ".pip/" ".npm/" ".node-gyp/" ".netrc" ".mysql_history" ".matplotlib/" ".local/" ".lesshst" ".itmstransporter/" ".irb-history" ".ipython/" ".idlerc/" ".hop.json.db" ".heroku/" ".gvm/" ".gradle/" ".gitignore_global" ".gitconfig.erb" ".gitconfig" ".git-completion.sh" ".gem/" ".flexlmrc" ".emacs_bash" ".emacs.d/" ".DS_Store" ".dropbox/" ".devpi/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".bundler/" ".bashrc" ".bash_profile" ".bash_history" "../" "./")
+
+ ("/Users/ncopty/Billing/" (21698 45258 0 0) "vertica/" "ThoughtsOnBilling.docx" "Pandas Lessons/" "libs/" "Interviews/" "init_db.sql" "Hi-Media May2014 FX Data.xlsx" "dev/" "Billing Lessons/" "2014-6-monthly-aggregate-charges.csv" ".DS_Store" "../" "./")
+
+ ("/Users/ncopty/Billing/dev/" (21705 13211 0 0) "vagrant/" "storminator/" "reporting_api/" "maestro-scripts/" "libs/" "go.go" "facts_sync/" "cost_revenue/" "configs/" "bsg-manager/" "bsg-integration-sfdcsync/" "bsg-billing-storminator/" "bsg-billing-dataloader/" "billing-erp-formatinator/" "app-schemas/" "activity-loadinator/" ".idea2/" ".DS_Store" "../" "./")
+
+ ("/Users/ncopty/Billing/dev/cost_revenue/" (21711 53389 0 0) "scripts/" "requirements.txt" "reports/" "metrics/" "global.conf" "framework/" "examples/" "billingv2/" "billing/" "__init__.py" ".gitmodules" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/ncopty/Billing/dev/cost_revenue/scripts/" (21711 56451 0 0) "vv_tests.py" "test.py" "sub_vv_tests.py" "sql2csv.py" "show_erp_pair.py" "set_permissions.sh" "run_overrides_seller_revshare_min.ipy" "run_overrides_buyer_revshare_pct.ipy" "run_overrides_audit.ipy" "process_big_file.py" "msft_fee_to_db.py" "msft_fee_recalc.py" "msft_247_perlook.ipy" "lev_myservers.sh" "lev_bashrc.sh" "imps_biddable.ipy" "func_length.py" "estimates.ipynb" "diff_manual_file.py" "diff_erp_payment.py" "diff_erp_invoice.py" "diff_csv.ipy" "diff_billing.py" "diff12.ipy" "dfdiff.py" "db_update_member_history.py" "db_dump_schema.py" "db_create_tables.py" "coa.ipy" "clean_error_logs.sh" "check_manual_file.sh" "check_imports.py" "billing_auto_run.py" "align.py" "adv_id_problem.ipy" ".gitignore" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
