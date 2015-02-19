@@ -81,7 +81,7 @@
 
 ;; Set 100 column marker
 ; http://www.emacswiki.org/emacs-en/FillColumnIndicator
-(setq-default fci-rule-column 100)
+(setq-default fci-rule-column 120)
 (setq fci-handle-truncate-lines nil)
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
@@ -92,6 +92,25 @@
   )
 (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
 (add-hook 'window-configuration-change-hook 'auto-fci-mode)
+
+;; Disable fci when autocomplete is on the line, as fci breaks autocomplete.
+(defun sanityinc/fci-enabled-p ()
+  "From http://emacs.stackexchange.com/questions/147/how-can-i-get-a-ruler-at-column-80."
+  (symbol-value 'fci-mode))
+(defvar sanityinc/fci-mode-suppressed nil)
+(make-variable-buffer-local 'sanityinc/fci-mode-suppressed)
+(defadvice popup-create (before suppress-fci-mode activate)
+  "Suspend fci-mode while popups are visible."
+  (let ((fci-enabled (sanityinc/fci-enabled-p)))
+    (when fci-enabled
+      (setq sanityinc/fci-mode-suppressed fci-enabled)
+      (turn-off-fci-mode))))
+(defadvice popup-delete (after restore-fci-mode activate)
+  "Restore fci-mode when all popups have closed."
+  (when (and sanityinc/fci-mode-suppressed
+	     (null popup-instances))
+    (setq sanityinc/fci-mode-suppressed nil)
+          (turn-on-fci-mode)))
 
 ;; Show which function you're in
 (which-function-mode)
@@ -120,6 +139,23 @@
       (set-face-attribute 'flycheck-info nil
 			  :foreground "red"
 			  :background "yellow")))
+
+;; Jedi setup for python auto complete
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:tooltip-method '(pos-tip))    ; options '(pos-tip popup)
+(eval-after-load "jedi"
+  '(progn
+    (define-key jedi-mode-map (kbd "C-c d") nil)
+    (define-key jedi-mode-map (kbd "C-c .") nil)
+    (define-key jedi-mode-map (kbd "C-c ,") nil)))
+(setq jedi:key-goto-definition (kbd "C-c k"))
+(setq jedi:key-goto-definition-pop-marker (kbd "C-c j"))
+
+;; Pairing parentheses
+(add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
+(add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
 
 ;; Fiplr -- requires emacs 24.3
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
@@ -181,6 +217,7 @@
 
 ;; Copy line
 (defun copy-line ()
+  "Copy the current line."
   (interactive)
   (save-excursion
     (back-to-indentation)
@@ -190,13 +227,29 @@
   (message "1 line copied"))
 (global-set-key (kbd "C-x c") 'copy-line)
 
-;; Copy and paste line below
-; This unbinds C-c C-c python-send-buffer first
-; but I no longer use C-c C-c for duplicating a line
-;; (add-hook 'python-mode-hook
-;; 	  (lambda()
-;; 	    (local-unset-key (kbd "C-c C-c"))))
-(global-set-key (kbd "C-c f") "\C-a\C- \C-n\M-w\C-y")
+;; Duplicate a line
+(defun duplicate-line ()
+  "Duplicate current line to the line below and preserve indentation."
+  (interactive)
+  (beginning-of-line)
+  (push-mark)
+  (end-of-line)
+  (let ((str (buffer-substring (region-beginning) (region-end))))
+    (insert
+     (concat (if (= 0 (forward-line 1)) "" "\n") str "\n"))
+    (forward-line -1)))
+(global-set-key (kbd "C-c f") 'duplicate-line)
+
+;; Mark whole line
+(defun mark-line ()
+  "Mark a line."
+  (interactive)
+  (back-to-indentation)
+  (set-mark-command nil)
+  (move-end-of-line nil)
+  (message "Lined marked")
+  (setq deactivate-mark nil))
+(global-set-key (kbd "C-c l") 'mark-line)
 
 ;; Add AceJump Mode
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
@@ -280,6 +333,7 @@
 (defun python-add-breakpoint ()
   (interactive)
   (move-beginning-of-line nil)
+  (indent-for-tab-command)
   (insert "import ipdb; ipdb.set_trace()")
   (newline-and-indent))
 (define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
