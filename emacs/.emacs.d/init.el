@@ -15,11 +15,13 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; (add-to-list 'load-path "~/.cask/")
-;; (require 'cask)
-;; (cask-initialize)
+(add-to-list 'load-path "~/.cask/")
+(require 'cask)
+(cask-initialize)
 
 (require 'use-package)
+
+;;;_. Theme, look and feel
 
 (use-package solarized-theme
   :ensure t
@@ -69,6 +71,24 @@
 					; '(default ((t (:height 150 :width normal :family "Terminus"))))
      '(default ((t (:height 150 :width normal :family "Monaco")))))))
 
+;; Scroll one line at a time
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+;; Remove Emacs startup screen
+(setq inhibit-startup-screen +1)
+
+;; Remove trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
+;;;_. General Settings and Modes
+
 ;; Disable source control hooks (i.e: vc-git)
 (setq vc-handled-backends nil)
 
@@ -84,40 +104,12 @@
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
 
-;; buffer-move
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
-
 ;; Show which function you're in
 (which-function-mode)
 (setq which-func-unknown "n/a")
 
-;; Remove trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Default search to regexp search
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-
-;; Scroll other window up
-(global-set-key (kbd "C-c p") 'scroll-other-window-down)
-(global-set-key (kbd "C-c n") 'scroll-other-window)
-
 ;; Add space on the margin for line numbering
 (setq linum-format "%d ")
-
-;; Scroll one line at a time
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
-(setq mouse-wheel-follow-mouse 't)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
-;; Remove Emacs startup screen
-(setq inhibit-startup-screen +1)
 
 ;; Buffer name for for two files in different directories shows full path instead of <2>
 (require 'uniquify)
@@ -125,9 +117,6 @@
 
 ;; Display line numbers
 (global-linum-mode t)
-
-;; Go to line
-(global-set-key "\M-1" `goto-line)
 
 ;; Display line numbers at the bottom
 (setq line-number-mode t)
@@ -138,8 +127,24 @@
 ;; Put all emacs backup files in one directory
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-;; Set default indent to 4
-(setq-default c-basic-offset 2)
+
+;;;_. Keybindings
+
+;; buffer-move
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+;; Default search to regexp search
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+
+;; Scroll other window up
+(global-set-key (kbd "C-c p") 'scroll-other-window-down)
+(global-set-key (kbd "C-c n") 'scroll-other-window)
+
+;; Go to line
+(global-set-key "\M-1" `goto-line)
 
 ;; Kill current line
 (global-set-key (kbd "C-c d") 'kill-whole-line)
@@ -180,14 +185,8 @@
   (setq deactivate-mark nil))
 (global-set-key (kbd "C-c l") 'mark-line)
 
-;; Insert ipdb in python shortcut
-(defun python-add-breakpoint ()
-  (interactive)
-  (move-beginning-of-line nil)
-  (indent-for-tab-command)
-  (insert "import ipdb; ipdb.set_trace()")
-  (newline-and-indent))
-(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
+
+;;;_. External packages
 
 ;; Highlight lines longer than 100 characters
 (use-package fci-mode
@@ -254,8 +253,12 @@
     (setq jedi:tooltip-method '(pos-tip))))  ; options '(pos-tip popup)
 
 ;; Pairing parentheses
-(add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
-(add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
+(use-package autopair
+  :ensure t
+  :init
+  (progn
+    (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
+    (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))))
 
 ;; Fiplr
 (use-package fiplr
@@ -312,11 +315,14 @@
          ("C-c c" . mc/edit-lines)
          ("C-c /" . mc/mark-all-like-this)))
 
-;; ;; Expand Region
+;; Expand Region
 (use-package expand-region
   ensure t
   :idle
   :bind ("C-c m" . er/expand-region))
+
+
+;;;_. Language mode settings
 
 ;; Automatically indent on new line
 (defun newline-indents ()
@@ -333,37 +339,23 @@
 (add-hook 'java-mode-hook             (function newline-indents))
 (add-hook 'python-mode-hook           (function newline-indents))
 
-;; Add dired-x mode to dired
-(add-hook 'dired-load-hook
-	  (lambda ()
-	    (load "dired-x")))
-
-;; Load ruby mode when a .rb file is opened
-(autoload 'ruby-mode "ruby-mode" "Major mode for editing ruby scripts." t)
-(setq auto-mode-alist  (cons '(".rb$" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist  (cons '(".rhtml$" . html-mode) auto-mode-alist))
-
-(add-to-list 'load-path "~/.emacs.d/ruby-electric/")
-(add-hook 'ruby-mode-hook
-	  (lambda()
-	    (add-hook 'local-write-file-hooks
-		      '(lambda()
-			 (save-excursion
-			   (untabify (point-min) (point-max))
-			   (delete-trailing-whitespace)
-			   )))
-	    (set (make-local-variable 'indent-tabs-mode) 'nil)
-	    (set (make-local-variable 'tab-width) 2)
-	    (imenu-add-to-menubar "IMENU")
-	    (define-key ruby-mode-map "\C-m" 'newline-and-indent)
-	    (require 'ruby-electric)
-	    (ruby-electric-mode t)))
+;; Set default indent to 4
+(setq-default c-basic-offset 2)
 
 ;; Set python indent to 4
 (add-hook 'python-mode-hook
 	  (lambda ()
 	    (setq indent-tabs-mode nil)
 	    (setq python-indent 4)))
+
+;; Insert ipdb in python shortcut
+(defun python-add-breakpoint ()
+  (interactive)
+  (move-beginning-of-line nil)
+  (indent-for-tab-command)
+  (insert "import ipdb; ipdb.set_trace()")
+  (newline-and-indent))
+(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
 
 ;; Indent JavaScript to 2
 (add-hook 'js-mode-hook
@@ -373,6 +365,11 @@
 
 ;; Indent automatically in JavaScript
 (add-hook 'js-mode-hook '(lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
+
+;; Add dired-x mode to dired
+(add-hook 'dired-load-hook
+	  (lambda ()
+	    (load "dired-x")))
 
 (provide 'init)
 ;;; init.el ends here
