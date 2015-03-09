@@ -10,51 +10,64 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-; check if we're on OSX
-(when (featurep 'ns-win)
+;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-  ;; Disable scroll bar
-  (scroll-bar-mode -1)
+;; (add-to-list 'load-path "~/.cask/")
+;; (require 'cask)
+;; (cask-initialize)
 
-  ;; Bring OS X Emacs in line with shell setup
-  (exec-path-from-shell-initialize)
+(require 'use-package)
 
-  ;; Load solarized theme
-  (load-theme 'solarized-dark t)
+(use-package solarized-theme
+  :ensure t
+  :if (featurep 'ns-win)  ; check if we're on OSX
+  :init
+  (progn
+    ;; Disable scroll bar
+    (scroll-bar-mode -1)
 
-  ;; make the fringe stand out from the background
-  (setq solarized-distinct-fringe-background t)
+    ;; Bring OS X Emacs in line with shell setup
+    (exec-path-from-shell-initialize)
 
-  ;; make the modeline high contrast
-  (setq solarized-high-contrast-mode-line t)
+    ;; Load theme
+    (load-theme 'solarized-dark t)
 
-  ;; Use less bolding
-  (setq solarized-use-less-bold t)
+    ;; make the fringe stand out from the background
+    (setq solarized-distinct-fringe-background t)
 
-  ;; Use more italics
-  (setq solarized-use-more-italic t)
+    ;; make the modeline high contrast
+    (setq solarized-high-contrast-mode-line t)
 
-  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
-  (setq solarized-emphasize-indicators nil)
+    ;; Use less bolding
+    (setq solarized-use-less-bold t)
 
-  (setq x-underline-at-descent-line t)
+    ;; Use more italics
+    (setq solarized-use-more-italic t)
 
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(custom-safe-themes (quote ("e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e"
-				"d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879"
-				"8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4"
-				default))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   ; '(default ((t (:height 150 :width normal :family "Terminus"))))
-   '(default ((t (:height 150 :width normal :family "Monaco"))))))
+    ;; Use less colors for indicators such as git:gutter, flycheck and similar.
+    (setq solarized-emphasize-indicators nil)
+
+    (setq x-underline-at-descent-line t)
+
+    (custom-set-variables
+     ;; custom-set-variables was added by Custom.
+     ;; If you edit it by hand, you could mess it up, so be careful.
+     ;; Your init file should contain only one such instance.
+     ;; If there is more than one, they won't work right.
+     '(custom-safe-themes (quote ("e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e"
+				  "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879"
+				  "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4"
+				  default))))
+    (custom-set-faces
+     ;; custom-set-faces was added by Custom.
+     ;; If you edit it by hand, you could mess it up, so be careful.
+     ;; Your init file should contain only one such instance.
+     ;; If there is more than one, they won't work right.
+					; '(default ((t (:height 150 :width normal :family "Terminus"))))
+     '(default ((t (:height 150 :width normal :family "Monaco")))))))
 
 ;; Disable source control hooks (i.e: vc-git)
 (setq vc-handled-backends nil)
@@ -68,105 +81,18 @@
 ;; Turn on icomplete-mode, replacing iswitch for v24.4
 (icomplete-mode 1)
 
+;; Overwrite text when writing over a highlighted region
+(delete-selection-mode t)
+
 ;; buffer-move
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
-;; Highlight lines longer than 100 characters
-; (setq whitespace-line-column 100)
-; (setq whitespace-style '(face lines-tail trailing))
-; (global-whitespace-mode 1)
-
-;; Set 100 column marker
-; http://www.emacswiki.org/emacs-en/FillColumnIndicator
-(setq-default fci-rule-column 120)
-(setq fci-handle-truncate-lines nil)
-(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode 1)
-(defun auto-fci-mode (&optional unused)
-  (if (> (window-width) fci-rule-column)
-      (fci-mode 1)
-    (fci-mode 0))
-  )
-(add-hook 'after-change-major-mode-hook 'auto-fci-mode)
-(add-hook 'window-configuration-change-hook 'auto-fci-mode)
-
-;; Disable fci when autocomplete is on the line, as fci breaks autocomplete.
-(defun sanityinc/fci-enabled-p ()
-  "From http://emacs.stackexchange.com/questions/147/how-can-i-get-a-ruler-at-column-80."
-  (symbol-value 'fci-mode))
-(defvar sanityinc/fci-mode-suppressed nil)
-(make-variable-buffer-local 'sanityinc/fci-mode-suppressed)
-(defadvice popup-create (before suppress-fci-mode activate)
-  "Suspend fci-mode while popups are visible."
-  (let ((fci-enabled (sanityinc/fci-enabled-p)))
-    (when fci-enabled
-      (setq sanityinc/fci-mode-suppressed fci-enabled)
-      (turn-off-fci-mode))))
-(defadvice popup-delete (after restore-fci-mode activate)
-  "Restore fci-mode when all popups have closed."
-  (when (and sanityinc/fci-mode-suppressed
-	     (null popup-instances))
-    (setq sanityinc/fci-mode-suppressed nil)
-          (turn-on-fci-mode)))
-
 ;; Show which function you're in
 (which-function-mode)
 (setq which-func-unknown "n/a")
-
-;; Overwrite text when writing over a highlighted region
-(delete-selection-mode t)
-
-;; Add Flycheck mode for syntax checking
-(add-hook 'after-init-hook 'global-flycheck-mode)
-(setq flycheck-highlighting-mode 'lines)
-(setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
-(setq flycheck-idle-change-delay 1)
-(eval-after-load 'flycheck
-    '(progn
-      (set-face-attribute 'flycheck-error nil
-			  :foreground "yellow"
-			  :background "red")))
-(eval-after-load 'flycheck
-    '(progn
-      (set-face-attribute 'flycheck-warning nil
-			  :foreground "red"
-			  :background "yellow")))
-(eval-after-load 'flycheck
-    '(progn
-      (set-face-attribute 'flycheck-info nil
-			  :foreground "red"
-			  :background "yellow")))
-
-;; Jedi setup for python auto complete
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:tooltip-method '(pos-tip))    ; options '(pos-tip popup)
-(eval-after-load "jedi"
-  '(progn
-    (define-key jedi-mode-map (kbd "C-c d") nil)
-    (define-key jedi-mode-map (kbd "C-c .") nil)
-    (define-key jedi-mode-map (kbd "C-c ,") nil)))
-(setq jedi:key-goto-definition (kbd "C-c k"))
-(setq jedi:key-goto-definition-pop-marker (kbd "C-c j"))
-
-;; Pairing parentheses
-(add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
-(add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
-
-;; Fiplr -- requires emacs 24.3
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
-(setq fiplr-ignored-globs '((directories (".git" ".svn"))
-			    (files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc"))))
-
-;; Auto load git-commit-mode
-(add-to-list 'auto-mode-alist '("\\COMMIT_EDITMSG\\'" . git-commit-mode))
-
-;; Key binding for magit-status
-(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Remove trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -177,15 +103,6 @@
 ;; Scroll other window up
 (global-set-key (kbd "C-c p") 'scroll-other-window-down)
 (global-set-key (kbd "C-c n") 'scroll-other-window)
-
-;; Display line numbers
-(global-linum-mode t)
-
-;; Go to line
-(global-set-key "\M-1" `goto-line)
-
-;; Display line numbers at the bottom
-(setq line-number-mode t)
 
 ;; Add space on the margin for line numbering
 (setq linum-format "%d ")
@@ -206,11 +123,23 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+;; Display line numbers
+(global-linum-mode t)
+
+;; Go to line
+(global-set-key "\M-1" `goto-line)
+
+;; Display line numbers at the bottom
+(setq line-number-mode t)
+
 ;; Highlight parenthesis matching pair
 (show-paren-mode 1)
 
 ;; Put all emacs backup files in one directory
 (setq backup-directory-alist `(("." . "~/.saves")))
+
+;; Set default indent to 4
+(setq-default c-basic-offset 2)
 
 ;; Kill current line
 (global-set-key (kbd "C-c d") 'kill-whole-line)
@@ -251,39 +180,148 @@
   (setq deactivate-mark nil))
 (global-set-key (kbd "C-c l") 'mark-line)
 
+;; Insert ipdb in python shortcut
+(defun python-add-breakpoint ()
+  (interactive)
+  (move-beginning-of-line nil)
+  (indent-for-tab-command)
+  (insert "import ipdb; ipdb.set_trace()")
+  (newline-and-indent))
+(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
+
+;; Highlight lines longer than 100 characters
+(use-package fci-mode
+  :ensure fill-column-indicator
+  :defer f
+  :init
+  (progn
+    (setq-default fci-rule-column 120)
+    (setq fci-handle-truncate-lines nil)
+    (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+    (global-fci-mode 1))
+  :config
+  (defun auto-fci-mode (&optional unused)
+  (if (> (window-width) fci-rule-column)
+      (fci-mode 1)
+    (fci-mode 0)))
+  (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
+  (add-hook 'window-configuration-change-hook 'auto-fci-mode))
+
+;; Disable fci when autocomplete is on the line, as fci breaks autocomplete.
+(defun sanityinc/fci-enabled-p ()
+  "From http://emacs.stackexchange.com/questions/147/how-can-i-get-a-ruler-at-column-80."
+  (symbol-value 'fci-mode))
+(defvar sanityinc/fci-mode-suppressed nil)
+(make-variable-buffer-local 'sanityinc/fci-mode-suppressed)
+(defadvice popup-create (before suppress-fci-mode activate)
+  "Suspend fci-mode while popups are visible."
+  (let ((fci-enabled (sanityinc/fci-enabled-p)))
+    (when fci-enabled
+      (setq sanityinc/fci-mode-suppressed fci-enabled)
+      (turn-off-fci-mode))))
+(defadvice popup-delete (after restore-fci-mode activate)
+  "Restore fci-mode when all popups have closed."
+  (when (and sanityinc/fci-mode-suppressed
+	     (null popup-instances))
+    (setq sanityinc/fci-mode-suppressed nil)
+          (turn-on-fci-mode)))
+
+;; Add Flycheck mode for syntax checking
+(use-package flycheck
+  :init
+  (progn
+    (setq flycheck-highlighting-mode 'lines)
+    (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
+    (setq flycheck-idle-change-delay 1))
+  :idle (global-flycheck-mode)
+  :config
+  (progn
+    (set-face-attribute 'flycheck-error nil :foreground "yellow" :background "red")
+    (set-face-attribute 'flycheck-warning nil :foreground "red" :background "yellow")
+    (set-face-attribute 'flycheck-info nil :foreground "red" :background "yellow")))
+
+;; Jedi setup for python auto complete
+(use-package jedi
+  :ensure t
+  :mode ("\\.py\\'" . python-mode)
+  :commands jedi:setup
+  :bind (("C-c k" . jedi:goto-definition)
+	 ("C-c j" . jedi:goto-definition-pop-marker)
+	 ("C-c ?" . jedi:show-doc))
+  :config
+  (progn
+    (setq jedi:complete-on-dot t)
+    (setq jedi:tooltip-method '(pos-tip))))  ; options '(pos-tip popup)
+
+;; Pairing parentheses
+(add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
+(add-hook 'python-mode-hook #'(lambda () (autopair-mode)))
+
+;; Fiplr
+(use-package fiplr
+  :ensure t
+  :idle
+  :bind ("C-x f" . fiplr-find-file)
+  :init
+  (progn
+    (setq fiplr-ignored-globs '((directories (".git" ".svn"))
+				(files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc"))))))
+
+;; git-commit-mode
+(use-package git-commit-mode
+  :ensure t
+  :mode ("\\COMMIT_EDITMSG\\'" . git-commit-mode))
+
+;; git-rebase-mode
+(use-package git-rebase-mode
+  :ensure t
+  :defer t)
+
+;; Magit
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status)
+  :config
+  (progn
+    (defadvice magit-status (around magit-fullscreen activate)
+      (window-configuration-to-register :magit-fullscreen)
+      ad-do-it
+      (delete-other-windows))
+
+    (defun magit-quit-session ()
+      "Restores the previous window configuration and kills the magit buffer"
+      (interactive)
+      (kill-buffer)
+      (jump-to-register :magit-fullscreen))
+
+    (bind-key "q" 'magit-quit-session magit-status-mode-map)))
+
+
 ;; Add AceJump Mode
-(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
-(autoload 'ace-jump-mode "ace-jump-mode.el" "Ace jump mode")
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-(autoload
-  'ace-jump-mode-pop-mark
-  "ace-jump-mode"
-  "Ace jump back:-)"
-  t)
-(eval-after-load "ace-jump-mode"
-  '(ace-jump-mode-enable-mark-sync))
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(use-package ace-jump-mode
+  :ensure t
+  :idle
+  :bind ("C-c SPC" . ace-jump-mode))
+
+;; Multiple Cursors
+(use-package multiple-cursors
+  :ensure t
+  :idle
+  :bind (("C-c ." . mc/mark-next-like-this)
+         ("C-c ," . mc/mark-previous-like-this)
+         ("C-c c" . mc/edit-lines)
+         ("C-c /" . mc/mark-all-like-this)))
+
+;; ;; Expand Region
+(use-package expand-region
+  ensure t
+  :idle
+  :bind ("C-c m" . er/expand-region))
 
 ;; Automatically indent on new line
 (defun newline-indents ()
   "Bind Return to `newline-and-indent' in the local keymap."
   (local-set-key "\C-m" 'newline-and-indent))
-
-;; Multiple Cursors
-(add-to-list 'load-path "~/.emacs.d/multiple-cursors.el/")
-(global-set-key (kbd "C-c c") 'mc/edit-lines)
-(global-set-key (kbd "C-c .") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c ,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c /") 'mc/mark-all-like-this)
-(autoload 'mc/edit-lines "mc-edit-lines" "" t)
-(autoload 'mc/mark-next-like-this "mc-mark-more" "" t)
-(autoload 'mc/mark-previous-like-this "mc-mark-more" "" t)
-(autoload 'mc/mark-all-like-this "mc-mark-more" "" t)
-
-;; Expand Region
-(add-to-list 'load-path "~/.emacs.d/expand-region.el/")
-(require 'expand-region) ;; do not autoload, breaks fiplr for some reason.
-(global-set-key (kbd "C-c m") 'er/expand-region)
 
 ;; Tell Emacs to use the function above in certain editing modes.
 (add-hook 'lisp-mode-hook             (function newline-indents))
@@ -320,26 +358,6 @@
 	    (define-key ruby-mode-map "\C-m" 'newline-and-indent)
 	    (require 'ruby-electric)
 	    (ruby-electric-mode t)))
-
-;; Add Haml Support
-(add-to-list 'load-path "~/.emacs.d/haml-mode/")
-(autoload 'haml-mode "haml-mode.el" "Mode for Haml file" t)
-(add-hook 'haml-mode-hook
-	  (lambda ()
-	    (setq indent-tabs-mode nil)
-	    (define-key haml-mode-map "\C-m" 'newline-and-indent)))
-
-;; Insert ipdb in python shortcut
-(defun python-add-breakpoint ()
-  (interactive)
-  (move-beginning-of-line nil)
-  (indent-for-tab-command)
-  (insert "import ipdb; ipdb.set_trace()")
-  (newline-and-indent))
-(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
-
-;; Set default indent to 4
-(setq-default c-basic-offset 2)
 
 ;; Set python indent to 4
 (add-hook 'python-mode-hook
