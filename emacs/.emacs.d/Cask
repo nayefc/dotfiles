@@ -3,8 +3,8 @@
 (source melpa)
 (source org)
 
+(depends-on "ace-jump-buffer")
 (depends-on "ace-jump-mode")
-(depends-on "autocomplete")
 (depends-on "autopair")
 (depends-on "bind-key")
 (depends-on "buffer-move")
