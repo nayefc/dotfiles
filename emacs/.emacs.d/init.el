@@ -15,9 +15,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(add-to-list 'load-path "~/.cask/")
-(require 'cask)
-(cask-initialize)
+;; (add-to-list 'load-path "~/.cask/cask.el")
+;; (require 'cask)
+;; (cask-initialize)
 
 (require 'use-package)
 
@@ -299,12 +299,17 @@
 
     (bind-key "q" 'magit-quit-session magit-status-mode-map)))
 
-
-;; Add AceJump Mode
+;; Add Ace Jump Mode
 (use-package ace-jump-mode
   :ensure t
   :idle
   :bind ("C-c SPC" . ace-jump-mode))
+
+;; Add Ace Jump Buffer
+(use-package ace-jump-buffer
+  :ensure t
+  :idle
+  :bind ("C-," . ace-jump-buffer))
 
 ;; Multiple Cursors
 (use-package multiple-cursors
