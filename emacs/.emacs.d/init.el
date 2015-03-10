@@ -19,6 +19,11 @@
 ;; (require 'cask)
 ;; (cask-initialize)
 
+;; (load-local "defuns") ; https://github.com/rejeep/emacs/blob/master/defuns.el
+;; (load-local "misc")
+;; (when (eq system-type 'darwin)
+;;     (load-local "osx"))
+
 (require 'use-package)
 
 ;;;_. Theme, look and feel
