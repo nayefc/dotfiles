@@ -11,6 +11,10 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
+(add-to-list 'load-path "~/.cask/")
+(require 'cask)
+(cask-initialize)
+
 ;; Bootstrap use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -18,10 +22,6 @@
 
 (require 'use-package)
 (use-package f)
-
-;; (add-to-list 'load-path "~/.cask/")
-;; (require 'cask)
-;; (cask-initialize)
 
 (defun load-local (FILE)
   "Load FILE from Emacs directory."

@@ -13,9 +13,6 @@
     ;; Disable scroll bar
     (scroll-bar-mode -1)
 
-    ;; Bring OS X Emacs in line with shell setup
-    (exec-path-from-shell-initialize)
-
     ;; Load theme
     (load-theme 'solarized-dark t)
 
@@ -53,6 +50,10 @@
 					; '(default ((t (:height 150 :width normal :family "Terminus"))))
      '(default ((t (:height 150 :width normal :family "Monaco")))))))
 
+;; Bring OS X Emacs in line with shell setup
+(use-package exec-path-from-shell
+  :init (exec-path-from-shell-initialize))
+
 (defun finder ()
   "Opens file directory in Finder."
   (interactive)
@@ -61,9 +62,6 @@
         (shell-command
          (format "%s %s" (executable-find "open") (file-name-directory file)))
       (error "Buffer is not attached to any file."))))
-
-;; (use-package exec-path-from-shell
-;;   :init (exec-path-from-shell-initialize))
 
 (provide 'osx)
 ;;; osx.el ends here

@@ -3,8 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "diminish" "diminish.el" (21757 48977 0 0))
-;;; Generated autoloads from diminish.el
+;;;### (autoloads nil "diminish" "../../../../../.emacs.d/elpa/diminish-20091203.1012/diminish.el"
+;;;;;;  "8caa1c00d80089a6cb9caade9a6cb839")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/diminish-20091203.1012/diminish.el
 
 (autoload 'diminish "diminish" "\
 Diminish mode-line display of minor mode MODE to TO-WHAT (default \"\").
@@ -45,6 +46,12 @@ This doesn't change the status of any modes; it just lets you see
 what diminished modes would be on the mode-line if they were still minor.
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/diminish-20091203.1012/diminish-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/diminish-20091203.1012/diminish.el")
+;;;;;;  (21760 21370 663635 0))
 
 ;;;***
 

@@ -3,7 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil nil ("bind-key.el") (21757 48977 867612 0))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/bind-key-20150102.1532/bind-key-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/bind-key-20150102.1532/bind-key.el")
+;;;;;;  (21760 21370 922548 0))
 
 ;;;***
 
