@@ -25,6 +25,8 @@
 require 'erb'
 require 'ostruct'
 require 'fileutils'
+require 'dir'
+require 'file'
 require './utils'
 
 $linux = 'linux'
@@ -76,6 +78,21 @@ module Stow
       if $platform.include? $osx
         unless system("brew install emacs")
           puts "There was an error installing emacs."
+        end
+        if system("brew install cask")
+          unless Dir.exist?('../.cask')
+            FileUtils.mkdir('../.cask/')
+          end
+          if File.exist?('/usr/local/share/emacs/site-lisp/cask.el')
+            cask_original_file = File.readlink('/usr/local/share/emacs/site-lisp/cask.el')
+            File.symlink(cask_original_file, '../.cask/cask.el')
+          end
+          if File.exist?('/usr/local/share/emacs/site-lisp/cask-bootstrap.el')
+            cask_bootstrap_original_file = File.readlink('/usr/local/share/emacs/site-lisp/cask-bootstrap.el')
+            File.symlink(cask_bootstrap_original_file, '../.cask/cask-bootstrap.el')
+          end
+        else
+          puts "There was an error installing Emacs cask."
         end
       else
         unless system("sudo yum install emacs")
