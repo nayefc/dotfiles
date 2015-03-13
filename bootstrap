@@ -77,26 +77,14 @@ module Stow
     if package == :emacs
       if $platform.include? $osx
         unless system("brew install emacs")
-          puts "There was an error installing emacs."
+          puts "There was an error installing Emacs."
         end
-        if system("brew install cask")
-          unless Dir.exist?('../.cask')
-            FileUtils.mkdir('../.cask/')
-          end
-          if File.exist?('/usr/local/share/emacs/site-lisp/cask.el')
-            cask_original_file = File.readlink('/usr/local/share/emacs/site-lisp/cask.el')
-            File.symlink(cask_original_file, '../.cask/cask.el')
-          end
-          if File.exist?('/usr/local/share/emacs/site-lisp/cask-bootstrap.el')
-            cask_bootstrap_original_file = File.readlink('/usr/local/share/emacs/site-lisp/cask-bootstrap.el')
-            File.symlink(cask_bootstrap_original_file, '../.cask/cask-bootstrap.el')
-          end
-        else
-          puts "There was an error installing Emacs cask."
+        unless system("brew install cask")
+          puts "There was an error installing Cask for Emacs."
         end
       else
         unless system("sudo yum install emacs")
-          puts "There was an error installing emacs."
+          puts "There was an error installing Emacs."
         end
       end
       unless system("sudo pip install pylint")

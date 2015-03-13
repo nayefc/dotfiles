@@ -11,8 +11,7 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-(add-to-list 'load-path "~/.cask/")
-(require 'cask)
+(require 'cask "/usr/local/share/emacs/site-lisp/cask.el")
 (cask-initialize)
 
 ;; Bootstrap use-package
