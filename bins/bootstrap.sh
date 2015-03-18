@@ -11,11 +11,9 @@ if [[ $platform == 'osx' ]]; then
     brew install hr
     brew install pyenv
     brew install pyenv-virtualenv
+    brew install youtube-dl
+    brew install emacs
 elif [[ $platform == 'linux' ]]; then
-    sudo cp bins/hr/hr /usr/local/bin/
-    sudo chmod +x /usr/local/bin/hr
+    # sudo cp bins/hr/hr /usr/local/bin/
+    # sudo chmod +x /usr/local/bin/hr
 fi
-
-# Maybe symlink this
-chmod a+x bins/youtube-dl/youtube-dl
-cp bins/youtube-dl/youtube-dl /usr/local/bin/youtube-dl
