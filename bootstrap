@@ -78,6 +78,9 @@ module Stow
       unless system("brew install tmux")
         puts "There was an error installing tmux."
       end
+      unless system("brew install reattach-to-user-namespace")
+        puts "There was an error installing reattach-to-user-namespace."
+      end
     end
 
     if package == :emacs
