@@ -1,3 +1,8 @@
 emacs/.emacs.d/auto-save-list/
 .gitconfig
 .mc-lists.elc
+.dat
+.last
+.lst
+.bak
+.bak2
