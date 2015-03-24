@@ -7,7 +7,7 @@
 
 (use-package solarized-theme
   :ensure t
-  :if (featurep 'ns-win)  ; check if we're on OS X
+  :if (display-graphic-p) ; check if this is a GUI
   :init
   (progn
     ;; Disable scroll bar
