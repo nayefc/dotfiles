@@ -74,6 +74,12 @@ module Stow
       end
     end
 
+    if package == :tmux
+      unless system("brew install tmux")
+        puts "There was an error installing tmux."
+      end
+    end
+
     if package == :emacs
       if $platform.include? $osx
         unless system("brew install emacs")
