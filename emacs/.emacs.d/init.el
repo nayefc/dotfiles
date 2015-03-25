@@ -34,13 +34,13 @@
 
 ;;;; External packages
 
-;; Highlight lines longer than 100 characters
+;; Draw ruler on column
 (use-package fci-mode
   :ensure fill-column-indicator
   :defer f
   :init
   (progn
-    (setq-default fci-rule-column 120)
+    (setq-default fci-rule-column 80)
     (setq fci-handle-truncate-lines nil)
     (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
     (global-fci-mode 1))
