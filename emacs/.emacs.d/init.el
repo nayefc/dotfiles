@@ -98,6 +98,21 @@
     (setq jedi:complete-on-dot t)
     (setq jedi:tooltip-method '(pos-tip))))  ; options '(pos-tip popup)
 
+(use-package company
+  :ensure t
+  :defer t
+  :init
+  (global-company-mode))
+
+(use-package company-jedi
+  :ensure t
+  :defer t
+  :mode ("\\.py\\'" . python-mode)
+  :init
+  (progn
+    ;(add-to-list 'company-backends 'company-jedi)
+    (add-to-list 'company-backends '(company-jedi company-files))))
+
 (use-package autopair
   :ensure t
   :init
