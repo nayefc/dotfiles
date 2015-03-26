@@ -127,7 +127,7 @@
   :init
   (progn
     (setq fiplr-ignored-globs '((directories (".git" ".svn"))
-				(files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc"))))))
+				(files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc" "*.whl"))))))
 
 (use-package git-commit-mode
   :ensure t
