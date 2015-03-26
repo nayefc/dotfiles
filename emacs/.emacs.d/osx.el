@@ -5,11 +5,19 @@
 
 (require 'use-package)
 
+; Set GUI Emacs theme
 (use-package solarized-theme
   :ensure t
-  :if (display-graphic-p) ; check if this is a GUI
+  :if (display-graphic-p)
   :init
   (progn
+    ;; Set default window size
+    (add-to-list 'default-frame-alist '(height . 30))
+    (add-to-list 'default-frame-alist '(width . 90))
+
+    ;; Disable toolbar
+    (tool-bar-mode -1)
+
     ;; Disable scroll bar
     (scroll-bar-mode -1)
 
@@ -50,8 +58,14 @@
 					; '(default ((t (:height 150 :width normal :family "Terminus"))))
      '(default ((t (:height 150 :width normal :family "Monaco")))))))
 
+(if (display-graphic-p)
+    (setq initial-buffer-choice "~/Documents/Percolate"))
+
 ;; Bring OS X Emacs in line with shell setup
+;; This allows Emacs to use the same PATH as the the one used by the shell,
+;; to access packages in PATH.
 (use-package exec-path-from-shell
+  :ensure t
   :init (exec-path-from-shell-initialize))
 
 (defun finder ()

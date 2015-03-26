@@ -88,6 +88,8 @@
   :ensure t
   :mode ("\\.py\\'" . python-mode)
   :commands jedi:setup
+  :init
+  (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
   :bind (("C-c k" . jedi:goto-definition)
 	 ("C-c j" . jedi:goto-definition-pop-marker)
 	 ("C-c ?" . jedi:show-doc))

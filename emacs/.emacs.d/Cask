@@ -8,6 +8,7 @@
 (depends-on "autopair")
 (depends-on "bind-key")
 (depends-on "buffer-move")
+(depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")
 (depends-on "fill-column-indicator")
