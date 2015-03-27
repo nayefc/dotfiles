@@ -6,6 +6,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
+
 if [[ $platform == 'osx' ]]; then
     # Setting for the new UTF-8 terminal support
     export LANGUAGE=en_US.UTF-8
@@ -17,34 +18,45 @@ if [[ $platform == 'osx' ]]; then
 	source /etc/profile
     fi
 
+
     # Homebrew
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     export PATH=/usr/local/bin:$PATH
 
+
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 
     # Hop
     # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
     source /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.bash
-    alias hop-lua-script="LUA_PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua"
+    hop_json_lua=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua
+    hop_lua=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua
+    LUA_PATH="$hop_json_lua $hop_lua"
+    alias hop-lua-script="LUA_PATH=$LUA_PATH"
+
 
     # rvm
     export PATH=$PATH:$HOME/.rvm/bin
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+
     # pyenv and pyenv-virtualenv initialisation
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
     if [ -w "$psqlapp" ]; then
 	export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
     fi
+
 elif [[ $platform == 'linux' ]]; then
     # SSH agent fowarding
     export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
+
 
     # Virtualenv
     export WORKON_HOME=$HOME/.virtualenvs
@@ -52,47 +64,49 @@ elif [[ $platform == 'linux' ]]; then
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
     source /usr/local/bin/virtualenvwrapper.sh
 
+
     # Hop
     # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
     source /usr/local/hop/hop.bash
     alias hop-lua-script="LUA_PATH=/usr/local/hop/json.lua /usr/local/hop/hop.lua"
 fi
 
+
 # emacs client alias
 alias e='emacsclient -nw'
+
 
 # rm alias
 alias rm='rm -i'
 
+
 # use git diff for regular diffs
 alias diff='git diff --no-index'
 
+
 # get current git repo name
 alias repo_name='basename `git rev-parse --show-toplevel`'
+
 
 # print out authors or emails of a git repo
 alias authors='git log --all --format='%aN' | sort -u'
 alias emails='git log --all --format='%ae' | sort -u'
 
-alias clean_fly='find . -name \flycheck* -type f -delete'
 
 # alias and functions
 if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
+
 elif [[ $platform == 'linux' ]]; then
     alias ls='ls -l --color -h'
     get_hosts () {
 	host $1 | awk '{ print $4}' | xargs -I {} grep '{}\b' /etc/hosts
     }
-    alias get_hosts=get_hosts
-    alias mgmydb="mysql -h mysql-maestro.mgmt.adnxs.net -u ncopty -p --prompt 'maestroMGMT!!!> '"
-    alias devmydb="mysql -u ncopty -p -h mysql-maestro.dev.adnxs.net --prompt 'maestroDEV read-only> '"
-    alias mgtendb="psql -h jazzhands-db.appnexus.net -U app_tendril_api jazzhands"
-    alias devtendb="psql -h 02.kovert-sand.nym2.appnexus.net -U tendril_dev jazzhands"
 
     # scurl tool
     source ~/dotfiles/bins/scurl
 fi
+
 
 # opens all files with the given regexp
 function edit_with() {
@@ -105,6 +119,7 @@ function edit_with() {
     fi
 }
 
+
 function clean_elpa() {
     find $HOME/dotfiles/emacs/.emacs.d/elpa -regex ".*~.*" -exec rm {} \;
     if [ $? -ne 0 ]; then
@@ -113,6 +128,7 @@ function clean_elpa() {
 	echo 'ELPA cleaned.'
     fi
 }
+
 
 # open all git conflicted files
 function edit_conflicts() {
@@ -125,6 +141,7 @@ function edit_conflicts() {
     fi
 }
 
+
 # swaps two files
 function swap() {
     local TMPFILE=tmp.$$
@@ -132,6 +149,7 @@ function swap() {
     mv "$2" "$1"
     mv $TMPFILE "$2"
 }
+
 
 # count for $1 mins
 function count() {
@@ -147,6 +165,7 @@ function count() {
     done
     sleep 1
 }
+
 
 # Extracting files
 function extract () {
@@ -171,12 +190,14 @@ function extract () {
     fi
 }
 
+
 function remote_rsync() {
     # $1: host
     # $1: source path
     # $2: destination path
     rsync --rsync-path="/usr/bin/rsync" $1:$2 $3
 }
+
 
 # Terminal Colours
 export CLICOLOR=1
@@ -198,6 +219,7 @@ PURPLE="\[\033[0;35m\]"
 PURPLE_BOLD="\[\033[1;35m\]"
 BROWN="\[\033[0;33m\]"
 
+
 # Terminal colours
 export CLICOLOR=1
 if [[ $platform == 'osx' ]]; then
@@ -210,6 +232,7 @@ elif [[ $platform == 'linux' ]]; then
     fi
     export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
 fi
+
 
 # Second prompt line
 source ~/.git-completion.sh
