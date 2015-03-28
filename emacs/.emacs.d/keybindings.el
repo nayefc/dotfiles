@@ -12,9 +12,9 @@
 ;; Default search to regexp search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 
-;; Scroll other window up
-(global-set-key (kbd "C-c p") 'scroll-other-window-down)
-(global-set-key (kbd "C-c n") 'scroll-other-window)
+;; Scroll other window
+(bind-key "C-x n" 'scroll-other-window)
+(bind-key "C-x p" 'scroll-other-window-down)
 
 ;; Go to line
 (global-set-key "\M-1" `goto-line)
@@ -32,7 +32,7 @@
      (point)
      (line-end-position)))
   (message "1 line copied"))
-(global-set-key (kbd "C-x c") 'copy-line)
+(global-set-key (kbd "C-c y") 'copy-line)
 
 ;; Duplicate a line
 (defun duplicate-line ()
