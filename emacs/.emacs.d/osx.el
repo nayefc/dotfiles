@@ -58,8 +58,8 @@
 					; '(default ((t (:height 150 :width normal :family "Terminus"))))
      '(default ((t (:height 150 :width normal :family "Monaco")))))))
 
-(if (display-graphic-p)
-    (setq initial-buffer-choice "~/Documents/Percolate"))
+;; (if (display-graphic-p)
+;;     (setq initial-buffer-choice "~/Documents/Percolate/devolate/hotlanta"))
 
 ;; Bring OS X Emacs in line with shell setup
 ;; This allows Emacs to use the same PATH as the the one used by the shell,
