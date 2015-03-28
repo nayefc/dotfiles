@@ -88,15 +88,15 @@
   :ensure t
   :mode ("\\.py\\'" . python-mode)
   :commands jedi:setup
-  :init
-  (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
   :bind (("C-c k" . jedi:goto-definition)
 	 ("C-c j" . jedi:goto-definition-pop-marker)
 	 ("C-c ?" . jedi:show-doc))
-  :config
+  :init
   (progn
+    (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
+    (add-hook 'python-mode-hook 'jedi:setup)
     (setq jedi:complete-on-dot t)
-    (setq jedi:tooltip-method '(pos-tip))))  ; options '(pos-tip popup)
+    (setq jedi:tooltip-method '(pos-tip))))
 
 (use-package company
   :ensure t
