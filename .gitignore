@@ -8,3 +8,4 @@ emacs/.emacs.d/auto-save-list/
 *.bak2
 .cask/
 *.elc
+projectile-bookmarks.eld
