@@ -120,14 +120,14 @@
     (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
     (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))))
 
-(use-package fiplr
-  :ensure t
-  :idle
-  :bind ("C-x f" . fiplr-find-file)
-  :init
-  (progn
-    (setq fiplr-ignored-globs '((directories (".git" ".svn"))
-				(files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc" "*.whl"))))))
+;; (use-package fiplr
+;;   :ensure t
+;;   :idle
+;;   :bind ("C-x f" . fiplr-find-file)
+;;   :init
+;;   (progn
+;;     (setq fiplr-ignored-globs '((directories (".git" ".svn"))
+;; 				(files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc" "*.whl"))))))
 
 (use-package git-commit-mode
   :ensure t
@@ -178,6 +178,53 @@
   ensure t
   :idle
   :bind ("C-c m" . er/expand-region))
+
+(use-package helm
+  :ensure t
+  :idle
+  :commands helm-mode
+  :bind (("M-x" . helm-M-x)
+	 ("C-x C-b" . helm-buffers-list)
+	 ("C-x f" . helm-projectile-switch-to-buffer))
+  :config
+  (progn
+    (helm-autoresize-mode 1)
+    ; open helm buffer inside current window, not occupy whole other window
+    (setq helm-split-window-in-side-p t
+	  ; move to end or beginning of source when reaching top or bottom of source.
+	  helm-move-to-line-cycle-in-source t
+	  ; search for library in `require' and `declare-function' sexp.
+	  helm-ff-search-library-in-sexp t
+	  ; scroll 8 lines other window using M-<next>/M-<prior>
+	  helm-scroll-amount 8
+	  helm-ff-file-name-history-use-recentf t)
+
+    ; rebind tab to run persistent action
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+    ; make TAB works in terminal
+    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+    ; list actions using C-z
+    (define-key helm-map (kbd "C-z")  'helm-select-action)
+
+    (setq helm-buffers-fuzzy-matching t)))
+
+(use-package helm-git-grep
+  :ensure t
+  :bind ("C-c g" . helm-git-grep)
+  :idle
+  :config
+  (progn
+    (eval-after-load 'helm
+      '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))))
+
+(use-package projectile
+  :ensure t
+  :init
+  (progn
+    (projectile-global-mode)
+    (setq projectile-completion-system 'helm)
+    (helm-projectile-on)
+    (setq projectile-switch-project-action 'projectile-dired)))
 
 (provide 'init)
 ;;; init.el ends here
