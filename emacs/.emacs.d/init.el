@@ -180,7 +180,7 @@
   :commands helm-mode
   :bind (("M-x" . helm-M-x)
 	 ("C-x C-b" . helm-buffers-list)
-	 ("C-x f" . helm-projectile-switch-to-buffer))
+	 ("C-x f" . helm-projectile-find-files))
   :config
   (progn
     (helm-autoresize-mode 1)
