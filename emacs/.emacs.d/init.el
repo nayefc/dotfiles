@@ -72,12 +72,13 @@
           (turn-on-fci-mode)))
 
 (use-package flycheck
+  :ensure t
   :init
   (progn
+    (global-flycheck-mode)
     (setq flycheck-highlighting-mode 'lines)
     (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
     (setq flycheck-idle-change-delay 1))
-  :idle (global-flycheck-mode)
   :config
   (progn
     (set-face-attribute 'flycheck-error nil :foreground "yellow" :background "red")
@@ -106,7 +107,6 @@
 
 (use-package company-jedi
   :ensure t
-  :defer t
   :mode ("\\.py\\'" . python-mode)
   :init
   (progn
@@ -158,30 +158,25 @@
 ;; Add Ace Jump Mode
 (use-package ace-jump-mode
   :ensure t
-  :idle
   :bind ("C-c SPC" . ace-jump-mode))
 
 (use-package ace-jump-buffer
   :ensure t
-  :idle
   :bind ("C-," . ace-jump-buffer))
 
 (use-package multiple-cursors
   :ensure t
-  :idle
   :bind (("C-c ." . mc/mark-next-like-this)
          ("C-c ," . mc/mark-previous-like-this)
          ("C-c c" . mc/edit-lines)
          ("C-c /" . mc/mark-all-like-this)))
 
 (use-package expand-region
-  ensure t
-  :idle
+  :ensure t
   :bind ("C-c m" . er/expand-region))
 
 (use-package helm
   :ensure t
-  :idle
   :commands helm-mode
   :bind (("M-x" . helm-M-x)
 	 ("C-x C-b" . helm-buffers-list)
@@ -211,7 +206,6 @@
 (use-package helm-git-grep
   :ensure t
   :bind ("C-c g" . helm-git-grep)
-  :idle
   :config
   (progn
     (eval-after-load 'helm
@@ -219,6 +213,7 @@
 
 (use-package projectile
   :ensure t
+  :defer t
   :init
   (progn
     (projectile-global-mode)
