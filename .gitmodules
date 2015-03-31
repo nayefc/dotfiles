@@ -1,21 +1,6 @@
-[submodule "emacs/.emacs.d/multiple-cursors.el"]
-	path = emacs/.emacs.d/multiple-cursors.el
-	url = git@github.com:magnars/multiple-cursors.el.git
-[submodule "emacs/.emacs.d/expand-region.el"]
-	path = emacs/.emacs.d/expand-region.el
-	url = git@github.com:magnars/expand-region.el.git
-[submodule "bins/hr"]
-	path = bins/hr
-	url = git@github.com:LuRsT/hr.git
-[submodule "bins/youtube-dl"]
-	path = bins/youtube-dl
-	url = https://github.com/rg3/youtube-dl.git
 [submodule "bins/hop"]
 	path = bins/hop
 	url = git@github.com:Cue/hop.git
 [submodule "tmux/tmux-resurrect"]
 	path = tmux/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
-[submodule "emacs/emacs-jedi"]
-	path = emacs/emacs-jedi
-	url = git@github.com:tkf/emacs-jedi.git
