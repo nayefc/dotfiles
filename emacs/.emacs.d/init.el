@@ -160,9 +160,13 @@
   :ensure t
   :bind ("C-c SPC" . ace-jump-mode))
 
-(use-package ace-jump-buffer
+(use-package ace-window
   :ensure t
-  :bind ("C-," . ace-jump-buffer))
+  :bind ("M-p" . ace-window)
+  :init
+  (progn
+    ;(setq aw-background nil)
+    (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))))
 
 (use-package multiple-cursors
   :ensure t
