@@ -57,7 +57,7 @@ if [[ $platform == 'osx' ]]; then
     youtubedl="/usr/local/bin/youtube-dl"
     if [ -r "$youtubedl" ]; then
 	function youtube() {
-	    youtube-dl --audio-format mp3 --audio-quality 1 $1
+	    youtube-dl -x --audio-format mp3 --audio-quality 1 $1
 	}
     fi
 
