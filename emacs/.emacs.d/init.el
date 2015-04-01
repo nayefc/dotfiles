@@ -215,6 +215,23 @@
     (eval-after-load 'helm
       '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))))
 
+(defun show-file-path-in-projectile-project()
+  "Show the full path of the file relative to the projectile project."
+  (interactive)
+  ;; TODO:
+  ;; hook on open file
+  (defvar project-dir)
+  (if (car (projectile-get-project-directories))
+      (setq project-dir (car (projectile-get-project-directories))))
+
+  (if (buffer-file-name)
+      (if project-dir
+	  (if (f-descendant-of? buffer-file-name project-dir)
+	      (rename-buffer
+	       (car (cdr
+		     (split-string
+		      (buffer-file-name)
+		      (car (projectile-get-project-directories))))))))))
 (use-package projectile
   :ensure t
   :defer t
