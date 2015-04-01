@@ -53,6 +53,15 @@ if [[ $platform == 'osx' ]]; then
 	export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
     fi
 
+    # If youtube-dl is installed, create a shortcut for it.
+    youtubedl="/usr/local/bin/youtube-dl"
+    if [ -r "$youtubedl" ]; then
+	function youtube() {
+	    youtube-dl --audio-format mp3 --audio-quality 1 $1
+	}
+    fi
+
+
 elif [[ $platform == 'linux' ]]; then
     # SSH agent fowarding
     export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
