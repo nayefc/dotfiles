@@ -32,6 +32,30 @@
 (when (eq system-type 'darwin)
   (load-local "osx"))
 
+;;;; temp
+
+;(advice-add 'create-file-buffer :around #'show-file-path-in-projectile-project)
+(defun show-file-path-in-projectile-project ()
+  "Show the full path of the file relative to the projectile project."
+  (interactive)
+  ;; TODO:
+  ;; Use advice from:
+  ;; https://github.com/emacs-mirror/emacs/blob/0537943561a37b54467bec19d1b8afbeba8e1e58/lisp/uniquify.el
+  ;; Move outside of init; figure out why its not working.
+  (defvar project-dir)
+  (if (car (projectile-get-project-directories))
+      (setq project-dir (car (projectile-get-project-directories))))
+
+  (if (buffer-file-name)
+      (if project-dir
+	  (if (f-descendant-of? buffer-file-name project-dir)
+	      (rename-buffer
+	       (car (cdr
+		     (split-string
+		      (buffer-file-name)
+		      (car (projectile-get-project-directories))))))))))
+(bind-key "M-[" 'show-file-path-in-projectile-project)
+
 ;;;; External packages
 
 ;; Draw ruler on column
@@ -214,26 +238,6 @@
   (progn
     (eval-after-load 'helm
       '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))))
-
-(defun show-file-path-in-projectile-project()
-  "Show the full path of the file relative to the projectile project."
-  (interactive)
-  ;; TODO:
-  ;; hook on open file
-  ;; move outside of init
-  (defvar project-dir)
-  (if (car (projectile-get-project-directories))
-      (setq project-dir (car (projectile-get-project-directories))))
-
-  (if (buffer-file-name)
-      (if project-dir
-	  (if (f-descendant-of? buffer-file-name project-dir)
-	      (rename-buffer
-	       (car (cdr
-		     (split-string
-		      (buffer-file-name)
-		      (car (projectile-get-project-directories))))))))))
-(bind-key "M-[" 'show-file-path-in-projectile-project)
 
 (use-package projectile
   :ensure t
