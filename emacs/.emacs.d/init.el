@@ -121,7 +121,13 @@
     (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
     (add-hook 'python-mode-hook 'jedi:setup)
     (setq jedi:complete-on-dot t)
-    (setq jedi:tooltip-method '(pos-tip))))
+    (setq jedi:tooltip-method '(pos-tip)))
+  :config
+  (progn
+    (define-key jedi-mode-map (kbd "C-c .") nil)
+    (define-key jedi-mode-map (kbd "C-c ,") nil)
+    )
+  )
 
 (use-package company
   :ensure t
