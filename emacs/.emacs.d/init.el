@@ -220,6 +220,7 @@
   (interactive)
   ;; TODO:
   ;; hook on open file
+  ;; move outside of init
   (defvar project-dir)
   (if (car (projectile-get-project-directories))
       (setq project-dir (car (projectile-get-project-directories))))
@@ -232,6 +233,8 @@
 		     (split-string
 		      (buffer-file-name)
 		      (car (projectile-get-project-directories))))))))))
+(bind-key "M-[" 'show-file-path-in-projectile-project)
+
 (use-package projectile
   :ensure t
   :defer t
