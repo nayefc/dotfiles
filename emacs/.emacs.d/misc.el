@@ -62,5 +62,24 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; In projectile, display the full path of a file relative to the project root.
+(defun show-file-path-in-projectile-project()
+  "Show the full path of the file relative to the projectile project."
+  (interactive)
+  ;; TODO:
+  ;; hook on open file
+  (defvar project-dir)
+  (if (car (projectile-get-project-directories))
+      (setq project-dir (car (projectile-get-project-directories))))
+
+  (if (buffer-file-name)
+      (if project-dir
+	  (if (f-descendant-of? buffer-file-name project-dir)
+	      (rename-buffer
+	       (car (cdr
+		     (split-string
+		      (buffer-file-name)
+		      (car (projectile-get-project-directories))))))))))
+
 (provide 'misc)
 ;;; misc.el ends here
