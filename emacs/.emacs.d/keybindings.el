@@ -20,7 +20,12 @@
 (global-set-key "\M-1" `goto-line)
 
 ;; Kill current line
-(global-set-key (kbd "C-c d") 'kill-whole-line)
+(defun smart-kill-whole-line (&optional arg)
+  "A wrapper around 'kill-whole-line' that respects indentation with ARG lines to kill."
+  (interactive "P")
+  (kill-whole-line arg)
+  (back-to-indentation))
+(global-set-key (kbd "C-c d") 'smart-kill-whole-line)
 
 ;; Copy line
 (defun copy-line ()
