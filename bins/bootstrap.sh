@@ -15,7 +15,7 @@ if [[ $platform == 'osx' ]]; then
     # brew install pyenv
     # brew install pyenv-virtualenv
     # brew install jawshooah/pyenv/pyenv-default-packages
-    echo -e "pylint\njedi\n#jediepcserver" > ~/.pyenv/default-packages
+    echo -e "pylint\nipdb\njedi\n#jediepcserver" > ~/.pyenv/default-packages
     # brew install youtube-dl
     # brew install emacs
     # brew install tmux
