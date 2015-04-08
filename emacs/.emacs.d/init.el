@@ -250,9 +250,9 @@
   :defer t
   :init
   (progn
+    (helm-projectile-on)
     (projectile-global-mode)
     (setq projectile-completion-system 'helm)
-    (helm-projectile-on)
     (setq projectile-switch-project-action 'projectile-dired)))
 
 (provide 'init)
