@@ -175,6 +175,11 @@ function count() {
     sleep 1
 }
 
+# Copy $1 to clipboard
+function copy() {
+    echo -n $1 | pbcopy
+}
+
 
 # Extracting files
 function extract () {
