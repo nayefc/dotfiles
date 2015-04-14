@@ -61,20 +61,22 @@
 ;; Draw ruler on column
 (use-package fci-mode
   :ensure fill-column-indicator
-  :defer f
+  :defer t
   :init
+  (add-hook 'c-mode-hook 'fci-mode)
+  (add-hook 'python-mode-hook 'fci-mode)
+  (add-hook 'ruby-mode-hook 'fci-mode)
+  (add-hook 'emacs-lisp-mode-hook 'fci-mode)
+  :config
   (progn
     (setq-default fci-rule-column 80)
     (setq fci-handle-truncate-lines nil)
-    (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-    (global-fci-mode 1))
-  :config
-  (defun auto-fci-mode (&optional unused)
-  (if (> (window-width) fci-rule-column)
-      (fci-mode 1)
-    (fci-mode 0)))
-  (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
-  (add-hook 'window-configuration-change-hook 'auto-fci-mode))
+    (defun auto-fci-mode (&optional unused)
+      (if (> (window-width) fci-rule-column)
+	  (fci-mode 1)
+	(fci-mode 0)))
+    (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
+    (add-hook 'window-configuration-change-hook 'auto-fci-mode)))
 
 ;; Disable fci when autocomplete is on the line, as fci breaks autocomplete.
 (defun sanityinc/fci-enabled-p ()
