@@ -117,7 +117,8 @@
   :commands jedi:setup
   :bind (("C-c k" . jedi:goto-definition)
 	 ("C-c j" . jedi:goto-definition-pop-marker)
-	 ("C-c ?" . jedi:show-doc))
+	 ("C-c ?" . jedi:show-doc)
+	 ("C-c \\" . helm-jedi-related-names))
   :init
   (progn
     (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
@@ -128,8 +129,7 @@
   (progn
     (define-key jedi-mode-map (kbd "C-c .") nil)
     (define-key jedi-mode-map (kbd "C-c ,") nil)
-    )
-  )
+    (define-key jedi-mode-map (kbd "C-c /") nil)))
 
 (use-package company
   :ensure t
