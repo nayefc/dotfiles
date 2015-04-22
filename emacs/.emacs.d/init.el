@@ -111,11 +111,24 @@
     (set-face-attribute 'flycheck-warning nil :foreground "red" :background "yellow")
     (set-face-attribute 'flycheck-info nil :foreground "red" :background "yellow")))
 
+(defun jedi-goto-definition-new-frame ()
+  "Jedi goto-definition wrapper in a new, nexts frame."
+  (interactive)
+  (jedi:goto-definition 1 `definition))
+
+(defun jedi-goto-definition-wrapper ()
+  "Jedi goto-definition wrapper to go to definition directly."
+  (interactive)
+  (jedi:goto-definition nil `definition))
+
+
 (use-package jedi
   :ensure t
   :mode ("\\.py\\'" . python-mode)
   :commands jedi:setup
-  :bind (("C-c k" . jedi:goto-definition)
+  :bind (("C-c k" . jedi-goto-definition-wrapper)
+	 ("C-c ;" . jedi-goto-definition-new-frame)
+	 ("C-c '" . jedi:goto-definition)
 	 ("C-c j" . jedi:goto-definition-pop-marker)
 	 ("C-c ?" . jedi:show-doc)
 	 ("C-c \\" . helm-jedi-related-names))
