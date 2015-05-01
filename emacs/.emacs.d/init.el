@@ -253,7 +253,8 @@
 
 (use-package helm-git-grep
   :ensure t
-  :bind ("C-c g" . helm-git-grep)
+  :bind (("C-c g" . helm-git-grep)
+	 ("C-c h" . helm-git-grep-at-point))
   :config
   (progn
     (eval-after-load 'helm
