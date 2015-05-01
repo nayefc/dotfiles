@@ -32,8 +32,7 @@
 (defun python-add-breakpoint ()
   "Add python breakpoint."
   (interactive)
-  (move-beginning-of-line nil)
-  (indent-for-tab-command)
+  (back-to-indentation)
   (insert "import ipdb; ipdb.set_trace()")
   (newline-and-indent))
 (define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
