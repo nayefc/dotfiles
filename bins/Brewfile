@@ -9,7 +9,8 @@ brew 'pyenv-virtualenv'
 brew 'youtube-dl'
 brew 'tmux'
 brew 'emacs' args: ['cocoa']
+brew 'fpp'
 tap 'jawshooah/pyenv'
-brew install pyenv-default-packages
+brew pyenv-default-packages
 
 cask 'macdown'
