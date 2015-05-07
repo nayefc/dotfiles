@@ -9,3 +9,4 @@ emacs/.emacs.d/auto-save-list/
 .cask/
 *.elc
 projectile-bookmarks.eld
+*projectile.cache
