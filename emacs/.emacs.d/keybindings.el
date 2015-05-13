@@ -63,5 +63,36 @@
   (setq deactivate-mark nil))
 (global-set-key (kbd "C-c l") 'mark-line)
 
+;; Convert a python unicode dict to valid JSON
+(defun convert-python-dict-to-json ()
+  "Convert a python unicode dict to valid JSON."
+  (interactive)
+  (goto-char 1)
+  (while (search-forward-regexp "u'" nil t)
+    (replace-match "\""))
+  (goto-char 1)
+  (while (search-forward-regexp "'" nil t)
+    (replace-match "\""))
+  (goto-char 1)
+  (while (search-forward-regexp "None" nil t)
+    (replace-match "null" t))
+  (goto-char 1)
+  (while (search-forward-regexp "True" nil t)
+    (replace-match "true" t))
+  (goto-char 1)
+  (while (search-forward-regexp "False" nil t)
+    (replace-match "false" t)))
+
+;; Minify JSON
+(defun minify-json ()
+  "Minify JSON removing newlines and whitespace."
+  (interactive)
+  (goto-char 1)
+  (while (search-forward-regexp "\n" nil t)
+    (replace-match "" t))
+  (goto-char 1)
+  (while (search-forward-regexp "\s-*" nil t)
+    (replace-match "" t)))
+
 (provide 'keybindings)
 ;;; keybindings.el ends here
