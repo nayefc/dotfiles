@@ -58,6 +58,8 @@
 
 ;;;; External packages
 
+(use-package exec-path-from-shell-initialize)
+
 ;; Draw ruler on column
 (use-package fci-mode
   :ensure fill-column-indicator
@@ -96,6 +98,8 @@
 	     (null popup-instances))
     (setq sanityinc/fci-mode-suppressed nil)
           (turn-on-fci-mode)))
+
+(use-package pyenv-mode)
 
 (use-package flycheck
   :ensure t
@@ -197,6 +201,7 @@
       (kill-buffer)
       (jump-to-register :magit-fullscreen))
 
+    (setq magit-last-seen-setup-instructions "1.4.0")
     (bind-key "q" 'magit-quit-session magit-status-mode-map)))
 
 ;; Add Ace Jump Mode
@@ -259,6 +264,9 @@
   (progn
     (eval-after-load 'helm
       '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))))
+
+(use-package helm-projectile
+  :defer t)
 
 (use-package projectile
   :ensure t
