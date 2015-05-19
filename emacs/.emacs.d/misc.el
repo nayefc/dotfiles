@@ -62,5 +62,8 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; Change default switch-to-buffer binding for consistency with helm-buffers-list
+(bind-key "C-x C-b" 'switch-to-buffer)
+
 (provide 'misc)
 ;;; misc.el ends here
