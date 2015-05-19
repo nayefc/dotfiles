@@ -29,5 +29,6 @@
 (depends-on "pyenv-mode")
 (depends-on "projectile")
 (depends-on "pylint")
+;; (depends-on "smartparens")
 (depends-on "solarized-theme")
 (depends-on "use-package")

@@ -168,15 +168,6 @@
     (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
     (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))))
 
-;; (use-package fiplr
-;;   :ensure t
-;;   :idle
-;;   :bind ("C-x f" . fiplr-find-file)
-;;   :init
-;;   (progn
-;;     (setq fiplr-ignored-globs '((directories (".git" ".svn"))
-;; 				(files ("*.jpg" "*.png" "*.zip" "*~" "*.pyc" "*.whl"))))))
-
 (use-package git-commit-mode
   :ensure t
   :mode ("\\COMMIT_EDITMSG\\'" . git-commit-mode))
@@ -188,6 +179,10 @@
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
+  :init
+  (progn
+    ;; (setq magit-auto-revert-mode nil)
+    (setq magit-last-seen-setup-instructions "1.4.0"))
   :config
   (progn
     (defadvice magit-status (around magit-fullscreen activate)
@@ -201,7 +196,6 @@
       (kill-buffer)
       (jump-to-register :magit-fullscreen))
 
-    (setq magit-last-seen-setup-instructions "1.4.0")
     (bind-key "q" 'magit-quit-session magit-status-mode-map)))
 
 ;; Add Ace Jump Mode
@@ -232,7 +226,7 @@
   :ensure t
   :commands helm-mode
   :bind (("M-x" . helm-M-x)
-	 ("C-x C-b" . helm-buffers-list)
+	 ("C-x b" . helm-buffers-list)
 	 ("C-x f" . helm-projectile-find-file))
   :config
   (progn
