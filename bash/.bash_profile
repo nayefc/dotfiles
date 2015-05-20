@@ -19,15 +19,12 @@ if [[ $platform == 'osx' ]]; then
 	source /etc/profile
     fi
 
-
     # Homebrew
     source `brew --repository`/Library/Contributions/brew_bash_completion.sh
     export PATH=/usr/local/bin:$PATH
 
-
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 
     # Hop
     # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
@@ -37,16 +34,13 @@ if [[ $platform == 'osx' ]]; then
     LUA_PATH="$hop_json_lua $hop_lua"
     alias hop-lua-script="LUA_PATH=$LUA_PATH"
 
-
     # rvm
     export PATH=$PATH:$HOME/.rvm/bin
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-
     # pyenv and pyenv-virtualenv initialisation
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
-
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
@@ -80,32 +74,35 @@ elif [[ $platform == 'linux' ]]; then
 fi
 
 
+# Aliases
+
 # emacs client alias
 alias e='emacsclient -nw'
-
 
 # rm alias
 alias rm='rm -i'
 
-
 # use git diff for regular diffs
 alias diff='git diff --no-index'
-
 
 # get current git repo name
 alias repo_name='basename `git rev-parse --show-toplevel`'
 
-
 # print out authors or emails of a git repo
 alias authors='git log --all --format='%aN' | sort -u'
-alias emails='git log --all --format='%ae' | sort -u'
 
-
-# alias and functions
+# improve ls
 if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
 fi
 
+# alias for devolate vagrant
+if [[ $platform == 'osx' ]]; then
+    alias gotovagr='hop devo; vagrant ssh'
+fi
+
+
+# Functions
 
 # opens all files with the given regexp
 function edit_with() {
