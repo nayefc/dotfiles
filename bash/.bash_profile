@@ -96,13 +96,19 @@ if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
 fi
 
-# alias for devolate vagrant
-if [[ $platform == 'osx' ]]; then
-    alias gotovagr='hop devo; vagrant ssh'
-fi
-
 
 # Functions
+
+# ssh into devolate vm
+function gotovagr() {
+    hop devolate
+    vagrant ssh
+    if [ $? -ne 0 ]; then
+	vagrant up
+	vagrant ssh
+    fi
+}
+
 
 # opens all files with the given regexp
 function edit_with() {
