@@ -82,6 +82,7 @@
 		mode-line-mule-info
 		;;mode-line-client
 		mode-line-modified
+		" "
 		mode-line-buffer-identification " " mode-line-position
 		;; Some specific information about the current buffer:
 		my-projectile-mode-line ; Project information
