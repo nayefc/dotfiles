@@ -30,5 +30,6 @@
 (depends-on "projectile")
 (depends-on "pylint")
 ;; (depends-on "smartparens")
+(depends-on "smart-mode-line")
 (depends-on "solarized-theme")
 (depends-on "use-package")
