@@ -1,6 +1,21 @@
 ;;; package --- Summary
 ;;; Commentary:
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:height 150 :width normal :family "Monaco")))))
+
 ;;; Code:
 
 (require 'package)
@@ -284,6 +299,33 @@
     (setq highlight-symbol-colors
 	  '("DeepPink" "cyan" "MediumPurple1" "SpringGreen1"
 	    "DarkOrange" "HotPink1" "RoyalBlue1" "OliveDrab"))))
+
+(use-package smart-mode-line
+  :ensure t
+  :defer t
+  :init (sml/setup)
+  :config
+  (progn
+    (setq sml/theme 'respectful)
+    (setq rm-blacklist '("AC" " company" " pair"))
+    (setq sml/shorten-directory t)
+    (setq sml/shorten-modes t)
+    (setq sml/name-width 30)
+    (setq sml/mode-width "full")
+
+    (add-to-list 'sml/replacer-regexp-list '("^~/Documents/Percolate/devolate/hotlanta" "HL"))
+    (add-to-list 'sml/replacer-regexp-list '("^~/Documents/Percolate/devolate/hotlanta/api" "api"))
+    (add-to-list 'sml/replacer-regexp-list '("^~/Documents/Percolate/devolate/hotlanta/apps" "apps"))
+    (add-to-list 'sml/replacer-regexp-list '("^~/\\.emacs\\.d/" ":ED:"))
+
+    ;; Move which-func to front
+    (let ((which-func '(which-func-mode ("" which-func-format " "))))
+      (setq-default mode-line-format (remove which-func mode-line-format))
+      (setq-default mode-line-misc-info (remove which-func mode-line-misc-info))
+      (setq cell (last mode-line-format 8))
+      (setcdr cell
+	      (cons which-func
+		    (cdr cell))))))
 
 (provide 'init)
 ;;; init.el ends here
