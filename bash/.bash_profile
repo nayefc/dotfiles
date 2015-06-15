@@ -134,7 +134,7 @@ function edit_conflicts() {
 
 # who merged this commit?
 function who_merged() {
-    commit=`perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/' <(git rev-list --ancestry-path 38d70fe..HEAD) <(git rev-list --first-parent 38d70fe..HEAD) | tail -n 1`
+    commit=`perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/' <(git rev-list --ancestry-path $1..HEAD) <(git rev-list --first-parent $1..HEAD) | tail -n 1`
     git show $commit
 }
 
