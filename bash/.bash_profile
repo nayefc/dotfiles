@@ -121,17 +121,6 @@ function edit_with() {
     fi
 }
 
-
-function clean_elpa() {
-    find $HOME/dotfiles/emacs/.emacs.d/elpa -regex ".*~.*" -exec rm {} \;
-    if [ $? -ne 0 ]; then
-        echo "ELPA clean error with $1."
-    else
-	echo 'ELPA cleaned.'
-    fi
-}
-
-
 # open all git conflicted files
 function edit_conflicts() {
     files=`git diff --name-only --diff-filter=U`
@@ -143,6 +132,20 @@ function edit_conflicts() {
     fi
 }
 
+# who merged this commit?
+function who_merged() {
+    commit=`perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/' <(git rev-list --ancestry-path 38d70fe..HEAD) <(git rev-list --first-parent 38d70fe..HEAD) | tail -n 1`
+    git show $commit
+}
+
+function clean_elpa() {
+    find $HOME/dotfiles/emacs/.emacs.d/elpa -regex ".*~.*" -exec rm {} \;
+    if [ $? -ne 0 ]; then
+        echo "ELPA clean error with $1."
+    else
+	echo 'ELPA cleaned.'
+    fi
+}
 
 # swaps two files
 function swap() {
