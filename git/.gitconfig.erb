@@ -2,7 +2,7 @@
         name = Nayef Copty
         email = <%= git_email %>
 [alias]
-        hist = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+        hist = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
         histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
         ph = push
         pl = pull
@@ -45,3 +45,14 @@
        untracked = cyan
 [merge]
         conflictstyle = diff3
+
+# .. vs. ... note:
+# log:
+# A..B: all commits in B that are not in A (since the merge base)
+# A...B: both commits that A has and B doesn't, and commits that B has and A doesn't, but not on both.
+#
+# diff:
+# A..B: diff the top commits of A and B
+# A...B: diff from the common ancestor (git merge-base A B) to master HEAD. i.e: changes that A has since its common ancestor with master.
+#
+# with .., if you add a function in B and remove a line from A, A..B shows that B added both.
