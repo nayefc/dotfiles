@@ -300,32 +300,5 @@
 	  '("DeepPink" "cyan" "MediumPurple1" "SpringGreen1"
 	    "DarkOrange" "HotPink1" "RoyalBlue1" "OliveDrab"))))
 
-;; (use-package smart-mode-line
-;;   :ensure t
-;;   :defer t
-;;   :init (sml/setup)
-;;   :config
-;;   (progn
-;;     (setq sml/theme 'respectful)
-;;     (setq rm-blacklist '("AC" " company" " pair"))
-;;     (setq sml/shorten-directory t)
-;;     (setq sml/shorten-modes t)
-;;     (setq sml/name-width 30)
-;;     (setq sml/mode-width "full")
-
-;;     (add-to-list 'sml/replacer-regexp-list '("^~/Documents/Percolate/devolate/hotlanta" "HL"))
-;;     (add-to-list 'sml/replacer-regexp-list '("^~/Documents/Percolate/devolate/hotlanta/api" "api"))
-;;     (add-to-list 'sml/replacer-regexp-list '("^~/Documents/Percolate/devolate/hotlanta/apps" "apps"))
-;;     (add-to-list 'sml/replacer-regexp-list '("^~/\\.emacs\\.d/" ":ED:"))
-
-;;     ;; Move which-func to front
-;;     (let ((which-func '(which-func-mode ("" which-func-format " "))))
-;;       (setq-default mode-line-format (remove which-func mode-line-format))
-;;       (setq-default mode-line-misc-info (remove which-func mode-line-misc-info))
-;;       (setq cell (last mode-line-format 8))
-;;       (setcdr cell
-;;     	      (cons which-func
-;;     		    (cdr cell))))))
-
 (provide 'init)
 ;;; init.el ends here
