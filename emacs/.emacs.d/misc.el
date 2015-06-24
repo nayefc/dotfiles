@@ -78,7 +78,13 @@
 (defun copy-function-name ()
   "Put name of function at point to \"kill-ring\"."
   (interactive)
-    (kill-new (which-function)))
+  (kill-new (which-function)))
+
+(defun goto-python-class (classname)
+  "Search for a python class CLASSNAME in the current file."
+  (interactive "sClass name: ")
+  (search-forward (concat "class " classname)))
+(bind-key "C-x a s" 'goto-python-class)
 
 ;; Custom mode-line-format
 (setq-default mode-line-format
