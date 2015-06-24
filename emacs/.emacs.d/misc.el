@@ -83,7 +83,8 @@
 (defun goto-python-class (classname)
   "Search for a python class CLASSNAME in the current file."
   (interactive "sClass name: ")
-  (search-forward (concat "class " classname)))
+  (unless (search-forward (concat "class " classname) nil t nil)
+    (search-backward (concat "class " classname))))
 (bind-key "C-x a s" 'goto-python-class)
 
 ;; Custom mode-line-format
