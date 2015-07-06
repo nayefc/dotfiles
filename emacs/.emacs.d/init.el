@@ -175,7 +175,6 @@
   :mode ("\\.py\\'" . python-mode)
   :init
   (progn
-    ;(add-to-list 'company-backends 'company-jedi)
     (add-to-list 'company-backends '(company-jedi company-files))))
 
 (use-package autopair
@@ -184,14 +183,6 @@
   (progn
     (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
     (add-hook 'python-mode-hook #'(lambda () (autopair-mode)))))
-
-(use-package git-commit-mode
-  :ensure t
-  :mode ("\\COMMIT_EDITMSG\\'" . git-commit-mode))
-
-(use-package git-rebase-mode
-  :ensure t
-  :defer t)
 
 (use-package magit
   :ensure t
