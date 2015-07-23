@@ -209,6 +209,15 @@ function remote_rsync() {
 }
 
 
+function run_loop() {
+    # $1 number of times to run
+    # $2 command to run
+    for i in $(seq 1 $1); do
+	output=`$2`
+	echo $i: $output
+    done
+}
+
 # Terminal Colours
 export CLICOLOR=1
 BLACK="\[\033[0;30m\]"
