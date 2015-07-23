@@ -218,6 +218,15 @@ function run_loop() {
     done
 }
 
+function copyapikey() {
+    cd ~/Documents/Percolate/devolate
+    vagrant ssh -c 'mysql -N user -e "select api_key from auth_user WHERE email LIKE \"staff%\";" > api_key' 2> /dev/null
+    vagrant scp devolate:/home/vagrant/api_key /tmp/api_key &> /dev/null
+    cd - &> /dev/null
+    cat /tmp/api_key | tr -d "\n\r\t" | pbcopy
+}
+
+
 # Terminal Colours
 export CLICOLOR=1
 BLACK="\[\033[0;30m\]"
