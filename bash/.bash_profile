@@ -238,6 +238,14 @@ function pcurl() {
     curl -H "Authorization: $api_key" -H "Content-Type: application/json" $@
 }
 
+
+function disable_celery() {
+    # $1 filename
+    sed -i '' 's/@task/#@task/g' $1
+    sed -i '' 's/.delay//g' $1
+}
+
+
 # Terminal Colours
 export CLICOLOR=1
 BLACK="\[\033[0;30m\]"
