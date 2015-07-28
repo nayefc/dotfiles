@@ -17,8 +17,9 @@
         g = grep --break --heading --line-number
         st = status -sb
         diffw = diff --color-words
-[url "git@git.corp.appnexus.com:"]
-        insteadOf = anx:
+	inmaster = !sh -c 'git branch --merged master | grep `git symbolic-ref --short HEAD`' -
+	binmaster = !sh -c 'git branch --merged master | grep $1' -
+	inbranch = !sh -c 'git branch --merged $1 | grep $2' -
 [push]
         default = simple
 [core]
