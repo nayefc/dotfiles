@@ -235,7 +235,7 @@ function copyapikey() {
 
 function pcurl() {
     api_key=$(head -n 1 /tmp/api_key)
-    curl -H "Authorization: $api_key" -H "Content-Type: application/json" $@
+    curl -s -H "Authorization: $api_key" -H "Content-Type: application/json" "$@"
 }
 
 
