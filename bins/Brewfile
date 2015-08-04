@@ -1,16 +1,17 @@
 # https://github.com/Homebrew/homebrew-brewdler
 
 tap 'caskroom/cask'
-brew install brew-cask
-brew cask
+brew 'brew-cask'
+brew 'cask'
 brew 'hr'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
 brew 'youtube-dl'
 brew 'tmux'
-brew 'emacs' args: ['cocoa']
+brew 'emacs', args: ['cocoa']
 brew 'fpp'
 tap 'jawshooah/pyenv'
-brew pyenv-default-packages
+brew 'pyenv-default-packages'
+brew 'mycli'
 
 cask 'macdown'
