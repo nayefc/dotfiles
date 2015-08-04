@@ -218,33 +218,7 @@ function run_loop() {
     done
 }
 
-
-function syncapikey() {
-    cd ~/Documents/Percolate/devolate
-    vagrant ssh -c 'mysql -N user -e "select api_key from auth_user WHERE email LIKE \"staff%\";" > api_key' 2> /dev/null
-    vagrant scp devolate:/home/vagrant/api_key /tmp/api_key &> /dev/null
-    cd - &> /dev/null
-}
-
-
-function copyapikey() {
-    syncapikey
-    cat /tmp/api_key | tr -d "\n\r\t" | pbcopy
-}
-
-
-function pcurl() {
-    api_key=$(head -n 1 /tmp/api_key)
-    curl -s -H "Authorization: $api_key" -H "Content-Type: application/json" "$@"
-}
-
-
-function disable_celery() {
-    # $1 filename
-    sed -i '' 's/@task/#@task/g' $1
-    sed -i '' 's/.delay//g' $1
-}
-
+source ~/dotfiles/bash/.percolaterc
 
 # Terminal Colours
 export CLICOLOR=1
