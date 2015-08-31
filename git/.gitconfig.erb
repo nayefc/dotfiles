@@ -21,7 +21,7 @@
 	inmaster = !sh -c 'git branch --merged master | grep `git symbolic-ref --short HEAD`' -
 	binmaster = !sh -c 'git branch --merged master | grep $1' -
 	inbranch = !sh -c 'git branch --merged $1 | grep $2' -
-	watch = "!clear; watch --color -n 2 'git status --short; git --no-pager diff --shortstat;'"
+	watch = "!clear; watch --color -n 2 -t 'git status --short; git --no-pager diff --shortstat;'"
 [push]
         default = simple
 [core]
