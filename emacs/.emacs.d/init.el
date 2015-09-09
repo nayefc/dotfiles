@@ -206,10 +206,14 @@
 
     (bind-key "q" 'magit-quit-session magit-status-mode-map)))
 
-;; Add Ace Jump Mode
-(use-package ace-jump-mode
+(use-package avy
   :ensure t
-  :bind ("C-c SPC" . ace-jump-mode))
+  :bind (("C-:" . avy-goto-char)
+	 ("C-'" . avy-goto-word-1)
+	 ("M-g f" . avy-goto-line))
+  :init
+  (progn
+    (setq avy-keys (number-sequence ?a ?z))))
 
 (use-package ace-window
   :ensure t
