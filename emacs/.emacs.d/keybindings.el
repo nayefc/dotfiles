@@ -16,9 +16,6 @@
 (bind-key "C-x n" 'scroll-other-window)
 (bind-key "C-x p" 'scroll-other-window-down)
 
-;; Go to line
-(global-set-key "\M-1" `goto-line)
-
 ;; Kill current line
 (defun smart-kill-whole-line (&optional arg)
   "A wrapper around 'kill-whole-line' that respects indentation with ARG lines to kill."

@@ -210,9 +210,10 @@
   :ensure t
   :bind (("C-\"" . avy-goto-char)
 	 ("C-'" . avy-goto-word-1)
-	 ("M-g f" . avy-goto-line))
+	 ("M-1" . avy-goto-line))
   :init
   (progn
+    (setq avy-background t)
     (setq avy-keys (number-sequence ?a ?z))))
 
 (use-package ace-window
