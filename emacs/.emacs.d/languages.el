@@ -26,7 +26,7 @@
 (add-hook 'python-mode-hook
 	  (lambda ()
 	    (setq indent-tabs-mode nil)
-	    (setq python-indent 4)))
+	    (setq python-indent-offset 4)))
 
 ;; Insert ipdb in python shortcut
 (defun python-add-breakpoint ()
