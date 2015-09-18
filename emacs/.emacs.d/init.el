@@ -57,8 +57,6 @@
 (when (eq system-type 'darwin)
   (load-local "osx"))
 
-;;;; temp
-
 ;(advice-add 'create-file-buffer :around #'show-file-path-in-projectile-project)
 (defun show-file-path-in-projectile-project ()
   "Show the full path of the file relative to the projectile project."
