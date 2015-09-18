@@ -42,10 +42,10 @@
     (setq x-underline-at-descent-line t)
 
     ;; Highlight current line
-    (global-hl-line-mode +1)))
+    (global-hl-line-mode +1)
 
-;; (if (display-graphic-p)
-;;     (setq initial-buffer-choice "~/Documents/Percolate/devolate/hotlanta"))
+    (setq initial-frame-alist '((font . "Inconsolata-dz-13")))
+    (setq default-frame-alist '((font . "Inconsolata-dz-13")))))
 
 ;; Bring OS X Emacs in line with shell setup
 ;; This allows Emacs to use the same PATH as the the one used by the shell,
