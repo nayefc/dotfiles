@@ -99,5 +99,20 @@
 		;; " " mode-line-modes mode-line-end-spaces))
 		))
 
+(defun hs-enable-and-toggle ()
+  "Enable hs and toggle block."
+  (interactive)
+  (hs-minor-mode 1)
+  (hs-toggle-hiding))
+(bind-key "C-x ," 'hs-enable-and-toggle)
+;; (defun hs-enable-and-hideshow-all (&optional arg)
+;;   "Hide all blocks. If prefix argument is given, show all blocks."
+;;   (interactive "P")
+;;   (hs-minor-mode 1)
+;;   (if arg
+;;       (hs-show-all)
+;;     (hs-hide-all)))
+;; (global-set-key (kbd "C-c C-j") 'hs-enable-and-hideshow-all)
+
 (provide 'misc)
 ;;; misc.el ends here
