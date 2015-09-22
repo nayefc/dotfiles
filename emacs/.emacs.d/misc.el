@@ -114,5 +114,45 @@
 ;;     (hs-hide-all)))
 ;; (global-set-key (kbd "C-c C-j") 'hs-enable-and-hideshow-all)
 
+;; Scale font size and adjust fci column ruler.
+(define-globalized-minor-mode global-text-scale-mode text-scale-mode
+  (lambda ()
+    (text-scale-mode 1)))
+
+(defun global-text-scale-adjust (inc)
+  (interactive)
+  (text-scale-set 1)
+  (kill-local-variable 'text-scale-mode-amount)
+  (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
+  (global-text-scale-mode 1))
+
+(defun reset-font-size ()
+  "Reset font size on all buffers to default."
+  (interactive)
+  (fci-mode 0)
+  (global-text-scale-adjust (- text-scale-mode-amount))
+  (global-text-scale-mode -1)
+  (setq-default fci-rule-column 80)
+  (fci-mode 1))
+(bind-key "C-c 0" 'reset-font-size)
+
+(defun increase-font-size ()
+  "Increase font size by 1."
+  (interactive)
+  (fci-mode 0)
+  (global-text-scale-adjust 1)
+  (setq-default fci-rule-column 100)
+  (fci-mode 1))
+(bind-key "C-c +" 'increase-font-size)
+
+(defun decrease-font-size ()
+  "Decrease font size by 1."
+  (interactive)
+  (fci-mode 0)
+  (global-text-scale-adjust -1)
+  (setq-default fci-rule-column 70)
+  (fci-mode 1))
+(bind-key "C-c -" 'decrease-font-size)
+
 (provide 'misc)
 ;;; misc.el ends here
