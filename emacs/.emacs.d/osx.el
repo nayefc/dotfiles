@@ -44,8 +44,16 @@
     ;; Highlight current line
     (global-hl-line-mode +1)
 
-    (setq initial-frame-alist '((font . "Inconsolata-dz-13")))
-    (setq default-frame-alist '((font . "Inconsolata-dz-13")))))
+    (set-frame-font "Inconsolata-g-13")))
+
+;; (defun set-smaller-font (fontsize)
+;;   "Set font to FONTSIZE. Used when setting smaller font for laptop screen."
+;;   (interactive "sEnter font size: ")
+;;   (set-frame-font "Inconsolata-g-11")
+;;   ;;(set-frame-font (concat "Inconsolata-g-" fontsize))
+;;   ;;(set-face-attribute 'default (selected-frame) :height (* 10 fontsize))
+;;   ;;(set-face-attribute 'default (selected-frame) :height 11)
+;;   (message "Font set to Inconsolata-g %d" fontsize))
 
 ;; Bring OS X Emacs in line with shell setup
 ;; This allows Emacs to use the same PATH as the the one used by the shell,
