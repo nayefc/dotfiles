@@ -141,8 +141,9 @@
   (interactive)
   (fci-mode 0)
   (global-text-scale-adjust 1)
-  (setq-default fci-rule-column 100)
-  (fci-mode 1))
+  ;;(setq-default fci-rule-column 100)
+  ;;(fci-mode 1)
+  )
 (bind-key "C-c +" 'increase-font-size)
 
 (defun decrease-font-size ()
@@ -150,8 +151,9 @@
   (interactive)
   (fci-mode 0)
   (global-text-scale-adjust -1)
-  (setq-default fci-rule-column 70)
-  (fci-mode 1))
+  ;;(setq-default fci-rule-column 70)
+  ;;(fci-mode 1))
+  )
 (bind-key "C-c -" 'decrease-font-size)
 
 (provide 'misc)
