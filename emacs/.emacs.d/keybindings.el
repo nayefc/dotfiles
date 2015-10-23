@@ -60,6 +60,17 @@
   (setq deactivate-mark nil))
 (global-set-key (kbd "C-c l") 'mark-line)
 
+;; Wrapper around simple.el open-line that handles indentation properly
+(defun open-line-wrapper (&optional n)
+  "Wrapper around simple.el \"open-line\" that handles indentation properly for N lines."
+  (interactive "*p")
+  (save-excursion
+    (move-end-of-line nil)
+    (if n
+	(open-line n)
+      (open-line 1))))
+(bind-key "C-o" 'open-line-wrapper)
+
 ;; Convert a python unicode dict to valid JSON
 (defun convert-python-dict-to-json ()
   "Convert a python unicode dict to valid JSON."
