@@ -79,6 +79,7 @@
   "Put name of function at point to kill-ring."
   (interactive)
   (kill-new (which-function)))
+(bind-key "C-x c" 'copy-function-name)
 
 ;; Custom mode-line-format
 (setq-default mode-line-format
