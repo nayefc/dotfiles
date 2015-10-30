@@ -76,7 +76,7 @@
 (put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
 
 (defun copy-function-name ()
-  "Put name of function at point to \"kill-ring\"."
+  "Put name of function at point to kill-ring."
   (interactive)
   (kill-new (which-function)))
 
@@ -155,6 +155,24 @@
   ;;(fci-mode 1))
   )
 (bind-key "C-c -" 'decrease-font-size)
+
+(defun get-github-url ()
+  "Return the Github url for the current line."
+  (defvar github-url)
+  (setq github-url
+   (s-concat
+    "https://github.com/percolate/hotlanta/blob/master/"
+    (s-chop-prefix
+     "/Users/nayefcopty/Documents/Percolate/devolate/hotlanta/" buffer-file-name)
+    "#L"
+    (number-to-string (line-number-at-pos)))))
+
+(defun copy-hotlanta-github-url ()
+  "Put hotlanta URL for the line at point in kill ring."
+  (interactive)
+  (kill-new (get-github-url))
+  (message "Copied: %s" (get-github-url)))
+(bind-key "C-x a u" 'copy-hotlanta-github-url)
 
 (provide 'misc)
 ;;; misc.el ends here
