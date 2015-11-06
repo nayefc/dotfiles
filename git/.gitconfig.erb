@@ -2,22 +2,22 @@
         name = Nayef Copty
         email = <%= git_email %>
 [alias]
-        hist = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
-	histfp = log --first-parent --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
-        histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
-        ph = push
-        pl = pull
-        plr = pull --rebase
-        gr = remote show origin
-        sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
-        su = !git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`
-        bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
-        tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
-        co = checkout
-        subinit = submodule update --init --recursive -f
-        g = grep --break --heading --line-number
-        st = status -sb
-        diffw = diff --color-words
+	hist = log --first-parent --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+	histfu = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+	histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
+	ph = push
+	pl = pull
+	plr = pull --rebase
+	gr = remote show origin
+   	sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
+	su = !git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`
+	bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
+	tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
+	co = checkout
+	subinit = submodule update --init --recursive -f
+	g = grep --break --heading --line-number
+	st = status -sb
+	diffw = diff --color-words
 	inmaster = !sh -c 'git branch --merged master | grep `git symbolic-ref --short HEAD`' -
 	binmaster = !sh -c 'git branch --merged master | grep $1' -
 	inbranch = !sh -c 'git branch --merged $1 | grep $2' -
