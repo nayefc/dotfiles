@@ -118,7 +118,7 @@ if __FILE__ == $0
   end
 
   if $platform.include? $osx
-    unless system("brew install stow")
+    unless `brew install stow`
       puts "There was an error installing stow."
       return
     end
