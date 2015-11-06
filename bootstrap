@@ -61,7 +61,7 @@ module Stow
     end
 
     if package == :git
-      email = ($platform.include? $osx) ? 'nrcopty@gmail.com' : 'ncopty@appnexus.com'
+      email = 'nrcopty@gmail.com'
       template('git/.gitconfig.erb', {:git_email => email}, 'git/.gitconfig')
     end
 
