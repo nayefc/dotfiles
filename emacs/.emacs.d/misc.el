@@ -106,14 +106,6 @@
   (hs-minor-mode 1)
   (hs-toggle-hiding))
 (bind-key "C-x ," 'hs-enable-and-toggle)
-;; (defun hs-enable-and-hideshow-all (&optional arg)
-;;   "Hide all blocks. If prefix argument is given, show all blocks."
-;;   (interactive "P")
-;;   (hs-minor-mode 1)
-;;   (if arg
-;;       (hs-show-all)
-;;     (hs-hide-all)))
-;; (global-set-key (kbd "C-c C-j") 'hs-enable-and-hideshow-all)
 
 ;; Scale font size and adjust fci column ruler.
 (define-globalized-minor-mode global-text-scale-mode text-scale-mode
@@ -121,6 +113,7 @@
     (text-scale-mode 1)))
 
 (defun global-text-scale-adjust (inc)
+  "Adjust text cale by INC."
   (interactive)
   (text-scale-set 1)
   (kill-local-variable 'text-scale-mode-amount)
@@ -141,20 +134,14 @@
   "Increase font size by 1."
   (interactive)
   (fci-mode 0)
-  (global-text-scale-adjust 1)
-  ;;(setq-default fci-rule-column 100)
-  ;;(fci-mode 1)
-  )
+  (global-text-scale-adjust 1))
 (bind-key "C-c +" 'increase-font-size)
 
 (defun decrease-font-size ()
   "Decrease font size by 1."
   (interactive)
   (fci-mode 0)
-  (global-text-scale-adjust -1)
-  ;;(setq-default fci-rule-column 70)
-  ;;(fci-mode 1))
-  )
+  (global-text-scale-adjust -1))
 (bind-key "C-c -" 'decrease-font-size)
 
 (defun get-github-url ()
