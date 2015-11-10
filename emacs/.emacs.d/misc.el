@@ -138,14 +138,22 @@
   (global-text-scale-adjust -1))
 (bind-key "C-c -" 'decrease-font-size)
 
+(defun get-relative-file-name ()
+  "Retrieves the file name relative to the parent git project."
+  (interactive)
+  (let ((project-root
+	 (f-full
+	  (locate-dominating-file default-directory ".git"))))
+    (if project-root
+	(s-chop-prefix project-root buffer-file-name))))
+
 (defun get-github-url ()
   "Return the Github url for the current line."
   (defvar github-url)
   (setq github-url
    (s-concat
     "https://github.com/percolate/hotlanta/blob/master/"
-    (s-chop-prefix
-     "/Users/nayefcopty/Documents/Percolate/devolate/hotlanta/" buffer-file-name)
+    (get-relative-file-name)
     "#L"
     (number-to-string (line-number-at-pos)))))
 

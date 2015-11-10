@@ -52,6 +52,26 @@
     (search-backward (concat "def " funcname "("))))
 (define-key python-mode-map (kbd "C-x a f") 'goto-python-function)
 
+(defun copy-function-name ()
+  "Put name of function at point to \"kill-ring\"."
+  (interactive)
+  (kill-new (which-function))
+  (message "Copied %s" (which-function)))
+(bind-key "C-x a i f" 'copy-function-name)
+
+(defun copy-function-file-and-name ()
+  "Put name file and name of function at point to \"kill-ring\"."
+  (interactive)
+  (defvar function-file-and-name)
+  (setq function-file-and-name
+    (s-concat
+     (s-replace-all '(("/" . ".") (".py" . "")) (get-relative-file-name))
+     ":"
+     (which-function)))
+  (kill-new function-file-and-name)
+  (message "Copied: %s" function-file-and-name))
+(bind-key "C-x c" 'copy-function-file-and-name)
+
 ;; Indent JavaScript to 2
 (add-hook 'js-mode-hook
 	  (lambda ()
