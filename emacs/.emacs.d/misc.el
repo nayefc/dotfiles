@@ -75,12 +75,6 @@
   "Mode line format for Projectile.")
 (put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
 
-(defun copy-function-name ()
-  "Put name of function at point to kill-ring."
-  (interactive)
-  (kill-new (which-function)))
-(bind-key "C-x c" 'copy-function-name)
-
 ;; Custom mode-line-format
 (setq-default mode-line-format
 	      '("%e" mode-line-front-space
