@@ -218,6 +218,46 @@ function run_loop() {
     done
 }
 
+
+function merge_master() {
+    # $1 the name of the branch to merge master into.
+    current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+    if [ $# -eq 0 ]; then
+	to_merge=current_branch
+    else
+	to_merge=$1
+    fi
+    git co master &>/dev/null
+    git plr &>/dev/null
+    git co $to_merge &>/dev/null
+
+    git merge master --no-edit 2>/dev/null
+    if [ $? -ne 0 ]; then
+	git reset --merge 2>/dev/null
+	echo "Cannot merge due to conflict."
+	return
+    else
+	echo "Master merged into " $to_merge"."
+    fi
+
+    hr =
+
+    echo -n "Do you want to push the branch (y/n)? "
+    read answer
+    if echo "$answer" | grep -iq "^y" ; then
+	git ph
+    fi
+
+    hr =
+
+    echo -n "Do you want to return to the orignal branch (y/n)? "
+    read answer
+    if echo "$answer" | grep -iq "^y" ; then
+	git co $current_branch &>/dev/null
+    fi
+}
+
+
 source ~/dotfiles/bash/.percolaterc
 
 # Terminal Colours
