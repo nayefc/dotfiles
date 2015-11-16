@@ -27,6 +27,8 @@
 (depends-on "fill-column-indicator")
 (depends-on "flycheck")
 (depends-on "git-commit")
+(depends-on "git-gutter+")
+(depends-on "git-gutter-fringe+")
 (depends-on "helm")
 (depends-on "helm-core")
 (depends-on "helm-git-grep")
