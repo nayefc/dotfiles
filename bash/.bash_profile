@@ -220,13 +220,17 @@ function run_loop() {
 
 
 function merge_master() {
-    # $1 the name of the branch to merge master into.
     current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+    # $1 the name of the branch to merge master into.
     if [ $# -eq 0 ]; then
-	to_merge=current_branch
+	to_merge=$current_branch
+	is_head=1
     else
 	to_merge=$1
+	is_head=0
     fi
+
     git co master &>/dev/null
     git plr &>/dev/null
     git co $to_merge &>/dev/null
@@ -248,12 +252,14 @@ function merge_master() {
 	git ph
     fi
 
-    hr =
-
-    echo -n "Do you want to return to the orignal branch (y/n)? "
-    read answer
-    if echo "$answer" | grep -iq "^y" ; then
-	git co $current_branch &>/dev/null
+    # If merging another branch (not head), ask to revert to previous branch.
+    if [ $is_head -eq 0 ]; then
+	hr =
+	echo -n "Do you want to return to the orignal branch (y/n)? "
+	read answer
+	if echo "$answer" | grep -iq "^y" ; then
+	    git co $current_branch &>/dev/null
+	fi
     fi
 }
 
