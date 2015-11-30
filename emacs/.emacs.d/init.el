@@ -24,7 +24,7 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-(require 'cask "/Users/nayefcopty/dotfiles/emacs/.emacs.d/.cask/24.5.1/elpa/cask-20151009.202/cask.el")
+(require 'cask "/Users/nayefcopty/dotfiles/emacs/.emacs.d/.cask/24.5.1/elpa/cask-20151123.528/cask.el")
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
