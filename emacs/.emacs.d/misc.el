@@ -101,43 +101,6 @@
   (hs-toggle-hiding))
 (bind-key "C-x ," 'hs-enable-and-toggle)
 
-;; Scale font size and adjust fci column ruler.
-(define-globalized-minor-mode global-text-scale-mode text-scale-mode
-  (lambda ()
-    (text-scale-mode 1)))
-
-(defun global-text-scale-adjust (inc)
-  "Adjust text cale by INC."
-  (interactive)
-  (text-scale-set 1)
-  (kill-local-variable 'text-scale-mode-amount)
-  (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
-  (global-text-scale-mode 1))
-
-(defun reset-font-size ()
-  "Reset font size on all buffers to default."
-  (interactive)
-  (fci-mode 0)
-  (global-text-scale-adjust (- text-scale-mode-amount))
-  (global-text-scale-mode -1)
-  (setq-default fci-rule-column 80)
-  (fci-mode 1))
-(bind-key "C-c 0" 'reset-font-size)
-
-(defun increase-font-size ()
-  "Increase font size by 1."
-  (interactive)
-  (fci-mode 0)
-  (global-text-scale-adjust 1))
-(bind-key "C-c +" 'increase-font-size)
-
-(defun decrease-font-size ()
-  "Decrease font size by 1."
-  (interactive)
-  (fci-mode 0)
-  (global-text-scale-adjust -1))
-(bind-key "C-c -" 'decrease-font-size)
-
 (defun get-relative-file-name ()
   "Retrieves the file name relative to the parent git project."
   (interactive)

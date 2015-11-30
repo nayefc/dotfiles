@@ -44,16 +44,58 @@
     ;; Highlight current line
     (global-hl-line-mode +1)
 
-    (set-frame-font "Inconsolata-g-13")))
+    ;; Set the font size according to number of displays.
+    (if (> (display-screens) 1)
+	(set-frame-font "Inconsolata-g-13")
+      (set-frame-font "Inconsolata-g-11"))
 
-;; (defun set-smaller-font (fontsize)
-;;   "Set font to FONTSIZE. Used when setting smaller font for laptop screen."
-;;   (interactive "sEnter font size: ")
-;;   (set-frame-font "Inconsolata-g-11")
-;;   ;;(set-frame-font (concat "Inconsolata-g-" fontsize))
-;;   ;;(set-face-attribute 'default (selected-frame) :height (* 10 fontsize))
-;;   ;;(set-face-attribute 'default (selected-frame) :height 11)
-;;   (message "Font set to Inconsolata-g %d" fontsize))
+    ;; Scale font size and adjust fci column ruler.
+    (define-globalized-minor-mode global-text-scale-mode text-scale-mode
+      (lambda ()
+	(text-scale-mode 1)))
+
+    (defun global-text-scale-adjust (inc)
+      "Adjust text cale by INC."
+      (interactive)
+      (text-scale-set 1)
+      (kill-local-variable 'text-scale-mode-amount)
+      (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
+      (global-text-scale-mode 1))
+
+    (defun reset-font-size ()
+      "Reset font size on all buffers to default."
+      (interactive)
+      (fci-mode 0)
+      (global-text-scale-adjust (- text-scale-mode-amount))
+      (global-text-scale-mode -1)
+      (setq-default fci-rule-column 80)
+      (fci-mode 1))
+    (bind-key "C-c 0" 'reset-font-size)
+
+    (defun increase-font-size ()
+      "Increase font size by 1."
+      (interactive)
+      (fci-mode 0)
+      (global-text-scale-adjust 1))
+    (bind-key "C-c +" 'increase-font-size)
+
+    (defun decrease-font-size ()
+      "Decrease font size by 1."
+      (interactive)
+      (fci-mode 0)
+      (global-text-scale-adjust -1))
+    (bind-key "C-c -" 'decrease-font-size)))
+
+
+(defun finder ()
+  "Opens file directory in Finder."
+  (interactive)
+  (let ((file (buffer-file-name)))
+    (if file
+	(shell-command
+	 (format "%s %s" (executable-find "open") (file-name-directory file)))
+      (error "Buffer is not attached to any file"))))
+
 
 ;; Bring OS X Emacs in line with shell setup
 ;; This allows Emacs to use the same PATH as the the one used by the shell,
@@ -62,14 +104,6 @@
   :ensure t
   :init (exec-path-from-shell-initialize))
 
-(defun finder ()
-  "Opens file directory in Finder."
-  (interactive)
-  (let ((file (buffer-file-name)))
-    (if file
-        (shell-command
-         (format "%s %s" (executable-find "open") (file-name-directory file)))
-      (error "Buffer is not attached to any file."))))
 
 (provide 'osx)
 ;;; osx.el ends here
