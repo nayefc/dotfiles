@@ -45,7 +45,7 @@
     (global-hl-line-mode +1)
 
     ;; Set the font size according to number of displays.
-    (if (> (display-screens) 1)
+    (if (> (display-pixel-width) 1280)
 	(set-frame-font "Inconsolata-g-13")
       (set-frame-font "Inconsolata-g-11"))
 
