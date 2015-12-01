@@ -13,8 +13,8 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 
 ;; Scroll other window
-(bind-key "C-x n" 'scroll-other-window)
-(bind-key "C-x p" 'scroll-other-window-down)
+(bind-key "C-c n" 'scroll-other-window)
+(bind-key "C-c b" 'scroll-other-window-down)
 
 ;; Kill current line
 (defun smart-kill-whole-line (&optional arg)
