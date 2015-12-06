@@ -30,11 +30,15 @@
 (pallet-mode t)
 
 ;; Bootstrap use-package
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
 (use-package f)
 
 (defun load-local (FILE)
