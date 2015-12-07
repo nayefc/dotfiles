@@ -81,7 +81,8 @@
 (use-package fci-mode
   :ensure fill-column-indicator
   :defer t
-  :init
+  :defines fci-column-indicator fci-handle-truncate-lines fci-rule-column
+  :config
   (progn
     (add-hook 'c-mode-hook 'fci-mode)
     (add-hook 'python-mode-hook 'fci-mode)
@@ -187,6 +188,7 @@
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
+  :defines magit-last-seen-setup-instructions
   :init
   (progn
     ;; (setq magit-auto-revert-mode nil)
@@ -238,6 +240,7 @@
 (use-package helm
   :ensure t
   :commands helm-mode
+  :defines helm-ff-search-library-in-sexp helm-ff-file-name-history-use-recentf helm-buffers-fuzzy-matching
   :bind (("M-x" . helm-M-x)
 	 ("C-x b" . helm-buffers-list)
 	 ("C-x f" . helm-projectile-find-file))
