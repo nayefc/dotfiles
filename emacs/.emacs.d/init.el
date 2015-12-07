@@ -82,7 +82,7 @@
   :ensure fill-column-indicator
   :defer t
   :defines fci-column-indicator fci-handle-truncate-lines fci-rule-column
-  :config
+  :init
   (progn
     (add-hook 'c-mode-hook 'fci-mode)
     (add-hook 'python-mode-hook 'fci-mode)
