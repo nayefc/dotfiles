@@ -71,26 +71,6 @@
       (open-line 1))))
 (bind-key "C-o" 'open-line-wrapper)
 
-;; Convert a python unicode dict to valid JSON
-(defun convert-python-dict-to-json ()
-  "Convert a python unicode dict to valid JSON."
-  (interactive)
-  (goto-char 1)
-  (while (search-forward-regexp "u'" nil t)
-    (replace-match "\""))
-  (goto-char 1)
-  (while (search-forward-regexp "'" nil t)
-    (replace-match "\""))
-  (goto-char 1)
-  (while (search-forward-regexp "None" nil t)
-    (replace-match "null" t))
-  (goto-char 1)
-  (while (search-forward-regexp "True" nil t)
-    (replace-match "true" t))
-  (goto-char 1)
-  (while (search-forward-regexp "False" nil t)
-    (replace-match "false" t)))
-
 ;; Minify JSON
 (defun minify-json ()
   "Minify JSON removing newlines and whitespace."

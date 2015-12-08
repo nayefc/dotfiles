@@ -48,6 +48,7 @@
 (load-local "misc")
 (load-local "keybindings")
 (load-local "languages")
+(load-local "pythonsetup")
 (when (eq system-type 'darwin)
   (load-local "osx"))
 
@@ -117,8 +118,6 @@
     (setq sanityinc/fci-mode-suppressed nil)
           (turn-on-fci-mode)))
 
-(use-package pyenv-mode)
-
 (use-package flycheck
   :ensure t
   :init
@@ -132,38 +131,6 @@
     (set-face-attribute 'flycheck-error nil :foreground "yellow" :background "red")
     (set-face-attribute 'flycheck-warning nil :foreground "red" :background "yellow")
     (set-face-attribute 'flycheck-info nil :foreground "red" :background "yellow")))
-
-(defun jedi:goto-definition-same-frame ()
-  "Jedi goto-definition wrapper to go to definition directly."
-  (interactive)
-  (jedi:goto-definition nil `definition))
-
-(defun jedi:goto-definition-new-frame ()
-  "Jedi goto-definition wrapper in a new, nexts frame."
-  (interactive)
-  (jedi:goto-definition 1 `definition))
-
-(use-package jedi
-  :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :commands jedi:setup
-  :bind (("C-c k" . jedi:goto-definition-same-frame)
-	 ("C-c ;" . jedi:goto-definition-new-frame)
-	 ("C-c '" . jedi:goto-definition)
-	 ("C-c j" . jedi:goto-definition-pop-marker)
-	 ("C-c ?" . jedi:show-doc)
-	 ("C-c \\" . helm-jedi-related-names))
-  :init
-  (progn
-    (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
-    (add-hook 'python-mode-hook 'jedi:setup)
-    (setq jedi:complete-on-dot t)
-    (setq jedi:tooltip-method '(pos-tip)))
-  :config
-  (progn
-    (define-key jedi-mode-map (kbd "C-c .") nil)
-    (define-key jedi-mode-map (kbd "C-c ,") nil)
-    (define-key jedi-mode-map (kbd "C-c /") nil)))
 
 (use-package company
   :ensure t
