@@ -38,6 +38,11 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; Load other init files
 (use-package f)
 (defun load-local (FILE)
@@ -74,9 +79,6 @@
 (bind-key "M-[" 'show-file-path-in-projectile-project)
 
 ;;;; External packages
-
-(use-package exec-path-from-shell
-  :ensure t)
 
 ;; Draw ruler on column
 (use-package fci-mode
