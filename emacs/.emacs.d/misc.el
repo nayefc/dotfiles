@@ -20,9 +20,6 @@
 ;; Disable source control hooks (i.e: vc-git)
 (setq vc-handled-backends nil)
 
-;; Activate pyenv-mode
-(pyenv-mode)
-
 ;; Remove top menu bar
 (menu-bar-mode -1)
 

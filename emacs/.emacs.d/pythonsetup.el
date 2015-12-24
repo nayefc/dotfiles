@@ -4,40 +4,14 @@
 
 ;;; Code:
 
-(use-package pyenv-mode)
+;;;; Packages 
 
-(defun jedi:goto-definition-same-frame ()
-  "Jedi goto-definition wrapper to go to definition directly."
-  (interactive)
-  (jedi:goto-definition nil `definition))
-
-(defun jedi:goto-definition-new-frame ()
-  "Jedi goto-definition wrapper in a new, nexts frame."
-  (interactive)
-  (jedi:goto-definition 1 `definition))
-
-(use-package jedi
+(use-package pyenv-mode
   :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :commands jedi:setup
-  :bind (("C-c k" . jedi:goto-definition-same-frame)
-	 ("C-c ;" . jedi:goto-definition-new-frame)
-	 ("C-c '" . jedi:goto-definition)
-	 ("C-c j" . jedi:goto-definition-pop-marker)
-	 ("C-c ?" . jedi:show-doc)
-	 ("C-c \\" . helm-jedi-related-names))
-  :init
-  (progn
-    (setq jedi:server-command '("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
-    (add-hook 'python-mode-hook 'jedi:setup)
-    (setq jedi:complete-on-dot t)
-    (setq jedi:tooltip-method '(pos-tip)))
   :config
-  (progn
-    (bind-keys :map jedi-mode-map
-	       ("C-c ." . nil)
-	       ("C-c ," . nil)
-	       ("C-c /" . nil))))
+  (pyenv-mode))
+
+;;;; Functions
 
 (defun convert-python-dict-to-json ()
   "Convert a python unicode dict to valid JSON."
