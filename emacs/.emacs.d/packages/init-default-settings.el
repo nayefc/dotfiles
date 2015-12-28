@@ -1,8 +1,3 @@
-;;; misc.el --- Misc configuration
-;;; Commentary:
-
-;;; Code:
-
 (setq redisplay-dont-pause t
       scroll-margin 1
       scroll-step 1
@@ -62,15 +57,6 @@
 ;; Change default switch-to-buffer binding for consistency with helm-buffers-list
 (bind-key "C-x C-b" 'switch-to-buffer)
 
-;; Print out projectile project name
-;; See http://www.lunaryorn.com/2014/07/26/make-your-emacs-mode-line-more-useful.html
-(defvar my-projectile-mode-line
-  '(:propertize
-    (:eval (when (ignore-errors (projectile-project-root))
-	     (concat " " (projectile-project-name))))
-    face font-lock-constant-face)
-  "Mode line format for Projectile.")
-(put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
 
 ;; Custom mode-line-format
 (setq-default mode-line-format
@@ -91,38 +77,4 @@
 		;; " " mode-line-modes mode-line-end-spaces))
 		))
 
-(defun hs-enable-and-toggle ()
-  "Enable hs and toggle block."
-  (interactive)
-  (hs-minor-mode 1)
-  (hs-toggle-hiding))
-(bind-key "C-x ," 'hs-enable-and-toggle)
-
-(defun get-relative-file-name ()
-  "Retrieves the file name relative to the parent git project."
-  (interactive)
-  (let ((project-root
-	 (f-full
-	  (locate-dominating-file default-directory ".git"))))
-    (if project-root
-	(s-chop-prefix project-root buffer-file-name))))
-
-(defun get-github-url ()
-  "Return the Github url for the current line."
-  (defvar github-url)
-  (setq github-url
-   (s-concat
-    "https://github.com/percolate/hotlanta/blob/master/"
-    (get-relative-file-name)
-    "#L"
-    (number-to-string (line-number-at-pos)))))
-
-(defun copy-hotlanta-github-url ()
-  "Put hotlanta URL for the line at point in kill ring."
-  (interactive)
-  (kill-new (get-github-url))
-  (message "Copied: %s" (get-github-url)))
-(bind-key "C-x a u" 'copy-hotlanta-github-url)
-
-(provide 'misc)
-;;; misc.el ends here
+(provide 'init-default-settings)

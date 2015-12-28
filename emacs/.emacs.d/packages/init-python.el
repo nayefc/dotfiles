@@ -1,17 +1,7 @@
-;;; pythonsetup.el --- Python configuration
-
-;;; Commentary:
-
-;;; Code:
-
-;;;; Packages 
-
 (use-package pyenv-mode
   :ensure t
   :config
   (pyenv-mode))
-
-;;;; Functions
 
 (defun convert-python-dict-to-json ()
   "Convert a python unicode dict to valid JSON."
@@ -44,14 +34,14 @@
   (back-to-indentation)
   (insert "import ipdb; ipdb.set_trace()")
   (newline-and-indent))
-(bind-key "C-c t" 'python-add-breakpoint python-mode-map)
+(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
 
 (defun goto-python-class (classname)
   "Search for a python class CLASSNAME in the current file."
   (interactive "sClass name: ")
   (unless (search-forward (concat "class " classname) nil t nil)
     (search-backward (concat "class " classname "("))))
-(bind-key "C-x a c" 'goto-python-class python-mode-map)
+(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
 
 (defun goto-python-function (funcname)
   "Search for a python function FUNCNAME in the current file."
@@ -80,5 +70,4 @@
   (message "Copied: %s" function-file-and-name))
 (bind-key "C-x c" 'copy-function-file-and-name python-mode-map)
 
-(provide 'pythonsetup)
-;;; pythonsetup.el ends here
+(provide 'init-python)

@@ -1,8 +1,3 @@
-;;; keybindings.el --- Misc configuration
-;;; Commentary:
-
-;;; Code:
-
 ;; buffer-move
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
@@ -15,6 +10,23 @@
 ;; Scroll other window
 (bind-key "C-c n" 'scroll-other-window)
 (bind-key "C-c b" 'scroll-other-window-down)
+
+;; Automatically indent on new line
+(defun newline-indents ()
+  "Bind Return to `newline-and-indent' in the local keymap."
+  (local-set-key "\C-m" 'newline-and-indent))
+
+;; Tell Emacs to use the function above in certain editing modes.
+(add-hook 'lisp-mode-hook             (function newline-indents))
+(add-hook 'emacs-lisp-mode-hook       (function newline-indents))
+(add-hook 'lisp-interaction-mode-hook (function newline-indents))
+(add-hook 'scheme-mode-hook           (function newline-indents))
+(add-hook 'c-mode-hook                (function newline-indents))
+(add-hook 'c++-mode-hook              (function newline-indents))
+(add-hook 'python-mode-hook           (function newline-indents))
+
+;; Set default indent to 4
+(setq-default c-basic-offset 2)
 
 ;; Kill current line
 (defun smart-kill-whole-line (&optional arg)
@@ -82,5 +94,4 @@
   (while (search-forward-regexp "\s-*" nil t)
     (replace-match "" t)))
 
-(provide 'keybindings)
-;;; keybindings.el ends here
+(provide 'init-default-editing)
