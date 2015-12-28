@@ -57,7 +57,6 @@
 ;; Change default switch-to-buffer binding for consistency with helm-buffers-list
 (bind-key "C-x C-b" 'switch-to-buffer)
 
-
 ;; Custom mode-line-format
 (setq-default mode-line-format
 	      '("%e" mode-line-front-space
