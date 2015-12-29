@@ -32,13 +32,13 @@
 
 (use-package helm-projectile
   :ensure t
-  :defer t)
+  :config
+  (helm-projectile-on))
 
 (use-package projectile
   :ensure t
   :config
   (projectile-global-mode)
-  (helm-projectile-on)
   (setq projectile-completion-system 'helm)
   (setq projectile-switch-project-action 'projectile-dired))
 
