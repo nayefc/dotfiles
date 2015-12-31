@@ -38,9 +38,10 @@
   :ensure t
   :defer t
   :config
-  (setq projectile-completion-system 'helm)
-  (setq projectile-switch-project-action 'projectile-dired)
   (helm-projectile-on)
-  (projectile-global-mode))
+  (projectile-global-mode)
+  (setq projectile-completion-system 'helm)
+  ;; This has to come after activating on the mode.
+  (setq projectile-switch-project-action 'projectile-dired))
 
 (provide 'init-projectile)

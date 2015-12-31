@@ -8,9 +8,9 @@
   :init
   ;; Temp amman
   (setq tramp-ssh-controlmaster-options
-  	(concat
-  	 "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
-  	 "-o ControlMaster=auto -o ControlPersist=yes"))
+	(concat
+	 "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+         "-o ControlMaster=auto -o ControlPersist=yes"))
   :config
   (helm-autoresize-mode 1)
   ;; open helm buffer inside current window, not occupy whole other window
