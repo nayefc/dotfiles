@@ -31,15 +31,16 @@
 (put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
 
 (use-package helm-projectile
-  :ensure t
   :config
   (helm-projectile-on))
 
 (use-package projectile
   :ensure t
+  :defer t
   :config
-  (projectile-global-mode)
   (setq projectile-completion-system 'helm)
-  (setq projectile-switch-project-action 'projectile-dired))
+  (setq projectile-switch-project-action 'projectile-dired)
+  (helm-projectile-on)
+  (projectile-global-mode))
 
 (provide 'init-projectile)
