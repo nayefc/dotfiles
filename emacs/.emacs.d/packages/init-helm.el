@@ -1,6 +1,5 @@
 (use-package helm
   :ensure t
-  ;; :commands helm-mode
   :defines helm-ff-search-library-in-sexp helm-ff-file-name-history-use-recentf helm-buffers-fuzzy-matching
   :bind (("M-x" . helm-M-x)
 	 ("C-x b" . helm-buffers-list)
@@ -16,7 +15,7 @@
 	helm-scroll-amount 8
 	helm-ff-file-name-history-use-recentf t)
   (setq helm-buffers-fuzzy-matching t)
-  
+
   ;; Temp amman
   (setq tramp-ssh-controlmaster-options
 	(concat
