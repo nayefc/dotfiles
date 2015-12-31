@@ -38,12 +38,11 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-
-;; Load other init files
-(use-package f)
-(defun load-local (FILE)
-  "Load FILE from Emacs directory."
-  (load (f-expand FILE (f-join user-emacs-directory "packages"))))
+;; ;; Load other init files
+;; (use-package f)
+;; (defun load-local (FILE)
+;;   "Load FILE from Emacs directory."
+;;   (load (f-expand FILE (f-join user-emacs-directory "packages"))))
 
 (defconst is-a-mac
   (eq system-type 'darwin)
