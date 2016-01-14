@@ -14,12 +14,10 @@
   (setq jedi:tooltip-method '(pos-tip))
   (add-hook 'python-mode-hook 'jedi:setup)
   :config
-  ;(progn
-    (bind-keys :map jedi-mode-map
-	       ("C-c ." . nil)
-	       ("C-c ," . nil)
-	       ("C-c /" . nil)))
-;)
+  (bind-keys :map jedi-mode-map
+	     ("C-c ." . nil)
+	     ("C-c ," . nil)
+	     ("C-c /" . nil)))
 
 (use-package company-jedi
   :ensure t
