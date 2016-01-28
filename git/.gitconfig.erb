@@ -5,7 +5,7 @@
 	hist = log --first-parent --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
 	histfu = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
 	histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
-	ph = push
+	ph = push origin HEAD
 	pl = pull
 	plr = pull --rebase
 	gr = remote show origin
