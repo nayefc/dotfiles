@@ -14,7 +14,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "nil" :family "*-Inconsolata-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")))))
 
-;; Code:
+;;; Code:
 
 (require 'package)
 
