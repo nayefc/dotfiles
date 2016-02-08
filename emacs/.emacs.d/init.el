@@ -59,8 +59,6 @@
   :if is-a-mac)
 (use-package init-magit
   :load-path "packages/")
-(use-package init-autopair
-  :load-path "packages/")
 (use-package init-avy
   :load-path "packages/")
 (use-package init-ace-window
@@ -88,6 +86,8 @@
 (use-package init-jedi
   :load-path "packages/")
 (use-package init-python
+  :load-path "packages/")
+(use-package init-smartparens
   :load-path "packages/")
 
 (provide 'init)
