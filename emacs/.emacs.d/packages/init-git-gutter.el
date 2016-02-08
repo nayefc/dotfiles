@@ -5,7 +5,7 @@
 	 ("C-x p" . git-gutter+-previous-hunk)
 	 ("C-x t" . git-gutter+-stage-hunks)
 	 ("C-x a c" . git-gutter+-stage-and-commit))
-  :config
-  (git-gutter+-mode))
+  :init
+  (add-hook 'python-mode-hook 'git-gutter+-mode))
 
 (provide 'init-git-gutter)
