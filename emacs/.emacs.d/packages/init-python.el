@@ -41,7 +41,7 @@
   (interactive "sClass name: ")
   (unless (search-forward (concat "class " classname) nil t nil)
     (search-backward (concat "class " classname "("))))
-(define-key python-mode-map (kbd "C-c t") 'python-add-breakpoint)
+(define-key python-mode-map (kbd "C-x a c") 'python-add-breakpoint)
 
 (defun goto-python-function (funcname)
   "Search for a python function FUNCNAME in the current file."
