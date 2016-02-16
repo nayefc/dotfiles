@@ -1,5 +1,7 @@
 # https://github.com/Homebrew/homebrew-brewdler
 
+tap 'Homebrew/bundle'
+brew 'bundle'
 tap 'caskroom/cask'
 brew 'brew-cask'
 brew 'cask'
@@ -13,5 +15,6 @@ brew 'fpp'
 tap 'jawshooah/pyenv'
 brew 'pyenv-default-packages'
 brew 'mycli'
+brew 'diff-so-fancy'
 
 cask 'macdown'
