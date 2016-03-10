@@ -1,6 +1,8 @@
 (use-package smartparens-config
   :ensure smartparens
   :diminish smartparens-mode
+  ;; :bind (("C-c <right>" . sp-forward-slurp-sexp)
+  ;; 	 ("C-c <left>" . sp-forward-barf-sexp))
   :config
   (require 'smartparens-config))
 
