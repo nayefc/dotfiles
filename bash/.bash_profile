@@ -41,6 +41,7 @@ if [[ $platform == 'osx' ]]; then
     # pyenv and pyenv-virtualenv initialisation
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
@@ -55,6 +56,9 @@ if [[ $platform == 'osx' ]]; then
 	    youtube-dl -x --audio-format mp3 --audio-quality 1 $1
 	}
     fi
+
+    # Alias hub to git
+    eval "$(hub alias -s)"
 
 
 elif [[ $platform == 'linux' ]]; then
