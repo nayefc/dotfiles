@@ -109,10 +109,10 @@ function gotovagr() {
     vagrant ssh
     if [ $? -ne 0 ]; then
 	vagrant up
+	vagrant ssh -c 'curl -s -L https://iterm2.com/misc/install_shell_integration.sh | bash'
 	vagrant ssh
     fi
 }
-
 
 # opens all files with the given regexp
 function edit_with() {
@@ -263,28 +263,13 @@ function merge_master() {
 }
 
 
-source ~/dotfiles/bash/.percolaterc
-
 # Terminal Colours
+# See http://misc.flogisoft.com/bash/tip_colors_and_formatting
 export CLICOLOR=1
-BLACK="\[\033[0;30m\]"
-DARK_GRAY="\[\033[1;30m\]"
-LIGHT_GRAY="\[\033[0;37m\]"
-WHITE="\[\033[0;37m\]"
-RED="\[\033[0;31m\]"
-RED_BOLD="\[\033[1;31m\]"
-YELLOW="\[\033[0;33m\]"
-YELLOW_BOLD="\[\033[1;33m\]"
-GREEN="\[\033[0;32m\]"
-GREEN_BOLD="\[\033[1;32m\]"
-BLUE="\[\033[0;34m\]"
-BLUE_BOLD="\[\033[1;34m\]"
-CYAN="\[\033[0;36m\]"
-CYAN_BOLD="\[\033[1;36m\]"
-PURPLE="\[\033[0;35m\]"
-PURPLE_BOLD="\[\033[1;35m\]"
-BROWN="\[\033[0;33m\]"
-
+COLOUR_OFF="\[\e[0m\]"
+RED="\[\e[38;5;1m\]"
+YELLOW="\[\e[38;5;3m\]"
+CYAN="\[\e[38;5;36m\]"
 
 # Terminal colours
 export CLICOLOR=1
@@ -307,15 +292,20 @@ export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 
-PS1="\[\033[0;36m\]"
+PS1="$CYAN"
 if [[ $platform == 'linux' ]]; then
     PS1=$PS1"\h:"
 fi
-export PS1=$PS1"\j \w\[\033[1;33m\]$GIT_BRANCH_PROMPT \[\033[0;31m\]$ \[\e[0m\]"
+export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 #[[ -s "/Users/ncopty/.gvm/bin/gvm-init.sh" ]] && source "/Users/ncopty/.gvm/bin/gvm-init.sh"
 
+# Percolaterc
+source ~/dotfiles/bash/.percolaterc
+
 # Go
 export GOPATH=$HOME/Documents/go
 export PATH=$PATH:$GOPATH/bin
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
