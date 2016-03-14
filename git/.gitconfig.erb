@@ -35,19 +35,25 @@
         interactive = auto
         ui = auto
         pager = true
-[color "branch"]
-       current = green reverse
-       local = blue
-       remote = yellow
+[color]
+	ui = always
 [color "diff"]
+       plain = normal
        meta = yellow bold
        frag = magenta bold
        old = red bold
-       new = blue bold
+       new = green bold
+       whitespace = red reverse
+[color "branch"]
+       current = green reverse
+       local = blue
+       remote = red
 [color "status"]
+       header = normal
        added = yellow reverse
-       changed = blue
+       changed = red
        untracked = cyan
+       nobranch = red
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
