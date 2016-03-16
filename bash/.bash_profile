@@ -106,17 +106,6 @@ fi
 
 # Functions
 
-# ssh into devolate vm
-function gotovagr() {
-    hop devolate
-    vagrant ssh
-    if [ $? -ne 0 ]; then
-	vagrant up
-	vagrant ssh -c 'curl -s -L https://iterm2.com/misc/install_shell_integration.sh | bash'
-	vagrant ssh
-    fi
-}
-
 # opens all files with the given regexp
 function edit_with() {
     files=`git grep "$1" | awk '{print $1}' | cut -d: -f 1 | xargs -I {} echo -n " " {}`
