@@ -13,7 +13,7 @@
 	g = grep --break --heading --line-number
 	st = status -sb
 	me = merge --no-edit
-	cleanbranches = !git branch -d `git branch --merged | grep -v master`
+	cleanbranches = !git branch -D `git branch --merged | grep -v master`
 	diffw = diff --color-words
 	isinmaster = !sh -c 'git branch --merged master | grep `git symbolic-ref --short HEAD`' -
 	bisinmaster = !sh -c 'git branch --merged master | grep $1' -
