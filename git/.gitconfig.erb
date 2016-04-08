@@ -2,28 +2,30 @@
         name = Nayef Copty
         email = <%= git_email %>
 [alias]
-	hist = log --first-parent --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
-	histfu = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
-	histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
-	ph = push origin HEAD
-	pl = pull
-	plr = pull --rebase
-	su = !git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`
-	co = checkout
-	g = grep --break --heading --line-number
-	st = status -sb
-	me = merge --no-edit
-	cleanbranches = !git branch -D `git branch --merged | grep -v master`
-	diffw = diff --color-words
-	isinmaster = !sh -c 'git branch --merged master | grep `git symbolic-ref --short HEAD`' -
-	bisinmaster = !sh -c 'git branch --merged master | grep $1' -
-	isinbranch = !sh -c 'git branch --merged $1 | grep $2' -
-	watch = "!clear; watch --color -n 2 -t 'git status --short; git --no-pager diff --shortstat;'"
-	bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
-	tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
-	subinit = submodule update --init --recursive -f
-	gr = remote show origin
-        sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
+        hist = log --first-parent --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+        ph = push origin HEAD
+        pl = pull
+        plr = pull --rebase
+        su = !git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`
+        co = checkout
+        g = grep --break --heading --line-number
+        st = status -sb
+        me = merge --no-edit
+        wip = commit -m 'WIP'
+        cleanbranches = !git branch -D `git branch --merged | grep -v master`
+        diffw = diff --color-words
+        isinmaster = !sh -c 'git branch --merged master | grep `git symbolic-ref --short HEAD`' -
+        bisinmaster = !sh -c 'git branch --merged master | grep $1' -
+        isinbranch = !sh -c 'git branch --merged $1 | grep $2' -
+        watch = "!clear; watch --color -n 2 -t 'git status --short; git --no-pager diff --shortstat;'"
+        bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
+        tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
+        subinit = submodule update --init --recursive -f
+        # Unused
+        # gr = remote show origin
+        # sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
+        # histfu = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+        # histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
 [push]
         default = simple
 [core]
@@ -36,7 +38,7 @@
         ui = auto
         pager = true
 [color]
-	ui = always
+        ui = always
 [color "diff"]
        plain = normal
        meta = yellow bold
@@ -55,13 +57,13 @@
        untracked = cyan
        nobranch = red
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+        oldNormal = red bold
+        oldHighlight = red bold 52
+        newNormal = green bold
+        newHighlight = green bold 22
 [pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
+        diff = diff-so-fancy | less --tabs=1,5 -RFX
+        show = diff-so-fancy | less --tabs=1,5 -RFX
 [merge]
         conflictstyle = diff3
 
