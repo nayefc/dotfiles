@@ -1,10 +1,3 @@
-(defun hs-enable-and-toggle ()
-  "Enable hs and toggle block."
-  (interactive)
-  (hs-minor-mode 1)
-  (hs-toggle-hiding))
-(bind-key "C-x ," 'hs-enable-and-toggle)
-
 (defun get-relative-file-name ()
   "Retrieves the file name relative to the parent git project."
   (interactive)

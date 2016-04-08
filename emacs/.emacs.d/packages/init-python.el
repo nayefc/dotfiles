@@ -70,4 +70,11 @@
   (message "Copied: %s" function-file-and-name))
 (bind-key "C-x c" 'copy-function-file-and-name python-mode-map)
 
+(add-hook 'python-mode-hook 'hs-minor-mode)
+(defun hs-enable-and-toggle ()
+  "Enable hs and toggle block."
+  (interactive)
+  (hs-toggle-hiding))
+(bind-key "C-x ," 'hs-enable-and-toggle python-mode-map)
+
 (provide 'init-python)
