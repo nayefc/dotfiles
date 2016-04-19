@@ -19,8 +19,7 @@ if [[ $platform == 'osx' ]]; then
 	source /etc/profile
     fi
 
-    # Homebrew
-    source `brew --repository`/Library/Contributions/brew_bash_completion.sh
+    # Homebrew packages path
     export PATH=/usr/local/bin:$PATH
 
     # Homebrew cask applications folder
