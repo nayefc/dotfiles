@@ -77,4 +77,8 @@
   (hs-toggle-hiding))
 (bind-key "C-x ," 'hs-enable-and-toggle python-mode-map)
 
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython"))
+
 (provide 'init-python)
+;;; init-python.el ends here
