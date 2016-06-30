@@ -18,3 +18,4 @@ brew 'mycli'
 brew 'diff-so-fancy'
 
 cask 'macdown'
+cask 'emacs'
