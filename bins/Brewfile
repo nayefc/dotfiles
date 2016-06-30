@@ -9,7 +9,6 @@ brew 'youtube-dl'
 brew 'tmux'
 brew 'emacs', args: ['cocoa']
 brew 'fpp'
-tap 'jawshooah/pyenv'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
 brew 'pyenv-default-packages'
