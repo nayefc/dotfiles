@@ -20,7 +20,7 @@
 	 ("C-c \\" . helm-jedi-related-names))
   :init
   (setq jedi:server-command
-	'("/Users/nayefcopty/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
+	'("/Users/nayef/dotfiles/emacs/emacs-jedi/jediepcserver.py"))
   (setq jedi:complete-on-dot t)
   (setq jedi:tooltip-method '(pos-tip))
   (add-hook 'python-mode-hook 'jedi:setup)
