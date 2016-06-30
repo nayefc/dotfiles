@@ -1,6 +1,5 @@
 # https://github.com/Homebrew/homebrew-brewdler
 
-tap 'Homebrew/bundle'
 brew 'bundle'
 tap 'caskroom/cask'
 brew 'brew-cask'
