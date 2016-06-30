@@ -1,6 +1,5 @@
 # https://github.com/Homebrew/homebrew-brewdler
 
-brew 'bundle'
 tap 'caskroom/cask'
 brew 'brew-cask'
 brew 'cask'
@@ -10,7 +9,7 @@ brew 'pyenv-virtualenv'
 brew 'youtube-dl'
 brew 'tmux'
 brew 'emacs', args: ['cocoa']
-brew 'fpp'
+>84;0;0cbrew 'fpp'
 tap 'jawshooah/pyenv'
 brew 'pyenv-default-packages'
 brew 'mycli'
