@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.percolate.alfred2</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>AA2D9285-DFAF-4970-ABF4-B5FBC48DFE45</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E2F66EC6-CD0F-48D9-8B7F-1DA13CFD8E40</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>B78601C6-A6FB-47C2-A59E-FCA033DD2A45</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>862BBF7C-051A-4C9D-BC96-542646DB9B7E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>DCA284EE-F954-4877-9A42-5DD2A5B39051</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>63D8B470-0CCC-4166-9FBF-E054BF7C8633</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E7A64998-0E0D-4E77-9D8E-839F0706A6BD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>42A6AFCE-8677-4E93-86A5-9A089B9F7A39</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>F30DFD56-29DC-4487-B6A7-F1F59550C7F1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9DC20354-123A-4436-BAFD-9707716D362F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Zach Himsel</string>
+	<key>description</key>
+	<string>Useful shortcuts for Percolate engineers</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Percolate</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>hot</string>
+				<key>subtext</key>
+				<string>Github</string>
+				<key>text</key>
+				<string>Percolate/hotlanta</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>B78601C6-A6FB-47C2-A59E-FCA033DD2A45</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query="{query}"
+url="https://github.com/percolate/hotlanta"
+
+if [[ -z "$query" ]]; then
+  /usr/bin/open "$url"
+else
+  /usr/bin/open "$url"/pull/"$query"
+fi</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>862BBF7C-051A-4C9D-BC96-542646DB9B7E</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query="{query}"
+url="https://github.com/percolate/doc"
+
+if [[ -z "$query" ]]; then
+  /usr/bin/open "$url/find/master"
+else
+  /usr/bin/open "$url"/pull/"$query"
+fi</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E2F66EC6-CD0F-48D9-8B7F-1DA13CFD8E40</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>pdoc</string>
+				<key>subtext</key>
+				<string>Github</string>
+				<key>text</key>
+				<string>Percolate/doc</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>AA2D9285-DFAF-4970-ABF4-B5FBC48DFE45</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query="{query}"
+url="https://github.com/percolate/hotlanta/tree/master/api/specs/v5/schemas"
+
+if [[ -z "$query" ]]; then
+  /usr/bin/open "$url"
+else
+	/usr/bin/open "$url"/"$query"
+fi
+</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>42A6AFCE-8677-4E93-86A5-9A089B9F7A39</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>spec</string>
+				<key>subtext</key>
+				<string>Github</string>
+				<key>text</key>
+				<string>Spec Schemas</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E7A64998-0E0D-4E77-9D8E-839F0706A6BD</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query="{query}"
+url="https://github.com/percolate/hotlanta/tree/master/api/specs/v5/resources"
+
+if [[ -z "$query" ]]; then
+  /usr/bin/open "$url"
+else
+	/usr/bin/open "$url"/"$query".raml
+fi
+</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>63D8B470-0CCC-4166-9FBF-E054BF7C8633</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>rspec</string>
+				<key>subtext</key>
+				<string>Github</string>
+				<key>text</key>
+				<string>Spec Resources</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>DCA284EE-F954-4877-9A42-5DD2A5B39051</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>myprs</string>
+				<key>subtext</key>
+				<string>Github</string>
+				<key>text</key>
+				<string>My PRs</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F30DFD56-29DC-4487-B6A7-F1F59550C7F1</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query="{query}"
+url="https://github.com/percolate/hotlanta/pulls?utf8=✓&amp;q=is:pr+author:nayefc+"
+
+if [[ -z "$query" ]]; then
+  /usr/bin/open "$url"
+elif [[ "$query" == open ]]; then
+  /usr/bin/open "$url"is:open
+elif [[ "$query" == closed ]]; then
+  /usr/bin/open "$url"is:closed
+else
+  /usr/bin/open "$url"
+fi</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9DC20354-123A-4436-BAFD-9707716D362F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>42A6AFCE-8677-4E93-86A5-9A089B9F7A39</key>
+		<dict>
+			<key>ypos</key>
+			<real>230</real>
+		</dict>
+		<key>63D8B470-0CCC-4166-9FBF-E054BF7C8633</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
+		<key>862BBF7C-051A-4C9D-BC96-542646DB9B7E</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>9DC20354-123A-4436-BAFD-9707716D362F</key>
+		<dict>
+			<key>ypos</key>
+			<real>450</real>
+		</dict>
+		<key>AA2D9285-DFAF-4970-ABF4-B5FBC48DFE45</key>
+		<dict>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+		<key>B78601C6-A6FB-47C2-A59E-FCA033DD2A45</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>DCA284EE-F954-4877-9A42-5DD2A5B39051</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
+		<key>E2F66EC6-CD0F-48D9-8B7F-1DA13CFD8E40</key>
+		<dict>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+		<key>E7A64998-0E0D-4E77-9D8E-839F0706A6BD</key>
+		<dict>
+			<key>ypos</key>
+			<real>230</real>
+		</dict>
+		<key>F30DFD56-29DC-4487-B6A7-F1F59550C7F1</key>
+		<dict>
+			<key>ypos</key>
+			<real>450</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/Percolate/alfred2-workflow</string>
+</dict>
+</plist>

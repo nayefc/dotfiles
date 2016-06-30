@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Browser Switcher</name>
+  <version>0.1</version>
+  <bundle>com.dearrrfish.browser-switcher-alfredworkflow</bundle>
+  <updated>1456353548</updated>
+  <file>browserswitcher.alfredworkflow</file>
+</workflow>
