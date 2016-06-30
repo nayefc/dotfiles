@@ -9,7 +9,7 @@ brew 'pyenv-virtualenv'
 brew 'youtube-dl'
 brew 'tmux'
 brew 'emacs', args: ['cocoa']
->84;0;0cbrew 'fpp'
+brew 'fpp'
 tap 'jawshooah/pyenv'
 brew 'pyenv-default-packages'
 brew 'mycli'
