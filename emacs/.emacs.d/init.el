@@ -89,6 +89,8 @@
   :load-path "packages/")
 (use-package init-smartparens
   :load-path "packages/")
+(use-package init-highlight-indentation
+  :load-path "packages/")
 
 (provide 'init)
 ;;; init.el ends here
