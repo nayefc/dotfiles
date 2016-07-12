@@ -9,6 +9,9 @@
 ;; Remove Emacs startup screen
 (setq inhibit-startup-screen +1)
 
+;; Disable ring bell alerts
+(setq ring-bell-function 'ignore)
+
 ;; Remove trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
