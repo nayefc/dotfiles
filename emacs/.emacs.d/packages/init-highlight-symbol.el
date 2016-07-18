@@ -2,8 +2,8 @@
   :ensure t
   :defer t
   :bind (("C-c w" . highlight-symbol)
-	 ("C-c a" . highlight-symbol-next)
-	 ("C-c s" . highlight-symbol-prev)
+	 ("C-c a" . highlight-symbol-prev)
+	 ("C-c s" . highlight-symbol-next)
 	 ("C-c q" . highlight-symbol-remove-all))
   :init
   (setq highlight-symbol-colors
