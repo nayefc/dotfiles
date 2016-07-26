@@ -21,6 +21,7 @@ profile
 # Python
 flycheck_*
 .python-version
+pylintrc
 
 # Percolate
 hotlanta2/
