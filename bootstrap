@@ -96,13 +96,6 @@ module Stow
           puts "There was an error installing Emacs."
         end
       end
-      unless system("sudo pip install pylint")
-        # You must also place the .pylintrc file properly. Maybe use stow? Also remove the sudo?
-        puts "There was an error installing pylint."
-      end
-      # unless system("sudo gem install rubocop")
-      #   puts "There was an error installing rubocop #{package}."
-      # end
     end
 
     unless system("stow #{package.to_s}")

@@ -8,7 +8,8 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 if [[ $platform == 'osx' ]]; then
-    echo -e "pylint\npylint_django\nipdb\njedi\n#jediepcserver" > ~/.pyenv/default-packages
+    brew bundle
+    echo -e "pylint\ipdb\njedi\n#jediepcserver" > ~/.pyenv/default-packages
 # elif [[ $platform == 'linux' ]]; then
     # sudo cp bins/hr/hr /usr/local/bin/
     # sudo chmod +x /usr/local/bin/hr
