@@ -25,13 +25,8 @@ if [[ $platform == 'osx' ]]; then
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-    # Hop
-    # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
-    source /System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.bash
-    hop_json_lua=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/json.lua
-    hop_lua=/System/Library/Frameworks/Python.framework/Versions/2.7/hop/hop.lua
-    LUA_PATH="$hop_json_lua $hop_lua"
-    alias hop-lua-script="LUA_PATH=$LUA_PATH"
+    # autojump
+    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
     # rvm
     export PATH=$PATH:$HOME/.rvm/bin
@@ -64,11 +59,6 @@ elif [[ $platform == 'linux' ]]; then
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
     source /usr/local/bin/virtualenvwrapper.sh
-
-    # Hop
-    # installation instructions: https://github.com/Cue/hop -- INSTALL IT!
-    source /usr/local/hop/hop.bash
-    alias hop-lua-script="LUA_PATH=/usr/local/hop/json.lua /usr/local/hop/hop.lua"
 fi
 
 
@@ -270,7 +260,6 @@ elif [[ $platform == 'linux' ]]; then
     export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
 fi
 
-
 # Second prompt line
 source ~/.git-completion.sh
 
@@ -284,17 +273,7 @@ if [[ $platform == 'linux' ]]; then
 fi
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-#[[ -s "/Users/ncopty/.gvm/bin/gvm-init.sh" ]] && source "/Users/ncopty/.gvm/bin/gvm-init.sh"
-
-# Log every bash command to ~/.logs/
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
-
 # Percolaterc
 source ~/dotfiles/bash/.percolaterc
-
-# Go
-export GOPATH=$HOME/Documents/go
-export PATH=$PATH:$GOPATH/bin
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
