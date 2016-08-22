@@ -25,8 +25,6 @@
 require 'erb'
 require 'ostruct'
 require 'fileutils'
-# require 'dir'
-# require 'file'
 require './utils'
 
 $linux = 'linux'
@@ -34,74 +32,137 @@ $osx = 'darwin'
 $all = [$linux, $osx]
 $platform = (RUBY_PLATFORM.include? $osx) ? $osx : $linux
 
-$supported_packages = {
-  :bin => $all,
-  :bash => $all,
-  :tmux => $all,
-  :git => $all,
-  :emacs => $all,
-  :ssh => $linux,
-}
 
-module Stow
-  def self.stow(package)
-    unless $supported_packages.include? package
-      puts "No package called #{package}"
-      return
-    end
-
-    unless $supported_packages[package].include? $platform
-      puts "Package #{package} not supported on this platform"
-      return
-    end
-
-    if package == :bin
-      system("./bins/bootstrap.sh")
-      return
-    end
-
-    if package == :git
-      email = 'nrcopty@gmail.com'
-      template('git/.gitconfig.erb', {:git_email => email}, 'git/.gitconfig')
-    end
-
-    if package == :bash
-      if File.exist?('../.bash_profile')
-        FileUtils.mv('../.bash_profile', '../.bash_profile.bak', :force => true)
+module PackageModule
+  @@osx_packages = []
+  @@linux_packages = []
+  def osx_packages
+    return @@osx_packages
+  end
+  def linux_packages
+    return @@linux_packages
+  end
+  def install_osx
+    @@osx_packages.each do |package|
+      unless system("brew install #{package}")
+        puts "Error installing #{package}"
       end
-      if File.exist?('../.bashrc')
-        FileUtils.mv('../.bashrc', '../.bashrc.bak', :force => true)
-      end
-    end
-
-    if package == :tmux
-      unless system("brew install tmux")
-        puts "There was an error installing tmux."
-      end
-      unless system("brew install reattach-to-user-namespace")
-        puts "There was an error installing reattach-to-user-namespace."
-      end
-    end
-
-    if package == :emacs
-      if $platform.include? $osx
-        unless system("brew install emacs")
-          puts "There was an error installing Emacs."
-        end
-        unless system("brew install cask")
-          puts "There was an error installing Cask for Emacs."
-        end
-      else
-        unless system("sudo yum install emacs")
-          puts "There was an error installing Emacs."
-        end
-      end
-    end
-
-    unless system("stow #{package.to_s}")
-      puts "There was an error stowing #{package}."
     end
   end
+  def install_packages(platform)
+    if $platform.include? $osx
+      PackageModule.install_osx
+    end
+  end
+  def pre_stow
+  end
+end
+
+class Setup
+  include PackageModule
+  def pre_stow
+    if $platform.include? $osx
+      unless system("brew bundle")
+        puts "There was an error installing OS X brews from Brewfile."
+      end
+      File.open('/Users/nayef/.pyenv/default-packages', 'w') {
+        |f| f.write("hello\nworld")
+      }
+    end
+  end
+end
+
+class Bash
+  include PackageModule
+  def pre_stow
+    if File.exist?('../.bash_profile')
+      FileUtils.mv('../.bash_profile', '../.bash_profile.bak', :force => true)
+    end
+    if File.exist?('../.bashrc')
+      FileUtils.mv('../.bashrc', '../.bashrc.bak', :force => true)
+    end
+  end
+end
+
+module Tmux
+  include PackageModule
+  @@osx_packages = ['tmux']
+end
+
+module Git
+  include PackageModule
+  def pre_stow
+    email = 'nrcopty@gmail.com' # TODO: get email using stdin
+    template('git/.gitconfig.erb', {:git_email => email}, 'git/.gitconfig')
+  end
+end
+
+module Emacs
+  include PackageModule
+  @@osx_packages = ['emacs', 'cask']
+end
+
+module Ssh
+  include PackageModule
+end
+
+module Stow
+
+  @@supported_packages = {
+    :setup => {
+      :platforms => $all,
+      :module => Setup
+    },
+    :bash => {
+      :platforms => $all,
+      :module => Bash
+    },
+    :tmux => {
+      :platforms => $all,
+      :module => Tmux
+    },
+    :git => {
+      :platforms => $all,
+      :module => Git
+    },
+    :emacs => {
+      :platforms => $all,
+      :module => Emacs
+    },
+    :ssh => {
+      :platforms => $linux,
+      :module => Ssh
+    },
+  }
+
+  def supported_packages
+    return @@supported_packages
+  end
+
+  def self.stow(package_name)
+    unless self.supported_packages.include? package_name
+      puts "No package called #{package_name}"
+      return
+    end
+
+    unless self.supported_packages[package_name][:platforms].include? $platform
+      puts "Package #{package_name} not supported on this platform"
+      return
+    end
+
+    package_obj = supported_packages[package_name][:module].new
+    package_obj.install_packages($platform)
+    package_obj.pre_stow
+
+    if package_name == :setup
+      return
+    end
+
+    unless system("stow #{package_name.to_s}") and x == 2
+      puts "There was an error stowing #{package_name}."
+    end
+  end
+
 end
 
 if __FILE__ == $0
