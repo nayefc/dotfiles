@@ -34,7 +34,7 @@ Check that none of these are used in Haskell.
 * C-i
 * C-z
 
-# helper-functions
+##### helper-functions
 * C-x a u
 * Also remove hard-coded hotlanta url
 
