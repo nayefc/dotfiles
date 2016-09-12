@@ -3,24 +3,20 @@
   :defer t
   :defines fci-column-indicator fci-handle-truncate-lines fci-rule-column
   :init
-  (add-hook 'c-mode-hook 'fci-mode)
-  (add-hook 'python-mode-hook 'fci-mode)
-  (add-hook 'ruby-mode-hook 'fci-mode)
-  (add-hook 'emacs-lisp-mode-hook 'fci-mode)
   (setq fci-rule-column 80)
   (setq fci-column-indicator 80)
   (setq fci-handle-truncate-lines nil)
+
   (defun auto-fci-mode (&optional unused)
     (if (> (window-width) fci-rule-column)
-	(fci-mode 1)
-      (fci-mode 0)))
-  (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
-  (add-hook 'window-configuration-change-hook 'auto-fci-mode)
-  :config
-  (defun auto-fci-mode (&optional unused)
-    (if (> (window-width) fci-rule-column)
-	(fci-mode 1)
+	(if (and
+           (not (string-match "^\*.*\*$" (buffer-name)))
+           (not (eq major-mode 'dired-mode)))
+	    (fci-mode 1)
       (fci-mode 0))))
+
+  (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
+  (add-hook 'window-configuration-change-hook 'auto-fci-mode))
 
 ;; Disable fci when autocomplete is on the line, as fci breaks autocomplete.
 (defun sanityinc/fci-enabled-p ()
