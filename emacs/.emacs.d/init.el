@@ -65,8 +65,6 @@
   :load-path "packages/")
 (use-package init-multiple-cursors
   :load-path "packages/")
-(use-package init-expand-region
-  :load-path "packages/")
 (use-package init-highlight-symbol
   :load-path "packages/")
 (use-package init-flycheck
@@ -83,14 +81,18 @@
   :load-path "packages/")
 (use-package init-company
   :load-path "packages/")
-(use-package init-jedi
-  :load-path "packages/")
-(use-package init-python
-  :load-path "packages/")
 (use-package init-smartparens
   :load-path "packages/")
+
+;; python packages
+(use-package init-expand-region
+  :load-path "packages/python")
+(use-package init-jedi
+  :load-path "packages/python")
 (use-package init-highlight-indentation
-  :load-path "packages/")
+  :load-path "packages/python")
+(use-package init-python
+  :load-path "packages/python")
 
 (provide 'init)
 ;;; init.el ends here

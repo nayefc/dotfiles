@@ -1,5 +1,6 @@
 (use-package expand-region
   :ensure t
+  :mode ("\\.py\\'" . python-mode)
   :bind (("C-c m" . er/expand-region)
 	 ("C-x l" . er/mark-symbol)
 	 ("C-x m" . er/mark-python-block)

@@ -4,6 +4,7 @@
 
 (use-package highlight-indentation
   :ensure t
+  :mode ("\\.py\\'" . python-mode)
   :bind (("C-c i" . highlight-indentation-mode))
   :config
   (set-face-font 'highlight-indentation-face "Arial")
