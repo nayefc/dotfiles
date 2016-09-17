@@ -35,12 +35,7 @@
     (setq x-underline-at-descent-line t)
 
     ;; Highlight current line
-    (global-hl-line-mode +1)
-
-    ;; Set the font size according to number of displays.
-    (if (> (display-pixel-width) 1280)
-	(set-frame-font "Inconsolata-g-12")
-      (set-frame-font "Inconsolata-g-11"))))
+    (global-hl-line-mode +1)))
 
 (defun finder ()
   "Opens file directory in Finder."
