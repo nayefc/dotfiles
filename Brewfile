@@ -18,3 +18,8 @@ brew 'diff-so-fancy'
 brew 'autojump'
 
 cask 'emacs'
+cask 'google-chrome'
+cask 'iterm2'
+cask 'stay'
+cask 'messenger'
+cask 'whatsapp'
