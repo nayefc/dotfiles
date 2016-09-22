@@ -9,7 +9,7 @@
  '(exec-path-from-shell-check-startup-files nil)
  '(package-selected-packages
    (quote
-    (pyenv-mode highlight-indentation company-jedi jedi expand-region company projectile helm-git-grep helm exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme smartparens pallet magit-popup))))
+    (helm-projectile pyenv-mode highlight-indentation company-jedi jedi expand-region company projectile helm-git-grep helm exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme smartparens pallet magit-popup))))
 
 
 ;;; Code:

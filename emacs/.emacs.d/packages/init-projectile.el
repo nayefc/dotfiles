@@ -31,6 +31,7 @@
 (put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
 
 (use-package helm-projectile
+  :ensure t
   :config
   (helm-projectile-on))
 
