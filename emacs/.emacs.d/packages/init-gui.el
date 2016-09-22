@@ -1,7 +1,6 @@
 ; Set GUI Emacs theme
 (use-package solarized-theme
   :ensure t
-  :if (display-graphic-p)
   :init
   (progn
     ;; Set default window size
@@ -12,7 +11,8 @@
     (tool-bar-mode -1)
 
     ;; Disable scroll bar
-    (scroll-bar-mode -1)
+    (if (display-graphic-p)
+	(scroll-bar-mode -1))
 
     ;; Load theme
     (load-theme 'solarized-dark t)
