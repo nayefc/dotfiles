@@ -273,7 +273,7 @@ if [[ $platform == 'linux' ]]; then
 fi
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
-# Percolaterc
-source ~/dotfiles/bash/.percolaterc
+# HRT
+source ~/dotfiles/bash/.hrtrc
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
