@@ -25,7 +25,7 @@
 require 'erb'
 require 'ostruct'
 require 'fileutils'
-require './utils'
+# require './utils'
 
 $linux = 'linux'
 $osx = 'darwin'
@@ -140,17 +140,17 @@ module Stow
   end
 
   def self.stow(package_name)
-    unless self.supported_packages.include? package_name
+    unless @@supported_packages.include? package_name
       puts "No package called #{package_name}"
       return
     end
 
-    unless self.supported_packages[package_name][:platforms].include? $platform
+    unless @@supported_packages[package_name][:platforms].include? $platform
       puts "Package #{package_name} not supported on this platform"
       return
     end
 
-    package_obj = supported_packages[package_name][:module].new
+    package_obj = @@supported_packages[package_name][:module]
     package_obj.install_packages($platform)
     package_obj.pre_stow
 
@@ -162,6 +162,28 @@ module Stow
       puts "There was an error stowing #{package_name}."
     end
   end
+
+  def self.stow_packages(packages)
+    if packages.empty?
+      $supported_packages.each do |pkg, platform|
+        puts "Stowing #{pkg}"
+        Stow::stow pkg.to_sym
+      end
+    else
+      packages.each do |pkg, platform|
+        puts "Stowing #{pkg}"
+        Stow::stow(pkg.to_sym)
+      end
+    end
+  end
+
+  def self.template(template_file, variable_hash, result_file)
+    erb = ERB.new(File.read(template_file))
+    namespace = OpenStruct.new(variable_hash)
+    result = erb.result(namespace.instance_eval { binding })
+    File.write(result_file, result)
+  end
+
 
 end
 
