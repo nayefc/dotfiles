@@ -1,3 +1,0 @@
-[submodule "emacs/emacs-jedi"]
-	path = emacs/emacs-jedi
-	url = git@github.com:tkf/emacs-jedi.git
