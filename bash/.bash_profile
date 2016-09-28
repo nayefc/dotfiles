@@ -49,6 +49,11 @@ if [[ $platform == 'osx' ]]; then
     # Alias hub to git
     eval "$(hub alias -s)"
 
+    # Improve ls
+    alias ls='ls -l -G -h'
+
+    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
 
 elif [[ $platform == 'linux' ]]; then
     # SSH agent fowarding
@@ -59,6 +64,10 @@ elif [[ $platform == 'linux' ]]; then
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
     export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
     source /usr/local/bin/virtualenvwrapper.sh
+
+    # Improve ls
+    alias ls='ls -lh --color=auto'
+
 fi
 
 
@@ -82,11 +91,6 @@ alias repo_name='basename `git rev-parse --show-toplevel`'
 # print out authors or emails of a git repo
 alias authors='git log --all --format='%aN' | sort -u'
 
-# improve ls
-if [[ $platform == 'osx' ]]; then
-    alias ls='ls -l -G -h'
-fi
-
 
 # Functions
 
@@ -107,20 +111,13 @@ function edit_conflicts() {
     fi
 }
 
+
 # who merged this commit?
 function who_merged() {
     commit=`perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/' <(git rev-list --ancestry-path $1..HEAD) <(git rev-list --first-parent $1..HEAD) | tail -n 1`
     git show $commit
 }
 
-function clean_elpa() {
-    find $HOME/dotfiles/emacs/.emacs.d/elpa -regex ".*~.*" -exec rm {} \;
-    if [ $? -ne 0 ]; then
-        echo "ELPA clean error with $1."
-    else
-	echo 'ELPA cleaned.'
-    fi
-}
 
 # swaps two files
 function swap() {
@@ -275,5 +272,3 @@ export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
 # HRT
 source ~/dotfiles/bash/.hrtrc
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
