@@ -254,7 +254,7 @@ elif [[ $platform == 'linux' ]]; then
     else
 	export TERM='xterm-color'
     fi
-    export LS_COLORS='di=1;31:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35'
+    export LS_COLORS='ln=35:ex=31'
 fi
 
 # Second prompt line
