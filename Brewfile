@@ -16,6 +16,7 @@ brew 'pyenv-default-packages'
 brew 'mycli'
 brew 'diff-so-fancy'
 brew 'autojump'
+brew 'tree'
 
 cask 'emacs'
 cask 'google-chrome'
