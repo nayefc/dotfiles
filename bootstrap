@@ -66,7 +66,7 @@ class Setup
         puts "There was an error installing OS X brews from Brewfile."
       end
       File.open('/Users/nayef/.pyenv/default-packages', 'w') {
-        |f| f.write("hello\nworld")
+        |f| f.write("pylint\nipdb\njedi\n#jediepcserver")
       }
     end
   end
