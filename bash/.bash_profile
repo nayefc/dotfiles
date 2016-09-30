@@ -271,4 +271,4 @@ fi
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
 # HRT
-source ~/dotfiles/bash/.hrtrc
+source ~/.hrtrc
