@@ -46,9 +46,6 @@ if [[ $platform == 'osx' ]]; then
     # Alias youtube-dl if its installed.
     alias youtube="youtube-dl -x --audio-format mp3 --audio-quality 1 -o \"%(title)s.%(ext)s\""
 
-    # Alias hub to git
-    eval "$(hub alias -s)"
-
     # Improve ls
     alias ls='ls -l -G -h'
 

@@ -11,6 +11,3 @@ emacs/.emacs.d/auto-save-list/
 projectile-bookmarks.eld
 *projectile.cache
 .hrtrc
-config/.config/hub
-config/.config/git/
-config/.config/peco/
