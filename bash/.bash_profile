@@ -33,9 +33,11 @@ if [[ $platform == 'osx' ]]; then
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
     # pyenv and pyenv-virtualenv initialisation
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    if [ -w pyenv ]; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    fi
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
