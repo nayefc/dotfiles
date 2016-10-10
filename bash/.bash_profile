@@ -55,18 +55,8 @@ if [[ $platform == 'osx' ]]; then
 
 
 elif [[ $platform == 'linux' ]]; then
-    # SSH agent fowarding
-    export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock
-
-    # Virtualenv
-    # export WORKON_HOME=$HOME/.virtualenvs
-    # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-    # export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv-2.7
-    # source /usr/local/bin/virtualenvwrapper.sh
-
     # Improve ls
     alias ls='ls -lh --color=auto'
-
 fi
 
 
