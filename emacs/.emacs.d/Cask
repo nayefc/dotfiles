@@ -66,5 +66,6 @@
 (depends-on "solarized-theme")
 (depends-on "sr-speedbar")
 (depends-on "use-package")
+(depends-on "virtualenvwrapper")
 (depends-on "with-editor")
 (depends-on "yaml-mode")
