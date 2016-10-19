@@ -53,28 +53,6 @@ if [[ $platform == 'osx' ]]; then
 
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-    function _virtualenv_auto_activate() {
-	if [ -e ".venv" ]; then
-            if [ -f ".venv" ]; then
-		_VENV_PATH=$WORKON_HOME/$(cat .venv)
-		_VENV_WRAPPER_ACTIVATE=true
-            else
-		return
-            fi
-
-	    # Check to see if already activated to avoid redundant activating
-            if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
-		if $_VENV_WRAPPER_ACTIVATE; then
-		    _VENV_NAME=$(basename $_VENV_PATH)
-		    workon $_VENV_NAME
-		fi
-		echo Activated virtualenv \"$_VENV_NAME\".
-            fi
-	fi
-    }
-
-    export PROMPT_COMMAND=_virtualenv_auto_activate
-
 elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
