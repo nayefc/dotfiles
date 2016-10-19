@@ -246,24 +246,25 @@ function merge_master() {
 }
 
 
-# Terminal Colours
-# See http://misc.flogisoft.com/bash/tip_colors_and_formatting
-export CLICOLOR=1
-COLOUR_OFF="\[\e[0m\]"
-RED="\[\e[38;5;1m\]"
-YELLOW="\[\e[38;5;3m\]"
-CYAN="\[\e[38;5;36m\]"
-
 # Terminal colours
+# See http://misc.flogisoft.com/bash/tip_colors_and_formatting
 export CLICOLOR=1
 if [[ $platform == 'osx' ]]; then
     export TERM='xterm-256color'
+    COLOUR_OFF="\[\e[0m\]"
+    RED="\[\e[38;5;1m\]"
+    YELLOW="\[\e[38;5;3m\]"
+    CYAN="\[\e[38;5;36m\]"
 elif [[ $platform == 'linux' ]]; then
-    if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    if [  -e /lib/terminfo/x/xterm-256color ]; then
 	export TERM='xterm-256color'
     else
 	export TERM='xterm-color'
     fi
+    COLOUR_OFF="\e[0m"
+    RED="\e[38;5;1m"
+    YELLOW="\e[38;5;3m"
+    CYAN="\e[38;5;36m"
     export LS_COLORS='ln=35:ex=31'
 fi
 
