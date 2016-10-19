@@ -30,18 +30,13 @@
   "Mode line format for Projectile.")
 (put 'lunaryorn-projectile-mode-line 'risky-local-variable t)
 
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on))
-
 (use-package projectile
   :ensure t
   :defer t
   :config
-  (helm-projectile-on)
+  (ivy-mode 1)
   (projectile-global-mode)
-  (setq projectile-completion-system 'helm)
+  (setq projectile-completion-system 'ivy)
   ;; This has to come after activating on the mode.
   (setq projectile-switch-project-action 'projectile-dired))
 
