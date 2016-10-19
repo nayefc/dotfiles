@@ -16,6 +16,8 @@
     (kill-buffer)
     (jump-to-register :magit-fullscreen))
 
+  (setq magit-completing-read-function 'ivy-completing-read)
+
   (bind-key "q" 'magit-quit-session magit-status-mode-map))
 
 (provide 'init-magit)
