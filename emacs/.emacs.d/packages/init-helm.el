@@ -5,12 +5,13 @@
   :bind (("M-x" . helm-M-x)
 	 ("C-x b" . helm-buffers-list)
 	 ("C-x f" . helm-projectile-find-file))
-  ;; :init
-  ;; ;; Temp for me when I'm in Amman. Only use when your ISP does stupid DNS routing that crash Tramp on startup.
-  ;; (setq tramp-ssh-controlmaster-options
-  ;; 	(concat
-  ;; 	 "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
-  ;;        "-o ControlMaster=auto -o ControlPersist=yes"))
+  :init
+  ;; This seems to fix an issue with Amman ISP when they do some DNS routing that crash Tramp on startup.
+  ;; It also seems to speed up Tramp in general when editing on other machines via Tramp.
+  (setq tramp-ssh-controlmaster-options
+  	(concat
+  	 "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+         "-o ControlMaster=auto -o ControlPersist=yes"))
   :config
   (helm-autoresize-mode 1)
   ;; open helm buffer inside current window, not occupy whole other window
