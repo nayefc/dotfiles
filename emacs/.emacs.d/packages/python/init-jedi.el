@@ -16,8 +16,7 @@
 	 ("C-c ;" . jedi:goto-definition-new-frame)
 	 ("C-c '" . jedi:goto-definition)
 	 ("C-c j" . jedi:goto-definition-pop-marker)
-	 ("C-c ?" . jedi:show-doc)
-	 ("C-c \\" . helm-jedi-related-names))
+	 ("C-c ?" . jedi:show-doc))
   :init
   (setq jedi:complete-on-dot t)
   (setq jedi:tooltip-method '(pos-tip))

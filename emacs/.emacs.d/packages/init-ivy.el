@@ -4,7 +4,8 @@
   :bind (("C-s" . swiper)
 	 ("M-x" . counsel-M-x)
   	 ("C-x C-f" . counsel-find-file)
-  	 ("C-c g" . counsel-projectile-ag))
+  	 ("C-c g" . counsel-projectile-ag)
+  	 ("C-M-m" . counsel-jedi))
   :config
   (ivy-mode 1)
   (setq ivy-count-format "")
