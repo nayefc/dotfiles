@@ -1,6 +1,10 @@
 (use-package ivy
   :ensure t
   :diminish ivy-mode
+  :bind (("C-s" . swiper)
+	 ("M-x" . counsel-M-x)
+  	 ("C-x C-f" . counsel-find-file)
+  	 ("C-c g" . counsel-projectile-ag))
   :config
   (ivy-mode 1)
   (setq ivy-count-format "")

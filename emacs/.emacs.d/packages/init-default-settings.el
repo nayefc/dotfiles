@@ -21,9 +21,6 @@
 ;; Remove top menu bar
 (menu-bar-mode -1)
 
-;; Turn on icomplete-mode, replacing iswitch for v24.4
-(icomplete-mode 1)
-
 ;; Overwrite text when writing over a highlighted region
 (delete-selection-mode t)
 

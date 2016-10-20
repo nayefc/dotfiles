@@ -16,6 +16,7 @@ brew 'mycli'
 brew 'diff-so-fancy'
 brew 'autojump'
 brew 'tree'
+brew 'the_silver_searcher'
 
 cask 'emacs'
 cask 'google-chrome'
