@@ -8,12 +8,13 @@
   (require 'smartparens-config))
 
 (add-hook 'python-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'c++-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
 
 (setq sp-cancel-autoskip-on-backward-movement nil)
 
-(--each '("python-mode" "python")
-  (eval-after-load it '(require 'smartparens-python)))
+(add-hook 'c++-mode-hook #'smartparens-mode)
+(add-hook 'python-mode-hook #'smartparens-mode)
 
 (provide 'init-smartparens)
