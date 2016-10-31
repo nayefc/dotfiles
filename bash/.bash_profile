@@ -32,12 +32,29 @@ if [[ $platform == 'osx' ]]; then
     export PATH=$PATH:$HOME/.rvm/bin
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-    # pyenv and pyenv-virtualenv initialisation
-    if [ -w pyenv ]; then
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
-	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-    fi
+    # virtualenvwrapper setup
+    source /usr/local/bin/virtualenvwrapper.sh
+
+    function _virtualenv_auto_activate() {
+	if [ -e ".venv" ]; then
+            if [ -f ".venv" ]; then
+		_VENV_PATH=$WORKON_HOME/$(cat .venv)
+		_VENV_WRAPPER_ACTIVATE=true
+            else
+		return
+            fi
+
+            # Check to see if already activated to avoid redundant activating
+            if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
+		if $_VENV_WRAPPER_ACTIVATE; then
+                    _VENV_NAME=$(basename $_VENV_PATH)
+                    workon $_VENV_NAME
+		fi
+                echo Activated virtualenv \"$_VENV_NAME\".
+            fi
+	fi
+    }
+    export PROMPT_COMMAND=_virtualenv_auto_activate
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
