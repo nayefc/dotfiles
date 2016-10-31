@@ -71,7 +71,7 @@ alias emacs='TERM=xterm emacs -nw'
 alias rm='rm -i'
 
 # use git diff for regular diffs
-alias diff='git diff --no-index'
+alias gdiff='git diff --no-index'
 
 # get current git repo name
 alias repo_name='basename `git rev-parse --show-toplevel`'
