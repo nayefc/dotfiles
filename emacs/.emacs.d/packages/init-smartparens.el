@@ -9,6 +9,7 @@
 
 (add-hook 'python-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'c++-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'c-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
 

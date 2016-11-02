@@ -1,6 +1,9 @@
 (use-package company
   :ensure t
+  :bind ("C-;" . company-complete-common)
+  :init
+  (global-company-mode)
   :config
-  (global-company-mode))
+  (delete 'company-backends 'company-clang))
 
 (provide 'init-company)

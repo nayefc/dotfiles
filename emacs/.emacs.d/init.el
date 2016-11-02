@@ -83,6 +83,10 @@
 (use-package init-python
   :load-path "packages/python")
 
+;; c++ packages
+(use-package init-irony
+  :load-path "packages/cc")
+
 (provide 'init)
 ;;; init.el ends here
 
