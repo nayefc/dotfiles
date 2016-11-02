@@ -58,20 +58,6 @@ module PackageModule
   end
 end
 
-class Setup
-  include PackageModule
-  def pre_stow
-    if $platform.include? $osx
-      unless system("brew bundle")
-        puts "There was an error installing OS X brews from Brewfile."
-      end
-      File.open('/Users/nayef/.pyenv/default-packages', 'w') {
-        |f| f.write("pylint\nipdb\njedi\nepc\n")
-      }
-    end
-  end
-end
-
 class Bash
   include PackageModule
   def pre_stow
@@ -109,10 +95,6 @@ end
 module Stow
 
   @@supported_packages = {
-    :setup => {
-      :platforms => $all,
-      :module => Setup
-    },
     :bash => {
       :platforms => $all,
       :module => Bash
