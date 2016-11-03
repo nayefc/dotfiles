@@ -28,6 +28,7 @@
 (depends-on "f")
 (depends-on "fill-column-indicator")
 (depends-on "flycheck")
+(depends-on "flycheck-irony")
 (depends-on "flymake-json")
 (depends-on "git-commit")
 (depends-on "git-gutter+")
