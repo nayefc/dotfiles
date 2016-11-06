@@ -33,6 +33,7 @@
 (depends-on "git-commit")
 (depends-on "git-gutter+")
 (depends-on "git-gutter-fringe+")
+(depends-on "google-c-style")
 (depends-on "haskell-mode")
 (depends-on "hi2")
 (depends-on "highlight-indentation")
