@@ -256,11 +256,11 @@ elif [[ $platform == 'linux' ]]; then
     else
 	export TERM='xterm-color'
     fi
-    COLOUR_OFF="\e[0m"
-    RED="\e[38;5;1m"
-    YELLOW="\e[38;5;3m"
-    CYAN="\e[38;5;36m"
     export LS_COLORS='ln=35:ex=31'
+    COLOUR_OFF="\[\e[0m\]"
+    RED="\[\e[38;5;1m\]"
+    YELLOW="\[\e[38;5;3m\]"
+    CYAN="\[\e[38;5;36m\]"
 fi
 
 # Second prompt line
