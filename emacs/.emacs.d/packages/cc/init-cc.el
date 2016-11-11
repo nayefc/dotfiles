@@ -1,4 +1,9 @@
-(c-set-offset 'access-label -1)
+;; (c-set-offset 'access-label -1)
+
+;; Flycheck C++11
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+
+;; Code Style
 
 (defun inside-class-enum-p (pos)
   "Checks if POS is within the braces of a C++ \"enum class\"."
@@ -44,33 +49,27 @@
                                       (innamespace . [0])
                                       ))
     (c-echo-syntactic-information-p . t)
-    )
-  "HRT C Programming Style")
+    ) "HRT C Programming Style")
 (defun hrt-c-mode ()
   "Setup `c++-mode' to better handle \"class enum\"."
   (c-add-style "hrt-c-style" hrt-c-style t)
-  (setq tab-width 4
-        indent-tabs-mode nil)
+  (setq tab-width 4 indent-tabs-mode nil)
   (add-to-list 'c-offsets-alist '(topmost-intro-cont . align-enum-class))
   (add-to-list 'c-offsets-alist
                '(statement-cont . align-enum-class-closing-brace))
   (c-set-offset 'arglist-close '(c-lineup-arglist-operators 0))
   (c-set-offset 'arglist-intro 'c-basic-offset)
   (c-set-offset 'arglist-cont-nonempty '(add c-lineup-whitesmith-in-block
-                                             c-indent-multi-line-block))
-  )
+                                             c-indent-multi-line-block)))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c++-mode-hook 'hrt-c-mode)
 (add-hook 'c-mode-hook 'hrt-c-mode)
-
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-
 (defun fix-brace-indentation ()
   (sp-with-modes '(malabar-mode c++-mode)
     (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))
   (sp-local-pair 'c++-mode "/*" "*/" :post-handlers '((" | " "SPC")
 						      ("* ||\n[i]" "RET"))))
 (add-hook 'c++-mode-hook 'fix-brace-indentation)
-
 
 (provide 'init-cc)
