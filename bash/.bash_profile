@@ -37,24 +37,24 @@ if [[ $platform == 'osx' ]]; then
 
     function _virtualenv_auto_activate() {
 	if [ -e ".venv" ]; then
-            if [ -f ".venv" ]; then
+	    if [ -f ".venv" ]; then
 		_VENV_PATH=$WORKON_HOME/$(cat .venv)
 		_VENV_WRAPPER_ACTIVATE=true
-            else
+	    else
 		return
-            fi
+	    fi
 
-            # Check to see if already activated to avoid redundant activating
-            if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
+	    # Check to see if already activated to avoid redundant activating
+	    if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
 		if $_VENV_WRAPPER_ACTIVATE; then
-                    _VENV_NAME=$(basename $_VENV_PATH)
-                    workon $_VENV_NAME
+		    _VENV_NAME=$(basename $_VENV_PATH)
+		    workon $_VENV_NAME
 		fi
-                echo Activated virtualenv \"$_VENV_NAME\".
-            fi
+		echo Activated virtualenv \"$_VENV_NAME\".
+	    fi
 	fi
     }
-    export PROMPT_COMMAND=_virtualenv_auto_activate
+    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} _virtualenv_auto_activate"
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
@@ -157,23 +157,23 @@ function copy() {
 # Extracting files
 function extract () {
     if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf $1    ;;
-            *.tar.gz)    tar xvzf $1    ;;
-            *.tgz)       tar xvzf $1    ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar x $1     ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xvf $1     ;;
-            *.tbz2)      tar xvjf $1    ;;
-            *.tgz)       tar xvzf $1    ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)           echo "'$1' cannot be extracted via >extract<" ;;
-        esac
+	case $1 in
+	    *.tar.bz2)   tar xvjf $1    ;;
+	    *.tar.gz)    tar xvzf $1    ;;
+	    *.tgz)       tar xvzf $1    ;;
+	    *.bz2)       bunzip2 $1     ;;
+	    *.rar)       unrar x $1     ;;
+	    *.gz)        gunzip $1      ;;
+	    *.tar)       tar xvf $1     ;;
+	    *.tbz2)      tar xvjf $1    ;;
+	    *.tgz)       tar xvzf $1    ;;
+	    *.zip)       unzip $1       ;;
+	    *.Z)         uncompress $1  ;;
+	    *.7z)        7z x $1        ;;
+	    *)           echo "'$1' cannot be extracted via >extract<" ;;
+	esac
     else
-        echo "'$1' is not a valid file"
+	echo "'$1' is not a valid file"
     fi
 }
 
