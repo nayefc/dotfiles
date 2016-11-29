@@ -2,7 +2,6 @@
 
 ;;; Commentary:
 
-
 ;; (defun convert-python-dict-to-json ()
 ;;   "Convert a python unicode dict to valid JSON."
 ;;   (interactive)
@@ -74,14 +73,12 @@
 	     ("C-c t" . python-add-breakpoint)
 	     ("C-x a c" . goto-python-class)
 	     ("C-x a f" . goto-python-function)
-	     ("C-x ," . hs-enable-and-toggle)
-	     ("C-c C-s" . venv-workon)
-	     )
-  )
+	     ("C-x ," . hs-enable-and-toggle)))
+
+(bind-key "C-c C-s" 'venv-workon)
 
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
-
 
 (provide 'init-python)
 ;;; init-python.el ends here
