@@ -28,6 +28,11 @@
  '(swiper-match-face-3 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
  '(swiper-match-face-4 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))))
 
+(global-set-key (kbd "C-M-s")
+		(lambda ()
+		  (interactive)
+		  (swiper (word-at-point))))
+
 ;; See http://oremacs.com/2016/01/06/ivy-flx/ for fuzzy matching
 ;; (use-package flx
 ;;   :ensure t)
