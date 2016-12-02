@@ -75,7 +75,7 @@
 	     ("C-x a f" . goto-python-function)
 	     ("C-x ," . hs-enable-and-toggle)))
 
-(bind-key "C-c C-s" 'venv-workon)
+(bind-key "C-c C-d" 'venv-workon)
 
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
