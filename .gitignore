@@ -1,4 +1,5 @@
 emacs/.emacs.d/auto-save-list/
+emacs/.emacs.d/elpa/archives/melpa/archive-contents
 .gitconfig
 .mc-lists.elc
 *.dat
