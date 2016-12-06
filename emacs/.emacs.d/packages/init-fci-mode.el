@@ -5,7 +5,6 @@
   :init
   (setq fci-rule-column 80)
   (setq fci-column-indicator 80)
-  (setq fci-handle-truncate-lines nil)
 
   (defun auto-fci-mode (&optional unused)
     (if (> (window-width) fci-rule-column)
@@ -13,7 +12,7 @@
            (not (string-match "^\*.*\*$" (buffer-name)))
            (not (eq major-mode 'dired-mode)))
 	    (fci-mode 1)
-      (fci-mode 0))))
+	  (fci-mode 0))))
 
   (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
   (add-hook 'window-configuration-change-hook 'auto-fci-mode))
