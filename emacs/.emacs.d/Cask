@@ -22,6 +22,7 @@
 (depends-on "deferred")
 (depends-on "diminish")
 (depends-on "direx")
+(depends-on "dumb-jump")
 (depends-on "epc")
 (depends-on "epl")
 (depends-on "exec-path-from-shell")
