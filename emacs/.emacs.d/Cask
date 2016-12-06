@@ -4,6 +4,7 @@
 
 (depends-on "ace-jump-buffer")
 (depends-on "ace-window")
+(depends-on "ag")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "avy")
@@ -19,6 +20,7 @@
 (depends-on "counsel-projectile")
 (depends-on "ctable")
 (depends-on "dash")
+(depends-on "dashboard")
 (depends-on "deferred")
 (depends-on "diminish")
 (depends-on "direx")
@@ -59,6 +61,7 @@
 (depends-on "pip-requirements")
 (depends-on "pkg-info")
 (depends-on "popup")
+(depends-on "project-explorer")
 (depends-on "projectile")
 (depends-on "pylint")
 (depends-on "python-environment")
