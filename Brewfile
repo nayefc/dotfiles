@@ -15,6 +15,11 @@ brew 'diff-so-fancy'
 brew 'autojump'
 brew 'tree'
 brew 'the_silver_searcher'
+brew 'jq'
+
+tap 'simeji/jid201'
+brew 'jid'
+
 
 # C++
 brew 'cmake'
