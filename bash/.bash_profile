@@ -25,8 +25,18 @@ if [[ $platform == 'osx' ]]; then
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-    # autojump
-    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+    # fasd
+    eval "$(fasd --init auto)"
+    alias a='fasd -a'        # any
+    alias s='fasd -si'       # show / search / select
+    alias d='fasd -d'        # directory
+    alias f='fasd -f'        # file
+    alias sd='fasd -sid'     # interactive directory selection
+    alias sf='fasd -sif'     # interactive file selection
+    alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+    alias zz='fasd_cd -d -i' # cd with interactive selection
+
+    alias e='TERM=xterm f -e emacs -nw'
 
     # rvm
     export PATH=$PATH:$HOME/.rvm/bin
@@ -54,7 +64,7 @@ if [[ $platform == 'osx' ]]; then
 	    fi
 	fi
     }
-    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} _virtualenv_auto_activate"
+    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND} _virtualenv_auto_activate"
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"

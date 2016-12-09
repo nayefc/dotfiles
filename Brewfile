@@ -12,11 +12,11 @@ brew 'emacs', args: ['cocoa']
 brew 'fpp'
 brew 'mycli'
 brew 'diff-so-fancy'
-brew 'autojump'
 brew 'tree'
 brew 'the_silver_searcher'
 brew 'jq'
 brew 'httpie'
+brew 'fasd'
 
 tap 'simeji/jid201'
 brew 'jid'
