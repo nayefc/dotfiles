@@ -78,9 +78,6 @@ fi
 
 # Aliases
 
-# emacs client alias
-alias e='emacsclient -nw'
-
 # alias to use lower colours in emacs in terminal for solarized compatibility
 alias emacs='TERM=xterm emacs -nw'
 
