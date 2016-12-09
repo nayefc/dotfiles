@@ -16,6 +16,7 @@ brew 'autojump'
 brew 'tree'
 brew 'the_silver_searcher'
 brew 'jq'
+brew 'httpie'
 
 tap 'simeji/jid201'
 brew 'jid'
