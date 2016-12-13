@@ -4,12 +4,6 @@
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
-;; Dumb jump mode
-(use-package dumb-jump
-     :ensure t
-     :init
-     (dumb-jump-mode))
-
 ;; Default search to regexp search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 

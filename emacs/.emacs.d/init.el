@@ -69,6 +69,8 @@
   :load-path "packages/")
 (use-package init-dashboard
   :load-path "packages/")
+(use-package init-dumb-jump
+  :load-path "packages/")
 
 ;; python packages
 (use-package init-expand-region
