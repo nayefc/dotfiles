@@ -13,3 +13,4 @@ projectile-bookmarks.eld
 *projectile.cache
 .hrtrc
 irony/
+.python-environments/
