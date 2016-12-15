@@ -3,7 +3,6 @@ tap 'caskroom/cask'
 brew 'cask'
 brew 'python'
 brew 'python3'
-brew 'cmake'
 brew 'hr'
 brew 'stow'
 brew 'git'
@@ -25,7 +24,8 @@ tap 'simeji/jid'
 brew 'jid'
 
 
-# C++
+# C/C++
+brew 'glib'
 brew 'cmake'
 brew 'llvm', args: ['with-clang']
 
