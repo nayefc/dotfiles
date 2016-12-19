@@ -7,21 +7,21 @@
     (if project-root
 	(s-chop-prefix project-root buffer-file-name))))
 
-(defun get-gihub-url ()
-  "Return the Github url for the current line."
-  (defvar github-url)
-  (setq github-url
+(defun get-repo-url ()
+  "Return the repo url for the current line."
+  (defvar repo-url)
+  (setq repo-url
    (s-concat
-    "https://github.com/USER/REPO/blob/master/"
+    "https://phabricator.hudson-trading.com/diffusion/OPS/browse/master/"
     (get-relative-file-name)
-    "#L"
+    ";master$"
     (number-to-string (line-number-at-pos)))))
 
 (defun copy-repo-url ()
   "Put repo URL for the line at point in kill ring."
   (interactive)
-  (kill-new (get-github-url))
-  (message "Copied: %s" (get-github-url)))
-(bind-key "C-x a u" 'copy-github-url)
+  (kill-new (get-repo-url))
+  (message "Copied: %s" (get-repo-url)))
+(bind-key "C-x a u" 'copy-repo-url)
 
 (provide 'init-helper-functions)
