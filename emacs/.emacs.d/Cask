@@ -33,6 +33,7 @@
 (depends-on "flycheck-irony")
 (depends-on "git-commit")
 (depends-on "git-gutter+")
+(depends-on "golden-ratio")
 (depends-on "google-c-style")
 (depends-on "highlight-indentation")
 (depends-on "highlight-symbol")
