@@ -19,6 +19,7 @@
 (depends-on "counsel-projectile")
 (depends-on "ctable")
 (depends-on "dash")
+(depends-on "dashboard")
 (depends-on "deferred")
 (depends-on "diminish")
 (depends-on "dumb-jump")
