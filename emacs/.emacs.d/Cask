@@ -37,6 +37,7 @@
 (depends-on "google-c-style")
 (depends-on "highlight-indentation")
 (depends-on "highlight-symbol")
+(depends-on "indent-tools")
 (depends-on "irony")
 (depends-on "ivy")
 (depends-on "jedi")

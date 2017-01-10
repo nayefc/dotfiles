@@ -34,6 +34,8 @@
   :load-path "packages/")
 (use-package init-default-editing
   :load-path "packages/")
+(use-package init-hydra
+  :load-path "packages/")
 (use-package init-helper-functions
   :load-path "packages/")
 (use-package init-gui
@@ -72,6 +74,8 @@
 (use-package init-dumb-jump
   :load-path "packages/")
 (use-package init-golden-ratio
+  :load-path "packages/")
+(use-package init-indent-tools
   :load-path "packages/")
 
 ;; python packages
