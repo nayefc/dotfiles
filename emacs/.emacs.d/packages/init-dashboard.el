@@ -1,4 +1,5 @@
 (use-package dashboard
+  :ensure t
   :config
   (require 'projectile)
   (dashboard-setup-startup-hook)
