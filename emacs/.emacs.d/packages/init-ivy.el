@@ -15,7 +15,18 @@
   (setq ivy-initial-inputs-alist nil)
   (custom-set-faces
    '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
-   '(ivy-current-match ((t (:background "#436060"))))))
+   '(ivy-current-match ((t (:background "#436060")))))
+
+(use-package ivy-hydra
+  :ensure t
+  :config
+  (defun modi/ivy-kill-buffer ()
+    (interactive)
+    (ivy-set-action 'kill-buffer)
+    (ivy-done))
+  (bind-keys
+   :map ivy-switch-buffer-map
+   ("C-k" . modi/ivy-kill-buffer))))
 
 (use-package swiper
   :ensure t

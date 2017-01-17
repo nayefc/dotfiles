@@ -41,6 +41,7 @@
 (depends-on "indent-tools")
 (depends-on "irony")
 (depends-on "ivy")
+(depends-on "ivy-hydra")
 (depends-on "jedi")
 (depends-on "jedi-core")
 (depends-on "let-alist")
