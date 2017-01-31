@@ -73,8 +73,8 @@
   :load-path "packages/")
 (use-package init-dumb-jump
   :load-path "packages/")
-(use-package init-golden-ratio
-  :load-path "packages/")
+;; (use-package init-golden-ratio
+;;   :load-path "packages/")
 (use-package init-indent-tools
   :load-path "packages/")
 
