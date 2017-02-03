@@ -1,192 +1,61 @@
-#!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
-# Usage: bootstrap [optional arg stow package]
+#!/bin/bash
+set -e
 
-# Setup:
-# 1. Place your dotfiles in a directory named after the package appropriately.
-# For example:
-#  ├── bash
-#  │   ├── .bash_profile
-#  │   └── .bashrc
-#  ├── git
-#  │   ├── .git-completion.sh
-#  │   ├── .gitconfig
-#  │   ├── .gitconfig.erb
-#  │   ├── .gitignore_global
-#
-# 2. Add .erb to any file that requires templating. Keep this to minimal.
-# 3. Add the package to the $supported_packages hash
-# 4. Set up your package in stow() if needed. To template a file,  use the
-#    template(template_file, variable_hash, result_file) function. See :git
-#    package as an example below.
-# 5. In stow, you may need to install any packages/dependecies using your package
-#    manager.
+echo "==================="
+echo "Running Brew Bundle"
+brew bundle
+echo "Brew Bundle Done"
+echo "==================="
 
-require 'erb'
-require 'ostruct'
-require 'fileutils'
-# require './utils'
+echo ""
 
-$linux = 'linux'
-$osx = 'darwin'
-$all = [$linux, $osx]
-$platform = (RUBY_PLATFORM.include? $osx) ? $osx : $linux
+echo "==================="
+echo "Running stow bash"
+stow bash
+echo "Stow stash Done"
+echo "==================="
 
+echo ""
 
-module PackageModule
-  @@osx_packages = []
-  @@linux_packages = []
-  def osx_packages
-    return @@osx_packages
-  end
-  def linux_packages
-    return @@linux_packages
-  end
-  def install_osx
-    @@osx_packages.each do |package|
-      unless system("brew install #{package}")
-        puts "Error installing #{package}"
-      end
-    end
-  end
-  def install_packages(platform)
-    if $platform.include? $osx
-      PackageModule.install_osx
-    end
-  end
-  def pre_stow
-  end
-end
+echo "==================="
+echo "Running stow ssh"
+stow ssh
+echo "Stow ssh Done"
+echo "==================="
 
-class Bash
-  include PackageModule
-  def pre_stow
-    if File.exist?('../.bash_profile')
-      FileUtils.mv('../.bash_profile', '../.bash_profile.bak', :force => true)
-    end
-    if File.exist?('../.bashrc')
-      FileUtils.mv('../.bashrc', '../.bashrc.bak', :force => true)
-    end
-  end
-end
+echo ""
 
-module Tmux
-  include PackageModule
-  @@osx_packages = ['tmux']
-end
+echo "==================="
+echo "Running stow tmux"
+stow tmux
+echo "Stow tmux Done"
+echo "==================="
 
-module Git
-  include PackageModule
-  def pre_stow
-    email = 'nrcopty@gmail.com' # TODO: get email using stdin
-    template('git/.gitconfig.erb', {:git_email => email}, 'git/.gitconfig')
-  end
-end
+echo ""
 
-module Emacs
-  include PackageModule
-  @@osx_packages = ['emacs', 'cask']
-end
+echo "==================="
+echo "Running stow emacs"
+stow emacs
+echo "Stow emacs Done"
+echo "==================="
 
-module Ssh
-  include PackageModule
-end
+echo ""
 
-module Stow
+echo "==================="
+echo "Running stow pylint"
+stow pylint
+echo "Stow pylint Done"
+echo "==================="
 
-  @@supported_packages = {
-    :bash => {
-      :platforms => $all,
-      :module => Bash
-    },
-    :tmux => {
-      :platforms => $all,
-      :module => Tmux
-    },
-    :git => {
-      :platforms => $all,
-      :module => Git
-    },
-    :emacs => {
-      :platforms => $all,
-      :module => Emacs
-    },
-    :ssh => {
-      :platforms => $linux,
-      :module => Ssh
-    },
-  }
+echo ""
 
-  def supported_packages
-    return @@supported_packages
-  end
-
-  def self.stow(package_name)
-    unless @@supported_packages.include? package_name
-      puts "No package called #{package_name}"
-      return
-    end
-
-    unless @@supported_packages[package_name][:platforms].include? $platform
-      puts "Package #{package_name} not supported on this platform"
-      return
-    end
-
-    package_obj = @@supported_packages[package_name][:module]
-    package_obj.install_packages($platform)
-    package_obj.pre_stow
-
-    if package_name == :setup
-      return
-    end
-
-    unless system("stow #{package_name.to_s}") and x == 2
-      puts "There was an error stowing #{package_name}."
-    end
-  end
-
-  def self.stow_packages(packages)
-    if packages.empty?
-      $supported_packages.each do |pkg, platform|
-        puts "Stowing #{pkg}"
-        Stow::stow pkg.to_sym
-      end
-    else
-      packages.each do |pkg, platform|
-        puts "Stowing #{pkg}"
-        Stow::stow(pkg.to_sym)
-      end
-    end
-  end
-
-  def self.template(template_file, variable_hash, result_file)
-    erb = ERB.new(File.read(template_file))
-    namespace = OpenStruct.new(variable_hash)
-    result = erb.result(namespace.instance_eval { binding })
-    File.write(result_file, result)
-  end
-
-
-end
-
-if __FILE__ == $0
-
-  unless system("git submodule update --init --recursive")
-    puts "There was an error updating git submodule."
-  end
-
-  if $platform.include? $osx
-    unless `brew install stow`
-      puts "There was an error installing stow."
-      return
-    end
-  else
-    unless system("sudo yum install stow")
-      puts "There was an error installing stow."
-      return
-    end
-  end
-
-  Stow::stow_packages ARGV
-
-end
+echo "==================="
+echo "Running stow git"
+stow git
+if [ hostname == "nayefmacbook" ] || [ uname != "Darwin" ]; then
+    git config --global user.email "nayef@hudson-trading.com"
+else
+    git config --global user.email "nrcopty@gmail.com"
+fi
+echo "Stow git Done"
+echo "==================="
