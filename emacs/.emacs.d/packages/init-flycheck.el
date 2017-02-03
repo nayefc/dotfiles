@@ -10,7 +10,8 @@
   (set-face-attribute 'flycheck-info nil :foreground "red" :background "yellow")
   (global-flycheck-mode))
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+(if is-a-mac
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 (provide 'init-flycheck)
