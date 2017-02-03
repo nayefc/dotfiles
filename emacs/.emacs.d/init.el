@@ -11,7 +11,16 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(defconst is-a-mac
+  (eq system-type 'darwin)
+  "Is this running on OS X?")
+
+(defvar caskpath)
+(if is-a-mac
+    (setq caskpath "/usr/local/share/emacs/site-lisp/cask/cask.el")
+  (setq caskpath "/home/nayef/.cask/cask.el"))
+
+(require 'cask caskpath)
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
@@ -24,11 +33,6 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-
-(defconst is-a-mac
-  (eq system-type 'darwin)
-  "Is this running on OS X?")
 
 (use-package init-default-settings
   :load-path "packages/")
