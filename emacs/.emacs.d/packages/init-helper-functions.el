@@ -12,9 +12,23 @@
   (defvar repo-url)
   (setq repo-url
    (s-concat
-    "https://phabricator.hudson-trading.com/diffusion/OPS/browse/master/"
+    (s-concat
+     "https://phabricator.hudson-trading.com/diffusion/"
+     (car
+      (s-split "/"
+	       (car (cdr
+		     (s-split
+		      "diffusion/"
+		      (s-trim
+		       (shell-command-to-string
+			"git config --get \"remote.origin.url\"")))))))
+     "/browse/master/"
+     )
     (get-relative-file-name)
-    ";master$"
+    ";"
+    (car (s-split "\n" (s-trim
+			(shell-command-to-string "git rev-parse master HEAD"))))
+    "$"
     (number-to-string (line-number-at-pos)))))
 
 (defun copy-repo-url ()
