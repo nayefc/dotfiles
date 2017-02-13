@@ -51,6 +51,7 @@ echo ""
 
 echo "==================="
 echo "Running stow git"
+cp git/.gitconfig.tmpl git/.gitconfig
 stow git
 if [ hostname == "nayefmacbook" ] || [ uname != "Darwin" ]; then
     git config --global user.email "nayef@hudson-trading.com"
