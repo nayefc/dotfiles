@@ -1,6 +1,7 @@
-emacs/.emacs.d/auto-save-list/
-emacs/.emacs.d/elpa/archives/melpa/archive-contents
+ssh/.ssh/config
+.hrtrc
 .gitconfig
+
 .mc-lists.elc
 *.dat
 *.last
@@ -11,7 +12,8 @@ emacs/.emacs.d/elpa/archives/melpa/archive-contents
 *.elc
 projectile-bookmarks.eld
 *projectile.cache
-.hrtrc
 irony/
-.python-environments/
 elpa/
+emacs/.emacs.d/auto-save-list/
+emacs/.emacs.d/elpa/archives/melpa/archive-contents
+.python-environments/

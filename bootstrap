@@ -19,6 +19,11 @@ echo ""
 
 echo "==================="
 echo "Running stow ssh"
+if [ $(uname) == "Darwin" ]; then
+    cp ssh/.ssh/mac_config ssh/.ssh/config
+else
+    cp ssh/.ssh/linux_config ssh/.ssh/config
+fi
 stow ssh
 echo "Stow ssh Done"
 echo "==================="
@@ -53,7 +58,7 @@ echo "==================="
 echo "Running stow git"
 cp git/.gitconfig.tmpl git/.gitconfig
 stow git
-if [ hostname == "nayefmacbook" ] || [ uname != "Darwin" ]; then
+if [ $(hostname) == "nayefmacbook" ] || [ $(uname) != "Darwin" ]; then
     git config --global user.email "nayef@hudson-trading.com"
 else
     git config --global user.email "nrcopty@gmail.com"
