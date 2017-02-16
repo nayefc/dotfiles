@@ -81,6 +81,8 @@
 ;;   :load-path "packages/")
 (use-package init-indent-tools
   :load-path "packages/")
+(use-package init-ansi-term
+  :load-path "packages/")
 
 ;; python packages
 (use-package init-expand-region
