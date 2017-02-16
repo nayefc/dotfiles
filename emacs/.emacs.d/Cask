@@ -4,6 +4,8 @@
 
 (depends-on "ace-window")
 (depends-on "ag")
+(depends-on "all-the-icons")
+(depends-on "all-the-icons-dired")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "avy")
@@ -48,6 +50,7 @@
 (depends-on "magit")
 (depends-on "magit-popup")
 (depends-on "multiple-cursors")
+(depends-on "neotree")
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "pkg-info")
