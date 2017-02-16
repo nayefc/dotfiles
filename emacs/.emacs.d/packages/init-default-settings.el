@@ -47,13 +47,6 @@
 ;; Put all emacs backup files in one directory
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-;; Add dired-x mode to dired
-(add-hook 'dired-load-hook
-	  (lambda ()
-	    (load "dired-x")))
-
-(put 'dired-find-alternate-file 'disabled nil)
-
 ;; Change default switch-to-buffer binding for consistency with helm-buffers-list
 (bind-key "C-x C-b" 'switch-to-buffer)
 

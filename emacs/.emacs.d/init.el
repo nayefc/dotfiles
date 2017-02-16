@@ -38,6 +38,8 @@
   :load-path "packages/")
 (use-package init-default-editing
   :load-path "packages/")
+(use-package init-dired
+  :load-path "packages/")
 (use-package init-hydra
   :load-path "packages/")
 (use-package init-helper-functions
