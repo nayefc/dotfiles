@@ -1,10 +1,20 @@
+;; This follows the 90ish rule
+;; See https://www.youtube.com/watch?v=wf-BqAjZb8M
+
+;; Highlight lines over 100 characters
+(setq-default
+ whitespace-line-column 100
+ whitespace-style       '(face lines-tail))
+(add-hook 'prog-mode-hook #'whitespace-mode)
+
+;; Set line indicator at 90
 (use-package fci-mode
   :ensure fill-column-indicator
   :defer t
   :defines fci-column-indicator fci-handle-truncate-lines fci-rule-column
   :init
-  (setq fci-rule-column 80)
-  (setq fci-column-indicator 80)
+  (setq fci-rule-column 90)
+  (setq fci-column-indicator 90)
 
   (defun auto-fci-mode (&optional unused)
     (if (> (window-width) fci-rule-column)
