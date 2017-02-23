@@ -112,12 +112,7 @@ function edit_with() {
 # open all git conflicted files
 function edit_conflicts() {
     files=`git diff --name-only --diff-filter=U`
-    if ps ax | grep -v grep | grep 'emacs --daemon' > /dev/null
-    then
-	e $files
-    else
-	emacs $files
-    fi
+    emacs $files
 }
 
 
