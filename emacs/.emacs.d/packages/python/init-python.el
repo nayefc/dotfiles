@@ -21,6 +21,9 @@
 ;;   (while (search-forward-regexp "False" nil t)
 ;;     (replace-match "false" t)))
 
+;; Temporary for iPython to work
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+
 ;; Set python indent to 4
 (add-hook 'python-mode-hook
 	  (lambda ()
