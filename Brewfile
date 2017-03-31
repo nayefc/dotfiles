@@ -19,6 +19,7 @@ brew 'the_silver_searcher'
 brew 'jq'
 brew 'httpie'
 brew 'fasd'
+brew 'rtags'
 
 tap 'simeji/jid'
 brew 'jid'
