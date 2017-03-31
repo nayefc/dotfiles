@@ -92,6 +92,8 @@
 (use-package init-auto-virtualenvwrapper
   :load-path "packages/")
 
+;; (load-file "~/.emacs.d/packages/kite.el")
+
 ;; python packages
 (use-package init-expand-region
   :load-path "packages/python")
