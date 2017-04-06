@@ -20,16 +20,17 @@ brew 'jq'
 brew 'httpie'
 brew 'fasd'
 brew 'rtags'
+brew 'icdiff'
 
 tap 'simeji/jid'
 brew 'jid'
-
 
 # C/C++
 brew 'glib'
 brew 'cmake'
 brew 'llvm', args: ['with-clang']
 
+# Cask - GUI
 cask 'emacs'
 cask 'google-chrome'
 cask 'iterm2'

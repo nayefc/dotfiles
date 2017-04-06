@@ -21,11 +21,11 @@
         bnuke = !sh -c 'git branch -D $1 && git push origin :$1' -
         tnuke = !sh -c 'git tag -d $1 && git push origin :$1' -
         subinit = submodule update --init --recursive -f
+	histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
         # Unused
         # gr = remote show origin
         # sr = !git branch --set-upstream `git rev-parse --abbrev-ref HEAD` origin/`git rev-parse --abbrev-ref HEAD`
         # histfu = log --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
-        # histr = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short --all
 [push]
         default = simple
 [core]
@@ -64,12 +64,15 @@
 [pager]
         diff = diff-so-fancy | less --tabs=4 -RFX
         show = diff-so-fancy | less --tabs=4 -RFX
-        # diff = diff-highlight | less
-        # show = diff-highlight | less
 [merge]
         conflictstyle = diff3
 [diff]
         compactionHeuristic = true
+	tool = icdiff
+[difftool]
+	prompt = false
+[difftool "icdiff"]
+	  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
 
 # .. vs. ... note:
 # log:
