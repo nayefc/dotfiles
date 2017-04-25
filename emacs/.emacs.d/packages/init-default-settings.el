@@ -50,6 +50,9 @@
 ;; Change default switch-to-buffer binding for consistency with helm-buffers-list
 (bind-key "C-x C-b" 'switch-to-buffer)
 
+;; Turn off auto revert messages
+(setq auto-revert-verbose nil)
+
 ;; Custom mode-line-format
 (setq-default mode-line-format
 	      '("%e" mode-line-front-space
