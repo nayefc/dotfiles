@@ -100,6 +100,9 @@ alias repo_name='basename `git rev-parse --show-toplevel`'
 # print out authors or emails of a git repo
 alias authors='git log --all --format='%aN' | sort -u'
 
+# alias grep to egrep
+alias grep='grep -E'
+
 
 # Functions
 
