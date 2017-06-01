@@ -26,9 +26,9 @@
      )
     (get-relative-file-name)
     ";"
-    (car (s-split "\n" (s-trim
-			(shell-command-to-string "git rev-parse master HEAD"))))
-    "$"
+    ;; (car (s-split "\n" (s-trim
+    ;; 			(shell-command-to-string "git rev-parse master HEAD"))))
+    "master$"
     (number-to-string (line-number-at-pos)))))
 
 (defun copy-repo-url ()
