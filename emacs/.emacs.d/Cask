@@ -6,6 +6,7 @@
 (depends-on "ag")
 (depends-on "all-the-icons")
 (depends-on "all-the-icons-dired")
+(depends-on "all-the-icons-ivy")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "auto-virtualenvwrapper")
