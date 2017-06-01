@@ -46,6 +46,7 @@
 (depends-on "irony")
 (depends-on "ivy")
 (depends-on "ivy-hydra")
+(depends-on "ivy-rtags")
 (depends-on "jedi")
 (depends-on "jedi-core")
 (depends-on "let-alist")
