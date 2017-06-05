@@ -125,14 +125,7 @@
  '(package-selected-packages
    (quote
     ((progn t elisp--witness--lisp)
-     ivy-rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen auto-virtualenvwrapper
-     all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar
-     project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile
-     company-irony-c-headers company-irony google-c-style ivy virtualenvwrapper buffer-move
-     pylint highlight-indentation company-jedi jedi expand-region company projectile
-     exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol
-     multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar
-     solarized-theme smartparens pallet magit-popup))))
+     ivy-rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen auto-virtualenvwrapper all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy virtualenvwrapper buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme smartparens pallet magit-popup))))
 
 ;; Font height 135 or 130
 (custom-set-faces
@@ -140,10 +133,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "#839496" :inverse-video nil :box nil
-			 :strike-through nil :overline nil :underline nil :slant normal
-			 :weight normal :height 135 :width normal :foundry "nil"
-			 :family "InconsolataGo"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 135 :width normal :foundry "nil" :family "InconsolataGo"))))
  '(ivy-current-match ((t (:background "#436060"))))
  '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
  '(swiper-match-face-1 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
