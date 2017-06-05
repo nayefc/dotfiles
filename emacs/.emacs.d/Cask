@@ -9,7 +9,6 @@
 (depends-on "all-the-icons-ivy")
 (depends-on "async")
 (depends-on "auto-complete")
-(depends-on "auto-virtualenvwrapper")
 (depends-on "avy")
 (depends-on "bind-key")
 (depends-on "buffer-move")
