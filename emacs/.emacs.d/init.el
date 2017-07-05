@@ -89,6 +89,10 @@
   :load-path "packages/")
 (use-package init-neotree
   :load-path "packages/")
+(use-package init-eshell
+  :load-path "packages/")
+(use-package init-shell
+  :load-path "packages/")
 
 ;; (load-file "~/.emacs.d/packages/kite.el")
 
