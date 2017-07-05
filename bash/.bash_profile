@@ -265,6 +265,20 @@ elif [[ $platform == 'linux' ]]; then
     CYAN="\[\e[38;5;36m\]"
 fi
 
+# Completions
+source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
+source /usr/local/etc/bash_completion.d/brew
+source /usr/local/etc/bash_completion.d/tmux
+source /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
+
+# Second prompt line
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+
+export GIT_PS1_SHOWDIRTYSTATE="1"
+export GIT_PS1_SHOWUNTRACKEDFILES="1"
+export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
+
 PS1="$CYAN"
 if [[ $platform == 'linux' ]]; then
     PS1=$PS1"\h:"
