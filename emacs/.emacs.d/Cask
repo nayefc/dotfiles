@@ -73,6 +73,7 @@
 (depends-on "smartparens")
 (depends-on "solarized-theme")
 (depends-on "sr-speedbar")
+(depends-on "string-inflection")
 (depends-on "swiper")
 (depends-on "use-package")
 (depends-on "virtualenvwrapper")
