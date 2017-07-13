@@ -28,15 +28,15 @@
 (which-function-mode)
 (setq which-func-unknown "n/a")
 
-;; Add space on the margin for line numbering
-(setq linum-format "%d ")
-
 ;; Buffer name for for two files in different directories shows full path instead of <2>
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Display line numbers
-(global-linum-mode t)
+;; ;; Add space on the margin for line numbering
+;; (setq linum-format "%d ")
+
+;; ;; Display line numbers
+;; (global-linum-mode t)
 
 ;; Display line numbers at the bottom
 (setq line-number-mode t)
