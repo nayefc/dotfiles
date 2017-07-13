@@ -93,6 +93,8 @@
   :load-path "packages/")
 (use-package init-shell
   :load-path "packages/")
+(use-package init-shx
+  :load-path "packages/")
 
 ;; (load-file "~/.emacs.d/packages/kite.el")
 
