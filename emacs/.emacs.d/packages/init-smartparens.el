@@ -1,9 +1,11 @@
+;;(add-to-list 'load-path "~/dotfiles/emacs/.emacs.d/packages")
+(add-to-list 'load-path "~/dotfiles/emacs/.emacs.d/packages/smartparens-1.10.1")
+(load "smartparens")
+
 (use-package smartparens-config
   :ensure smartparens
   :diminish smartparens-mode
   :bind (("M-]" . sp-unwrap-sexp))
-  ;; :bind (("C-c <right>" . sp-forward-slurp-sexp)
-  ;; 	 ("C-c <left>" . sp-forward-barf-sexp))
   :config
   (require 'smartparens-config))
 
@@ -15,7 +17,9 @@
 
 (setq sp-cancel-autoskip-on-backward-movement nil)
 
-(add-hook 'c++-mode-hook #'smartparens-mode)
-(add-hook 'python-mode-hook #'smartparens-mode)
+;; sp-delete, sp-for, sp-back
+;; M-x sp-cheat-sheet
+;; sp-forward-slurp-sexp C-c <right>
+;; sp-forward-barf-sexp C-c <left>
 
 (provide 'init-smartparens)

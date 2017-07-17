@@ -69,7 +69,6 @@
 (depends-on "seq")
 (depends-on "shut-up")
 (depends-on "shx")
-(depends-on "smartparens")
 (depends-on "solarized-theme")
 (depends-on "sr-speedbar")
 (depends-on "string-inflection")
