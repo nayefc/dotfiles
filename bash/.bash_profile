@@ -70,9 +70,21 @@ if [[ $platform == 'osx' ]]; then
     source /usr/local/etc/bash_completion.d/tmux
     source /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
 
+    # Second prompt line
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+
 elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
+
+    # Completions
+    source .git-completion.bash
+    source .ag.bashcomp.sh
+    source .tmux-completion
+
+    # Second prompt line
+    source .git-prompt.sh
+
 fi
 
 
@@ -271,9 +283,6 @@ elif [[ $platform == 'linux' ]]; then
     YELLOW="\[\e[38;5;3m\]"
     CYAN="\[\e[38;5;36m\]"
 fi
-
-# Second prompt line
-source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
