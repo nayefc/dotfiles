@@ -1,6 +1,5 @@
-(use-package
-  :ensure t
-  all-the-icons)
+(use-package all-the-icons
+  :ensure t)
 
 (use-package all-the-icons-dired
   :ensure t
