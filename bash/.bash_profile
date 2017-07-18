@@ -77,14 +77,19 @@ elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
 
-    # Completions
-    source .git-completion.bash
-    source .ag.bashcomp.sh
-    source .tmux-completion
+    if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
+	# Completions
+	source .git-completion.bash
+	source .ag.bashcomp.sh
+	source .tmux-completion
 
-    # Second prompt line
-    source .git-prompt.sh
+	# Second prompt line
+	source .git-prompt.sh
 
+	export GIT_PS1_SHOWDIRTYSTATE="1"
+	export GIT_PS1_SHOWUNTRACKEDFILES="1"
+	export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
+    fi
 fi
 
 
@@ -291,14 +296,6 @@ export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 PS1="$CYAN"
 if [[ $platform == 'linux' ]]; then
     PS1=$PS1"\h:"
-fi
-
-# Git prompt
-if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
-    source ~/.git-completion.sh
-    export GIT_PS1_SHOWDIRTYSTATE="1"
-    export GIT_PS1_SHOWUNTRACKEDFILES="1"
-    export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 fi
 
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
