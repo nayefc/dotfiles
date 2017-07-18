@@ -5,25 +5,16 @@
 
 (require 'package)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("melpa-stable" . "https://stable.melpa.org/packages/"))
-      package-archive-priorities '(("melpa" . 1)
-				   ("melpa-stable" . 0)))
+			 ("melpa-stable" . "https://stable.melpa.org/packages/")
+			 ("gnu" . "http://elpa.gnu.org/packages/"))
+      package-archive-priorities '(("melpa" . 10)
+				   ("melpa-stable" . 5)
+				   ("gnu" . 0)))
 (package-initialize)
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (defconst is-a-mac
   (eq system-type 'darwin)
   "Is this running on OS X?")
-
-;; (defvar caskpath)
-;; (if is-a-mac
-;;     (setq caskpath "/usr/local/share/emacs/site-lisp/cask/cask.el")
-;;   (setq caskpath "/home/nayef/.cask/cask.el"))
-;; (require 'cask caskpath)
-;; (cask-initialize)
-;; (require 'pallet)
-;; (pallet-mode t)
 
 ;; Bootstrap use-package
 (eval-when-compile
