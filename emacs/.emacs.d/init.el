@@ -4,9 +4,10 @@
 ;;; Code:
 
 (require 'package)
-
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
+			 ("melpa-stable" . "https://stable.melpa.org/packages/"))
+      package-archive-priorities '(("melpa" . 1)
+				   ("melpa-stable" . 0)))
 (package-initialize)
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -15,15 +16,14 @@
   (eq system-type 'darwin)
   "Is this running on OS X?")
 
-(defvar caskpath)
-(if is-a-mac
-    (setq caskpath "/usr/local/share/emacs/site-lisp/cask/cask.el")
-  (setq caskpath "/home/nayef/.cask/cask.el"))
-
-(require 'cask caskpath)
-(cask-initialize)
-(require 'pallet)
-(pallet-mode t)
+;; (defvar caskpath)
+;; (if is-a-mac
+;;     (setq caskpath "/usr/local/share/emacs/site-lisp/cask/cask.el")
+;;   (setq caskpath "/home/nayef/.cask/cask.el"))
+;; (require 'cask caskpath)
+;; (cask-initialize)
+;; (require 'pallet)
+;; (pallet-mode t)
 
 ;; Bootstrap use-package
 (eval-when-compile
@@ -33,6 +33,9 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+;; Default value for :pin
+(setq use-package-always-pin "melpa")
 
 (use-package init-default-settings
   :load-path "packages/")
@@ -130,7 +133,7 @@
    (quote
     (elisp--witness--lisp string-inflection shx
 			  (progn t elisp--witness--lisp)
-			  ivy-rtags rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy virtualenvwrapper buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme pallet magit-popup))))
+			  smartparens ivy-rtags rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy virtualenvwrapper buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme pallet magit-popup))))
 
 ;; Font height 135 or 130
 (custom-set-faces
