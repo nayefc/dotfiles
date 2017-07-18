@@ -12,18 +12,19 @@
 				   ("gnu" . 0)))
 (package-initialize)
 
-(defconst is-a-mac
-  (eq system-type 'darwin)
-  "Is this running on OS X?")
-
 ;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (message "hi")
+  (package-refresh-contents)
+  (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+
+(defconst is-a-mac
+  (eq system-type 'darwin)
+  "Is this running on OS X?")
 
 ;; Default value for :pin
 (setq use-package-always-pin "melpa")
