@@ -10,12 +10,13 @@
   	 ;; ("C-<right>" . sp-forward-barf-sexp)
 	 ;; ("C-<left>" . sp-backward-barf-sexp)
   :config
-  (require 'smartparens-config)
-  (add-hook 'python-mode-hook 'turn-on-smartparens-strict-mode)
-  (add-hook 'c++-mode-hook 'turn-on-smartparens-strict-mode)
-  (add-hook 'c-mode-hook 'turn-on-smartparens-strict-mode)
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-smartparens-strict-mode)
-  (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
-  (setq sp-cancel-autoskip-on-backward-movement nil))
+  (require 'smartparens-config))
+
+(add-hook 'python-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'c++-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'c-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
+(setq sp-cancel-autoskip-on-backward-movement nil)
 
 (provide 'init-smartparens)
