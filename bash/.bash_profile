@@ -79,12 +79,12 @@ elif [[ $platform == 'linux' ]]; then
 
     if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
 	# Completions
-	source .git-completion.bash
-	source .ag.bashcomp.sh
-	source .tmux-completion
+	source ~/.git-completion.bash
+	source ~/.ag.bashcomp.sh
+	source ~/.tmux-completion
 
-	# Second prompt line
-	source .git-prompt.sh
+	# # Second prompt line
+	source ~/.git-prompt.sh
 
 	export GIT_PS1_SHOWDIRTYSTATE="1"
 	export GIT_PS1_SHOWUNTRACKEDFILES="1"
@@ -288,10 +288,6 @@ elif [[ $platform == 'linux' ]]; then
     YELLOW="\[\e[38;5;3m\]"
     CYAN="\[\e[38;5;36m\]"
 fi
-
-export GIT_PS1_SHOWDIRTYSTATE="1"
-export GIT_PS1_SHOWUNTRACKEDFILES="1"
-export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 
 PS1="$CYAN"
 if [[ $platform == 'linux' ]]; then
