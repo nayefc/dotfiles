@@ -6,6 +6,9 @@
 
 ;; Code Style
 
+(use-package google-c-style
+  :ensure t)
+
 (defun inside-class-enum-p (pos)
   "Checks if POS is within the braces of a C++ \"enum class\"."
   (ignore-errors
