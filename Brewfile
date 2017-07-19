@@ -20,7 +20,7 @@ brew 'httpie'
 brew 'fasd'
 brew 'rtags'
 brew 'icdiff'
-brew 'bash_completion'
+brew 'bash-completion'
 brew 'trash'
 
 tap 'simeji/jid'
