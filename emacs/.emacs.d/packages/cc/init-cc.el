@@ -51,6 +51,7 @@
                                       ))
     (c-echo-syntactic-information-p . t)
     ) "HRT C Programming Style")
+
 (defun hrt-c-mode ()
   "Setup `c++-mode' to better handle \"class enum\"."
   (c-add-style "hrt-c-style" hrt-c-style t)
@@ -66,6 +67,10 @@
 (add-hook 'c++-mode-hook 'hrt-c-mode)
 (add-hook 'c-mode-hook 'hrt-c-mode)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+;;(add-hook 'c++-mode-hook 'turn-on-smart-parens-strict-mode)
+(add-hook 'c++-mode-hook 'smartparens-strict-mode)
+
 (defun fix-brace-indentation ()
   (sp-with-modes '(malabar-mode c++-mode)
     (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))
