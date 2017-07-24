@@ -26,6 +26,7 @@ if [[ $platform == 'osx' ]]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
     # virtualenvwrapper setup
+    VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
     source /usr/local/bin/virtualenvwrapper.sh
 
     function _virtualenv_auto_activate() {
@@ -73,6 +74,7 @@ if [[ $platform == 'osx' ]]; then
     # Second prompt line
     source /usr/local/etc/bash_completion.d/git-prompt.sh
 
+
 elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
@@ -83,12 +85,8 @@ elif [[ $platform == 'linux' ]]; then
 	source ~/.ag.bashcomp.sh
 	source ~/.tmux-completion
 
-	# # Second prompt line
+	# Second prompt line
 	source ~/.git-prompt.sh
-
-	export GIT_PS1_SHOWDIRTYSTATE="1"
-	export GIT_PS1_SHOWUNTRACKEDFILES="1"
-	export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
     fi
 fi
 
@@ -288,6 +286,15 @@ elif [[ $platform == 'linux' ]]; then
     YELLOW="\[\e[38;5;3m\]"
     CYAN="\[\e[38;5;36m\]"
 fi
+
+
+# Setup PS1 git prompt
+if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
+    export GIT_PS1_SHOWDIRTYSTATE="1"
+    export GIT_PS1_SHOWUNTRACKEDFILES="1"
+    export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
+fi
+
 
 PS1="$CYAN"
 if [[ $platform == 'linux' ]]; then
