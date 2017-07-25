@@ -3,8 +3,8 @@
   :pin melpa-stable
   :diminish smartparens-mode
   :bind (("C-c h" . hydra-smartparens/body)
-         :map smartparens-strict-mode-map
 	 ("M-]" . sp-unwrap-sexp)
+         :map smartparens-strict-mode-map
          ;; A fill paragraph in strict mode
 	 ("M-q" . sp-indent-defun))
   :init
