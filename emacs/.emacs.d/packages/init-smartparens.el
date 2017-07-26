@@ -60,12 +60,15 @@ _k_: kill        _s_: split                   _{_: wrap with { }
     ("C-<left>" sp-backward-barf-sexp)
     ("C-<right>" sp-backward-slurp-sexp))
 
-  (smartparens-global-mode)
-  (show-smartparens-global-mode)
-
+  ;; (smartparens-global-mode)
+  ;; (show-smartparens-global-mode)
   (dolist (hook '(inferior-emacs-lisp-mode-hook
                   emacs-lisp-mode-hook))
     (add-hook hook #'smartparens-strict-mode))
+  (add-hook 'python-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'c-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
   :config
   (require 'smartparens-config)
 
