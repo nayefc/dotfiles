@@ -79,6 +79,8 @@ elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
 
+    alias lshwnet='lshw -c net -businfo'
+
     if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
 	# Completions
 	source ~/.git-completion.bash
