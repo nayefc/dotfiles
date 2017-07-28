@@ -91,4 +91,16 @@
   (while (search-forward-regexp "\s-*" nil t)
     (replace-match "" t)))
 
+(defun better-whitespace ()
+  (interactive)
+  (whitespace-mode -1)
+  (let ((ws-small '(face lines-tail))
+        (ws-big '(face tabs spaces trailing lines-tail space-before-tab
+                       newline indentation empty space-after-tab space-mark
+                       tab-mark newline-mark)))
+    (if (eq whitespace-style ws-small)
+        (setq whitespace-style ws-big)
+      (setq whitespace-style ws-small)))
+  (whitespace-mode 1))
+
 (provide 'init-default-editing)
