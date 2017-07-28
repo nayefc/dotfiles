@@ -10,6 +10,9 @@
   "Bind Return to `newline-and-indent' in the local keymap."
   (local-set-key "\C-m" 'newline-and-indent))
 
+;; Always use spaces
+(setq indent-tabs-mode nil)
+
 ;; Tell Emacs to use the function above in certain editing modes.
 (add-hook 'lisp-mode-hook             (function newline-indents))
 (add-hook 'emacs-lisp-mode-hook       (function newline-indents))
