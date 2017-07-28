@@ -53,6 +53,11 @@
 ;; Turn off auto revert messages
 (setq auto-revert-verbose nil)
 
+;; Fix whitespace-mode style
+(add-to-list 'whitespace-style 'space-mark)
+(add-to-list 'whitespace-style 'tab-mark)
+(add-to-list 'whitespace-style 'newline-mark)
+
 ;; Custom mode-line-format
 (setq-default mode-line-format
 	      '("%e" mode-line-front-space
