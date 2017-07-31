@@ -34,7 +34,7 @@ _k_: kill        _s_: split                   _{_: wrap with { }
     ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
     ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
     ;; Navigation
-    ("f" sp-forward-sexp )
+    ("f" sp-forward-sexp)
     ("b" sp-backward-sexp)
     ("u" sp-backward-up-sexp)
     ("d" sp-down-sexp)

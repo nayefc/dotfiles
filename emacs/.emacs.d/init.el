@@ -14,7 +14,6 @@
 
 ;; Bootstrap use-package
 (unless (package-installed-p 'use-package)
-  (message "hi")
   (package-refresh-contents)
   (package-install 'use-package))
 (eval-when-compile
@@ -98,7 +97,7 @@
 ;; (load-file "~/.emacs.d/packages/kite.el")
 
 ;; python packages
-(use-package init-expand-region
+(use-package init-expand-region-py
   :load-path "packages/python")
 (use-package init-jedi
   :load-path "packages/python")
@@ -113,6 +112,8 @@
 (use-package init-irony
   :load-path "packages/cc")
 (use-package init-cc
+  :load-path "packages/cc")
+(use-package init-expand-region-cc
   :load-path "packages/cc")
 ;; (use-package init-rtags
 ;;   :load-path "packages/cc"
