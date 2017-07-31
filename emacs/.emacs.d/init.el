@@ -93,12 +93,10 @@
   :load-path "packages/")
 (use-package init-buffer-move
   :load-path "packages/")
-
-;; (load-file "~/.emacs.d/packages/kite.el")
+(use-package init-expand-region
+  :load-path "packages/")
 
 ;; python packages
-(use-package init-expand-region-py
-  :load-path "packages/python")
 (use-package init-jedi
   :load-path "packages/python")
 (use-package init-highlight-indentation
@@ -107,13 +105,12 @@
   :load-path "packages/python")
 (use-package init-venv
   :load-path "packages/python")
+;; (load-file "~/.emacs.d/packages/kite.el")
 
 ;; c++ packages
 (use-package init-irony
   :load-path "packages/cc")
 (use-package init-cc
-  :load-path "packages/cc")
-(use-package init-expand-region-cc
   :load-path "packages/cc")
 ;; (use-package init-rtags
 ;;   :load-path "packages/cc"
