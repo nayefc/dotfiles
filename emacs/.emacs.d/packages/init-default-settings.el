@@ -41,9 +41,6 @@
 ;; Put all emacs backup files in one directory
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-;; Change default switch-to-buffer binding for consistency with helm-buffers-list
-(bind-key "C-x C-b" 'switch-to-buffer)
-
 ;; Turn off auto revert messages
 (setq auto-revert-verbose nil)
 
