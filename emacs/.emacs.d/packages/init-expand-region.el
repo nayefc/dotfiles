@@ -1,5 +1,6 @@
 (use-package expand-region
-  :ensure t)
+  :ensure t
+  :bind (("C-x l" . er/mark-symbol)))
 
  (defhydra hydra-python-expand-region (:hint nil)
     "
