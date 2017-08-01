@@ -95,6 +95,8 @@
   :load-path "packages/")
 (use-package init-expand-region
   :load-path "packages/")
+(use-package init-uniquify
+  :load-path "packages/")
 
 ;; python packages
 (use-package init-jedi

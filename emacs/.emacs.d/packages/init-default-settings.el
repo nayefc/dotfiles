@@ -28,10 +28,6 @@
 (which-function-mode)
 (setq which-func-unknown "n/a")
 
-;; Buffer name for for two files in different directories shows full path instead of <2>
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
 ;; Display line numbers at the bottom
 (setq line-number-mode t)
 
