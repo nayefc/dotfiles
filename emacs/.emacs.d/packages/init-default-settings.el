@@ -32,12 +32,6 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; ;; Add space on the margin for line numbering
-;; (setq linum-format "%d ")
-
-;; ;; Display line numbers
-;; (global-linum-mode t)
-
 ;; Display line numbers at the bottom
 (setq line-number-mode t)
 
