@@ -40,6 +40,8 @@
 ;; Turn off auto revert messages
 (setq auto-revert-verbose nil)
 
+(unbind-key "C-x m" global-map)
+
 ;; Custom mode-line-format
 (setq-default mode-line-format
 	      '("%e" mode-line-front-space

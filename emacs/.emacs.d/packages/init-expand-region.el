@@ -50,7 +50,7 @@ _n_: full name       _v_: vector access"
     ;; ("f" er/c-mark-function-call)
     ("v" er/c-mark-vector-access)
     ;; ("b" er/c-mark-statement-block))
-    :config (hydra-cc-expand-region-bind-keys))
+    )
 
 (add-hook 'c++-mode-hook
 	  (lambda () (define-key c++-mode-map (kbd "C-c m")
