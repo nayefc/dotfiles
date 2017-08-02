@@ -4,7 +4,7 @@ set -e
 echo "==================="
 echo "Running Brew Bundle"
 brew bundle
-echo "Brew Bundle Done"
+echo "Brew Bundle done"
 echo "==================="
 
 echo ""
@@ -12,7 +12,7 @@ echo ""
 echo "==================="
 echo "Running stow bash"
 stow bash
-echo "Stow stash Done"
+echo "Stow stash done"
 echo "==================="
 
 echo ""
@@ -25,7 +25,7 @@ else
     cp ssh/.ssh/linux_config ssh/.ssh/config
 fi
 stow ssh
-echo "Stow ssh Done"
+echo "Stow ssh done"
 echo "==================="
 
 echo ""
@@ -33,7 +33,7 @@ echo ""
 echo "==================="
 echo "Running stow tmux"
 stow tmux
-echo "Stow tmux Done"
+echo "Stow tmux done"
 echo "==================="
 
 echo ""
@@ -41,7 +41,7 @@ echo ""
 echo "==================="
 echo "Running stow emacs"
 stow emacs
-echo "Stow emacs Done"
+echo "Stow emacs done"
 echo "==================="
 
 echo ""
@@ -49,7 +49,7 @@ echo ""
 echo "==================="
 echo "Running stow pylint"
 stow pylint
-echo "Stow pylint Done"
+echo "Stow pylint done"
 echo "==================="
 
 echo ""
@@ -63,5 +63,15 @@ if [ $(hostname) == "nayefmacbook" ] || [ $(uname) != "Darwin" ]; then
 else
     git config --global user.email "nrcopty@gmail.com"
 fi
-echo "Stow git Done"
+echo "Stow git done"
 echo "==================="
+
+if [ $(uname) == "Darwin" ]; then
+    echo ""
+    echo "==================="
+    echo "Copying ipdb helper script"
+    echo -e '#!/bin/bash\nipython -c "%run -d $@"' > /usr/local/bin/ipdb
+    chmod 755 /usr/local/bin/ipdb
+    echo "Copying ipdb helper done"
+    echo "==================="
+fi
