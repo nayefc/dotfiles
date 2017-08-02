@@ -10,7 +10,7 @@ Python Expand Region (with with _q_)
 _._: expand region   _(_: inside pair     _b_: block
 _y_: symbol          _)_: outside pair    _B_: outer block
 _w_: word            _s_: inside string   _d_: block & decorator
-_t_: statement       _S_: outside string"
+_t_: statement       _S_: outside string  _k_: kill"
     ("q" nil)
     ("." er/expand-region)
     ("y" er/mark-symbol)
@@ -22,7 +22,8 @@ _t_: statement       _S_: outside string"
     ("S" er/mark-outside-python-string)
     ("b" er/mark-python-block)
     ("B" er/mark-outer-python-block)
-    ("d" er/mark-python-block-and-decorator))
+    ("d" er/mark-python-block-and-decorator)
+    ("k" kill-region))
 
 (add-hook 'python-mode-hook
 	  (lambda () (define-key python-mode-map (kbd "C-c m")
