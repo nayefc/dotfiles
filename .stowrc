@@ -1,3 +1,4 @@
 --ignore=.gitconfig.tmpl
 --ignore=mac_config
 --ignore=linux_config
+--ignore=rc
