@@ -12,12 +12,12 @@
 
   (if (buffer-file-name)
       (if project-dir
-	  (if (f-descendant-of? buffer-file-name project-dir)
-	      (rename-buffer
-	       (car (cdr
-		     (split-string
-		      (buffer-file-name)
-		      (car (projectile-get-project-directories))))))))))
+          (if (f-descendant-of? buffer-file-name project-dir)
+              (rename-buffer
+               (car (cdr
+                     (split-string
+                      (buffer-file-name)
+                      (car (projectile-get-project-directories))))))))))
 (bind-key "M-[" 'show-file-path-in-projectile-project)
 
 ;; Print out projectile project name
@@ -25,7 +25,7 @@
 (defvar my-projectile-mode-line
   '(:propertize
     (:eval (when (ignore-errors (projectile-project-root))
-	     (concat " " (projectile-project-name))))
+             (concat " " (projectile-project-name))))
     face font-lock-constant-face)
   "Mode line format for Projectile.")
 (put 'lunaryorn-projectile-mode-line 'risky-local-variable t)

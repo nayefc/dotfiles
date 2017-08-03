@@ -26,8 +26,8 @@ _t_: statement       _S_: outside string  _k_: kill"
     ("k" kill-region))
 
 (add-hook 'python-mode-hook
-	  (lambda () (define-key python-mode-map (kbd "C-c m")
-		       'hydra-python-expand-region/body)))
+          (lambda () (define-key python-mode-map (kbd "C-c m")
+                       'hydra-python-expand-region/body)))
 
 (defhydra hydra-cc-expand-region (:hint nil)
     "
@@ -55,7 +55,7 @@ _n_: full name       _v_: vector access"
     )
 
 (add-hook 'c++-mode-hook
-	  (lambda () (define-key c++-mode-map (kbd "C-c m")
-		       'hydra-cc-expand-region/body)))
+          (lambda () (define-key c++-mode-map (kbd "C-c m")
+                       'hydra-cc-expand-region/body)))
 
 (provide 'init-expand-region)

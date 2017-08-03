@@ -5,8 +5,8 @@
 (use-package irony
   :ensure t
   :mode (("\\.cc\\'" . c++-mode)
-	 ("\\.cpp\\'" . c++-mode)
-	 ("\\.c\\'" . c-mode))
+         ("\\.cpp\\'" . c++-mode)
+         ("\\.c\\'" . c-mode))
   :config
 
   (use-package company-irony

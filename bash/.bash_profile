@@ -30,30 +30,30 @@ if [[ $platform == 'osx' ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 
     function _virtualenv_auto_activate() {
-	if [ -e ".venv" ]; then
-	    if [ -f ".venv" ]; then
-		_VENV_PATH=$WORKON_HOME/$(cat .venv)
-		_VENV_WRAPPER_ACTIVATE=true
-	    else
-		return
-	    fi
+        if [ -e ".venv" ]; then
+            if [ -f ".venv" ]; then
+                _VENV_PATH=$WORKON_HOME/$(cat .venv)
+                _VENV_WRAPPER_ACTIVATE=true
+            else
+                return
+            fi
 
-	    # Check to see if already activated to avoid redundant activating
-	    if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
-		if $_VENV_WRAPPER_ACTIVATE; then
-		    _VENV_NAME=$(basename $_VENV_PATH)
-		    workon $_VENV_NAME
-		fi
-		echo Activated virtualenv \"$_VENV_NAME\".
-	    fi
-	fi
+            # Check to see if already activated to avoid redundant activating
+            if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
+                if $_VENV_WRAPPER_ACTIVATE; then
+                    _VENV_NAME=$(basename $_VENV_PATH)
+                    workon $_VENV_NAME
+                fi
+                echo Activated virtualenv \"$_VENV_NAME\".
+            fi
+        fi
     }
     export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND} _virtualenv_auto_activate"
 
     # If Postgress.app is installed, put it in PATH.
     psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
     if [ -w "$psqlapp" ]; then
-	export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+        export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
     fi
 
     # Alias youtube-dl if its installed.
@@ -86,13 +86,13 @@ elif [[ $platform == 'linux' ]]; then
     alias lshwnet='lshw -c net -businfo'
 
     if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
-	# Completions
-	source ~/.git-completion.bash
-	source ~/.ag.bashcomp.sh
-	source ~/.tmux-completion
+        # Completions
+        source ~/.git-completion.bash
+        source ~/.ag.bashcomp.sh
+        source ~/.tmux-completion
 
-	# Second prompt line
-	source ~/.git-prompt.sh
+        # Second prompt line
+        source ~/.git-prompt.sh
     fi
 fi
 
@@ -167,13 +167,13 @@ function swap() {
 function count() {
     min=$(($1-1))
     while [ $min -ge 0 ]; do
-	sec=59
-	while [ $sec -ge 0 ]; do
-	    printf '00:%02d:%02d\033[0K\r' $min $sec
-	    sleep 1
-	    sec=$((sec-1))
-	done
-	min=$((min-1))
+        sec=59
+        while [ $sec -ge 0 ]; do
+            printf '00:%02d:%02d\033[0K\r' $min $sec
+            sleep 1
+            sec=$((sec-1))
+        done
+        min=$((min-1))
     done
     sleep 1
 }
@@ -187,23 +187,23 @@ function copy() {
 # Extracting files
 function extract () {
     if [ -f $1 ] ; then
-	case $1 in
-	    *.tar.bz2)   tar xvjf $1    ;;
-	    *.tar.gz)    tar xvzf $1    ;;
-	    *.tgz)       tar xvzf $1    ;;
-	    *.bz2)       bunzip2 $1     ;;
-	    *.rar)       unrar x $1     ;;
-	    *.gz)        gunzip $1      ;;
-	    *.tar)       tar xvf $1     ;;
-	    *.tbz2)      tar xvjf $1    ;;
-	    *.tgz)       tar xvzf $1    ;;
-	    *.zip)       unzip $1       ;;
-	    *.Z)         uncompress $1  ;;
-	    *.7z)        7z x $1        ;;
-	    *)           echo "'$1' cannot be extracted via >extract<" ;;
-	esac
+        case $1 in
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xvzf $1    ;;
+            *.tgz)       tar xvzf $1    ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar x $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xvf $1     ;;
+            *.tbz2)      tar xvjf $1    ;;
+            *.tgz)       tar xvzf $1    ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
     else
-	echo "'$1' is not a valid file"
+        echo "'$1' is not a valid file"
     fi
 }
 
@@ -220,8 +220,8 @@ function run_loop() {
     # $1 number of times to run
     # $2 command to run
     for i in $(seq 1 $1); do
-	output=`$2`
-	echo $i: $output
+        output=`$2`
+        echo $i: $output
     done
 }
 
@@ -231,11 +231,11 @@ function merge_master() {
 
     # $1 the name of the branch to merge master into.
     if [ $# -eq 0 ]; then
-	to_merge=$current_branch
-	is_head=1
+        to_merge=$current_branch
+        is_head=1
     else
-	to_merge=$1
-	is_head=0
+        to_merge=$1
+        is_head=0
     fi
 
     git co master &>/dev/null
@@ -244,11 +244,11 @@ function merge_master() {
 
     git merge master --no-edit 2>/dev/null
     if [ $? -ne 0 ]; then
-	git reset --merge 2>/dev/null
-	echo "Cannot merge due to conflict."
-	return
+        git reset --merge 2>/dev/null
+        echo "Cannot merge due to conflict."
+        return
     else
-	echo "Master merged into " $to_merge"."
+        echo "Master merged into " $to_merge"."
     fi
 
     hr =
@@ -256,17 +256,17 @@ function merge_master() {
     echo -n "Do you want to push the branch (y/n)? "
     read answer
     if echo "$answer" | grep -iq "^y" ; then
-	git ph
+        git ph
     fi
 
     # If merging another branch (not head), ask to revert to previous branch.
     if [ $is_head -eq 0 ]; then
-	hr =
-	echo -n "Do you want to return to the orignal branch (y/n)? "
-	read answer
-	if echo "$answer" | grep -iq "^y" ; then
-	    git co $current_branch &>/dev/null
-	fi
+        hr =
+        echo -n "Do you want to return to the orignal branch (y/n)? "
+        read answer
+        if echo "$answer" | grep -iq "^y" ; then
+            git co $current_branch &>/dev/null
+        fi
     fi
 }
 
@@ -282,9 +282,9 @@ if [[ $platform == 'osx' ]]; then
     CYAN="\[\e[38;5;36m\]"
 elif [[ $platform == 'linux' ]]; then
     if [  -e /lib/terminfo/x/xterm-256color ]; then
-	export TERM='xterm-256color'
+        export TERM='xterm-256color'
     else
-	export TERM='xterm-color'
+        export TERM='xterm-color'
     fi
     export LS_COLORS='ln=35:ex=31'
     COLOUR_OFF="\[\e[0m\]"

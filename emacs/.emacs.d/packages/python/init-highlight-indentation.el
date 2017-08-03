@@ -15,10 +15,10 @@
     (interactive)
     (let ((col 1))
       (save-excursion
-	(back-to-indentation)
-	(setq col (+ 1 (current-column)))
-	(set-selective-display
-	 (if selective-display nil (or col 1))))))
+        (back-to-indentation)
+        (setq col (+ 1 (current-column)))
+        (set-selective-display
+         (if selective-display nil (or col 1))))))
   (eval-after-load 'highlight-indentation
     (bind-key "C-c u" 'indentation-toggle-fold python-mode-map)))
 

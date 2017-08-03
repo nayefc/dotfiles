@@ -18,11 +18,11 @@
 
   (defun auto-fci-mode (&optional unused)
     (if (> (window-width) fci-rule-column)
-	(if (and
+        (if (and
            (not (string-match "^\*.*\*$" (buffer-name)))
            (not (eq major-mode 'dired-mode)))
-	    (fci-mode 1)
-	  (fci-mode 0))))
+            (fci-mode 1)
+          (fci-mode 0))))
 
   (add-hook 'after-change-major-mode-hook 'auto-fci-mode)
   (add-hook 'window-configuration-change-hook 'auto-fci-mode))
@@ -42,7 +42,7 @@
 (defadvice popup-delete (after restore-fci-mode activate)
   "Restore fci-mode when all popups have closed."
   (when (and sanityinc/fci-mode-suppressed
-	     (null popup-instances))
+             (null popup-instances))
     (setq sanityinc/fci-mode-suppressed nil)
           (turn-on-fci-mode)))
 

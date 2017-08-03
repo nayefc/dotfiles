@@ -3,10 +3,10 @@
   :pin melpa-stable
   :diminish smartparens-mode
   :bind (("C-c h" . hydra-smartparens/body)
-	 ("M-]" . sp-unwrap-sexp)
+         ("M-]" . sp-unwrap-sexp)
          :map smartparens-strict-mode-map
          ;; A fill paragraph in strict mode
-	 ("M-q" . sp-indent-defun))
+         ("M-q" . sp-indent-defun))
   :init
   ;; Hydra for Smartparens
   (defhydra hydra-smartparens (:hint nil)
@@ -73,14 +73,14 @@ _k_: kill        _s_: split                   _{_: wrap with { }
   (require 'smartparens-config)
 
   (setq sp-autoskip-closing-pair 'always
-	;; Don't kill entire symbol on C-k
-	sp-hybrid-kill-entire-symbol nil)
+        ;; Don't kill entire symbol on C-k
+        sp-hybrid-kill-entire-symbol nil)
 
   ;; C++ pair management
   (sp-with-modes '(c++-mode)
     (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))
   (sp-local-pair 'c++-mode "/*" "*/" :post-handlers '((" | " "SPC")
-  						      ("* ||\n[i]" "RET")))
+                                                      ("* ||\n[i]" "RET")))
 
   (setq sp-cancel-autoskip-on-backward-movement nil))
 

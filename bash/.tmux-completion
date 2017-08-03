@@ -15,15 +15,15 @@ __tmux_init_completion()
 
 _tmux()
 {
-	local cur prev words cword;
+        local cur prev words cword;
     if declare -F _init_completions >/dev/null 2>&1; then
         _init_completion
     else
         __tmux_init_completion
     fi
-	if [[ $cword -eq 1 ]]; then
-		COMPREPLY=($( compgen -W "$(tmux start\; list-commands | cut -d' ' -f1)" -- "$cur" ));
-		return 0
-	fi
+        if [[ $cword -eq 1 ]]; then
+                COMPREPLY=($( compgen -W "$(tmux start\; list-commands | cut -d' ' -f1)" -- "$cur" ));
+                return 0
+        fi
 }
 complete -F _tmux tmux

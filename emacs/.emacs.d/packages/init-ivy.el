@@ -2,15 +2,15 @@
   :ensure t
   :diminish ivy-mode
   :bind (("M-x" . counsel-M-x)
-  	 ("C-x C-f" . counsel-find-file)
-  	 ("C-c g" . counsel-projectile-ag)
-  	 ("C-M-m" . counsel-jedi))
+         ("C-x C-f" . counsel-find-file)
+         ("C-c g" . counsel-projectile-ag)
+         ("C-M-m" . counsel-jedi))
   :config
   (ivy-mode 1)
   (setq ivy-count-format "")
   (setq ivy-display-style 'fancy)
   (setq ivy-re-builders-alist
-	'((t . ivy--regex-ignore-order)))
+        '((t . ivy--regex-ignore-order)))
   ;; no default regexp
   (setq ivy-initial-inputs-alist nil)
   (custom-set-faces
@@ -40,9 +40,9 @@
  '(swiper-match-face-4 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))))
 
 (global-set-key (kbd "C-M-s")
-		(lambda ()
-		  (interactive)
-		  (swiper (word-at-point))))
+                (lambda ()
+                  (interactive)
+                  (swiper (word-at-point))))
 
 ;; See http://oremacs.com/2016/01/06/ivy-flx/ for fuzzy matching
 ;; (use-package flx

@@ -5,11 +5,11 @@
 
 (require 'package)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("melpa-stable" . "https://stable.melpa.org/packages/")
-			 ("gnu" . "http://elpa.gnu.org/packages/"))
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/"))
       package-archive-priorities '(("melpa" . 10)
-				   ("melpa-stable" . 5)
-				   ("gnu" . 0)))
+                                   ("melpa-stable" . 5)
+                                   ("gnu" . 0)))
 (package-initialize)
 
 ;; Bootstrap use-package
@@ -119,6 +119,9 @@
 ;;   :load-path "packages/cc"
 ;;   :if is-a-mac)
 
+;; Always use spaces
+(setq indent-tabs-mode nil)
+
 (provide 'init)
 ;;; init.el ends here
 
@@ -130,9 +133,9 @@
  '(exec-path-from-shell-check-startup-files nil)
  '(package-selected-packages
    (quote
-    (realgud package-build shut-up epl git commander f dash s virtualenvwrapper elisp--witness--lisp string-inflection shx
-	     (progn t elisp--witness--lisp)
-	     smartparens ivy-rtags rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme pallet magit-popup))))
+    (pytest realgud package-build shut-up epl git commander f dash s virtualenvwrapper elisp--witness--lisp string-inflection shx
+            (progn t elisp--witness--lisp)
+            smartparens ivy-rtags rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme pallet magit-popup))))
 
 ;; Font height 135 or 130
 (custom-set-faces

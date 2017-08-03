@@ -4,6 +4,6 @@
   :init
   :config
   (add-hook 'python-mode-hook
-	    (lambda () (define-key python-mode-map (kbd "C-c >") 'indent-tools-hydra/body))))
+            (lambda () (define-key python-mode-map (kbd "C-c >") 'indent-tools-hydra/body))))
 
 (provide 'init-indent-tools)

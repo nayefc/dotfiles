@@ -28,7 +28,7 @@
   (concat esh-header
           (-reduce-from 'esh-acc "" eshell-funcs)
           ;;"\n"
-	  " "
+          " "
           eshell-prompt-string))
 
 ;; Separator between esh-sections

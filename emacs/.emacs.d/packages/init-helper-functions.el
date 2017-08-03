@@ -2,10 +2,10 @@
   "Retrieves the file name relative to the parent git project."
   (interactive)
   (let ((project-root
-	 (f-full
-	  (locate-dominating-file default-directory ".git"))))
+         (f-full
+          (locate-dominating-file default-directory ".git"))))
     (if project-root
-	(s-chop-prefix project-root buffer-file-name))))
+        (s-chop-prefix project-root buffer-file-name))))
 
 (defun get-repo-url ()
   "Return the repo url for the current line."
@@ -16,18 +16,18 @@
      "https://phabricator.hudson-trading.com/diffusion/"
      (car
       (s-split "/"
-	       (car (cdr
-		     (s-split
-		      "diffusion/"
-		      (s-trim
-		       (shell-command-to-string
-			"git config --get \"remote.origin.url\"")))))))
+               (car (cdr
+                     (s-split
+                      "diffusion/"
+                      (s-trim
+                       (shell-command-to-string
+                        "git config --get \"remote.origin.url\"")))))))
      "/browse/master/"
      )
     (get-relative-file-name)
     ";"
     ;; (car (s-split "\n" (s-trim
-    ;; 			(shell-command-to-string "git rev-parse master HEAD"))))
+    ;;                          (shell-command-to-string "git rev-parse master HEAD"))))
     "master$"
     (number-to-string (line-number-at-pos)))))
 

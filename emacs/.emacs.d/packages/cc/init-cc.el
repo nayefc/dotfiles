@@ -78,7 +78,7 @@
   (sp-with-modes '(malabar-mode c++-mode)
     (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))
   (sp-local-pair 'c++-mode "/*" "*/" :post-handlers '((" | " "SPC")
-						      ("* ||\n[i]" "RET"))))
+                                                      ("* ||\n[i]" "RET"))))
 (add-hook 'c++-mode-hook 'fix-brace-indentation)
 
 (provide 'init-cc)

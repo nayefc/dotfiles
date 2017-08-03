@@ -21,8 +21,8 @@
   (setq python-indent-offset 4)
   ;; Bind keys from previous defined functions
   (bind-keys :map python-mode-map
-	     ("C-c t" . python-add-breakpoint)
-	     ("C-x ," . hs-enable-and-toggle))
+             ("C-c t" . python-add-breakpoint)
+             ("C-x ," . hs-enable-and-toggle))
   )
 
 ;; Temporary for iPython to work
