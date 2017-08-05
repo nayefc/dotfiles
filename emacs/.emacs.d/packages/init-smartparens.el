@@ -66,6 +66,7 @@ _k_: kill        _s_: split                   _{_: wrap with { }
                   emacs-lisp-mode-hook))
     (add-hook hook #'smartparens-strict-mode))
   (add-hook 'python-mode-hook 'turn-on-smartparens-strict-mode)
+  (add-hook 'c++-mode-hook 'turn-on-smartparens-strict-mode)
   (add-hook 'c-mode-hook 'turn-on-smartparens-strict-mode)
   (add-hook 'emacs-lisp-mode-hook 'turn-on-smartparens-strict-mode)
   (add-hook 'lisp-mode-hook 'turn-on-smartparens-strict-mode)
