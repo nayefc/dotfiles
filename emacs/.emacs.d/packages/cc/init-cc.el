@@ -34,6 +34,7 @@
 (defun my-c-mode ()
   "Setup `c++-mode' to better handle \"class enum\"."
   (setq tab-width 4 indent-tabs-mode nil)
+  (setq c-basic-offset 4)
   (add-to-list 'c-offsets-alist '(topmost-intro-cont . align-enum-class))
   (add-to-list 'c-offsets-alist
                '(statement-cont . align-enum-class-closing-brace))

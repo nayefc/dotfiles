@@ -19,10 +19,6 @@
 (add-hook 'c++-mode-hook              (function newline-indents))
 (add-hook 'python-mode-hook           (function newline-indents))
 
-;; Set default indent to 4
-(setq-default c-basic-offset 4)
-(setq-default c++-basic-offset 4)
-
 ;; Kill current line
 (defun smart-kill-whole-line (&optional arg)
   "A wrapper around 'kill-whole-line' that respects indentation with ARG lines to kill."
