@@ -30,6 +30,8 @@ brew 'jid'
 brew 'glib'
 brew 'cmake'
 brew 'llvm', args: ['with-clang']
+brew 'gdb'
+brew 'rtags'
 
 # Cask - GUI
 cask 'emacs'
