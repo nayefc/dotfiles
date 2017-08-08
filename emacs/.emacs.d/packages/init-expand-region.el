@@ -1,18 +1,23 @@
 (use-package expand-region
   :ensure t
-  :bind (("C-x l" . er/mark-symbol)))
+  :bind (("C-x l" . er/mark-symbol))
+  :init
+  (require 'expand-region))
 
  (defhydra hydra-python-expand-region (:hint nil)
     "
 Python Expand Region (with with _q_)
-^Symbols^            ^Lines^              ^Regions^
-^--------------------^--------------------^----------^---------------
-_._: expand region   _(_: inside pair     _b_: block
-_y_: symbol          _)_: outside pair    _B_: outer block
-_w_: word            _s_: inside string   _d_: block & decorator
-_t_: statement       _S_: outside string  _k_: kill"
+^Regions^              ^Lines^              ^Symbols^
+^----------------------^--------------------^----------^---------------
+_._: expand region     _(_: inside pair     _y_: symbol
+_-_: contract region   _)_: outside pair    _w_: word
+_k_: kill              _s_: inside string   _t_: statement
+_b_: block             _S_: outside string
+_B_: outer block
+_d_: block & decorator"
     ("q" nil)
     ("." er/expand-region)
+    ("-" er/contract-region)
     ("y" er/mark-symbol)
     ("w" er/mark-word)
     ("t" er/mark-python-statement)
