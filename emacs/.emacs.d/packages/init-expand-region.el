@@ -36,14 +36,15 @@ _d_: block & decorator"
 
 (defhydra hydra-cc-expand-region (:hint nil)
     "
-C++ Expand Region (with with _q_)
+C/C++ Expand Region (with with _q_)
 ^Symbols^            ^Lines^
 ^--------------------^---------------------
 _._: expand region   _(_: inside pair
 _s_: symbol          _)_: outside pair
-_w_: word            _q_: inside quotes
+_w_: word            _i_: inside quotes
 _t_: statement       _Q_: outside quotes
-_n_: full name       _v_: vector access"
+_n_: full name       _v_: vector access
+                   _f_: mark function"
     ("q" nil)
     ("." er/expand-region)
     ("s" er/mark-symbol)
@@ -52,7 +53,7 @@ _n_: full name       _v_: vector access"
     ("n" er/c-mark-fully-qualified-name)
     ("(" er/mark-inside-pairs)
     (")" er/mark-outside-pairs)
-    ("q" er/mark-inside-quotes)
+    ("i" er/mark-inside-quotes)
     ("Q" er/mark-outside-quotes)
     ("f" c-mark-function)
     ("v" er/c-mark-vector-access)
