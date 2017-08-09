@@ -4,7 +4,7 @@
   :init
   (require 'expand-region))
 
- (defhydra hydra-python-expand-region (:hint nil)
+(defhydra hydra-python-expand-region (:hint nil)
     "
 Python Expand Region (with with _q_)
 ^Regions^              ^Lines^              ^Symbols^
@@ -54,13 +54,16 @@ _n_: full name       _v_: vector access"
     (")" er/mark-outside-pairs)
     ("q" er/mark-inside-quotes)
     ("Q" er/mark-outside-quotes)
-    ;; ("f" er/c-mark-function-call)
+    ("f" c-mark-function)
     ("v" er/c-mark-vector-access)
     ;; ("b" er/c-mark-statement-block))
     )
 
 (add-hook 'c++-mode-hook
           (lambda () (define-key c++-mode-map (kbd "C-c m")
+                       'hydra-cc-expand-region/body)))
+(add-hook 'c-mode-hook
+          (lambda () (define-key c-mode-map (kbd "C-c m")
                        'hydra-cc-expand-region/body)))
 
 (provide 'init-expand-region)
