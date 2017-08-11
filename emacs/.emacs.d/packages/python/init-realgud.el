@@ -1,3 +1,4 @@
 (use-package realgud
-  :ensure t)
+  :ensure t
+  :commands (realgud:gdb realgud:ipdb))
 (provide 'init-realgud)
