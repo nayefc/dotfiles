@@ -15,8 +15,6 @@
 (add-hook 'emacs-lisp-mode-hook       (function newline-indents))
 (add-hook 'lisp-interaction-mode-hook (function newline-indents))
 (add-hook 'scheme-mode-hook           (function newline-indents))
-(add-hook 'c-mode-hook                (function newline-indents))
-(add-hook 'c++-mode-hook              (function newline-indents))
 (add-hook 'python-mode-hook           (function newline-indents))
 
 ;; Kill current line

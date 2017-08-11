@@ -6,14 +6,6 @@
 
 ;; Code Style
 
-(use-package google-c-style
-  :ensure t)
-
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-(add-hook 'c++-mode-common-hook 'google-set-c-style)
-(add-hook 'c++-mode-common-hook 'google-make-newline-indent)
-
 (defun inside-class-enum-p (pos)
   "Checks if POS is within the braces of a C++ \"enum class\"."
   (ignore-errors
@@ -43,7 +35,17 @@
   (c-set-offset 'arglist-cont-nonempty '(add c-lineup-whitesmith-in-block
                                              c-indent-multi-line-block)))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-hook 'c++-mode-hook 'my-c-mode)
-(add-hook 'c-mode-hook 'my-c-mode)
+(add-hook 'c-mode-common-hook 'my-c-mode)
+
+;; Set google-c-style after my-c-mode to have the above c-basic-offset 4 take effect.
+(use-package google-c-style
+  :ensure t
+  :mode (("\\.cc\\'" . c++-mode)
+	 ("\\.cpp\\'" . c++-mode)
+	 ("\\.h\\'" . c++-mode)
+	 ("\\.c\\'" . c-mode)))
+
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 (provide 'init-cc)
