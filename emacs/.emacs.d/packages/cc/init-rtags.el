@@ -16,7 +16,8 @@
 	 ("C-c j" . rtags-location-stack-back)
 	 ("C-c ;" . rtags-symbol-type))
   :init
-  :config
+  (cmake-ide-setup)
+  (setq cmake-ide-flags-c++ (append '("-std=c++11")))
   (rtags-enable-standard-keybindings)
   (setq rtags-autostart-diagnostics t))
 

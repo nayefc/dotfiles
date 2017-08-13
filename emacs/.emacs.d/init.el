@@ -113,6 +113,8 @@
 ;; c++ packages
 (use-package init-cc-style
   :load-path "packages/cc")
+(use-package init-rtags-cmake-ide
+  :load-path "packages/cc")
 (use-package init-rtags
   :load-path "packages/cc"
   :if is-a-mac)
@@ -133,9 +135,9 @@
  '(exec-path-from-shell-check-startup-files nil)
  '(package-selected-packages
    (quote
-    (pytest realgud package-build shut-up epl git commander f dash s virtualenvwrapper elisp--witness--lisp string-inflection shx
-	    (progn t elisp--witness--lisp)
-	    smartparens ivy-rtags rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme pallet magit-popup))))
+    (levenshtein pytest realgud package-build shut-up epl git commander f dash s virtualenvwrapper elisp--witness--lisp string-inflection shx
+		 (progn t elisp--witness--lisp)
+		 smartparens ivy-rtags rtags all-the-icons-ivy protobuf-mode golden-ratio-scroll-screen all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor use-package sr-speedbar solarized-theme pallet magit-popup))))
 
 ;; Font height 135 or 130
 (custom-set-faces
