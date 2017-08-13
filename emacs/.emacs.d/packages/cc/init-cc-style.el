@@ -1,10 +1,4 @@
-;; (c-set-offset 'access-label -1)
-
-;; Flycheck C++11
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
-(setq irony-additional-clang-options '("-std=c++11"))
-
-;; Code Style
+(c-set-offset 'access-label -1)
 
 (defun inside-class-enum-p (pos)
   "Checks if POS is within the braces of a C++ \"enum class\"."
@@ -48,4 +42,4 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
-(provide 'init-cc)
+(provide 'init-cc-style)

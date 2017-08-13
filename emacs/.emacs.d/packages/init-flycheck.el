@@ -15,4 +15,7 @@
 ;;     (eval-after-load 'flycheck
 ;;       '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+(setq irony-additional-clang-options '("-std=c++11"))
+
 (provide 'init-flycheck)

@@ -111,13 +111,13 @@
   :load-path "packages/python")
 
 ;; c++ packages
+(use-package init-cc-style
+  :load-path "packages/cc")
+(use-package init-rtags
+  :load-path "packages/cc"
+  :if is-a-mac)
 (use-package init-irony
   :load-path "packages/cc")
-(use-package init-cc
-  :load-path "packages/cc")
-;; (use-package init-rtags
-;;   :load-path "packages/cc"
-;;   :if is-a-mac)
 
 ;; Always use spaces
 (setq indent-tabs-mode nil)
