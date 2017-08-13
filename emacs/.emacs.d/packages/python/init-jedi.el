@@ -12,7 +12,8 @@
   :ensure t
   :mode ("\\.py\\'" . python-mode)
   :commands jedi:setup
-  :bind (("C-c k" . jedi:goto-definition-same-frame)
+  :bind (:map python-mode-map
+	 ("C-c k" . jedi:goto-definition-same-frame)
          ("C-c ;" . jedi:goto-definition-new-frame)
          ("C-c '" . jedi:goto-definition)
          ("C-c j" . jedi:goto-definition-pop-marker)
