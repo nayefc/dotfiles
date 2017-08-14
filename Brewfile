@@ -1,5 +1,8 @@
 tap 'Homebrew/bundle'
 tap 'caskroom/cask'
+tap 'simeji/jid'
+tap "homebrew/services"
+
 brew 'python'
 brew 'python3'
 brew 'hr'
@@ -21,16 +24,15 @@ brew 'fasd'
 brew 'icdiff'
 brew 'bash-completion'
 brew 'trash'
-
-tap 'simeji/jid'
 brew 'jid'
+brew 'wget'
 
 # C/C++
 brew 'glib'
 brew 'cmake'
 brew 'llvm', args: ['with-clang']
 brew 'gdb'
-brew 'rtags'
+brew "rtags", restart_service: true
 
 # Cask - GUI
 cask 'emacs'

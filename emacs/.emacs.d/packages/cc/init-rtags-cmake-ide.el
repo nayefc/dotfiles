@@ -5,6 +5,11 @@
 ;;; as a background process separarely on my machine.
 ;;; Code:
 
+(use-package levenshtein
+  :ensure t)
+(use-package s
+  :ensure t)
+
 (require 'json)
 (require 'find-file)
 (require 'levenshtein)
