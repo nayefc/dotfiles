@@ -37,7 +37,13 @@
   :mode (("\\.cc\\'" . c++-mode)
 	 ("\\.cpp\\'" . c++-mode)
 	 ("\\.h\\'" . c++-mode)
-	 ("\\.c\\'" . c-mode)))
+	 ("\\.c\\'" . c-mode))
+  :config
+  (bind-keys :map c-mode-map
+             ("C-c ." . nil)
+             ("C-c ," . nil)
+             ("C-c /" . nil))
+  )
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)

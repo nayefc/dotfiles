@@ -1,6 +1,9 @@
 ;; Default search to regexp search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 
+;; Electric pair mode
+(electric-pair-mode 1)
+
 ;; Scroll other window
 (bind-key "C-c n" 'scroll-other-window)
 (bind-key "C-c b" 'scroll-other-window-down)
