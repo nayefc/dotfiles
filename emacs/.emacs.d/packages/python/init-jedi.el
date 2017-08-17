@@ -20,7 +20,7 @@
          ("C-c ?" . jedi:show-doc))
   :init
   (setq jedi:complete-on-dot t)
-  (setq jedi:tooltip-method '(pos-tip))
+  (setq jedi:tooltip-method '(popup))
   (add-hook 'python-mode-hook 'jedi:setup)
   :config
   (bind-keys :map jedi-mode-map
