@@ -17,10 +17,11 @@
          ("C-c ;" . jedi:goto-definition-new-frame)
          ("C-c '" . jedi:goto-definition)
          ("C-c j" . jedi:goto-definition-pop-marker)
-         ("C-c ?" . jedi:show-doc))
+         ("C-c ?" . jedi:show-doc)
+	 ("M-/" . jedi:get-in-function-call))
   :init
   (setq jedi:complete-on-dot t)
-  (setq jedi:tooltip-method '(popup))
+  (setq jedi:tooltip-method nil)
   (add-hook 'python-mode-hook 'jedi:setup)
   :config
   (bind-keys :map jedi-mode-map
