@@ -76,9 +76,7 @@ _k_: kill        _s_: split                   _{_: wrap with { }
         ;; Don't kill entire symbol on C-k
         sp-hybrid-kill-entire-symbol nil)
 
-  ;; C++ pair management
-  (sp-with-modes '(c++-mode)
-    (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))
+  ;; C++ block comment management
   (sp-local-pair 'c++-mode "/*" "*/" :post-handlers '((" | " "SPC")
                                                       ("* ||\n[i]" "RET")))
 
