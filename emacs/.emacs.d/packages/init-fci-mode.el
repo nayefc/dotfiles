@@ -20,7 +20,8 @@
     (if (> (window-width) fci-rule-column)
         (if (and
            (not (string-match "^\*.*\*$" (buffer-name)))
-           (not (eq major-mode 'dired-mode)))
+           (not (eq major-mode 'dired-mode))
+           (not (eq major-mode 'neotree-mode)))
             (fci-mode 1)
           (fci-mode 0))))
 
