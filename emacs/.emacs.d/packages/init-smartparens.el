@@ -79,6 +79,7 @@ _k_: kill        _s_: split                   _{_: wrap with { }
   ;; C++ block comment management
   (sp-local-pair 'c++-mode "/*" "*/" :post-handlers '((" | " "SPC")
                                                       ("* ||\n[i]" "RET")))
+  (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 
   (setq sp-cancel-autoskip-on-backward-movement nil))
 
