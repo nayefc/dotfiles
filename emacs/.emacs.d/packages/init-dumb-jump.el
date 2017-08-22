@@ -1,7 +1,6 @@
 ;; Dumb jump mode
 (use-package dumb-jump
   :ensure t
-  :init
-  (dumb-jump-mode))
+  :defer t)
 
 (provide 'init-dumb-jump)

@@ -1,4 +1,5 @@
 (use-package shx
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'init-shx)
