@@ -22,6 +22,7 @@
   :init
   (setq jedi:complete-on-dot t)
   (setq jedi:tooltip-method nil)
+  (setq jedi:get-in-function-call-delay 10000000)
   (add-hook 'python-mode-hook 'jedi:setup)
   :config
   (bind-keys :map jedi-mode-map
