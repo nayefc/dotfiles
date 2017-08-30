@@ -270,6 +270,14 @@ function merge_master() {
     fi
 }
 
+function clean_files() {
+    find ./ -name $1 -delete -print0
+}
+
+function clean_dirs() {
+    find ./ -name $1 -print0 -exec rm -rf {} \;
+}
+
 
 # Terminal colours
 # See http://misc.flogisoft.com/bash/tip_colors_and_formatting
