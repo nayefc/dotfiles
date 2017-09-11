@@ -129,7 +129,7 @@ alias repo_name='basename `git rev-parse --show-toplevel`'
 alias authors='git log --all --format='%aN' | sort -u'
 
 # alias grep to egrep
-alias grep='grep -E --color'
+alias grep='grep -E --color=always'
 
 
 # Functions
