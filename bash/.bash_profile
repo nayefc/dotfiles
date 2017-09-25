@@ -83,10 +83,6 @@ elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
 
-    # virtualenvwrapper setup
-    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
-    source /usr/local/bin/virtualenvwrapper.sh
-
     alias lshwnet='lshw -c net -businfo'
 
     if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
