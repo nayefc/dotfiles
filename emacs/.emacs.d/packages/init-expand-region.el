@@ -41,8 +41,8 @@ C/C++ Expand Region (with with _q_)
 ^--------------------^---------------------
 _._: expand region   _(_: inside pair
 _s_: symbol          _)_: outside pair
-_w_: word            _i_: inside quotes
-_t_: statement       _Q_: outside quotes
+_w_: word            _s_: inside quotes
+_t_: statement       _S_: outside quotes
 _n_: full name       _v_: vector access
                    _f_: mark function"
     ("q" nil)
@@ -53,8 +53,8 @@ _n_: full name       _v_: vector access
     ("n" er/c-mark-fully-qualified-name)
     ("(" er/mark-inside-pairs)
     (")" er/mark-outside-pairs)
-    ("i" er/mark-inside-quotes)
-    ("Q" er/mark-outside-quotes)
+    ("s" er/mark-inside-quotes)
+    ("S" er/mark-outside-quotes)
     ("f" c-mark-function)
     ("v" er/c-mark-vector-access)
     ;; ("b" er/c-mark-statement-block))
