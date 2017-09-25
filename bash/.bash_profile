@@ -83,6 +83,10 @@ elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
 
+    # virtualenvwrapper setup
+    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+    source /usr/local/bin/virtualenvwrapper.sh
+
     alias lshwnet='lshw -c net -businfo'
 
     if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
@@ -108,13 +112,12 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
-alias e='TERM=xterm f -e emacs -nw'
-
 
 # Aliases
 
 # alias to use lower colours in emacs in terminal for solarized compatibility
 alias emacs='TERM=xterm emacs -nw'
+alias e='TERM=xterm f -e emacs -nw'
 
 # rm alias
 alias rm='rm -i'
