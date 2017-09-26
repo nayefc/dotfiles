@@ -8,6 +8,9 @@
     (add-to-list 'default-frame-alist '(height . 30))
     (add-to-list 'default-frame-alist '(width . 90))
 
+    (setq solarized-use-variable-pitch nil)
+    (setq solarized-scale-headlines nil)
+
     ;; Disable toolbar
     (tool-bar-mode -1)
 
