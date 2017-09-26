@@ -40,6 +40,32 @@
     ;; Highlight current line
     (global-hl-line-mode +1)))
 
+;; Toggle between light and dark themes
+(defvar *my-dark-theme* 'solarized-dark)
+(defvar *my-light-theme* 'solarized-light)
+(defvar *my-current-theme* *my-dark-theme*)
+
+;; disable other themes before loading new one
+(defadvice load-theme (before theme-dont-propagate activate)
+  "Disable theme before loading new one."
+  (mapc #'disable-theme custom-enabled-themes))
+
+(defun next-theme (theme)
+  (disable-theme *my-current-theme*)
+  (load-theme theme t)
+  ;; (if (eq theme 'default)
+  ;;     (disable-theme *haba-current-theme*)
+  ;;   (progn
+  ;;     (load-theme theme t)))
+  (setq *my-current-theme* theme))
+
+
+(defun toggle-theme ()
+  (interactive)
+  (cond ((eq *my-current-theme* *my-dark-theme*) (next-theme *my-light-theme*))
+        ((eq *my-current-theme* *my-light-theme*) (next-theme *my-dark-theme*))))
+
+
 (defun finder ()
   "Opens file directory in Finder."
   (interactive)
