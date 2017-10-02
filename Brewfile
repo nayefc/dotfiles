@@ -1,7 +1,8 @@
 tap 'Homebrew/bundle'
 tap 'caskroom/cask'
 tap 'simeji/jid'
-tap "homebrew/services"
+tap 'homebrew/services'
+tap 'caskroom/fonts'
 
 brew 'python'
 brew 'python3'
@@ -43,3 +44,4 @@ cask 'messenger'
 cask 'whatsapp'
 cask 'alfred'
 cask 'haskell-platform'
+cask 'font-iosevka'
