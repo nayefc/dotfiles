@@ -154,3 +154,5 @@
  '(swiper-match-face-2 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
  '(swiper-match-face-3 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
  '(swiper-match-face-4 ((t (:background "#d33682" :foreground "#002b36" :weight bold)))))
+
+(custom-set-faces (if (not window-system) '(default ((t (:background "nil"))))))
