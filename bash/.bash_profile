@@ -91,7 +91,8 @@ elif [[ $platform == 'linux' ]]; then
     fi
 fi
 
-# Use a single agent on my mac
+
+# Share ssh-agent on all machines.
 if [[ ! -S ~/.ssh/ssh_auth_sock && -S "$SSH_AUTH_SOCK" ]]; then
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
