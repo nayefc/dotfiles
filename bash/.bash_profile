@@ -75,7 +75,7 @@ if [[ $platform == 'osx' ]]; then
     source /usr/local/etc/bash_completion.d/git-prompt.sh
 
     # Share ssh-agent on my mac
-    if [[ -S "$SSH_AUTH_SOCK" ]]; then
+    if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
 	ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
     fi
     export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
@@ -97,7 +97,7 @@ elif [[ $platform == 'linux' ]]; then
     fi
 
     # Share ssh-agent on remote hosts
-    if [[ -S "$SSH_AUTH_SOCK" ]]; then
+    if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
 	ln -sf $SSH_AUTH_SOCK /tmp/nayef_auth_sock
     fi
     export SSH_AUTH_SOCK=/tmp/nayef_auth_sock
