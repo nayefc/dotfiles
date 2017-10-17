@@ -74,11 +74,6 @@ if [[ $platform == 'osx' ]]; then
     # Second prompt line
     source /usr/local/etc/bash_completion.d/git-prompt.sh
 
-    # Use a single agent on my mac
-    if [[ ! -S ~/.ssh/ssh_auth_sock && -S "$SSH_AUTH_SOCK" ]]; then
-        ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
-    fi
-
 elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
@@ -95,6 +90,12 @@ elif [[ $platform == 'linux' ]]; then
         source ~/.git-prompt.sh
     fi
 fi
+
+# Use a single agent on my mac
+if [[ ! -S ~/.ssh/ssh_auth_sock && -S "$SSH_AUTH_SOCK" ]]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 
 # fasd
