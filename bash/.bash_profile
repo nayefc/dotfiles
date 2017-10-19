@@ -153,13 +153,11 @@ function edit_conflicts() {
     emacs $files
 }
 
-
 # who merged this commit?
 function who_merged() {
     commit=`perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/' <(git rev-list --ancestry-path $1..HEAD) <(git rev-list --first-parent $1..HEAD) | tail -n 1`
     git show $commit
 }
-
 
 # swaps two files
 function swap() {
@@ -168,7 +166,6 @@ function swap() {
     mv "$2" "$1"
     mv $TMPFILE "$2"
 }
-
 
 # count for $1 mins
 function count() {
@@ -189,7 +186,6 @@ function count() {
 function copy() {
     echo -n $1 | pbcopy
 }
-
 
 # Extracting files
 function extract () {
@@ -214,14 +210,12 @@ function extract () {
     fi
 }
 
-
 function remote_rsync() {
     # $1: host
     # $1: source path
     # $2: destination path
     rsync --rsync-path="/usr/bin/rsync" $1:$2 $3
 }
-
 
 function run_loop() {
     # $1 number of times to run
@@ -231,7 +225,6 @@ function run_loop() {
         echo $i: $output
     done
 }
-
 
 function merge_master() {
     current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
@@ -283,6 +276,11 @@ function clean_files() {
 
 function clean_dirs() {
     find ./ -name $1 -print0 -exec rm -rf {} \;
+}
+
+# kill processes using a tcp port
+function kill_port() {
+    lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
 
