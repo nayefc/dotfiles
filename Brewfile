@@ -27,6 +27,8 @@ brew 'bash-completion'
 brew 'trash'
 brew 'jid'
 brew 'wget'
+brew 'fd'
+brew 'bench'
 
 # C/C++
 brew 'glib'
