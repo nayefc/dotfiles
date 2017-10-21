@@ -29,6 +29,7 @@ brew 'jid'
 brew 'wget'
 brew 'fd'
 brew 'bench'
+brew 'coreutils'
 
 # C/C++
 brew 'glib'
