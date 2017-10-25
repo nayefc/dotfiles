@@ -9,10 +9,6 @@ fi
 export EDITOR='/usr/local/bin/emacs'
 
 
-# HRT
-source ~/.hrtrc
-
-
 if [[ $platform == 'osx' ]]; then
     # Setting for the new UTF-8 terminal support
     export LANGUAGE=en_US.UTF-8
@@ -321,3 +317,6 @@ if [[ $platform == 'linux' ]]; then
 fi
 
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
+
+# HRT
+source ~/.hrtrc
