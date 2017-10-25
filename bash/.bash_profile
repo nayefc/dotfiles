@@ -100,6 +100,9 @@ elif [[ $platform == 'linux' ]]; then
 
 fi
 
+# HRT
+source ~/.hrtrc
+
 
 # fasd
 eval "$(fasd --init auto)"
@@ -317,6 +320,3 @@ if [[ $platform == 'linux' ]]; then
 fi
 
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
-
-# HRT
-source ~/.hrtrc
