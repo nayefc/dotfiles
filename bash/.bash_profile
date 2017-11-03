@@ -122,6 +122,9 @@ alias authors='git log --all --format='%aN' | sort -u'
 # alias grep to egrep and case insensitive
 alias grep='grep -E -i --color=always'
 
+alias myps='ps --sort=state -o ruser=WHO -o pid,ppid,state,pcpu -o psr=CPUID -o stime=START -o tty=TTY -o atime=CPUTIME, -o args'
+alias bsdps='ps -o ruser=WHO -o pid,ppid,state,pcpu -o psr=CPUID -o stime=START -o tty=TTY -o atime=CPUTIME, -o args'
+
 
 # Functions
 
