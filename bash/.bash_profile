@@ -104,8 +104,7 @@ fi
 # Aliases
 
 # alias to use lower colours in emacs in terminal for solarized compatibility
-alias emacs='TERM=xterm emacs -nw'
-alias e='TERM=xterm f -e emacs -nw'
+alias emacs='emacsclient -t -a emacs'
 
 # rm alias
 alias rm='rm -i'
