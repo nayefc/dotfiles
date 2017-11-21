@@ -92,11 +92,11 @@ elif [[ $platform == 'linux' ]]; then
         source ~/.git-prompt.sh
     fi
 
-    # Share ssh-agent on remote hosts
-    if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
-	ln -sf $SSH_AUTH_SOCK /tmp/nayef_auth_sock
-    fi
-    export SSH_AUTH_SOCK=/tmp/nayef_auth_sock
+    # # Share ssh-agent on remote hosts
+    # if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
+    # 	ln -sf $SSH_AUTH_SOCK /tmp/nayef_auth_sock
+    # fi
+    # export SSH_AUTH_SOCK=/tmp/nayef_auth_sock
 
 fi
 
