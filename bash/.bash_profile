@@ -100,7 +100,6 @@ elif [[ $platform == 'linux' ]]; then
 
 fi
 
-
 # Aliases
 
 # alias to use lower colours in emacs in terminal for solarized compatibility
@@ -285,6 +284,21 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
+## fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS='--height 50% --border'
+export FZF_DEFAULT_COMMAND='fd --type f'
+# Use fd
+_fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+}
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+# Fuzzy complete using fzf
+complete -F _fzf_path_completion -o default -o bashdefault ag
+complete -F _fzf_dir_completion -o default -o bashdefault tree
 
 # Terminal colours
 # See http://misc.flogisoft.com/bash/tip_colors_and_formatting
