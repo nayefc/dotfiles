@@ -30,6 +30,7 @@ brew 'wget'
 brew 'fd'
 brew 'bench'
 brew 'coreutils'
+brew 'fzf'
 
 # C/C++
 brew 'glib'
