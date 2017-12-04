@@ -3,6 +3,7 @@
   :diminish ivy-mode
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
+         ("C-c C-f" . counsel-fzf)
          ("C-c g" . counsel-projectile-ag)
          ("C-M-m" . counsel-jedi))
   :config
@@ -13,6 +14,7 @@
         '((t . ivy--regex-ignore-order)))
   ;; no default regexp
   (setq ivy-initial-inputs-alist nil)
+  (setq ivy-use-selectable-prompt t)
   (custom-set-faces
    '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
    '(ivy-current-match ((t (:background "#436060")))))
