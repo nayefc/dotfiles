@@ -120,9 +120,6 @@
 (use-package init-rtags
   :load-path "packages/cc"
   :if is-a-mac)
-(use-package init-rtags
-  :load-path "packages/cc"
-  :if is-a-mac)
 (use-package init-irony
   :load-path "packages/cc")
 

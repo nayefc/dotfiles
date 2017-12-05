@@ -19,4 +19,9 @@
   (rtags-enable-standard-keybindings)
   (setq rtags-autostart-diagnostics t))
 
+(defun my-flycheck-rtags-setup ()
+  "Configure flycheck-rtags for better experience."
+  (flycheck-select-checker 'rtags))
+(add-hook 'cc-mode-hook #'my-flycheck-rtags-setup)
+
 (provide 'init-rtags)

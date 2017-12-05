@@ -1,7 +1,7 @@
 (use-package flycheck
   :ensure t
   :init
-  (setq flycheck-highlighting-mode 'lines)
+  (setq flycheck-highlighting-mode 'symbols)
   (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
   (setq flycheck-idle-change-delay 1)
   :config
@@ -11,9 +11,9 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; (if is-a-mac
-;;     (eval-after-load 'flycheck
-;;       '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+(if is-a-mac
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
 (setq irony-additional-clang-options '("-std=c++11"))
