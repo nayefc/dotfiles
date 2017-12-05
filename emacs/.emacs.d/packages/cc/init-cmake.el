@@ -3,7 +3,7 @@
 ;;; C/C++ IDE-ish features.
 ;;; Code:
 
-(use-package cmake
+(use-package cmake-ide
   :ensure t
   :mode (("\\.cc\\'" . c++-mode)
          ("\\.cpp\\'" . c++-mode)
