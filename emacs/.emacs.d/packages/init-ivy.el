@@ -3,7 +3,7 @@
   :diminish ivy-mode
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-c C-f" . counsel-fzf)
+         ("C-x a f" . counsel-fzf)
          ("C-c g" . counsel-projectile-ag)
          ("C-M-m" . counsel-jedi))
   :config
