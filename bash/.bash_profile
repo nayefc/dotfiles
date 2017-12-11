@@ -281,8 +281,8 @@ alias d='fasd -d'        # directory
 alias f='fasd -f'        # file
 alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
+# alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+# alias zz='fasd_cd -d -i' # cd with interactive selection
 
 ## fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -299,6 +299,16 @@ _fzf_compgen_dir() {
 # Fuzzy complete using fzf
 complete -F _fzf_path_completion -o default -o bashdefault ag
 complete -F _fzf_dir_completion -o default -o bashdefault tree
+
+# fasd & fzf change directory - jump using `fasd` if given argument, else filter output of
+# `fasd` using `fzf`
+_z() {
+    [ $# -gt 0 ] && fasd_cd -d "$*" && return
+    local dir
+    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+alias z="_z"
+alias fzfprev="fzf --preview 'head -100 {}'"
 
 # Terminal colours
 # See http://misc.flogisoft.com/bash/tip_colors_and_formatting
