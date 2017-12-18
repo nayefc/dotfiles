@@ -1,6 +1,5 @@
 (use-package smartparens
   :ensure t
-  :pin melpa-stable
   :diminish smartparens-mode
   :bind (("C-c h" . hydra-smartparens/body)
          ("M-]" . sp-unwrap-sexp)
