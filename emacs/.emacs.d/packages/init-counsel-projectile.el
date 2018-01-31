@@ -2,6 +2,6 @@
   :ensure t
   :bind ("C-x f" . counsel-projectile-find-file)
   :init
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 (provide 'init-counsel-projectile)
