@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Ivy UI integration with projectile.
 ;;; I added a custom counsel action that opens the project's root directory as a default
-;;; switch project action. This behaviour was the default before, but was removed after
-;;; an update. M-o (as all Ivy actions) have a larger set of actions now as well as part
+;;; switch project action.  This behaviour was the default before, but was removed after
+;;; an update.  M-o (as all Ivy actions) have a larger set of actions now as well as part
 ;;; of that update.
 ;;; Code:
 
@@ -25,3 +25,4 @@
    '((add ("r" counsel-projectile-switch-project-action-root-dir "jump to a project root dir") 1))))
 
 (provide 'init-counsel-projectile)
+;;; init-counsel-projectile.el ends here
