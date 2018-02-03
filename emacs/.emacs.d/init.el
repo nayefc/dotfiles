@@ -122,6 +122,8 @@
   :if is-a-mac)
 (use-package init-irony
   :load-path "packages/cc")
+(use-package init-cc-clang-format
+  :load-path "packages/cc")
 
 ;; Always use spaces
 (setq indent-tabs-mode nil)
