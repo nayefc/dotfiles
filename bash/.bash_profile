@@ -8,7 +8,6 @@ fi
 
 export EDITOR='/usr/local/bin/emacs'
 
-
 if [[ $platform == 'osx' ]]; then
     # Setting for the new UTF-8 terminal support
     export LANGUAGE=en_US.UTF-8
@@ -122,6 +121,8 @@ alias grep='grep -E -i --color=always'
 
 alias myps='ps --sort=state -o ruser=WHO -o pid,ppid,state,pcpu -o psr=CPUID -o stime=START -o tty=TTY -o atime=CPUTIME, -o args'
 alias bsdps='ps -o ruser=WHO -o pid,ppid,state,pcpu -o psr=CPUID -o stime=START -o tty=TTY -o atime=CPUTIME, -o args'
+
+alias beep='afplay /System/Library/Sounds/Submarine.aiff -v 10'
 
 
 # Functions
