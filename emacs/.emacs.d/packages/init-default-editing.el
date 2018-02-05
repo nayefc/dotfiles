@@ -17,6 +17,12 @@
 (add-hook 'scheme-mode-hook           (function newline-indents))
 (add-hook 'python-mode-hook           (function newline-indents))
 
+;; Indent json by 2
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
 ;; Kill current line
 (defun smart-kill-whole-line (&optional arg)
   "A wrapper around 'kill-whole-line' that respects indentation with ARG lines to kill."
