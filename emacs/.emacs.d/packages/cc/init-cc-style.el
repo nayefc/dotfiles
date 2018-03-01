@@ -40,10 +40,10 @@
 	 ("\\.c\\'" . c-mode))
   :config
   (bind-keys :map c-mode-map
-             ("C-c ." . nil)
-             ("C-c ," . nil)
-             ("C-c /" . nil))
-  )
+	     ("C-c ." . nil)
+	     ("C-c ," . nil)
+	     ("C-c /" . nil)
+	     ("C-c /" . mc/mark-all-like-this)))
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
