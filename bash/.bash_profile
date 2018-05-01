@@ -269,11 +269,6 @@ function kill_port() {
     lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
-
-# HRT
-source ~/.hrtrc
-
-
 # fasd
 eval "$(fasd --init auto)"
 alias a='fasd -a'        # any
