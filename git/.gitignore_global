@@ -17,6 +17,7 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+.ignore
 
 # Python
 flycheck_*
@@ -24,3 +25,6 @@ flycheck_*
 pylintrc
 .venv
 *.pyc
+
+# C++
+.clang-format

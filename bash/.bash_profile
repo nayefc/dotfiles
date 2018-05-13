@@ -102,7 +102,7 @@ fi
 # Aliases
 
 # alias to use lower colours in emacs in terminal for solarized compatibility
-alias emacs='emacsclient -t -a emacs'
+# alias emacs='emacsclient -t -a emacs'
 
 # rm alias
 alias rm='rm -i'

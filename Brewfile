@@ -40,12 +40,8 @@ brew 'gdb'
 brew "rtags", restart_service: true
 
 # Cask - GUI
-cask 'emacs'
-cask 'google-chrome'
-cask 'iterm2'
-cask 'stay'
-cask 'messenger'
-cask 'whatsapp'
-cask 'alfred'
-cask 'haskell-platform'
+# cask 'emacs'
+# cask 'iterm2'
+# cask 'alfred'
 cask 'font-iosevka'
+# cask 'haskell-platform'
