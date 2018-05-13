@@ -31,6 +31,7 @@ brew 'fd'
 brew 'bench'
 brew 'coreutils'
 brew 'fzf'
+brew 'watchman'
 
 # C/C++
 brew 'glib'
