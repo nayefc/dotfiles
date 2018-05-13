@@ -10,6 +10,15 @@ echo "==================="
 echo ""
 
 echo "==================="
+echo "Copying DefaultKeyBinding.dict bash"
+mkdir ~/Library/KeyBindings/DefaultKeyBinding.dict
+cp DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+echo "Copy done"
+echo "==================="
+
+echo ""
+
+echo "==================="
 echo "Running stow bash"
 stow bash
 echo "Stow stash done"
