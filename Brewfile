@@ -40,6 +40,7 @@ brew 'llvm', args: ['with-clang']
 brew 'gdb'
 brew 'clang-format'
 brew "rtags", restart_service: true
+brew 'google-benchmark'
 
 # Cask - GUI
 # cask 'emacs'
