@@ -173,6 +173,11 @@ function copy() {
     echo -n $1 | pbcopy
 }
 
+# Compress files
+function compress() {
+    tar -czvf $1 $2
+}
+
 # Extracting files
 function extract () {
     if [ -f $1 ] ; then
