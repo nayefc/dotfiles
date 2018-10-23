@@ -65,6 +65,12 @@
   (cond ((eq *my-current-theme* *my-dark-theme*) (next-theme *my-light-theme*))
         ((eq *my-current-theme* *my-light-theme*) (next-theme *my-dark-theme*))))
 
+;; Make title bar match macOS theme
+(use-package ns-auto-titlebar
+  :ensure t
+  :diminish
+  :init
+  (ns-auto-titlebar-mode))
 
 (defun finder ()
   "Opens file directory in Finder."
