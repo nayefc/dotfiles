@@ -4,6 +4,7 @@
   (setq flycheck-highlighting-mode 'symbols)
   (setq flycheck-check-syntax-automatically '(mode-enabled new-line idle-change))
   (setq flycheck-idle-change-delay 1)
+  (global-flycheck-mode)
   :config
   (set-face-attribute 'flycheck-error nil :foreground "yellow" :background "red")
   (set-face-attribute 'flycheck-warning nil :foreground "red" :background "yellow")
