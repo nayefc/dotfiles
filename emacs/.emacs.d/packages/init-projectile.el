@@ -38,6 +38,8 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy)
   ;; This has to come after activating on the mode.
-  (setq projectile-switch-project-action 'projectile-dired))
+  (setq projectile-switch-project-action 'projectile-dired)
+  ;;(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (provide 'init-projectile)

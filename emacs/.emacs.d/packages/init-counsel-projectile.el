@@ -17,8 +17,6 @@
 (use-package counsel-projectile
   :ensure t
   :bind ("C-x f" . counsel-projectile-find-file)
-  :bind ("C-x d" . counsel-projectile-find-dir)
-  :bind ("C-c p" . counsel-projectile-switch-project)
   :init
   (counsel-projectile-mode)
   :config
