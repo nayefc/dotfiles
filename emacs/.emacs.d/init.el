@@ -101,6 +101,8 @@
   :load-path "packages/")
 (use-package init-yasnippet
   :load-path "packages/")
+(use-package init-eyebrowse
+  :load-path "packages/")
 
 ;; python packages
 (use-package init-jedi
