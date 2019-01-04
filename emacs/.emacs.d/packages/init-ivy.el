@@ -46,6 +46,11 @@
                   (interactive)
                   (swiper (word-at-point))))
 
+(use-package ivy-explorer
+  :ensure t
+  :init
+  (ivy-explorer-mode 1))
+
 ;; See http://oremacs.com/2016/01/06/ivy-flx/ for fuzzy matching
 ;; (use-package flx
 ;;   :ensure t)

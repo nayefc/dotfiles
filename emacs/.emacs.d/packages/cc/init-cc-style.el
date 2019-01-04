@@ -48,4 +48,8 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
+(use-package modern-cpp-font-lock
+  :ensure t)
+(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
+
 (provide 'init-cc-style)

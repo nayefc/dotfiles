@@ -11,6 +11,6 @@
          ("\\.c\\'" . c-mode))
   :init
   (cmake-ide-setup)
-  (setq cmake-ide-flags-c++ (append '("-std=c++11"))))
+  (setq cmake-ide-flags-c++ (append '("-std=c++17")))) ;; -fconcepts
 
 (provide 'init-cmake)

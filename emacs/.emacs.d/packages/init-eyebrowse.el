@@ -5,8 +5,6 @@
 (use-package eyebrowse
   :diminish
   :defer 2
-  :init
-  (eyebrowse-mode t)
   :config
   (setq eyebrowse-new-workspace t)
   (setq eyebrowse-wrap-around t)
