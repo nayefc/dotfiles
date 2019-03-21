@@ -101,4 +101,8 @@
       (setq whitespace-style ws-small)))
   (whitespace-mode 1))
 
+(defun set-font-size (n)
+  (interactive "nSize: ")
+  (set-face-attribute 'default nil :height n))
+
 (provide 'init-default-editing)

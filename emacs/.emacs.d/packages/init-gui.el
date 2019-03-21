@@ -1,48 +1,53 @@
-; Set GUI Emacs theme
+;; Set GUI Emacs theme
+
+;; Set default window size
+(add-to-list 'default-frame-alist '(height . 30))
+(add-to-list 'default-frame-alist '(width . 90))
+
+;; Disable toolbar
+(tool-bar-mode -1)
+
+;; Disable scroll bar
+(if (display-graphic-p) (scroll-bar-mode -1))
+
+;; Highlight current line
+(global-hl-line-mode +1)
+
 (use-package solarized-theme
   :ensure t
   :if (display-graphic-p)
   :init
-  (progn
-    ;; Set default window size
-    (add-to-list 'default-frame-alist '(height . 30))
-    (add-to-list 'default-frame-alist '(width . 90))
+  (setq solarized-use-variable-pitch nil)
+  (setq solarized-scale-headlines nil)
 
-    (setq solarized-use-variable-pitch nil)
-    (setq solarized-scale-headlines nil)
+  ;; (load-theme 'solarized-dark t)
 
-    ;; Disable toolbar
-    (tool-bar-mode -1)
+  ;; make the fringe stand out from the background
+  (setq solarized-distinct-fringe-background t)
 
-    ;; Disable scroll bar
-    (scroll-bar-mode -1)
+  ;; make the modeline high contrast
+  (setq solarized-high-contrast-mode-line t)
 
-    ;; Load theme
-    (load-theme 'solarized-dark t)
+  ;; Use less bolding
+  (setq solarized-use-less-bold t)
 
-    ;; make the fringe stand out from the background
-    (setq solarized-distinct-fringe-background t)
+  ;; Use more italics
+  (setq solarized-use-more-italic t)
 
-    ;; make the modeline high contrast
-    (setq solarized-high-contrast-mode-line t)
+  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
+  (setq solarized-emphasize-indicators nil)
 
-    ;; Use less bolding
-    (setq solarized-use-less-bold t)
+  (setq x-underline-at-descent-line t))
 
-    ;; Use more italics
-    (setq solarized-use-more-italic t)
-
-    ;; Use less colors for indicators such as git:gutter, flycheck and similar.
-    (setq solarized-emphasize-indicators nil)
-
-    (setq x-underline-at-descent-line t)
-
-    ;; Highlight current line
-    (global-hl-line-mode +1)))
+;; zeno-theme
+(use-package zeno-theme
+  :ensure t
+  :init)
 
 ;; Toggle between light and dark themes
 (defvar *my-dark-theme* 'solarized-dark)
 (defvar *my-light-theme* 'solarized-light)
+(defvar *my-zeno-theme* 'zeno-theme)
 (defvar *my-current-theme* *my-dark-theme*)
 
 ;; disable other themes before loading new one
@@ -63,7 +68,11 @@
 (defun toggle-theme ()
   (interactive)
   (cond ((eq *my-current-theme* *my-dark-theme*) (next-theme *my-light-theme*))
-        ((eq *my-current-theme* *my-light-theme*) (next-theme *my-dark-theme*))))
+        ((eq *my-current-theme* *my-light-theme*) (next-theme *my-zeno-theme*))
+        ((eq *my-current-theme* *my-zeno-theme*) (next-theme *my-dark-theme*))))
+
+;; Load theme
+;; (load-theme 'solarized-dark t)
 
 ;; Make title bar match macOS theme
 (use-package ns-auto-titlebar
