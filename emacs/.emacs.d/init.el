@@ -131,32 +131,48 @@
 
 ;; Always use spaces
 (setq indent-tabs-mode nil)
-
 (provide 'init)
 ;;; init.el ends here
+
+;; Font height 135 or 130
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight light :height 140 :width normal :foundry "nil" :family "Iosevka Term"))))
+;;  '(ivy-current-match ((t (:background "#436060"))))
+;;  '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
+;;  '(swiper-match-face-1 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+;;  '(swiper-match-face-2 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+;;  '(swiper-match-face-3 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+;;  '(swiper-match-face-4 ((t (:background "#d33682" :foreground "#002b36" :weight bold)))))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:slant normal :weight light :height 150 :width normal :family "Iosevka Term"))))
+ '(font-lock-constant-face ((t (:foreground "#66D9EF"))))
+ '(font-lock-keyword-face ((t (:foreground "#A6E22E"))))
+ '(ivy-current-match ((t (:background "#436060"))))
+ '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
+ '(swiper-match-face-1 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+ '(swiper-match-face-2 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+ '(swiper-match-face-3 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+ '(swiper-match-face-4 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
+ '(which-func ((t (:foreground "RoyalBlue1")))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" default)))
  '(exec-path-from-shell-check-startup-files nil)
  '(package-selected-packages
    (quote
-    (company-tabnine itail ns-auto-titlebar rmsbolt flycheck-rtags clang-format use-package cmake-ide yasnippet-snippets yasnippet levenshtein pytest realgud package-build shut-up epl git commander f dash s virtualenvwrapper elisp--witness--lisp string-inflection shx
-		     (progn t elisp--witness--lisp)
-		     smartparens ivy-rtags rtags all-the-icons-ivy protobuf-mode all-the-icons all-the-icons-dired neotree ivy-hydra indent-tools irony projectile-speedbar project-explorer ag dumb-jump dashboard flycheck-irony counsel-projectile company-irony-c-headers company-irony google-c-style ivy buffer-move pylint highlight-indentation company-jedi jedi expand-region company projectile exec-path-from-shell fill-column-indicator git-gutter+ flycheck highlight-symbol multiple-cursors ace-window avy magit yaml-mode with-editor sr-speedbar solarized-theme pallet magit-popup))))
-
-;; Font height 135 or 130
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight light :height 140 :width normal :foundry "nil" :family "Iosevka Term"))))
- '(ivy-current-match ((t (:background "#436060"))))
- '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
- '(swiper-match-face-1 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
- '(swiper-match-face-2 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
- '(swiper-match-face-3 ((t (:background "#d33682" :foreground "#002b36" :weight bold))))
- '(swiper-match-face-4 ((t (:background "#d33682" :foreground "#002b36" :weight bold)))))
+    (cff cquery zeno-theme yasnippet-snippets yaml-mode virtualenvwrapper use-package solarized-theme smartparens shx rtags rmsbolt realgud ns-auto-titlebar neotree multiple-cursors modern-cpp-font-lock magit jedi ivy-hydra ivy-explorer itail indent-tools highlight-symbol highlight-indentation google-c-style git-gutter+ flycheck-irony fill-column-indicator expand-region exec-path-from-shell dumb-jump diminish dashboard counsel-projectile company-tabnine company-jedi company-irony-c-headers company-irony cmake-ide clang-format buffer-move all-the-icons-ivy all-the-icons-dired ag ace-window))))
