@@ -124,6 +124,8 @@ alias bsdps='ps -o ruser=WHO -o pid,ppid,state,pcpu -o psr=CPUID -o stime=START 
 
 alias beep='afplay /System/Library/Sounds/Submarine.aiff -v 10'
 
+alias agl='ag --pager="less -R"'
+
 
 # Functions
 
