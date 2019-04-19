@@ -23,6 +23,11 @@
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
 
+(add-hook 'python-mode-hook
+          (function (lambda ()
+                      (setq indent-tabs-mode nil
+                            tab-width 4))))
+
 ;; Kill current line
 (defun smart-kill-whole-line (&optional arg)
   "A wrapper around 'kill-whole-line' that respects indentation with ARG lines to kill."
