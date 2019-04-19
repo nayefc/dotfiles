@@ -103,6 +103,8 @@
   :load-path "packages/")
 (use-package init-eyebrowse
   :load-path "packages/")
+(use-package init-ansible
+  :load-path "packages/")
 
 ;; python packages
 (use-package init-jedi
@@ -177,4 +179,4 @@
  '(exec-path-from-shell-check-startup-files nil)
  '(package-selected-packages
    (quote
-    (cff cquery zeno-theme yasnippet-snippets yaml-mode virtualenvwrapper use-package solarized-theme smartparens shx rtags rmsbolt realgud ns-auto-titlebar neotree multiple-cursors modern-cpp-font-lock magit jedi ivy-hydra ivy-explorer itail indent-tools highlight-symbol highlight-indentation google-c-style git-gutter+ flycheck-irony fill-column-indicator expand-region exec-path-from-shell dumb-jump diminish dashboard counsel-projectile company-tabnine company-jedi company-irony-c-headers company-irony cmake-ide clang-format buffer-move all-the-icons-ivy all-the-icons-dired ag ace-window))))
+    (eyebrowse ansible-vault cff cquery zeno-theme yasnippet-snippets yaml-mode virtualenvwrapper use-package solarized-theme smartparens shx rtags rmsbolt realgud ns-auto-titlebar neotree multiple-cursors modern-cpp-font-lock magit jedi ivy-hydra ivy-explorer itail indent-tools highlight-symbol highlight-indentation google-c-style git-gutter+ flycheck-irony fill-column-indicator expand-region exec-path-from-shell dumb-jump diminish dashboard counsel-projectile company-tabnine company-jedi company-irony-c-headers company-irony cmake-ide clang-format buffer-move all-the-icons-ivy all-the-icons-dired ag ace-window))))

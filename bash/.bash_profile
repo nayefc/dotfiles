@@ -276,6 +276,8 @@ function kill_port() {
     lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault-pass
+
 # fasd
 eval "$(fasd --init auto)"
 alias a='fasd -a'        # any
