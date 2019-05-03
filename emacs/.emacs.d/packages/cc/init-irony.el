@@ -39,8 +39,10 @@
     (eval-after-load 'flycheck
       '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))))
 
-(setq irony-additional-clang-options '("-std=c++17"))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
+(setq irony-additional-clang-options '("-std=c++17 -Wno-pragma-once-outside-header"))
+(add-hook 'c++-mode-hook (lambda ()
+			   (setq flycheck-clang-language-standard "c++17")
+			   (setq flycheck-clang-args "-Wno-pragma-once-outside-header")))
 
 (provide 'init-irony)
 ;;; init-irony.el ends here

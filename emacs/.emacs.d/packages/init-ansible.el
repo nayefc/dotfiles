@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package ansible-vault-mode
+(use-package ansible-vault
   :ensure t)
 
 (provide 'init-ansible)

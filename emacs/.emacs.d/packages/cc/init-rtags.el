@@ -19,6 +19,8 @@
   (rtags-enable-standard-keybindings)
   (setq rtags-autostart-diagnostics t))
 
+(setq rtags-verify-protocol-version nil)
+
 (defun my-flycheck-rtags-setup ()
   "Configure flycheck-rtags for better experience."
   (flycheck-select-checker 'rtags))
