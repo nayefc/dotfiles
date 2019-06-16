@@ -26,23 +26,24 @@ if [[ $platform == 'osx' ]]; then
 
     function _virtualenv_auto_activate() {
         if [ -e ".venv" ]; then
-            if [ -f ".venv" ]; then
+    	    if [ -f ".venv" ]; then
                 _VENV_PATH=$WORKON_HOME/$(cat .venv)
                 _VENV_WRAPPER_ACTIVATE=true
-            else
+    	    else
                 return
-            fi
+    	    fi
 
-            # Check to see if already activated to avoid redundant activating
-            if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
+    	    # Check to see if already activated to avoid redundant activating
+    	    if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
                 if $_VENV_WRAPPER_ACTIVATE; then
-                    _VENV_NAME=$(basename $_VENV_PATH)
-                    workon $_VENV_NAME
+    		    _VENV_NAME=$(basename $_VENV_PATH)
+    		    workon $_VENV_NAME
                 fi
                 echo Activated virtualenv \"$_VENV_NAME\".
-            fi
+    	    fi
         fi
     }
+
     export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND} _virtualenv_auto_activate"
 
     # If Postgress.app is installed, put it in PATH.
@@ -81,15 +82,13 @@ elif [[ $platform == 'linux' ]]; then
 
     alias lshwnet='lshw -c net -businfo'
 
-    if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
-        # Completions
-        source ~/.git-completion.bash
-        source ~/.ag.bashcomp.sh
-        source ~/.tmux-completion
+    # Completions
+    source ~/.git-completion.bash
+    source ~/.ag.bashcomp.sh
+    source ~/.tmux-completion
 
-        # Second prompt line
-        source ~/.git-prompt.sh
-    fi
+    # Second prompt line
+    source ~/.git-prompt.sh
 
     # # Share ssh-agent on remote hosts
     # if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
@@ -339,12 +338,9 @@ fi
 
 
 # Setup PS1 git prompt
-if ! [[ $HOSTNAME =~ "quip" || $HOSTNAME =~ "trade" ]]; then
-    export GIT_PS1_SHOWDIRTYSTATE="1"
-    export GIT_PS1_SHOWUNTRACKEDFILES="1"
-    export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
-fi
-
+export GIT_PS1_SHOWDIRTYSTATE="1"
+export GIT_PS1_SHOWUNTRACKEDFILES="1"
+export GIT_BRANCH_PROMPT='$(__git_ps1 " (%s)")'
 
 PS1="$CYAN"
 if [[ $platform == 'linux' ]]; then
