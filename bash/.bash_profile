@@ -262,11 +262,11 @@ function merge_master() {
     fi
 }
 
-function clean_files() {
+function delete_files() {
     find ./ -name $1 -delete -print0
 }
 
-function clean_dirs() {
+function remove_dirs() {
     find ./ -name $1 -print0 -exec rm -rf {} \;
 }
 
@@ -275,7 +275,17 @@ function kill_port() {
     lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
+function git_replace() {
+    git grep -l $1 | xargs sed -i '' -e 's/$1/$2/g'
+}
+
+function git_replace_linux() {
+    git grep -l $1 | xargs sed -i 's/$1/$2/g'
+}
+
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault-pass
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # fasd
 eval "$(fasd --init auto)"
