@@ -14,43 +14,13 @@ if [[ $platform == 'osx' ]]; then
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
     # Homebrew packages path
     export PATH=/usr/local/bin:$PATH
 
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-    # virtualenvwrapper setup
-    VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-    source /usr/local/bin/virtualenvwrapper.sh
-
-    function _virtualenv_auto_activate() {
-        if [ -e ".venv" ]; then
-    	    if [ -f ".venv" ]; then
-                _VENV_PATH=$WORKON_HOME/$(cat .venv)
-                _VENV_WRAPPER_ACTIVATE=true
-    	    else
-                return
-    	    fi
-
-    	    # Check to see if already activated to avoid redundant activating
-    	    if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
-                if $_VENV_WRAPPER_ACTIVATE; then
-    		    _VENV_NAME=$(basename $_VENV_PATH)
-    		    workon $_VENV_NAME
-                fi
-                echo Activated virtualenv \"$_VENV_NAME\".
-    	    fi
-        fi
-    }
-
-    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND} _virtualenv_auto_activate"
-
-    # If Postgress.app is installed, put it in PATH.
-    psqlapp="/Applications/Postgres.app/Contents/Versions/9.3/bin/psql"
-    if [ -w "$psqlapp" ]; then
-        export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
-    fi
 
     # Alias youtube-dl if its installed.
     alias youtube="youtube-dl -x --audio-format mp3 --audio-quality 1 -o \"%(title)s.%(ext)s\""
@@ -60,12 +30,20 @@ if [[ $platform == 'osx' ]]; then
 
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+    # llvm
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
     # Completions
     source /usr/local/etc/bash_completion.d/git-completion.bash
     source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
     source /usr/local/etc/bash_completion.d/brew
     source /usr/local/etc/bash_completion.d/tmux
     source /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
+
+    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
     # Second prompt line
     source /usr/local/etc/bash_completion.d/git-prompt.sh
@@ -89,14 +67,27 @@ elif [[ $platform == 'linux' ]]; then
 
     # Second prompt line
     source ~/.git-prompt.sh
-
-    # # Share ssh-agent on remote hosts
-    # if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
-    # 	ln -sf $SSH_AUTH_SOCK /tmp/nayef_auth_sock
-    # fi
-    # export SSH_AUTH_SOCK=/tmp/nayef_auth_sock
-
 fi
+
+# Go
+export GOPATH=$HOME/go # don't forget to change your path correctly!
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+# PullDeploy keys
+export AWS_ACCESS_KEY_ID=AKIA46GFDSVQRQZCUMOO
+export AWS_SECRET_ACCESS_KEY=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
+
+# Google Cloud
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+
+# Kuberenetes
+source <(kubectl completion bash)
+alias kubedev='kubectl --context muzna-aio --namespace development'
+
+source ~/.tokens
 
 # Aliases
 
@@ -127,18 +118,6 @@ alias agl='ag --pager="less -R"'
 
 
 # Functions
-
-# opens all files with the given regexp
-function edit_with() {
-    files=`git grep "$1" | awk '{print $1}' | cut -d: -f 1 | xargs -I {} echo -n " " {}`
-    emacs $files
-}
-
-# open all git conflicted files
-function edit_conflicts() {
-    files=`git diff --name-only --diff-filter=U`
-    emacs $files
-}
 
 # who merged this commit?
 function who_merged() {
@@ -216,50 +195,6 @@ function run_loop() {
         output=`$2`
         echo $i: $output
     done
-}
-
-function merge_master() {
-    current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
-
-    # $1 the name of the branch to merge master into.
-    if [ $# -eq 0 ]; then
-        to_merge=$current_branch
-        is_head=1
-    else
-        to_merge=$1
-        is_head=0
-    fi
-
-    git co master &>/dev/null
-    git plr &>/dev/null
-    git co $to_merge &>/dev/null
-
-    git merge master --no-edit 2>/dev/null
-    if [ $? -ne 0 ]; then
-        git reset --merge 2>/dev/null
-        echo "Cannot merge due to conflict."
-        return
-    else
-        echo "Master merged into " $to_merge"."
-    fi
-
-    hr =
-
-    echo -n "Do you want to push the branch (y/n)? "
-    read answer
-    if echo "$answer" | grep -iq "^y" ; then
-        git ph
-    fi
-
-    # If merging another branch (not head), ask to revert to previous branch.
-    if [ $is_head -eq 0 ]; then
-        hr =
-        echo -n "Do you want to return to the orignal branch (y/n)? "
-        read answer
-        if echo "$answer" | grep -iq "^y" ; then
-            git co $current_branch &>/dev/null
-        fi
-    fi
 }
 
 function delete_files() {
