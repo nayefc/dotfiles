@@ -11,53 +11,40 @@
   (defhydra hydra-smartparens (:hint nil)
     "
 Sexps (quit with _q_)
-^Nav^            ^Barf/Slurp^                 ^Depth^
-^---^------------^----------^-----------------^-----^-----------------
-_f_: forward     _→_:          slurp forward   _R_: splice
-_b_: backward    _←_:          barf forward    _r_: raise
-_u_: backward ↑  _C-<right>_:  slurp backward  _↑_: raise backward
-_d_: forward ↓   _C-<left>_:   barf backward   _↓_: raise forward
-_p_: backward ↓
-_n_: forward ↑
-^Kill^           ^Misc^                       ^Wrap^
-^----^-----------^----^-----------------------^----^------------------
-_w_: copy        _j_: join                    _(_: wrap with ( )
-_k_: kill        _s_: split                   _{_: wrap with { }
-^^               _t_: transpose               _'_: wrap with ' '
-^^               _c_: convolute               _\"_: wrap with \" \"
-^^               _i_: indent defun"
-    ("q" nil)
-    ;; Wrapping
-    ("(" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")))
-    ("{" (lambda (_) (interactive "P") (sp-wrap-with-pair "{")))
-    ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
-    ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
-    ;; Navigation
-    ("f" sp-forward-sexp)
-    ("b" sp-backward-sexp)
-    ("u" sp-backward-up-sexp)
-    ("d" sp-down-sexp)
-    ("p" sp-backward-down-sexp)
-    ("n" sp-up-sexp)
-    ;; Kill/copy
-    ("w" sp-copy-sexp)
-    ("k" sp-kill-sexp)
-    ;; Misc
-    ("t" sp-transpose-sexp)
-    ("j" sp-join-sexp)
-    ("s" sp-split-sexp)
-    ("c" sp-convolute-sexp)
-    ("i" sp-indent-defun)
-    ;; Depth changing
-    ("R" sp-splice-sexp)
-    ("r" sp-splice-sexp-killing-around)
-    ("<up>" sp-splice-sexp-killing-backward)
-    ("<down>" sp-splice-sexp-killing-forward)
-    ;; Barfing/slurping
-    ("<right>" sp-forward-slurp-sexp)
-    ("<left>" sp-forward-barf-sexp)
-    ("C-<left>" sp-backward-barf-sexp)
-    ("C-<right>" sp-backward-slurp-sexp))
+^Nav^                                        ^Kill^                      ^Wrap^
+^---^----------^---^-------------------------^---^---------^---^---------^---^--------------------
+_l_: → char    _u_: ← word   _m_: ← indent   _e_: ← word   _c_: line     _(_: wrap with ( )
+_j_: ← char    _o_: → word   _n_: new line   _r_: → word   _v_: sexp     _{_: wrap with { }
+_i_: ↑ line    _a_: ← line                 _d_: ← char   _w_: copy     _'_: wrap with ' '
+_k_: ↓ line    _s_: → line                 _f_: → char               _\"_: wrap with \" \""
+    ("q" nil)
+
+    ;; Wrapping
+    ("(" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")))
+    ("{" (lambda (_) (interactive "P") (sp-wrap-with-pair "{")))
+    ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
+    ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
+
+    ;; Nav:
+    ("j" backward-char)
+    ("l" forward-char)
+    ("i" previous-line)
+    ("k" next-line)
+    ("o" forward-word)
+    ("u" backward-word)
+    ("n" electric-newline-and-maybe-indent)
+    ("a" move-beginning-of-line)
+    ("s" move-end-of-line)
+    ("m" back-to-indentation)
+
+    ;; Kill/Copy
+    ("e" sp-backward-kill-word)
+    ("r" sp-kill-word)
+    ("d" sp-backward-delete-char)
+    ("f" sp-delete-char)
+    ("c" sp-kill-hybrid-sexp)
+    ("v" sp-kill-sexp)
+    ("w" sp-copy-sexp))
 
   ;; (smartparens-global-mode)
   ;; (show-smartparens-global-mode)
@@ -80,7 +67,11 @@ _k_: kill        _s_: split                   _{_: wrap with { }
                                                       ("* ||\n[i]" "RET")))
   (sp-local-pair 'c++-mode "{" nil :post-handlers '(("||\n[i]" "RET")))
 
-  (setq sp-cancel-autoskip-on-backward-movement nil))
+  (setq sp-cancel-autoskip-on-backward-movement nil)
+
+  ;; Temporary: https://github.com/Fuco1/smartparens/issues/963#issuecomment-488151756
+  (dolist (fun '(c-electric-paren c-electric-brace))
+    (add-to-list 'sp--special-self-insert-commands fun)))
 
 (use-package hydra-smartparens
   :disabled t
