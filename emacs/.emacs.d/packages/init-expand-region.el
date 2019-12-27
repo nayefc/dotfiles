@@ -6,29 +6,28 @@
 
 (defhydra hydra-python-expand-region (:hint nil)
     "
-Python Expand Region (with with _q_)
-^Regions^              ^Lines^              ^Symbols^
-^----------------------^--------------------^----------^---------------
-_._: expand region     _(_: inside pair     _y_: symbol
-_-_: contract region   _)_: outside pair    _w_: word
-_k_: kill              _s_: inside string   _t_: statement
-_b_: block             _S_: outside string
-_B_: outer block
-_d_: block & decorator"
+C/C++ Expand Region (with with _q_)
+^Symbols^            ^Lines^
+^--------------------^---------------------
+_._: expand region   _(_: inside pair
+_m_: symbol          _)_: outside pair
+_n_: full name       _s_: inside quotes
+_t_: statement       _S_: outside quotes
+_f_: mark function   _v_: vector access"
     ("q" nil)
     ("." er/expand-region)
-    ("-" er/contract-region)
-    ("y" er/mark-symbol)
-    ("w" er/mark-word)
-    ("t" er/mark-python-statement)
+    ("m" er/mark-symbol)
+    ;; ("w" er/mark-word)
+    ("t" er/c-mark-statement)
+    ("n" er/c-mark-fully-qualified-name)
     ("(" er/mark-inside-pairs)
     (")" er/mark-outside-pairs)
-    ("s" er/mark-inside-python-string)
-    ("S" er/mark-outside-python-string)
-    ("b" er/mark-python-block)
-    ("B" er/mark-outer-python-block)
-    ("d" er/mark-python-block-and-decorator)
-    ("k" kill-region))
+    ("s" er/mark-inside-quotes)
+    ("S" er/mark-outside-quotes)
+    ("f" c-mark-function)
+    ("v" er/c-mark-vector-access)
+    ;; ("b" er/c-mark-statement-block))
+    )
 
 (add-hook 'python-mode-hook
           (lambda () (define-key python-mode-map (kbd "C-c m")
