@@ -12,12 +12,15 @@
   (setq ivy-display-style 'fancy)
   (setq ivy-re-builders-alist
         '((t . ivy--regex-ignore-order)))
-  ;; no default regexp
-  (setq ivy-initial-inputs-alist nil)
   (setq ivy-use-selectable-prompt t)
   (custom-set-faces
    '(ivy-modified-buffer ((t (:foreground "#ff7777"))))
    '(ivy-current-match ((t (:background "#436060")))))
+
+(use-package counsel
+  :hook (ivy-mode . counsel-mode)
+  :config
+  (setq ivy-initial-inputs-alist nil))
 
 (use-package ivy-hydra
   :ensure t
