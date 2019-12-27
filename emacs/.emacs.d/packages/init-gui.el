@@ -13,36 +13,41 @@
 ;; Highlight current line
 (global-hl-line-mode +1)
 
-(use-package solarized-theme
+;; (use-package solarized-theme
+;;   :ensure t
+;;   :if (display-graphic-p)
+;;   :init
+;;   (setq solarized-use-variable-pitch nil)
+;;   (setq solarized-scale-headlines nil)
+
+;;   ;; (load-theme 'solarized-dark t)
+
+;;   ;; make the fringe stand out from the background
+;;   (setq solarized-distinct-fringe-background t)
+
+;;   ;; make the modeline high contrast
+;;   (setq solarized-high-contrast-mode-line t)
+
+;;   ;; Use less bolding
+;;   (setq solarized-use-less-bold t)
+
+;;   ;; Use more italics
+;;   (setq solarized-use-more-italic t)
+
+;;   ;; Use less colors for indicators such as git:gutter, flycheck and similar.
+;;   (setq solarized-emphasize-indicators nil)
+
+;;   (setq x-underline-at-descent-line t))
+
+;; ;; zeno-theme
+;; (use-package zeno-theme
+;;   :ensure t
+;;   :init)
+
+(use-package nord-theme
   :ensure t
-  :if (display-graphic-p)
-  :init
-  (setq solarized-use-variable-pitch nil)
-  (setq solarized-scale-headlines nil)
-
-  ;; (load-theme 'solarized-dark t)
-
-  ;; make the fringe stand out from the background
-  (setq solarized-distinct-fringe-background t)
-
-  ;; make the modeline high contrast
-  (setq solarized-high-contrast-mode-line t)
-
-  ;; Use less bolding
-  (setq solarized-use-less-bold t)
-
-  ;; Use more italics
-  (setq solarized-use-more-italic t)
-
-  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
-  (setq solarized-emphasize-indicators nil)
-
-  (setq x-underline-at-descent-line t))
-
-;; zeno-theme
-(use-package zeno-theme
-  :ensure t
-  :init)
+  :config
+  (setq nord-region-highlight "snowstorm"))
 
 ;; Toggle between light and dark themes
 (defvar *my-dark-theme* 'solarized-dark)
@@ -64,7 +69,6 @@
   ;;     (load-theme theme t)))
   (setq *my-current-theme* theme))
 
-
 (defun toggle-theme ()
   (interactive)
   (cond ((eq *my-current-theme* *my-dark-theme*) (next-theme *my-light-theme*))
@@ -73,6 +77,7 @@
 
 ;; Load theme
 ;; (load-theme 'solarized-dark t)
+(load-theme 'nord t)
 
 ;; Make title bar match macOS theme
 (use-package ns-auto-titlebar
