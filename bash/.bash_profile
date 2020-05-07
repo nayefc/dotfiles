@@ -293,3 +293,5 @@ if [[ $platform == 'linux' ]]; then
 fi
 
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
+
+export PATH="$HOME/.poetry/bin:$PATH"
