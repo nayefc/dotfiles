@@ -125,8 +125,8 @@
 
 (use-package init-cc-style
   :load-path "packages/cc")
-(use-package init-cmake
-  :load-path "packages/cc")
+;; (use-package init-cmake
+;;   :load-path "packages/cc")
 (use-package init-rtags
   :load-path "packages/cc"
   :if is-a-mac)
@@ -136,6 +136,10 @@
   :load-path "packages/cc")
 (use-package init-cff
   :load-path "packages/cc")
+(use-package init-emacs-lsp
+  :load-path "packages/cc")
+(use-package init-ergo-keybindings
+  :load-path "packages/")
 
 ;; Always use spaces
 (setq indent-tabs-mode nil)

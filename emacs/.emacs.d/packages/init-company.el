@@ -4,6 +4,7 @@
   :init
   (global-company-mode)
   :config
-  (delete 'company-backends 'company-clang))
+  ;; (delete 'company-backends 'company-clang)
+  )
 
 (provide 'init-company)

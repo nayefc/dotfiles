@@ -1,3 +1,25 @@
+;; Set cmd as meta
+
+
+;; (setq mac-option-key-is-meta nil
+;;       mac-command-key-is-meta t
+;;       mac-command-modifier 'meta
+;;       mac-option-modifier 'none)
+
+(defun set-cmd-modifier ()
+  (interactive)
+  (setq mac-option-key-is-meta nil
+	mac-command-key-is-meta t
+	mac-command-modifier 'meta
+	mac-option-modifier 'none))
+
+(defun set-option-modifier ()
+  (interactive)
+  (setq mac-option-key-is-meta t
+	mac-command-key-is-meta nil
+	mac-command-modifier 'none
+	mac-option-modifier 'meta))
+
 ;; Default search to regexp search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 

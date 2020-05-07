@@ -12,7 +12,9 @@
   :init
   (cmake-ide-setup)
   ;; -fconcepts
-  (setq cmake-ide-flags-c++ (append '("-std=c++17 -Wno-pragma-once-outside-header -I/usr/local/include/c++/7.4.0/"))))
+  (setq cmake-ide-flags-c++ (append '("-std=c++17 -Wno-pragma-once-outside-header")))
+  ;; (setq cmake-ide-flags-c++ (append '("-std=c++17 -Wno-pragma-once-outside-header -I/usr/local/include/c++/7.4.0/ -I/usr/local/Cellar/boost/1.69.0_1.reinstall/include/boost/")))
+  )
 
 (defun fix-clang-args (orig-fun &rest args)
  (let ((clang-args flycheck-clang-args))
