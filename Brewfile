@@ -32,6 +32,7 @@ brew 'bench'
 brew 'coreutils'
 brew 'fzf'
 brew 'watchman'
+brew 'google-cloud-sdk'
 
 # C/C++
 brew 'glib'
@@ -39,12 +40,12 @@ brew 'cmake'
 brew 'llvm', args: ['with-clang']
 brew 'gdb'
 brew 'clang-format'
-brew "rtags", restart_service: true
+# brew "rtags", restart_service: true
 brew 'google-benchmark'
 
 # Cask - GUI
 # cask 'emacs'
 # cask 'iterm2'
 # cask 'alfred'
-cask 'font-iosevka'
+# cask 'font-iosevka'
 # cask 'haskell-platform'
