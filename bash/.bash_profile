@@ -23,7 +23,7 @@ if [[ $platform == 'osx' ]]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
     # Alias youtube-dl if its installed.
-    alias youtube="youtube-dl -x --audio-format mp3 --audio-quality 1 -o \"%(title)s.%(ext)s\""
+    # alias youtube="youtube-dl -x --audio-format mp3 --audio-quality 1 -o \"%(title)s.%(ext)s\""
 
     # Improve ls
     alias ls='ls -l -G -h'
@@ -40,7 +40,6 @@ if [[ $platform == 'osx' ]]; then
     source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
     source /usr/local/etc/bash_completion.d/brew
     source /usr/local/etc/bash_completion.d/tmux
-    source /usr/local/etc/bash_completion.d/youtube-dl.bash-completion
 
     export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
     [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -75,17 +74,9 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
-# PullDeploy keys
-export AWS_ACCESS_KEY_ID=AKIA46GFDSVQRQZCUMOO
-export AWS_SECRET_ACCESS_KEY=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
-
 # Google Cloud
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-
-# Kuberenetes
-source <(kubectl completion bash)
-alias kubedev='kubectl --context muzna-aio --namespace development'
 
 source ~/.tokens
 
