@@ -68,12 +68,6 @@ elif [[ $platform == 'linux' ]]; then
     source ~/.git-prompt.sh
 fi
 
-# Go
-export GOPATH=$HOME/go # don't forget to change your path correctly!
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
 # Google Cloud
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
@@ -106,6 +100,8 @@ alias bsdps='ps -o ruser=WHO -o pid,ppid,state,pcpu -o psr=CPUID -o stime=START 
 alias beep='afplay /System/Library/Sounds/Submarine.aiff -v 10'
 
 alias agl='ag --pager="less -R"'
+
+alias less="less -Ri"
 
 
 # Functions
