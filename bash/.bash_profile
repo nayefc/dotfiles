@@ -16,8 +16,8 @@ if [[ $platform == 'osx' ]]; then
 
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # Homebrew packages path
-    export PATH=/usr/local/bin:$PATH
+    # # Homebrew packages path
+    # export PATH=/usr/local/bin:$PATH
 
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -69,8 +69,8 @@ elif [[ $platform == 'linux' ]]; then
 fi
 
 # Google Cloud
-#source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-#source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 
 # Aliases
 
@@ -280,6 +280,7 @@ fi
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+eval "$(pyenv init -)"
 
 #
 # Kubernetes
@@ -306,4 +307,3 @@ IFS="$OIFS"
 if [ -f "/Users/nayef/.priv.sh" ]; then
    source ~/.priv.sh
 fi
-
