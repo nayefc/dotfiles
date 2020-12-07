@@ -69,10 +69,8 @@ elif [[ $platform == 'linux' ]]; then
 fi
 
 # Google Cloud
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-
-source ~/.tokens
+#source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+#source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 
 # Aliases
 
@@ -304,3 +302,8 @@ do
     export KUBECONFIG="$contextFile:$KUBECONFIG"
 done
 IFS="$OIFS"
+
+if [ -f "/Users/nayef/.priv.sh" ]; then
+   source ~/.priv.sh
+fi
+
