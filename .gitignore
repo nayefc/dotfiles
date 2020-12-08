@@ -16,5 +16,6 @@ irony/
 elpa/
 emacs/.emacs.d/auto-save-list/
 emacs/.emacs.d/elpa/archives/melpa/archive-contents
+emacs/.emacs.d/transient/
 .python-environments/
 recentf
