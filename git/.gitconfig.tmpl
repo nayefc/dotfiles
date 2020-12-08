@@ -1,6 +1,6 @@
 [user]
         name = Nayef Copty
-        email = nayef@hudson-trading.com
+	email = nrcopty@gmail.com
 [alias]
         hist = log --first-parent --left-right --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %s%C(yellow)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
         ph = push origin HEAD
@@ -31,15 +31,35 @@
 [core]
         excludesfile = ~/.gitignore_global
         editor = emacs
+	pager = delta
+[delta]
+        plus-color = "#012800"
+        minus-color = "#340001"
+	features = side-by-side line-numbers decorations
+	syntax-theme = Dracula
+        plus-style = syntax "#003800"
+        minus-style = syntax "#3f0001"
+[delta "decorations"]
+        commit-decoration-style = bold yellow box ul
+        file-style = bold yellow ul
+        file-decoration-style = none
+        hunk-header-decoration-style = cyan box ul
+[delta "line-numbers"]
+        line-numbers-left-style = cyan
+        line-numbers-right-style = cyan
+        line-numbers-minus-style = 124
+        line-numbers-plus-style = 28
+[interactive]
+        diffFilter = delta --color-only
 [color]
         ui = auto
-[color "diff"]
-       plain = normal
-       meta = yellow bold
-       frag = magenta bold
-       old = red bold
-       new = green bold
-       whitespace = red reverse
+# [color "diff"]
+#        plain = normal
+#        meta = yellow bold
+#        frag = magenta bold
+#        old = red bold
+#        new = green bold
+#        whitespace = red reverse
 [color "branch"]
        current = green reverse
        local = blue
@@ -55,18 +75,16 @@
         oldHighlight = red bold 52
         newNormal = green bold
         newHighlight = green bold 22
-[pager]
-        diff = diff-so-fancy | less --tabs=4 -RFX
-        show = diff-so-fancy | less --tabs=4 -RFX
+# [pager]
+#         diff = diff-so-fancy | less --tabs=4 -RFX
+#         show = diff-so-fancy | less --tabs=4 -RFX
 [merge]
         conflictstyle = diff3
 [diff]
         compactionHeuristic = true
-	tool = icdiff
-[difftool]
-	prompt = false
-[difftool "icdiff"]
-	  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+	colorMoved = default
+# [difftool]
+# 	prompt = false
 
 # .. vs. ... note:
 # log:
