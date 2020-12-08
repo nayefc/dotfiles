@@ -4,7 +4,7 @@
 ;;; Code:
 
 (require 'package)
-(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/"))
       package-archive-priorities '(("melpa" . 10)
@@ -182,9 +182,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" default)))
+   '("82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" default))
  '(exec-path-from-shell-check-startup-files nil)
  '(package-selected-packages
-   (quote
-    (toml-mode all-the-icons-ivy-rich go-mode dired-narrow popwin nord-theme blacken posframe ini-mode eyebrowse ansible-vault cff cquery zeno-theme yasnippet-snippets yaml-mode virtualenvwrapper use-package solarized-theme smartparens shx rtags rmsbolt realgud ns-auto-titlebar neotree multiple-cursors modern-cpp-font-lock magit jedi ivy-hydra ivy-explorer itail indent-tools highlight-symbol highlight-indentation google-c-style git-gutter+ flycheck-irony fill-column-indicator expand-region exec-path-from-shell dumb-jump diminish dashboard counsel-projectile company-tabnine company-jedi company-irony-c-headers company-irony cmake-ide clang-format buffer-move all-the-icons-ivy all-the-icons-dired ag ace-window))))
+   '(toml-mode all-the-icons-ivy-rich go-mode dired-narrow popwin nord-theme blacken posframe ini-mode eyebrowse ansible-vault cff cquery zeno-theme yasnippet-snippets yaml-mode virtualenvwrapper use-package solarized-theme smartparens shx rtags rmsbolt realgud ns-auto-titlebar neotree multiple-cursors modern-cpp-font-lock magit jedi ivy-hydra ivy-explorer itail indent-tools highlight-symbol highlight-indentation google-c-style git-gutter+ flycheck-irony fill-column-indicator expand-region exec-path-from-shell dumb-jump diminish dashboard counsel-projectile company-tabnine company-jedi company-irony-c-headers company-irony cmake-ide clang-format buffer-move all-the-icons-ivy all-the-icons-dired ag ace-window)))
