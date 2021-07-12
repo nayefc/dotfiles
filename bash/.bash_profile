@@ -53,6 +53,10 @@ if [[ $platform == 'osx' ]]; then
     fi
     export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
+    # Google Cloud
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+
     export PATH="$HOME/.poetry/bin:$PATH"
 
 elif [[ $platform == 'linux' ]]; then
@@ -62,9 +66,9 @@ elif [[ $platform == 'linux' ]]; then
     alias lshwnet='lshw -c net -businfo'
 
     # Completions
-    source ~/.git-completion.bash
-    source ~/.ag.bashcomp.sh
-    source ~/.tmux-completion
+    # source ~/.git-completion.bash
+    # source ~/.ag.bashcomp.sh
+    # source ~/.tmux-completion
 
     # Second prompt line
     source ~/.git-prompt.sh
@@ -305,3 +309,6 @@ IFS="$OIFS"
 if [ -f "/Users/nayef/.priv.sh" ]; then
    source ~/.priv.sh
 fi
+
+# source $(brew --prefix)/etc/bash_completion.d
+# source <(influx completion bash)
