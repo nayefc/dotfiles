@@ -16,8 +16,8 @@ if [[ $platform == 'osx' ]]; then
 
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # # Homebrew packages path
-    # export PATH=/usr/local/bin:$PATH
+    # Homebrew packages path
+    export PATH=/usr/local/opt/python@3.8/bin:/usr/local/bin:$PATH
 
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -53,6 +53,8 @@ if [[ $platform == 'osx' ]]; then
     fi
     export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
+    export PATH="$HOME/.poetry/bin:$PATH"
+
 elif [[ $platform == 'linux' ]]; then
     # Improve ls
     alias ls='ls -lh --color=auto'
@@ -66,11 +68,9 @@ elif [[ $platform == 'linux' ]]; then
 
     # Second prompt line
     source ~/.git-prompt.sh
-fi
 
-# Google Cloud
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+    export PATH="$HOME/bin:$PATH"
+fi
 
 # Aliases
 
@@ -207,6 +207,7 @@ export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault-pass
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
 # fasd
 eval "$(fasd --init auto)"
 alias a='fasd -a'        # any
@@ -278,9 +279,6 @@ if [[ $platform == 'linux' ]]; then
 fi
 
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
-
-export PATH="$HOME/.poetry/bin:$PATH"
-eval "$(pyenv init -)"
 
 #
 # Kubernetes
