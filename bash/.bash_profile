@@ -286,6 +286,11 @@ fi
 
 export PS1=$PS1"\j \w$YELLOW$GIT_BRANCH_PROMPT $RED$ $COLOUR_OFF"
 
+# export PATH="$HOME/.poetry/bin:$PATH"
+# eval "$(pyenv init -)"
+
+export TZ_LIST=America/New_York,Etc/UTC,Europe/Zurich,Asia/Amman,Asia/Singapore
+
 #
 # Kubernetes
 #
@@ -314,3 +319,7 @@ fi
 
 # source $(brew --prefix)/etc/bash_completion.d
 # source <(influx completion bash)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
