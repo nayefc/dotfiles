@@ -22,6 +22,10 @@ if [[ $platform == 'osx' ]]; then
     # Homebrew cask applications folder
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+    export PATH=$PATH:/usr/local/bin/google-cloud-sdk/bin
+
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
     # Alias youtube-dl if its installed.
     # alias youtube="youtube-dl -x --audio-format mp3 --audio-quality 1 -o \"%(title)s.%(ext)s\""
 
@@ -36,16 +40,16 @@ if [[ $platform == 'osx' ]]; then
     export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
     # Completions
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-    source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
-    source /usr/local/etc/bash_completion.d/brew
-    source /usr/local/etc/bash_completion.d/tmux
+    # source /usr/local/etc/bash_completion.d/git-completion.bash
+    # source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
+    # source /usr/local/etc/bash_completion.d/brew
+    # source /usr/local/etc/bash_completion.d/tmux
+    # export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d" #
 
-    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
     [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
     # Second prompt line
-    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    source ~/.git-prompt.sh
 
     # Share ssh-agent on my mac
     if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
@@ -54,10 +58,10 @@ if [[ $platform == 'osx' ]]; then
     export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
     # Google Cloud
-    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+    source /usr/local/bin/google-cloud-sdk/completion.bash.inc
+    source /usr/local/bin/google-cloud-sdk/path.bash.inc
 
-    export PATH="$HOME/.poetry/bin:$PATH"
+    # export PATH="$HOME/.poetry/bin:$PATH"
 
 elif [[ $platform == 'linux' ]]; then
     # Improve ls
@@ -265,6 +269,6 @@ fi
 # source $(brew --prefix)/etc/bash_completion.d
 # source <(influx completion bash)
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
