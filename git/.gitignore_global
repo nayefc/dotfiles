@@ -27,4 +27,4 @@ pylintrc
 *.pyc
 
 # C++
-.clang-format
+# .clang-format
