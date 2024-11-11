@@ -16,11 +16,13 @@ if [[ $platform == 'osx' ]]; then
 
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # Homebrew packages path
-    export PATH=/usr/local/opt/python@3.8/bin:/usr/local/bin:$PATH
+    # # Homebrew packages path
+    # export PATH=/usr/local/opt/python@3.8/bin:/usr/local/bin:$PATH
 
-    # Homebrew cask applications folder
-    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+    # # Homebrew cask applications folder
+    # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+    export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH
 
     export PATH=$PATH:/usr/local/bin/google-cloud-sdk/bin
 
@@ -34,10 +36,10 @@ if [[ $platform == 'osx' ]]; then
 
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-    # llvm
-    export PATH="/usr/local/opt/llvm/bin:$PATH"
-    export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+    # # llvm
+    # export PATH="/usr/local/opt/llvm/bin:$PATH"
+    # export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    # export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
     # Completions
     # source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -51,11 +53,14 @@ if [[ $platform == 'osx' ]]; then
     # Second prompt line
     source ~/.git-prompt.sh
 
-    # Share ssh-agent on my mac
-    if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
-	ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
-    fi
-    export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+    # # Share ssh-agent on my mac
+    # if [[ ! -S "/tmp/nayef_auth_sock" && -S "$SSH_AUTH_SOCK" ]]; then
+    # 	ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+    # fi
+    # export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+    # export SSH_AUTH_SOCK=~/.1password/agent.sock
+    # unset SSH_AUTH_SOCK
+    export SSH_AUTH_SOCK=/Users/nayef/.1password/agent.sock
 
     # Google Cloud
     source /usr/local/bin/google-cloud-sdk/completion.bash.inc
@@ -130,6 +135,7 @@ function extract () {
             *.zip)       unzip $1       ;;
             *.Z)         uncompress $1  ;;
             *.7z)        7z x $1        ;;
+            *.zst)       unzstd -o $(basename $1 .zst) $1 ;;
             *)           echo "'$1' cannot be extracted via >extract<" ;;
         esac
     else
@@ -157,9 +163,6 @@ function run_loop() {
 function kill_port() {
     lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
-
-export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault-pass
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -248,6 +251,5 @@ fi
 # source $(brew --prefix)/etc/bash_completion.d
 # source <(influx completion bash)
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export PATH="$HOME/.poetry/bin:$PATH"
+. "$HOME/.cargo/env"
