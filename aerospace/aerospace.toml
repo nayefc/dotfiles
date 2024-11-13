@@ -237,3 +237,7 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'io.sideloadly.sideloadly'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = ['layout floating']
