@@ -124,9 +124,9 @@ cmd-alt-6 = 'workspace 6'
 cmd-alt-7 = 'workspace 7'
 cmd-alt-8 = 'workspace 8'
 cmd-alt-9 = 'workspace 9'
-# alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
-# alt-b = 'workspace B'
-# alt-c = 'workspace C'
+cmd-alt-a = 'workspace A'
+cmd-alt-b = 'workspace B'
+# alt-c = 'workspace C' # In your config, you can drop workspace bindings that you don't need
 # alt-d = 'workspace D'
 # alt-e = 'workspace E'
 # alt-f = 'workspace F'
@@ -157,8 +157,8 @@ cmd-alt-shift-6 = 'move-node-to-workspace 6'
 cmd-alt-shift-7 = 'move-node-to-workspace 7'
 cmd-alt-shift-8 = 'move-node-to-workspace 8'
 cmd-alt-shift-9 = 'move-node-to-workspace 9'
-# alt-shift-a = 'move-node-to-workspace A'
-# alt-shift-b = 'move-node-to-workspace B'
+cmd-alt-shift-a = 'move-node-to-workspace A'
+cmd-alt-shift-b = 'move-node-to-workspace B'
 # alt-shift-c = 'move-node-to-workspace C'
 # alt-shift-d = 'move-node-to-workspace D'
 # alt-shift-e = 'move-node-to-workspace E'
@@ -231,6 +231,14 @@ if.app-id = 'com.openai.chat'
 run = ['layout floating']
 
 [[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.anghami.anghami'
+run = ['layout floating']
+
+[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = ['layout floating']
 
@@ -256,4 +264,24 @@ run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
 run = ['layout floating']
