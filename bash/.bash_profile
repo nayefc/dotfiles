@@ -24,7 +24,7 @@ if [[ $platform == 'osx' ]]; then
 
     export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH
 
-    export PATH=$PATH:/usr/local/bin/google-cloud-sdk/bin
+    # export PATH=$PATH:/usr/local/bin/google-cloud-sdk/bin
 
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -63,8 +63,8 @@ if [[ $platform == 'osx' ]]; then
     export SSH_AUTH_SOCK=/Users/nayef/.1password/agent.sock
 
     # Google Cloud
-    source /usr/local/bin/google-cloud-sdk/completion.bash.inc
-    source /usr/local/bin/google-cloud-sdk/path.bash.inc
+    # source /usr/local/bin/google-cloud-sdk/completion.bash.inc
+    # source /usr/local/bin/google-cloud-sdk/path.bash.inc
 
     # export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -253,3 +253,6 @@ fi
 
 # export PATH="$HOME/.poetry/bin:$PATH"
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2025-02-24 12:13:07
+export PATH="$PATH:/Users/nayef/.local/bin"

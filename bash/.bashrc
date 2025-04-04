@@ -8,3 +8,6 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2025-02-24 12:13:07
+export PATH="$PATH:/Users/nayef/.local/bin"
