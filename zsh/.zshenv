@@ -1,9 +1,3 @@
-. "$HOME/.cargo/env"
-
-# Created by `pipx` on 2025-02-24 12:13:07
-# export PATH="$PATH:/Users/nayef/.local/bin"
-
-
 unamestr=$(uname)
 platform='osx'
 
@@ -147,3 +141,9 @@ export TZ_LIST=America/New_York,Etc/UTC,Europe/Zurich,Asia/Amman #,Asia/Singapor
 if [ -f "/Users/nayef/.priv.sh" ]; then
    source ~/.priv.sh
 fi
+
+
+. "$HOME/.cargo/env"
+
+# Created by `pipx` on 2025-02-24 12:13:07
+# export PATH="$PATH:/Users/nayef/.local/bin"
