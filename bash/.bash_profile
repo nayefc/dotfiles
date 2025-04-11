@@ -18,13 +18,7 @@ if [[ $platform == 'osx' ]]; then
 
     # # Homebrew packages path
     # export PATH=/usr/local/opt/python@3.8/bin:/usr/local/bin:$PATH
-
-    # # Homebrew cask applications folder
-    # export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
     export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH
-
-    # export PATH=$PATH:/usr/local/bin/google-cloud-sdk/bin
 
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -35,18 +29,6 @@ if [[ $platform == 'osx' ]]; then
     alias ls='ls -l -G -h'
 
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-    # # llvm
-    # export PATH="/usr/local/opt/llvm/bin:$PATH"
-    # export LDFLAGS="-L/usr/local/opt/llvm/lib"
-    # export CPPFLAGS="-I/usr/local/opt/llvm/include"
-
-    # Completions
-    # source /usr/local/etc/bash_completion.d/git-completion.bash
-    # source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
-    # source /usr/local/etc/bash_completion.d/brew
-    # source /usr/local/etc/bash_completion.d/tmux
-    # export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d" #
 
     [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
@@ -61,10 +43,6 @@ if [[ $platform == 'osx' ]]; then
     # export SSH_AUTH_SOCK=~/.1password/agent.sock
     # unset SSH_AUTH_SOCK
     export SSH_AUTH_SOCK=/Users/nayef/.1password/agent.sock
-
-    # Google Cloud
-    # source /usr/local/bin/google-cloud-sdk/completion.bash.inc
-    # source /usr/local/bin/google-cloud-sdk/path.bash.inc
 
     # export PATH="$HOME/.poetry/bin:$PATH"
 
@@ -164,21 +142,10 @@ function kill_port() {
     lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# fasd
-eval "$(fasd --init auto)"
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
-
 ## fzf
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 export FZF_DEFAULT_OPTS='--height 50% --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
 # Use fd
@@ -193,15 +160,8 @@ _fzf_compgen_dir() {
 complete -F _fzf_path_completion -o default -o bashdefault ag
 complete -F _fzf_dir_completion -o default -o bashdefault tree
 
-# fasd & fzf change directory - jump using `fasd` if given argument, else filter output of
-# `fasd` using `fzf`
-_z() {
-    [ $# -gt 0 ] && fasd_cd -d "$*" && return
-    local dir
-    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
-}
-alias z="_z"
-alias fzfprev="fzf --preview 'head -100 {}'"
+# z to jump around
+source ~/.z.sh
 
 # Terminal colours
 # See http://misc.flogisoft.com/bash/tip_colors_and_formatting
@@ -255,4 +215,8 @@ fi
 . "$HOME/.cargo/env"
 
 # Created by `pipx` on 2025-02-24 12:13:07
-export PATH="$PATH:/Users/nayef/.local/bin"
+#export PATH="$PATH:/Users/nayef/.local/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
