@@ -20,6 +20,7 @@ if [[ $platform == 'osx' ]]; then
     # export PATH=/usr/local/opt/python@3.8/bin:/usr/local/bin:$PATH
     export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH
 
+    export PATH="/opt/homebrew/opt/cython/bin:$PATH"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     # Alias youtube-dl if its installed.
